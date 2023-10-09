@@ -1,0 +1,211 @@
+.igualdadDeDato {
+  position: absolute;
+  top: 282.51px;
+  left: 300px;
+  font-size: var(--principal-size);
+  font-family: var(--principal-2);
+  text-align: center;
+}
+.miperfil243Child {
+  position: absolute;
+  top: 354.51px;
+  left: 234px;
+  border-radius: var(--br-11xl);
+  background-color: var(--black-icon);
+  width: 616px;
+  height: 4px;
+}
+.miperfil243Inner,
+.miperfil243Item {
+  position: absolute;
+  top: 1054.51px;
+  left: 280px;
+  border-radius: var(--br-3xs);
+  background-color: var(--color-gray);
+  width: 145px;
+  height: 42px;
+  cursor: pointer;
+}
+.miperfil243Inner {
+  top: 1050.51px;
+  left: 617px;
+  border-radius: var(--br-xl);
+  background-color: var(--cta);
+  width: 187px;
+  height: 51px;
+}
+.cancelar {
+  position: absolute;
+  top: 1063.51px;
+  left: 299px;
+  color: var(--white-icon);
+}
+.continuar,
+.vectorIcon {
+  position: absolute;
+  top: 1063.51px;
+  left: 649px;
+}
+.vectorIcon {
+  height: 10.23%;
+  width: 11.07%;
+  top: 10.57%;
+  right: 44.56%;
+  bottom: 79.2%;
+  left: 44.37%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.frameChild,
+.id1Hobbie {
+  position: relative;
+}
+.frameChild {
+  width: 103px;
+  height: 30px;
+}
+.frameParent,
+.id1HobbieParent {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.id1HobbieParent {
+  width: 464px;
+  height: 30px;
+  flex-direction: row;
+  gap: var(--gap-193xl);
+}
+.frameParent {
+  position: absolute;
+  top: 749.51px;
+  left: 309px;
+  flex-direction: column;
+  gap: 30px;
+}
+.rectangleDiv {
+  position: absolute;
+  top: 646.51px;
+  left: 295px;
+  border-radius: var(--br-mini);
+  border: 3px solid var(--black-icon);
+  box-sizing: border-box;
+  width: 482px;
+  height: 59px;
+}
+.coleecciones,
+.polygonIcon {
+  position: absolute;
+  top: 663.51px;
+  left: 307px;
+}
+.polygonIcon {
+  top: 669.76px;
+  left: 710.16px;
+  border-radius: 3px;
+  width: 25.67px;
+  height: 17.2px;
+}
+.miperfil243Child1 {
+  position: absolute;
+  top: 640.51px;
+  left: 307px;
+  width: 490px;
+  height: 70px;
+}
+.facultadParent,
+.universidadParent {
+  width: 464px;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.universidadParent {
+  gap: 214px;
+}
+.facultadParent {
+  gap: var(--gap-233xl);
+}
+.especialidadParent {
+  width: 464px;
+  height: 33px;
+  flex-direction: row;
+  padding: 0 0 var(--padding-10xs);
+  box-sizing: border-box;
+  gap: var(--gap-187xl);
+}
+.especialidadParent,
+.frameGroup,
+.gneroParent {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.gneroParent {
+  width: 464px;
+  height: 34px;
+  flex-direction: row;
+  padding: 0 0 var(--padding-9xs);
+  box-sizing: border-box;
+  gap: var(--gap-258xl);
+}
+.frameGroup {
+  position: absolute;
+  top: 416.51px;
+  left: 309px;
+  flex-direction: column;
+  gap: var(--gap-5xl);
+}
+.frameChild5 {
+  position: relative;
+  border-radius: var(--br-8xs);
+  background-color: var(--black-icon);
+  width: 38px;
+  height: 7px;
+}
+.rectangleWrapper,
+.txt01Parent {
+  display: flex;
+  box-sizing: border-box;
+}
+.rectangleWrapper {
+  border-radius: var(--br-xl);
+  background-color: var(--white-icon);
+  width: 77px;
+  height: 41px;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: var(--padding-base) var(--padding-lgi);
+  cursor: pointer;
+}
+.txt01Parent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--black-icon);
+  width: 1084px;
+  height: 76px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 var(--padding-2xl);
+  gap: var(--gap-745xl);
+  font-size: var(--font-size-16xl);
+  color: var(--white-icon);
+  font-family: var(--principal-2);
+}
+.miperfil243 {
+  position: relative;
+  background: linear-gradient(180deg, #fff, #f8f69b);
+  width: 100%;
+  height: 1183px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--subtitulos2-size);
+  color: var(--ttulos-textos);
+  font-family: var(--subttulos);
+}

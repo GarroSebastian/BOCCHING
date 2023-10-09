@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Bruno+Ace:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Leelawadee:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Broadway:wght@400&display=swap");
+body {
+  margin: 0;
+  line-height: normal;
+}
+:root {
+  /* fonts */
+  --principal-2: "Bruno Ace";
+  --subttulos: Broadway;
+  --textos: Leelawadee;
+
+  /* font sizes */
+  --principal-size: 45px;
+  --textos-size: 18px;
+  --subttulos-size: 28px;
+  --font-size-21xl: 40px;
+  --principal-2-size: 55px;
+  --font-size-xl: 20px;
+  --font-size-16xl: 35px;
+  --subtitulos2-size: 22px;
+  --font-size-6xl: 25px;
+  --font-size-mini: 15px;
+  --font-size-3xs: 10px;
+  --font-size-xs: 12px;
+
+  /* Colors */
+  --white-icon: #f5f5f5;
+  --cta: #e5d63b;
+  --ttulos-textos: #000;
+  --black-icon: #453938;
+  --color-white: #fff;
+  --fondos1: #f8f69b;
+  --color-gray: #232323;
+  --color-gainsboro: #d9d9d9;
+
+  /* Gaps */
+  --gap-61xl: 80px;
+  --gap-745xl: 764px;
+  --gap-81xl: 100px;
+  --gap-6xl: 25px;
+  --gap-xl: 20px;
+  --gap-5xl: 24px;
+  --gap-258xl: 277px;
+  --gap-187xl: 206px;
+  --gap-233xl: 252px;
+  --gap-193xl: 212px;
+  --gap-19xl: 38px;
+  --gap-12xl: 31px;
+
+  /* Paddings */
+  --padding-2xl: 21px;
+  --padding-base: 16px;
+  --padding-lgi: 19px;
+  --padding-8xs-7: 4.7px;
+  --padding-9xs-9: 3.9px;
+  --padding-9xs: 4px;
+  --padding-10xs: 3px;
+  --padding-11xs: 2px;
+  --padding-12xs: 1px;
+  --padding-8xs: 5px;
+
+  /* Border radiuses */
+  --br-3xs: 10px;
+  --br-xl: 20px;
+  --br-8xs: 5px;
+  --br-lgi: 19px;
+  --br-6xs: 7px;
+  --br-11xs: 2px;
+  --br-mini: 15px;
+  --br-11xl: 30px;
+  --br-12xs: 1px;
+  --br-5xs: 8px;
+}

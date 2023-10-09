@@ -1,0 +1,297 @@
+.menuChild,
+.menuItem {
+  position: absolute;
+  top: 0;
+  left: 496.16px;
+  width: 943.84px;
+  height: 1024px;
+}
+.menuItem {
+  left: 0;
+  background: linear-gradient(180deg, rgba(69, 57, 56, 0.77), #453938);
+  width: 517px;
+  height: 800px;
+}
+.bocching {
+  position: absolute;
+  top: 46px;
+  left: 173px;
+  font-size: var(--principal-size);
+  font-family: var(--principal-2);
+}
+.frameChild,
+.menuInner {
+  position: absolute;
+  top: 203px;
+  left: 75px;
+  border-radius: var(--br-5xs);
+  background-color: var(--cta);
+  width: 11px;
+  height: 552px;
+}
+.frameChild {
+  top: 37.29px;
+  left: 28.41px;
+  background-color: var(--white-icon);
+  width: 308.94px;
+  height: 16.78px;
+}
+.frameItem,
+.miPerfil {
+  position: absolute;
+  top: 0;
+  left: 102.36px;
+}
+.frameItem {
+  top: 16.85px;
+  left: 0;
+  border-radius: 50%;
+  background-color: var(--white-icon);
+  width: 66.62px;
+  height: 53.79px;
+}
+.userIcon {
+  position: absolute;
+  height: 41.7%;
+  width: 10.17%;
+  top: 38.91%;
+  right: 84.92%;
+  bottom: 19.4%;
+  left: 4.91%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.rectangleParent {
+  position: absolute;
+  top: 208px;
+  left: 113.66px;
+  width: 337.34px;
+  height: 70.64px;
+  cursor: pointer;
+}
+.ellipseDiv,
+.frameInner {
+  position: absolute;
+  background-color: var(--white-icon);
+}
+.frameInner {
+  top: 36.36px;
+  left: 28.41px;
+  border-radius: var(--br-5xs);
+  width: 308.94px;
+  height: 16.78px;
+}
+.ellipseDiv {
+  top: 15.89px;
+  left: 0;
+  border-radius: 50%;
+  width: 66.62px;
+  height: 53.79px;
+}
+.rectangleGroup {
+  position: absolute;
+  top: 296.56px;
+  left: 113.66px;
+  width: 337.34px;
+  height: 69.68px;
+  cursor: pointer;
+}
+.frameChild1 {
+  position: absolute;
+  top: 13.07px;
+  left: 0;
+  border-radius: 50%;
+  background-color: var(--white-icon);
+  width: 66.62px;
+  height: 53.79px;
+}
+.rectangleContainer {
+  position: absolute;
+  top: 386.98px;
+  left: 113.66px;
+  width: 337.34px;
+  height: 66.85px;
+  cursor: pointer;
+}
+.frameChild2 {
+  position: absolute;
+  top: 38px;
+  left: 28px;
+  border-radius: var(--br-5xs);
+  background-color: var(--white-icon);
+  width: 309px;
+  height: 17px;
+}
+.buscar,
+.frameChild3 {
+  position: absolute;
+  top: 0;
+  left: 102px;
+}
+.frameChild3 {
+  top: 15px;
+  left: 0;
+  border-radius: 50%;
+  background-color: var(--white-icon);
+  width: 66px;
+  height: 53px;
+}
+.vectorIcon {
+  position: absolute;
+  height: 50%;
+  width: 12.17%;
+  top: 35.29%;
+  right: 83.98%;
+  bottom: 14.71%;
+  left: 3.86%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.frameDiv {
+  position: absolute;
+  top: 473px;
+  left: 114px;
+  width: 337px;
+  height: 68px;
+  cursor: pointer;
+}
+.frameChild4,
+.frameChild5 {
+  position: absolute;
+  background-color: var(--white-icon);
+}
+.frameChild4 {
+  top: 39.15px;
+  left: 28.41px;
+  border-radius: var(--br-5xs);
+  width: 308.94px;
+  height: 16.78px;
+}
+.frameChild5 {
+  top: 14.87px;
+  left: 0;
+  border-radius: 50%;
+  width: 66.62px;
+  height: 53.79px;
+}
+.vectorIcon1 {
+  position: absolute;
+  height: 41.83%;
+  width: 10.28%;
+  top: 39.92%;
+  right: 84.98%;
+  bottom: 18.26%;
+  left: 4.73%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.rectangleParent1 {
+  position: absolute;
+  top: 560.37px;
+  left: 113.66px;
+  width: 337.34px;
+  height: 68.66px;
+  cursor: pointer;
+}
+.frameChild7 {
+  position: absolute;
+  top: 19.29px;
+  left: 0;
+  border-radius: 50%;
+  background-color: var(--white-icon);
+  width: 66.62px;
+  height: 53.79px;
+}
+.xmlid273Icon {
+  position: absolute;
+  top: 29.37px;
+  left: 14.89px;
+  width: 36.83px;
+  height: 33.62px;
+}
+.rectangleParent2 {
+  position: absolute;
+  top: 648.92px;
+  left: 113.66px;
+  width: 337.34px;
+  height: 73.08px;
+  cursor: pointer;
+}
+.vectorIcon2 {
+  position: absolute;
+  height: 3.38%;
+  width: 3.19%;
+  top: 40.75%;
+  right: 88.19%;
+  bottom: 55.88%;
+  left: 8.61%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.menuChild1 {
+  position: absolute;
+  top: 27px;
+  left: 30px;
+  border-radius: 50%;
+  background-color: var(--cta);
+  width: 104px;
+  height: 92px;
+}
+.vectorIcon3,
+.vectorIcon4 {
+  position: absolute;
+  top: 45.54px;
+  left: 60.5px;
+  width: 42px;
+  height: 10.17px;
+}
+.vectorIcon4 {
+  top: 91.29px;
+}
+.groupIcon,
+.vectorIcon5,
+.vectorIcon6 {
+  position: absolute;
+  top: 60.79px;
+  left: 65.99px;
+  width: 31.03px;
+  height: 12.71px;
+}
+.groupIcon,
+.vectorIcon6 {
+  top: 73.5px;
+}
+.groupIcon {
+  height: 4.5%;
+  width: 2.99%;
+  top: 51%;
+  right: 88.4%;
+  bottom: 44.5%;
+  left: 8.61%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.transhumansAstroIcon {
+  position: absolute;
+  top: 118.99px;
+  left: 491.51px;
+  width: 948.49px;
+  height: 681.01px;
+  object-fit: cover;
+}
+.menu {
+  position: relative;
+  background-color: #fffed9;
+  width: 100%;
+  height: 800px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--subttulos-size);
+  color: var(--white-icon);
+  font-family: var(--subttulos);
+}

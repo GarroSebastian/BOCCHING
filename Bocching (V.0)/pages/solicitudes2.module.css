@@ -1,0 +1,396 @@
+.solicitudes2Child,
+.solicitudes2Item {
+  position: absolute;
+  border-radius: var(--br-lgi);
+}
+.solicitudes2Child {
+  top: 255px;
+  left: 255px;
+  width: 253px;
+  height: 156px;
+  cursor: pointer;
+}
+.solicitudes2Item {
+  top: 229px;
+  left: 544px;
+  width: 261px;
+  height: 164px;
+}
+.solicitudes2Inner {
+  top: 252px;
+  left: 841px;
+  width: 253px;
+  height: 156px;
+  cursor: pointer;
+}
+.rectangleDiv,
+.rectangleIcon,
+.solicitudes2Inner {
+  position: absolute;
+  border-radius: var(--br-lgi);
+}
+.rectangleIcon {
+  top: 252px;
+  left: 1134px;
+  width: 253px;
+  height: 156px;
+  cursor: pointer;
+}
+.rectangleDiv {
+  top: 346px;
+  left: 251px;
+  background-color: var(--black-icon);
+  border: 4px solid var(--white-icon);
+  box-sizing: border-box;
+  width: 1159px;
+  height: 601px;
+}
+.vectorIcon,
+.vectorIcon1,
+.vectorIcon2 {
+  position: absolute;
+  height: 5.66%;
+  width: 4.03%;
+  top: 57.03%;
+  right: 19.31%;
+  bottom: 37.3%;
+  left: 76.67%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.vectorIcon1,
+.vectorIcon2 {
+  top: 67.38%;
+  bottom: 26.95%;
+}
+.vectorIcon2 {
+  top: 77.83%;
+  bottom: 16.5%;
+}
+.solicitudes {
+  position: absolute;
+  top: 86px;
+  left: 255px;
+  font-size: var(--principal-2-size);
+  font-family: var(--principal-2);
+  color: var(--ttulos-textos);
+  text-align: left;
+}
+.cancelar,
+.ocultar,
+.solicitudesEnviadas {
+  position: absolute;
+  top: 395px;
+  left: 307px;
+  font-family: var(--subttulos);
+  color: var(--color-white);
+}
+.cancelar,
+.ocultar {
+  top: 411px;
+  left: 1229px;
+  font-size: var(--subtitulos2-size);
+}
+.ocultar {
+  left: 1087px;
+}
+.solicitudes2Child1 {
+  position: absolute;
+  top: 408px;
+  left: 989px;
+  background-color: var(--white-icon);
+  width: 5px;
+  height: 514px;
+}
+.solicitudes2Child2,
+.solicitudes2Child3,
+.solicitudes2Child4,
+.solicitudes2Child5 {
+  position: absolute;
+  top: 470px;
+  left: 322px;
+  border-radius: var(--br-xl);
+  background-color: var(--white-icon);
+  width: 588px;
+  height: 65px;
+}
+.solicitudes2Child3,
+.solicitudes2Child4,
+.solicitudes2Child5 {
+  top: 577px;
+}
+.solicitudes2Child4,
+.solicitudes2Child5 {
+  top: 684px;
+}
+.solicitudes2Child5 {
+  top: 791px;
+}
+.ellipseDiv,
+.solicitudes2Child6,
+.solicitudes2Child7,
+.solicitudes2Child8 {
+  position: absolute;
+  top: 463px;
+  left: 306px;
+  border-radius: 50%;
+  background-color: var(--white-icon);
+  border: 2px solid var(--black-icon);
+  box-sizing: border-box;
+  width: 88px;
+  height: 79px;
+}
+.solicitudes2Child6,
+.solicitudes2Child7,
+.solicitudes2Child8 {
+  top: 570px;
+}
+.solicitudes2Child7,
+.solicitudes2Child8 {
+  top: 677px;
+}
+.solicitudes2Child8 {
+  top: 784px;
+}
+.nombreYApellido,
+.nombreYApellido1,
+.nombreYApellido2,
+.nombreYApellido3 {
+  position: absolute;
+  top: 491px;
+  left: 425px;
+  font-size: var(--font-size-xl);
+}
+.nombreYApellido1,
+.nombreYApellido2,
+.nombreYApellido3 {
+  top: 598px;
+}
+.nombreYApellido2,
+.nombreYApellido3 {
+  top: 705px;
+}
+.nombreYApellido3 {
+  top: 812px;
+}
+.groupIcon {
+  position: absolute;
+  top: 481px;
+  left: 326px;
+  width: 48.66px;
+  height: 40.46px;
+}
+.solicitudes2Child10,
+.solicitudes2Child11,
+.solicitudes2Child9 {
+  position: absolute;
+  top: 588px;
+  left: 326px;
+  width: 48.66px;
+  height: 40.46px;
+}
+.solicitudes2Child10,
+.solicitudes2Child11 {
+  top: 695px;
+}
+.solicitudes2Child11 {
+  top: 802px;
+}
+.lineDiv,
+.solicitudes2Child12,
+.solicitudes2Child13,
+.solicitudes2Child14 {
+  position: absolute;
+  top: 486px;
+  left: 778px;
+  border-right: 2px solid var(--black-icon);
+  box-sizing: border-box;
+  width: 4px;
+  height: 40px;
+}
+.solicitudes2Child12,
+.solicitudes2Child13,
+.solicitudes2Child14 {
+  top: 593px;
+}
+.solicitudes2Child13,
+.solicitudes2Child14 {
+  top: 700px;
+}
+.solicitudes2Child14 {
+  top: 807px;
+}
+.fechaOHora,
+.fechaOHora1,
+.fechaOHora2,
+.fechaOHora3 {
+  position: absolute;
+  top: 493px;
+  left: 793px;
+  font-size: var(--textos-size);
+}
+.fechaOHora1,
+.fechaOHora2,
+.fechaOHora3 {
+  top: 600px;
+}
+.fechaOHora2,
+.fechaOHora3 {
+  top: 707px;
+}
+.fechaOHora3 {
+  top: 814px;
+}
+.solicitudes2Child15,
+.solicitudes2Child16,
+.solicitudes2Child17,
+.solicitudes2Child18 {
+  position: absolute;
+  top: 469px;
+  left: 1224px;
+  border-radius: var(--br-xl);
+  background-color: var(--cta);
+  width: 114px;
+  height: 70px;
+}
+.solicitudes2Child16,
+.solicitudes2Child17,
+.solicitudes2Child18 {
+  top: 578px;
+}
+.solicitudes2Child17,
+.solicitudes2Child18 {
+  top: 685px;
+}
+.solicitudes2Child18 {
+  top: 791px;
+}
+.vectorIcon3 {
+  position: absolute;
+  height: 5.66%;
+  width: 4.03%;
+  top: 46.58%;
+  right: 19.51%;
+  bottom: 47.75%;
+  left: 76.46%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.frameIcon,
+.frameIcon1,
+.solicitudes2Child19,
+.solicitudes2Child20,
+.solicitudes2Child21,
+.solicitudes2Child22 {
+  position: absolute;
+  height: 2.65%;
+  width: 1.88%;
+  top: 47.85%;
+  right: 10.06%;
+  bottom: 49.5%;
+  left: 88.06%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.frameIcon,
+.frameIcon1,
+.solicitudes2Child20,
+.solicitudes2Child21,
+.solicitudes2Child22 {
+  top: 58.5%;
+  right: 10.13%;
+  bottom: 38.86%;
+  left: 87.99%;
+}
+.frameIcon,
+.frameIcon1,
+.solicitudes2Child21,
+.solicitudes2Child22 {
+  top: 68.95%;
+  bottom: 28.41%;
+}
+.frameIcon,
+.frameIcon1,
+.solicitudes2Child22 {
+  top: 79.3%;
+  bottom: 18.06%;
+}
+.frameIcon,
+.frameIcon1 {
+  height: 4.3%;
+  width: 3.06%;
+  top: 47.27%;
+  right: 20%;
+  bottom: 48.44%;
+  left: 76.94%;
+}
+.frameIcon1 {
+  top: 57.71%;
+  right: 19.79%;
+  bottom: 37.99%;
+  left: 77.15%;
+}
+.recibidas {
+  top: 290px;
+  left: 307px;
+  cursor: pointer;
+}
+.enviadas,
+.guardadas,
+.ocultas,
+.recibidas {
+  position: absolute;
+  font-family: var(--subttulos);
+}
+.enviadas {
+  top: 279px;
+  left: 604px;
+  color: var(--white-icon);
+}
+.guardadas,
+.ocultas {
+  top: 289px;
+  left: 910px;
+  cursor: pointer;
+}
+.guardadas {
+  left: 1175px;
+}
+.frameIcon2,
+.frameIcon3 {
+  position: absolute;
+  height: 4.3%;
+  width: 3.06%;
+  top: 68.07%;
+  right: 19.79%;
+  bottom: 27.64%;
+  left: 77.15%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.frameIcon3 {
+  top: 78.52%;
+  bottom: 17.19%;
+}
+.solicitudes2Child23 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 164px;
+  height: 815px;
+}
+.solicitudes2 {
+  position: relative;
+  background: linear-gradient(180deg, #fff, #f8f69b);
+  width: 100%;
+  height: 1024px;
+  overflow: hidden;
+  text-align: center;
+  font-size: var(--subttulos-size);
+  color: var(--black-icon);
+  font-family: var(--textos);
+}

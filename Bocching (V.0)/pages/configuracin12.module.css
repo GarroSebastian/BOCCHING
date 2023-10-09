@@ -1,0 +1,148 @@
+.eliminarCuenta {
+  position: absolute;
+  top: 157px;
+  left: 39px;
+  font-size: var(--principal-size);
+  font-family: var(--principal-2);
+  color: var(--black-icon);
+  display: inline-block;
+  width: 614px;
+}
+.configuracin12Child,
+.configuracin12Item {
+  position: absolute;
+  top: 590px;
+  left: 48px;
+  border-radius: var(--br-3xs);
+  background-color: var(--black-icon);
+  width: 125px;
+  height: 47px;
+  cursor: pointer;
+}
+.configuracin12Item {
+  left: 391px;
+  border-radius: var(--br-xl);
+  background-color: var(--cta);
+  width: 253px;
+}
+.configuracin12Inner {
+  position: absolute;
+  top: 484px;
+  left: 45px;
+  border-radius: var(--br-3xs);
+  border: 3px solid var(--black-icon);
+  box-sizing: border-box;
+  width: 602px;
+  height: 53px;
+}
+.cdigoDeUsuario {
+  position: absolute;
+  top: 500px;
+  left: 71px;
+  font-family: var(--textos);
+  color: var(--black-icon);
+}
+.eliminarCuenta1 {
+  position: absolute;
+  top: 601px;
+  left: 417px;
+  font-size: var(--subtitulos2-size);
+  cursor: pointer;
+}
+.siEliminasTu {
+  margin: 0;
+}
+.siEliminasTuContainer {
+  position: absolute;
+  top: 245px;
+  left: 63px;
+  font-family: var(--textos);
+  text-align: left;
+  display: inline-block;
+  width: 597px;
+}
+.cancelar {
+  position: absolute;
+  top: 601px;
+  left: 56px;
+  font-size: var(--subtitulos2-size);
+  color: var(--color-white);
+  cursor: pointer;
+}
+.ingreseSuCdigo {
+  position: absolute;
+  top: 411px;
+  left: 71px;
+  font-size: var(--subttulos-size);
+}
+.rectangleDiv {
+  position: absolute;
+  top: 213px;
+  left: 87px;
+  border-radius: var(--br-xl);
+  background-color: var(--black-icon);
+  width: 522px;
+  height: 2px;
+}
+.transhumansMechanicalLove {
+  position: absolute;
+  top: 262px;
+  left: 670px;
+  width: 414px;
+  height: 456px;
+  object-fit: cover;
+}
+.frameChild,
+.txt01 {
+  position: relative;
+}
+.frameChild {
+  border-radius: var(--br-8xs);
+  background-color: var(--black-icon);
+  width: 38px;
+  height: 7px;
+}
+.rectangleWrapper,
+.txt01Parent {
+  display: flex;
+  box-sizing: border-box;
+}
+.rectangleWrapper {
+  border-radius: var(--br-xl);
+  background-color: var(--white-icon);
+  width: 77px;
+  height: 41px;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: var(--padding-base) var(--padding-lgi);
+  cursor: pointer;
+}
+.txt01Parent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--black-icon);
+  width: 1084px;
+  height: 76px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 var(--padding-2xl);
+  gap: var(--gap-745xl);
+  text-align: left;
+  font-size: var(--font-size-16xl);
+  color: var(--white-icon);
+  font-family: var(--principal-2);
+}
+.configuracin12 {
+  position: relative;
+  background-color: var(--color-white);
+  width: 100%;
+  height: 718px;
+  overflow: hidden;
+  text-align: center;
+  font-size: var(--textos-size);
+  color: var(--ttulos-textos);
+  font-family: var(--subttulos);
+}

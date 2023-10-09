@@ -1,0 +1,185 @@
+.inicioDeSesin {
+  position: absolute;
+  top: 195px;
+  left: 866px;
+  font-family: var(--principal-2);
+  color: var(--ttulos-textos);
+}
+.userIcon {
+  position: relative;
+  width: 29px;
+  height: 25px;
+}
+.correoInstitucional {
+  position: relative;
+  display: inline-block;
+  width: 174px;
+  height: 21px;
+  flex-shrink: 0;
+}
+.frameWrapper,
+.userParent {
+  display: flex;
+  justify-content: flex-start;
+}
+.userParent {
+  width: 234px;
+  height: 25px;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--gap-12xl);
+}
+.frameWrapper {
+  border-radius: var(--br-3xs);
+  background-color: var(--black-icon);
+  width: 447px;
+  height: 48px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 11px 23px;
+  box-sizing: border-box;
+}
+.passwordIcon {
+  width: 28.33px;
+  height: 30px;
+}
+.contrasea,
+.passwordIcon {
+  position: relative;
+}
+.passwordParent {
+  width: 150.17px;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 0 0.0000019073486328125px;
+  box-sizing: border-box;
+  gap: var(--gap-12xl);
+}
+.frame {
+  position: relative;
+  width: 34px;
+  height: 30px;
+  overflow: hidden;
+  flex-shrink: 0;
+  margin-left: -34px;
+}
+.frameGroup,
+.frameParent {
+  display: flex;
+  justify-content: flex-start;
+}
+.frameGroup {
+  border-radius: var(--br-3xs);
+  background-color: var(--black-icon);
+  width: 447px;
+  height: 48px;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 274px 0 22.833251953125px;
+  box-sizing: border-box;
+}
+.frameParent {
+  position: absolute;
+  top: 325px;
+  left: 853px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 36px;
+  font-size: var(--textos-size);
+  color: var(--color-white);
+  font-family: var(--textos);
+}
+.ingresar {
+  position: relative;
+  cursor: pointer;
+}
+.crearCuenta,
+.ingresarWrapper {
+  position: absolute;
+  cursor: pointer;
+}
+.ingresarWrapper {
+  top: 526px;
+  left: 853px;
+  border-radius: var(--br-xl);
+  background-color: var(--cta);
+  width: 447px;
+  height: 71px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: var(--padding-lgi) 146px;
+  box-sizing: border-box;
+  font-size: var(--subttulos-size);
+}
+.crearCuenta {
+  top: 648px;
+  left: 998px;
+  font-size: var(--subtitulos2-size);
+}
+.iniciarsesionChild {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 639px;
+  height: 802px;
+}
+.ellipseDiv,
+.iniciarsesionInner,
+.iniciarsesionItem {
+  position: absolute;
+  top: -12.58px;
+  left: -112.19px;
+  border-radius: 50%;
+  background-color: var(--color-white);
+  width: 111.34px;
+  height: 469.74px;
+  transform: rotate(-42.14deg);
+  transform-origin: 0 0;
+}
+.ellipseDiv,
+.iniciarsesionInner {
+  top: 412.71px;
+  left: -61px;
+}
+.ellipseDiv {
+  top: -43.28px;
+  left: 40.32px;
+  width: 138.07px;
+  height: 574.14px;
+  transform: rotate(-47.6deg);
+}
+.transhumansPachecoIcon {
+  position: absolute;
+  top: 92px;
+  left: 75px;
+  width: 488px;
+  height: 619px;
+  object-fit: cover;
+}
+.iniciarsesionChild1 {
+  position: absolute;
+  top: 540.16px;
+  left: -54.49px;
+  border-radius: 50%;
+  background-color: var(--color-white);
+  width: 45.97px;
+  height: 179.5px;
+  transform: rotate(-35.43deg);
+  transform-origin: 0 0;
+}
+.iniciarsesion {
+  position: relative;
+  background: linear-gradient(180deg, #fff, #f8f69b);
+  width: 100%;
+  height: 802px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--principal-size);
+  color: var(--black-icon);
+  font-family: var(--subttulos);
+}

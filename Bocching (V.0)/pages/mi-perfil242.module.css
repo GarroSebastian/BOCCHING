@@ -1,0 +1,245 @@
+.soloAmigos {
+  position: absolute;
+  top: 283px;
+  left: 381px;
+  font-size: var(--principal-size);
+  font-family: var(--principal-2);
+  text-align: center;
+}
+.miperfil242Child {
+  position: absolute;
+  top: 355px;
+  left: 235px;
+  border-radius: var(--br-11xl);
+  background-color: var(--black-icon);
+  width: 616px;
+  height: 4px;
+}
+.miperfil242Inner,
+.miperfil242Item {
+  position: absolute;
+  top: 1269px;
+  left: 293px;
+  border-radius: var(--br-3xs);
+  background-color: var(--color-gray);
+  width: 145px;
+  height: 42px;
+  cursor: pointer;
+}
+.miperfil242Inner {
+  top: 1265px;
+  left: 630px;
+  border-radius: var(--br-xl);
+  background-color: var(--cta);
+  width: 187px;
+  height: 51px;
+}
+.cancelar {
+  position: absolute;
+  top: 1278px;
+  left: 312px;
+  color: var(--white-icon);
+}
+.continuar,
+.layer1Icon {
+  position: absolute;
+  top: 1278px;
+  left: 662px;
+}
+.layer1Icon {
+  top: 106px;
+  left: 462px;
+  width: 160px;
+  height: 160px;
+  overflow: hidden;
+}
+.frameChild,
+.perfil {
+  position: relative;
+}
+.frameChild {
+  width: 103px;
+  height: 30px;
+}
+.apellidosParent,
+.apodoParent,
+.nombresParent,
+.perfilParent {
+  width: 464px;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 294px;
+}
+.apellidosParent,
+.apodoParent,
+.nombresParent {
+  gap: 254px;
+}
+.apellidosParent,
+.apodoParent {
+  height: 33px;
+  padding: 0 0 var(--padding-10xs);
+  box-sizing: border-box;
+  gap: 250px;
+}
+.apodoParent {
+  height: 34px;
+  padding: 0 0 var(--padding-9xs);
+  gap: 284px;
+}
+.frameChild1,
+.universidad {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.frameChild1 {
+  top: 5px;
+  left: 361px;
+  width: 103px;
+  height: 30px;
+}
+.universidadParent {
+  position: relative;
+  width: 464px;
+  height: 35px;
+}
+.especialidadParent,
+.facultadParent,
+.fotoParent {
+  width: 464px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.facultadParent {
+  height: 31px;
+  align-items: flex-start;
+  padding: var(--padding-12xs) 0 0;
+  box-sizing: border-box;
+  gap: var(--gap-233xl);
+}
+.especialidadParent,
+.fotoParent {
+  height: 30px;
+}
+.especialidadParent {
+  align-items: center;
+  gap: var(--gap-187xl);
+}
+.fotoParent {
+  align-items: flex-start;
+  gap: 311px;
+}
+.descripcinParent,
+.generoParent {
+  display: flex;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+.descripcinParent {
+  width: 464px;
+  height: 31px;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: var(--padding-12xs) 0 0;
+  gap: 222px;
+}
+.generoParent {
+  height: 32px;
+  padding: 0 0 var(--padding-11xs);
+  gap: var(--gap-258xl);
+}
+.celularParent,
+.coleccionesParent,
+.generoParent {
+  width: 464px;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.coleccionesParent {
+  height: 34px;
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 0 var(--padding-9xs);
+  box-sizing: border-box;
+  gap: 224px;
+}
+.celularParent {
+  height: 30px;
+  gap: 272px;
+}
+.celularParent,
+.frameParent,
+.solicitudesParent {
+  display: flex;
+  justify-content: flex-start;
+}
+.solicitudesParent {
+  width: 464px;
+  height: 30px;
+  flex-direction: row;
+  align-items: center;
+  gap: 231px;
+}
+.frameParent {
+  position: absolute;
+  top: 417px;
+  left: 311px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gap-5xl);
+}
+.rectangleDiv {
+  position: relative;
+  border-radius: var(--br-8xs);
+  background-color: var(--black-icon);
+  width: 38px;
+  height: 7px;
+}
+.rectangleWrapper,
+.txt01Parent {
+  display: flex;
+  box-sizing: border-box;
+}
+.rectangleWrapper {
+  border-radius: var(--br-xl);
+  background-color: var(--white-icon);
+  width: 77px;
+  height: 41px;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: var(--padding-base) var(--padding-lgi);
+  cursor: pointer;
+}
+.txt01Parent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--black-icon);
+  width: 1084px;
+  height: 76px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 var(--padding-2xl);
+  gap: 757px;
+  font-size: var(--font-size-16xl);
+  color: var(--white-icon);
+  font-family: var(--principal-2);
+}
+.miperfil242 {
+  position: relative;
+  background: linear-gradient(180deg, #fff, #f8f69b);
+  width: 100%;
+  height: 1397px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--subtitulos2-size);
+  color: var(--ttulos-textos);
+  font-family: var(--subttulos);
+}

@@ -1,0 +1,535 @@
+.miperfil1Child,
+.miperfil1Item {
+  position: absolute;
+  top: 263px;
+  left: 841px;
+  border-radius: var(--br-lgi);
+  width: 253px;
+  height: 156px;
+  cursor: pointer;
+}
+.miperfil1Item {
+  left: 548px;
+}
+.colecciones {
+  position: absolute;
+  top: 285px;
+  left: 588px;
+  font-size: var(--subttulos-size);
+}
+.miperfil1Inner,
+.rectangleDiv {
+  position: absolute;
+  top: 233px;
+  left: 255px;
+  border-radius: var(--br-lgi);
+  width: 253px;
+  height: 156px;
+}
+.rectangleDiv {
+  top: 344px;
+  left: 251px;
+  background-color: var(--black-icon);
+  border: 4px solid var(--white-icon);
+  box-sizing: border-box;
+  width: 1159px;
+  height: 1043px;
+}
+.miperfil1Child1,
+.miperfil1Child2,
+.miperfil1Child3 {
+  position: absolute;
+  top: 726px;
+  left: 320px;
+  border-radius: var(--br-xl);
+  background-color: var(--color-white);
+  width: 463px;
+  height: 323px;
+}
+.miperfil1Child2,
+.miperfil1Child3 {
+  top: 505px;
+  left: 876px;
+  height: 825px;
+}
+.miperfil1Child3 {
+  top: 431px;
+  left: 825px;
+  border-radius: var(--br-6xs);
+  background-color: var(--white-icon);
+  width: 9px;
+  height: 899px;
+}
+.miPerfil {
+  position: absolute;
+  top: 86px;
+  left: 255px;
+  font-size: var(--principal-2-size);
+  font-family: var(--principal-2);
+  color: var(--ttulos-textos);
+}
+.general,
+.informacin,
+.privacidad {
+  position: absolute;
+  font-size: var(--subttulos-size);
+}
+.informacin {
+  top: 269px;
+  left: 286px;
+  color: var(--color-white);
+}
+.general,
+.privacidad {
+  top: 285px;
+  left: 882px;
+}
+.general {
+  top: 431px;
+  left: 1048px;
+  color: var(--white-icon);
+}
+.correoInstitucional {
+  position: absolute;
+  top: 752px;
+  left: 352px;
+  font-size: var(--subtitulos2-size);
+}
+.ejemplodecorreocorreoejemplo {
+  position: absolute;
+  top: 786px;
+  left: 353px;
+  font-family: var(--textos);
+}
+.cdigoUniversitario {
+  position: absolute;
+  top: 826px;
+  left: 352px;
+  font-size: var(--subtitulos2-size);
+}
+.bchadri888,
+.codigouniversitarioejemplo {
+  position: absolute;
+  top: 860px;
+  left: 352px;
+  font-family: var(--textos);
+}
+.bchadri888 {
+  top: 936px;
+}
+.idbocching {
+  position: absolute;
+  top: 900px;
+  left: 353px;
+  font-size: var(--subtitulos2-size);
+}
+.edadejemploEnAos {
+  position: absolute;
+  top: 1009px;
+  left: 352px;
+  font-family: var(--textos);
+}
+.edad {
+  position: absolute;
+  top: 976px;
+  left: 353px;
+  font-size: var(--subtitulos2-size);
+}
+.estaInformacinNo {
+  position: absolute;
+  top: 1091px;
+  left: 370px;
+  font-family: var(--textos);
+  color: var(--white-icon);
+  display: inline-block;
+  width: 364px;
+  height: 14px;
+}
+.nombres {
+  position: absolute;
+  top: 530px;
+  left: 907px;
+  font-size: var(--subtitulos2-size);
+}
+.nombre1Nombre {
+  position: absolute;
+  top: 573px;
+  left: 912px;
+  font-family: var(--textos);
+}
+.miperfil1Child4 {
+  position: absolute;
+  top: 569px;
+  left: 906px;
+  border-radius: var(--br-6xs);
+  border: 1px solid var(--black-icon);
+  box-sizing: border-box;
+  width: 369px;
+  height: 29px;
+}
+.apellidos {
+  position: absolute;
+  top: 623px;
+  left: 907px;
+  font-size: var(--subtitulos2-size);
+}
+.apellido1Apellido {
+  position: absolute;
+  top: 667px;
+  left: 912px;
+  font-family: var(--textos);
+}
+.miperfil1Child5 {
+  position: absolute;
+  top: 662px;
+  left: 906px;
+  border-radius: var(--br-6xs);
+  border: 1px solid var(--black-icon);
+  box-sizing: border-box;
+  width: 369px;
+  height: 28px;
+}
+.apodo {
+  position: absolute;
+  top: 715px;
+  left: 907px;
+  font-size: var(--subtitulos2-size);
+}
+.apodoEjemplo {
+  position: absolute;
+  top: 760px;
+  left: 912px;
+  font-family: var(--textos);
+  display: inline-block;
+  width: 124px;
+  height: 13px;
+}
+.miperfil1Child6 {
+  position: absolute;
+  top: 754px;
+  left: 906px;
+  border-radius: var(--br-6xs);
+  border: 1px solid var(--black-icon);
+  box-sizing: border-box;
+  width: 369px;
+  height: 30px;
+}
+.gnero {
+  position: absolute;
+  top: 809px;
+  left: 907px;
+  font-size: var(--subtitulos2-size);
+  display: inline-block;
+  width: 93px;
+  height: 15px;
+}
+.frameChild,
+.gneroEjemplo {
+  position: relative;
+}
+.frameChild {
+  border-radius: var(--br-12xs);
+  width: 14.15px;
+  height: 9.2px;
+}
+.gneroEjemploParent {
+  position: absolute;
+  top: 848px;
+  left: 906px;
+  border-radius: var(--br-6xs);
+  border: 1px solid var(--black-icon);
+  box-sizing: border-box;
+  width: 369px;
+  height: 27px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: var(--padding-11xs) var(--padding-11xs) 0 7px;
+  gap: 187px;
+  font-family: var(--textos);
+}
+.carrera {
+  position: absolute;
+  top: 900px;
+  left: 907px;
+  font-size: var(--subtitulos2-size);
+  display: inline-block;
+  width: 103px;
+  height: 15px;
+}
+.polygonIcon {
+  position: absolute;
+  top: 939.75px;
+  left: 1236.68px;
+  border-radius: var(--br-12xs);
+  width: 13.64px;
+  height: 7.83px;
+}
+.carreraEjemplo {
+  position: absolute;
+  top: 934px;
+  left: 912px;
+  font-family: var(--textos);
+}
+.miperfil1Child7 {
+  position: absolute;
+  top: 929px;
+  left: 906px;
+  border-radius: var(--br-6xs);
+  border: 1px solid var(--black-icon);
+  box-sizing: border-box;
+  width: 369px;
+  height: 29px;
+}
+.facultad {
+  position: absolute;
+  top: 983px;
+  left: 907px;
+  font-size: var(--subtitulos2-size);
+}
+.miperfil1Child8 {
+  position: absolute;
+  top: 1034px;
+  left: 1236.54px;
+  border-radius: var(--br-12xs);
+  width: 13.92px;
+  height: 8.52px;
+}
+.facultadEjemplo {
+  position: absolute;
+  top: 1026px;
+  left: 912px;
+  font-family: var(--textos);
+}
+.miperfil1Child9 {
+  position: absolute;
+  top: 1023px;
+  left: 907px;
+  border-radius: var(--br-6xs);
+  border: 1px solid var(--black-icon);
+  box-sizing: border-box;
+  width: 367px;
+  height: 27px;
+}
+.especialidad {
+  position: absolute;
+  top: 1076px;
+  left: 907px;
+  font-size: var(--subtitulos2-size);
+  display: inline-block;
+  width: 155px;
+  height: 17px;
+}
+.frameItem {
+  position: relative;
+  border-radius: var(--br-12xs);
+  width: 13.64px;
+  height: 7.83px;
+}
+.especialidadEjemploParent {
+  position: absolute;
+  top: 1107px;
+  left: 906px;
+  border-radius: var(--br-6xs);
+  border: 1px solid var(--black-icon);
+  box-sizing: border-box;
+  width: 369px;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: var(--padding-8xs) var(--padding-11xs) var(--padding-12xs)
+    var(--padding-8xs);
+  gap: 154px;
+  font-family: var(--textos);
+}
+.descripccin {
+  position: absolute;
+  top: 1162px;
+  left: 907px;
+  font-size: var(--subtitulos2-size);
+}
+.descripcinAModo {
+  margin: 0;
+}
+.descripcinAModoContainer {
+  position: absolute;
+  top: 1216.61px;
+  left: 912px;
+  font-family: var(--textos);
+  display: inline-block;
+  width: 354px;
+  height: 52.93px;
+}
+.miperfil1Child10 {
+  position: absolute;
+  top: 1212px;
+  left: 906px;
+  border-radius: var(--br-6xs);
+  border: 1px solid var(--black-icon);
+  box-sizing: border-box;
+  width: 369px;
+  height: 85px;
+}
+.miperfil1Child11 {
+  position: absolute;
+  top: 629px;
+  left: 353px;
+  border-radius: var(--br-xl);
+  background-color: var(--cta);
+  width: 399px;
+  height: 55px;
+}
+.ellipseDiv {
+  position: absolute;
+  top: 429px;
+  left: 422px;
+  border-radius: 50%;
+  background-color: var(--white-icon);
+  width: 250px;
+  height: 211px;
+}
+.vectorIcon,
+.vectorIcon1 {
+  position: absolute;
+  top: 553.59px;
+  left: 480px;
+  width: 134px;
+  height: 37.41px;
+}
+.vectorIcon1 {
+  top: 485px;
+  left: 512.91px;
+  width: 68.18px;
+  height: 64.43px;
+}
+.nombreapodo {
+  position: absolute;
+  top: 643px;
+  left: 437px;
+  font-size: var(--subttulos-size);
+}
+.miperfil1Child12 {
+  position: absolute;
+  top: 651.75px;
+  left: 712.31px;
+  border-radius: var(--br-11xs);
+  width: 23.38px;
+  height: 16.06px;
+}
+.miperfil1Child13 {
+  position: absolute;
+  top: 439.65px;
+  left: 612.92px;
+  border-radius: 50%;
+  background-color: var(--cta);
+  width: 42.94px;
+  height: 38.8px;
+  transform: rotate(-0.13deg);
+  transform-origin: 0 0;
+}
+.vectorIcon2,
+.vectorIcon3,
+.vectorIcon4 {
+  position: absolute;
+  height: 0.36%;
+  width: 0.3%;
+  top: 31.63%;
+  right: 56.35%;
+  bottom: 68%;
+  left: 43.35%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.vectorIcon3,
+.vectorIcon4 {
+  height: 0.53%;
+  width: 0.46%;
+  top: 30.73%;
+  right: 55.1%;
+  bottom: 68.75%;
+  left: 44.44%;
+}
+.vectorIcon4 {
+  height: 1.03%;
+  width: 1.15%;
+  top: 30.91%;
+  right: 55.38%;
+  bottom: 68.06%;
+  left: 43.48%;
+}
+.miperfil1Child14 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(180deg, rgba(69, 57, 56, 0.77), #453938);
+  width: 164px;
+  height: 815px;
+}
+.groupIcon {
+  position: absolute;
+  top: 27px;
+  left: 30px;
+  width: 104px;
+  height: 92px;
+  cursor: pointer;
+}
+.miperfil1Child15 {
+  position: absolute;
+  top: 237px;
+  left: 47px;
+  width: 70px;
+  height: 58.71px;
+}
+.miperfil1Child16,
+.vectorIcon5 {
+  position: absolute;
+  top: 345.71px;
+  left: 51.27px;
+  width: 61.46px;
+  height: 36.29px;
+  cursor: pointer;
+}
+.miperfil1Child16 {
+  top: 432px;
+  left: 59.64px;
+  width: 44.72px;
+  height: 37.18px;
+}
+.vectorIcon6,
+.vectorIcon7,
+.xmlid273Icon {
+  position: absolute;
+  top: 519.18px;
+  left: 60.38px;
+  width: 43.24px;
+  height: 35.43px;
+  cursor: pointer;
+}
+.vectorIcon7,
+.xmlid273Icon {
+  top: 604.62px;
+  left: 63.99px;
+  width: 36.01px;
+  height: 29.65px;
+}
+.xmlid273Icon {
+  top: 684.27px;
+  left: 62.89px;
+  width: 38.23px;
+  height: 34.71px;
+}
+.miperfil1 {
+  position: relative;
+  background: linear-gradient(180deg, #fff, #f8f69b);
+  width: 100%;
+  height: 1463px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--textos-size);
+  color: var(--black-icon);
+  font-family: var(--subttulos);
+}

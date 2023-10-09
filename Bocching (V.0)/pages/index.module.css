@@ -1,0 +1,257 @@
+.desarrolladores,
+.quEsBocching {
+  position: absolute;
+  display: inline-block;
+}
+.quEsBocching {
+  top: 270px;
+  left: 103px;
+  font-size: var(--font-size-21xl);
+  width: 482px;
+  height: 37px;
+}
+.desarrolladores {
+  top: 552px;
+  left: 97px;
+  width: 459px;
+  height: 40px;
+}
+.bocchingEsUn {
+  margin: 0;
+}
+.bocchingEsUnContainer {
+  position: absolute;
+  top: 358px;
+  left: 103px;
+  font-size: var(--textos-size);
+  font-family: var(--textos);
+  color: var(--black-icon);
+  white-space: pre-wrap;
+  display: inline-block;
+  width: 604px;
+  height: 72px;
+}
+.inicioChild,
+.inicioItem {
+  position: absolute;
+  top: 511px;
+  left: 91px;
+  border-radius: var(--br-3xs);
+  background-color: var(--black-icon);
+  width: 630px;
+  height: 4px;
+}
+.inicioItem {
+  top: 657px;
+  width: 1295px;
+}
+.byTeambocching {
+  position: relative;
+}
+.footer {
+  position: absolute;
+  top: 1419px;
+  left: 0;
+  background-color: var(--black-icon);
+  width: 1440px;
+  height: 136px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+}
+.transhumansExperimentsIcon {
+  position: absolute;
+  top: 228px;
+  left: 821px;
+  width: 572px;
+  height: 299px;
+  object-fit: cover;
+}
+.adrian,
+.frameChild {
+  position: absolute;
+  top: 176px;
+  left: 34px;
+}
+.frameChild {
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  background-color: var(--black-icon);
+  width: 180px;
+  height: 161px;
+}
+.userIcon {
+  position: absolute;
+  height: 34.95%;
+  width: 49.54%;
+  top: 20.97%;
+  right: 25%;
+  bottom: 44.08%;
+  left: 25.46%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.adrianParent {
+  position: relative;
+  width: 180px;
+  height: 208px;
+}
+.frameParent {
+  position: absolute;
+  top: 758px;
+  left: 111px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-61xl);
+  font-size: var(--subttulos-size);
+  font-family: var(--subttulos);
+}
+.frameGroup,
+.ivan,
+.profesores {
+  position: absolute;
+  top: 176px;
+  left: 55px;
+}
+.frameGroup,
+.profesores {
+  left: 13px;
+}
+.frameGroup {
+  top: 1048px;
+  left: 370px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-61xl);
+  font-size: var(--subttulos-size);
+  font-family: var(--subttulos);
+}
+.inicioInner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--black-icon);
+  width: 1440px;
+  height: 136px;
+}
+.icons {
+  position: absolute;
+  height: 2.57%;
+  width: 2.71%;
+  top: 2.89%;
+  right: 94.24%;
+  bottom: 94.53%;
+  left: 3.06%;
+  overflow: hidden;
+}
+.crearCuenta,
+.iniciarSesinWrapper {
+  position: absolute;
+  font-family: var(--subttulos);
+  cursor: pointer;
+}
+.iniciarSesinWrapper {
+  top: 42px;
+  left: 1248px;
+  border-radius: var(--br-xl);
+  background-color: var(--cta);
+  width: 166px;
+  height: 66px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 22px 20px;
+  box-sizing: border-box;
+  font-size: 17px;
+}
+.crearCuenta {
+  top: 66px;
+  left: 1059px;
+  font-size: var(--textos-size);
+  color: var(--white-icon);
+}
+.rectangleDiv {
+  position: absolute;
+  top: 46px;
+  left: 1216px;
+  border-radius: var(--br-3xs);
+  background-color: var(--white-icon);
+  width: 4px;
+  height: 58px;
+}
+.logoChild {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  background-color: var(--cta);
+  width: 66px;
+  height: 61px;
+}
+.vectorIcon,
+.vectorIcon1,
+.vectorIcon2,
+.vectorIcon3 {
+  position: absolute;
+  height: 10.93%;
+  width: 7.47%;
+  top: 20.77%;
+  right: 86.93%;
+  bottom: 68.3%;
+  left: 5.6%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.vectorIcon1,
+.vectorIcon2,
+.vectorIcon3 {
+  top: 69.95%;
+  bottom: 19.12%;
+}
+.vectorIcon2,
+.vectorIcon3 {
+  height: 13.66%;
+  width: 5.52%;
+  top: 37.16%;
+  right: 87.9%;
+  bottom: 49.18%;
+  left: 6.58%;
+}
+.vectorIcon3 {
+  top: 50.82%;
+  bottom: 35.52%;
+}
+.logo,
+.txt01 {
+  position: absolute;
+  top: 6px;
+  left: 94px;
+}
+.logo {
+  top: 34px;
+  left: 31px;
+  width: 348px;
+  height: 61px;
+  color: var(--white-icon);
+}
+.inicio {
+  position: relative;
+  background: linear-gradient(180deg, #fff, #f8f69b);
+  width: 100%;
+  height: 1555px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--principal-size);
+  color: var(--ttulos-textos);
+  font-family: var(--principal-2);
+}

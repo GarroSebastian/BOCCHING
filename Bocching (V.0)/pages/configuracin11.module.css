@@ -1,0 +1,161 @@
+.configuracin11Child,
+.configuracin11Inner,
+.configuracin11Item {
+  position: absolute;
+  border-radius: var(--br-lgi);
+  width: 253px;
+  height: 156px;
+}
+.configuracin11Child {
+  top: 263px;
+  left: 1148px;
+  cursor: pointer;
+}
+.configuracin11Inner,
+.configuracin11Item {
+  top: 233px;
+  left: 255px;
+}
+.configuracin11Inner {
+  top: 351px;
+  left: 251px;
+  background-color: var(--black-icon);
+  border: 4px solid var(--white-icon);
+  box-sizing: border-box;
+  width: 1159px;
+  height: 891px;
+}
+.zonaPeligrosa {
+  position: absolute;
+  top: 964px;
+  left: 344px;
+  color: var(--cta);
+}
+.presioneElCono {
+  margin: 0;
+}
+.presioneElConoContainer {
+  position: absolute;
+  top: 1039px;
+  left: 344px;
+  font-size: var(--subtitulos2-size);
+  color: var(--color-white);
+}
+.rectangleDiv {
+  position: absolute;
+  top: 724px;
+  left: 338px;
+  border-radius: var(--br-xl);
+  background-color: var(--cta);
+  width: 247px;
+  height: 45px;
+}
+.cambiarContrasea {
+  position: absolute;
+  top: 737px;
+  left: 360px;
+  font-size: var(--textos-size);
+  color: var(--black-icon);
+}
+.cambiarContrasea1,
+.eliminarCuenta {
+  position: absolute;
+  top: 424px;
+  left: 338px;
+  font-size: var(--principal-size);
+  font-family: var(--principal-2);
+}
+.eliminarCuenta {
+  top: 851px;
+  left: 341px;
+}
+.configuracin11Child1,
+.configuracin11Child2 {
+  position: absolute;
+  top: 513px;
+  left: 341px;
+  border-radius: var(--br-xl);
+  background-color: var(--white-icon);
+  width: 649px;
+  height: 7px;
+}
+.configuracin11Child2 {
+  top: 928px;
+}
+.groupIcon {
+  position: absolute;
+  height: 4.78%;
+  width: 3.96%;
+  top: 79.23%;
+  right: 31.25%;
+  bottom: 16%;
+  left: 64.79%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  cursor: pointer;
+}
+.antiguaContrasea,
+.nuevaContrasea {
+  position: absolute;
+  top: 560px;
+  left: 371px;
+  font-size: var(--font-size-6xl);
+  font-family: var(--textos);
+}
+.nuevaContrasea {
+  top: 642px;
+}
+.configuracin11Child3,
+.configuracin11Child4 {
+  position: absolute;
+  top: 548px;
+  left: 342px;
+  border-radius: var(--br-6xs);
+  border: 2px solid var(--color-white);
+  box-sizing: border-box;
+  width: 440px;
+  height: 53px;
+}
+.configuracin11Child4 {
+  top: 630px;
+}
+.configuracin {
+  position: absolute;
+  top: 86px;
+  left: 255px;
+  font-size: var(--principal-2-size);
+  font-family: var(--principal-2);
+  color: var(--ttulos-textos);
+}
+.cerrarSesin,
+.cuenta {
+  position: absolute;
+  top: 279px;
+  left: 326px;
+  color: var(--color-white);
+}
+.cerrarSesin {
+  top: 296px;
+  left: 1175px;
+  color: var(--black-icon);
+  cursor: pointer;
+}
+.configuracin11Child5 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 164px;
+  height: 815px;
+}
+.configuracin11 {
+  position: relative;
+  background: linear-gradient(180deg, #fff, #f8f69b);
+  width: 100%;
+  height: 1319px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--subttulos-size);
+  color: var(--white-icon);
+  font-family: var(--subttulos);
+}

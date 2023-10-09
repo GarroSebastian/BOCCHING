@@ -1,0 +1,341 @@
+.crearcuentaChild,
+.crearcuentaItem {
+  position: absolute;
+  top: 171px;
+  left: 218px;
+  border-radius: var(--br-lgi);
+  width: 227px;
+  height: 125px;
+}
+.crearcuentaItem {
+  top: 273px;
+  background-color: var(--black-icon);
+  border: 4px solid var(--white-icon);
+  box-sizing: border-box;
+  width: 1004px;
+  height: 444px;
+}
+.general {
+  position: absolute;
+  top: 213px;
+  left: 258px;
+  font-size: var(--subttulos-size);
+  font-family: var(--subttulos);
+  text-align: center;
+  display: inline-block;
+  width: 145px;
+  height: 23px;
+}
+.crearcuentaChild1,
+.crearcuentaChild2,
+.crearcuentaChild3,
+.crearcuentaInner,
+.rectangleDiv {
+  position: absolute;
+  top: 490px;
+  left: 250px;
+  border-radius: var(--br-3xs);
+  background-color: var(--color-white);
+  width: 182px;
+  height: 22px;
+}
+.crearcuentaChild1,
+.crearcuentaChild2,
+.crearcuentaChild3,
+.rectangleDiv {
+  top: 348px;
+  left: 513px;
+  width: 212px;
+  height: 23px;
+}
+.crearcuentaChild1,
+.crearcuentaChild2,
+.crearcuentaChild3 {
+  top: 562px;
+  height: 22px;
+}
+.crearcuentaChild2,
+.crearcuentaChild3 {
+  top: 632px;
+  height: 23px;
+}
+.crearcuentaChild3 {
+  top: 561px;
+  left: 250px;
+  width: 182px;
+  height: 21px;
+}
+.crearcuentaChild4,
+.crearcuentaChild5,
+.crearcuentaChild6,
+.crearcuentaChild7,
+.crearcuentaChild8 {
+  position: absolute;
+  top: 420px;
+  left: 513px;
+  border-radius: var(--br-3xs);
+  background-color: var(--color-white);
+  width: 212px;
+  height: 22px;
+}
+.crearcuentaChild5,
+.crearcuentaChild6,
+.crearcuentaChild7,
+.crearcuentaChild8 {
+  top: 631px;
+  left: 250px;
+  width: 182px;
+  height: 23px;
+}
+.crearcuentaChild6,
+.crearcuentaChild7,
+.crearcuentaChild8 {
+  top: 490px;
+  left: 513px;
+  width: 212px;
+  height: 22px;
+}
+.crearcuentaChild7,
+.crearcuentaChild8 {
+  top: 347px;
+  left: 822px;
+  width: 311px;
+  height: 23px;
+}
+.crearcuentaChild8 {
+  top: 419px;
+}
+.crearcuentaChild9 {
+  position: absolute;
+  top: 694px;
+  left: 475px;
+  border-radius: var(--br-xl);
+  background-color: var(--white-icon);
+  width: 388px;
+  height: 5px;
+  transform: rotate(-90deg);
+  transform-origin: 0 0;
+}
+.crearcuentaChild10 {
+  position: absolute;
+  top: 748px;
+  left: 969px;
+  border-radius: var(--br-3xs);
+  background-color: var(--cta);
+  width: 241px;
+  height: 49px;
+  cursor: pointer;
+}
+.nombre {
+  position: absolute;
+  top: 455px;
+  left: 250px;
+}
+.universidad {
+  top: 314px;
+}
+.apodo,
+.edad,
+.universidad {
+  position: absolute;
+  left: 513px;
+}
+.edad {
+  top: 526px;
+  display: inline-block;
+  width: 45px;
+  height: 21px;
+}
+.apodo {
+  top: 598px;
+}
+.apellido,
+.genero {
+  position: absolute;
+  top: 526px;
+  left: 250px;
+}
+.genero {
+  top: 386px;
+  left: 513px;
+}
+.correoInstitucional {
+  position: absolute;
+  top: 598px;
+  left: 250px;
+}
+.contrasea,
+.fechaDeNacimiento,
+.repetirContrasea {
+  position: absolute;
+  top: 456px;
+  left: 513px;
+  display: inline-block;
+  width: 194px;
+  height: 20px;
+}
+.contrasea,
+.repetirContrasea {
+  top: 314px;
+  left: 822px;
+  width: 127px;
+}
+.repetirContrasea {
+  top: 385px;
+  width: 261px;
+  height: 19px;
+}
+.userIcon {
+  position: absolute;
+  top: 327.63px;
+  left: 274.99px;
+  width: 134.72px;
+  height: 104.21px;
+}
+.cancelar,
+.crearCuenta {
+  position: absolute;
+  top: 759px;
+  left: 989px;
+  font-size: var(--subttulos-size);
+  font-family: var(--subttulos);
+  color: var(--black-icon);
+  text-align: center;
+  cursor: pointer;
+}
+.cancelar {
+  top: 748px;
+  left: 240px;
+}
+.crearcuentaChild11,
+.polygonIcon {
+  position: absolute;
+  top: 427.5px;
+  left: 691.52px;
+  border-radius: var(--br-12xs);
+  width: 11.96px;
+  height: 7.07px;
+}
+.crearcuentaChild11 {
+  top: 357.25px;
+  left: 691.71px;
+  width: 11.59px;
+  height: 6.39px;
+}
+.transhumansWaitingIcon {
+  position: absolute;
+  top: 461px;
+  left: 813px;
+  width: 330px;
+  height: 233px;
+  object-fit: cover;
+}
+.byTeambocching {
+  position: relative;
+}
+.footer {
+  position: absolute;
+  top: 960px;
+  left: 0;
+  background-color: var(--black-icon);
+  width: 1440px;
+  height: 136px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--principal-size);
+  color: var(--color-white);
+  font-family: var(--principal-2);
+}
+.frameIcon {
+  position: absolute;
+  top: 494px;
+  left: 689px;
+  width: 17px;
+  height: 15px;
+  overflow: hidden;
+}
+.crearcuentaChild12 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--black-icon);
+  width: 1440px;
+  height: 136px;
+}
+.creacinDeCuenta {
+  position: absolute;
+  top: 53px;
+  left: 1100px;
+  font-size: var(--subttulos-size);
+  font-family: var(--subttulos);
+}
+.logoChild {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  background-color: var(--cta);
+  width: 66px;
+  height: 61px;
+}
+.vectorIcon,
+.vectorIcon1,
+.vectorIcon2,
+.vectorIcon3 {
+  position: absolute;
+  height: 10.1%;
+  width: 7.47%;
+  top: 14.96%;
+  right: 86.93%;
+  bottom: 74.94%;
+  left: 5.6%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.vectorIcon1,
+.vectorIcon2,
+.vectorIcon3 {
+  top: 60.41%;
+  bottom: 29.49%;
+}
+.vectorIcon2,
+.vectorIcon3 {
+  height: 12.62%;
+  width: 5.52%;
+  top: 30.11%;
+  right: 87.9%;
+  bottom: 57.27%;
+  left: 6.58%;
+}
+.vectorIcon3 {
+  top: 42.73%;
+  bottom: 44.64%;
+}
+.logo,
+.txt01 {
+  position: absolute;
+  top: 6px;
+  left: 94px;
+}
+.logo {
+  top: 34px;
+  left: 31px;
+  width: 348px;
+  height: 61px;
+  font-size: var(--principal-size);
+  font-family: var(--principal-2);
+}
+.crearcuenta {
+  position: relative;
+  background: linear-gradient(180deg, #fff, #f8f69b);
+  width: 100%;
+  height: 1096px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--textos-size);
+  color: var(--white-icon);
+  font-family: var(--textos);
+}
