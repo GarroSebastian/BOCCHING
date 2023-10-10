@@ -29,7 +29,6 @@
 .crearcuentaChild1,
 .crearcuentaChild2,
 .crearcuentaChild3,
-.crearcuentaInner,
 .rectangleDiv {
   position: absolute;
   top: 490px;
@@ -39,6 +38,24 @@
   width: 182px;
   height: 22px;
 }
+
+div.crearcuentaInner input{
+  border: none; /* Oculta todos los bordes */
+  background-color: transparent; /* Para ocultar el fondo si es necesario */
+  margin-top: 0.5%;
+  margin-left: 2.5%;
+}
+
+.crearcuentaInner{
+  position: absolute;
+  top: 490px;
+  left: 250px;
+  border-radius: var(--br-3xs);
+  background-color: var(--color-white);
+  width: 182px;
+  height: 22px;
+}
+
 .crearcuentaChild1,
 .crearcuentaChild2,
 .crearcuentaChild3,

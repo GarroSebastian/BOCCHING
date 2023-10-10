@@ -1,8 +1,22 @@
 import { useCallback } from "react";
 import { useRouter } from "next/router";
+import { useState } from 'react'
 import styles from "./crear-cuenta.module.css";
 
 const CrearCuenta = () => {
+  
+  const defaultUsuario = {
+    nombres: "dfd",
+    apellidos: "",
+    correo: "",
+    genero: 0,
+    nacimiento: null,
+    edad: 0,
+    apodo: "",
+    contrasena: ""
+  }
+  const [usuario, setUsuario] = useState(defaultUsuario);
+  
   const router = useRouter();
 
   const onRectangle13Click = useCallback(() => {
@@ -26,7 +40,9 @@ const CrearCuenta = () => {
       />
       <div className={styles.crearcuentaItem} />
       <div className={styles.general}>General</div>
-      <div className={styles.crearcuentaInner} />
+      <div className={styles.crearcuentaInner}>
+        <input type="text" value={usuario.nombres} onChange={e => setUsuario({...usuario,nombres: e.target.value})}></input>
+      </div>
       <div className={styles.rectangleDiv} />
       <div className={styles.crearcuentaChild1} />
       <div className={styles.crearcuentaChild2} />
