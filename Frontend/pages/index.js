@@ -22,11 +22,11 @@ const Inicio = () => {
           Bocching es un novedoso aplicativo que busca agilizar los procesos
         </p>
         <p className={styles.bocchingEsUn}>
-          sociales de sus usuario, mediante sus diversas funcionalidades.
+          sociales de sus usuarios, gracias a sus diversas funcionalidades.
         </p>
         <p className={styles.bocchingEsUn}>&nbsp;</p>
         <p className={styles.bocchingEsUn}>
-          Siendo su enfoque los estudiantes de la Universidad de Lima.
+          Actualmente disponible para los estudiantes de la Universidad de Lima.
         </p>
       </div>
       <div className={styles.inicioChild} />
@@ -41,7 +41,7 @@ const Inicio = () => {
       />
       <div className={styles.frameParent}>
         <div className={styles.adrianParent}>
-          <div className={styles.adrian}>Adrian</div>
+          <div className={styles.adrian}>Adrián</div>
           <div className={styles.frameChild} />
           <img className={styles.userIcon} alt="" src="/user3.svg" />
         </div>
@@ -68,7 +68,7 @@ const Inicio = () => {
       </div>
       <div className={styles.frameGroup}>
         <div className={styles.adrianParent}>
-          <div className={styles.ivan}>Ivan</div>
+          <div className={styles.ivan}>Iván</div>
           <div className={styles.frameChild} />
           <img className={styles.userIcon} alt="" src="/user3.svg" />
         </div>
