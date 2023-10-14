@@ -40,17 +40,14 @@ const CrearCuenta = () => {
 
   const onCrearCuentaClick = () => {
     if(ValidarCuenta()){
+      alert("¡Cuenta creada exitosamente!")
       irMenu()
     }
   }
   
-  const actualizarEdad = (e) => {
-    console.log(e.target.value.getDate())
-    setUsuario({...usuario,nacimiento: e.target.value})
-    const Actual = new Date().getDate();
-    console.log(Actual)
-    //const dif = Actual - usuario.nacimiento;
-    //setUsuario({...usuario,edad: Math.floor(dif/(1000*60*60*24*365.25))})
+  const actualizarEdad = (value) => {
+    const dif = new Date() - new Date(value);
+    setUsuario({...usuario, nacimiento:value, edad: Math.floor(dif/(1000*60*60*24*365.25))})
   }
   
   const ExisteCorreo = (correo) => {
@@ -71,7 +68,6 @@ const CrearCuenta = () => {
     if(usuario.nacimiento===''){
       texto+='la fecha de nacimiento, '
     }
-    console.log(usuario.nacimiento)
     if(usuario.contrasena==''){
       texto+='la contraseña, '
     }
@@ -87,8 +83,14 @@ const CrearCuenta = () => {
     if(!usuario.correo.includes('@aloe.ulima.edu.pe')){
       alert("Solo se permiten correos institucionales de la Ulima")
       return false;
+    }else if(usuario.correo.length<26){
+      alert("El correo institucional no tiene los caracteres suficientes")
+      return false;
+    }else if(usuario.correo.length>26){
+      alert("El correo institucional tiene más caracteres de lo necesario")
+      return false;
     }else if(usuario.correo.startsWith('@aloe.ulima.edu.pe') || !usuario.correo.endsWith('@aloe.ulima.edu.pe') || usuario.correo.indexOf('@aloe.ulima.edu.pe')!=usuario.correo.lastIndexOf('@aloe.ulima.edu.pe')){
-      alert("Formato del correo incorrecto")
+      alert("Formato del correo institucional incorrecto")
       return false;
     }else if(ExisteCorreo(usuario.correo)){
       alert("Ese correo institucional ya está en uso")
@@ -132,7 +134,7 @@ const CrearCuenta = () => {
         <input className={styles.dato} type="text" id="correo" value={usuario.correo} onChange={e => setUsuario({...usuario,correo: e.target.value})}></input>
       </div>
       <div className={styles.crearcuentaChild6}>
-        <input className={styles.dato} type="date" value={usuario.nacimiento} id="nacimiento" onChange={(e) => actualizarEdad(e)} />
+        <input className={styles.dato} type="date" value={usuario.nacimiento} id="nacimiento" onChange={(e) => actualizarEdad(e.target.value)} />
       </div>
       <div className={styles.crearcuentaChild7}>
         <input className={styles.dato} type="text" id="contra" value={usuario.contrasena} onChange={e => setUsuario({...usuario,contrasena: e.target.value})}></input>
