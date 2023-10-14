@@ -39,11 +39,18 @@
   height: 22px;
 }
 
-div.crearcuentaInner input{
+.dato{
   border: none; /* Oculta todos los bordes */
   background-color: transparent; /* Para ocultar el fondo si es necesario */
   margin-top: 0.5%;
   margin-left: 2.5%;
+}
+
+.boton{
+  border: none;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
 }
 
 .crearcuentaInner{

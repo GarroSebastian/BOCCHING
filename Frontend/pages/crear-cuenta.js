@@ -1,35 +1,115 @@
 import { useCallback } from "react";
 import { useRouter } from "next/router";
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styles from "./crear-cuenta.module.css";
 
 const CrearCuenta = () => {
   
   const defaultUsuario = {
-    nombres: "dfd",
-    apellidos: "",
-    correo: "",
+    nombres: '',
+    apellidos: '',
+    correo: '',
     genero: 0,
-    nacimiento: null,
+    nacimiento: '',
     edad: 0,
-    apodo: "",
-    contrasena: ""
+    apodo: '',
+    contrasena: ''
   }
   const [usuario, setUsuario] = useState(defaultUsuario);
+  const [usuarios, setUsuarios] = useState([]);
+  const [contra2, setContra2] = useState('');
   
   const router = useRouter();
 
-  const onRectangle13Click = useCallback(() => {
-    router.push("/menu");
-  }, [router]);
-
-  const onCrearCuentaTextClick = useCallback(() => {
+  const irMenu = useCallback(() => {
     router.push("/menu");
   }, [router]);
 
   const onCancelarTextClick = useCallback(() => {
     router.push("/");
   }, [router]);
+
+  const handleOnLoad = async() =>{
+    const result = await usuarioApi.findAll()
+    setPersonas(result.data)
+  }
+
+  const handleGuardarUsuario = async(usuario) => {
+    await usuarioApi.create(usuario)
+  }
+
+  const onCrearCuentaClick = () => {
+    if(ValidarCuenta()){
+      irMenu()
+    }
+  }
+  
+  const actualizarEdad = (e) => {
+    console.log(e.target.value.getDate())
+    setUsuario({...usuario,nacimiento: e.target.value})
+    const Actual = new Date().getDate();
+    console.log(Actual)
+    //const dif = Actual - usuario.nacimiento;
+    //setUsuario({...usuario,edad: Math.floor(dif/(1000*60*60*24*365.25))})
+  }
+  
+  const ExisteCorreo = (correo) => {
+    const u = usuarios.find((u) => u.correo == correo)
+    return (u !== undefined);
+  }
+  
+  
+  const ValidarCuenta = () => {
+    let texto='';
+    //Datos obligatorios
+    if(usuario.nombres==''){
+      texto+='el nombre, '
+    }
+    if(usuario.correo==''){
+      texto+='el correo, '
+    }
+    if(usuario.nacimiento===''){
+      texto+='la fecha de nacimiento, '
+    }
+    console.log(usuario.nacimiento)
+    if(usuario.contrasena==''){
+      texto+='la contraseña, '
+    }
+    if(contra2==''){
+      texto+='la contraseña, '
+    }
+    if(texto!=''){
+      texto = texto.substring(0, texto.length-2)
+      alert('Falta introducir '+texto)
+      return false;
+    }
+    //Correo institucional
+    if(!usuario.correo.includes('@aloe.ulima.edu.pe')){
+      alert("Solo se permiten correos institucionales de la Ulima")
+      return false;
+    }else if(usuario.correo.startsWith('@aloe.ulima.edu.pe') || !usuario.correo.endsWith('@aloe.ulima.edu.pe') || usuario.correo.indexOf('@aloe.ulima.edu.pe')!=usuario.correo.lastIndexOf('@aloe.ulima.edu.pe')){
+      alert("Formato del correo incorrecto")
+      return false;
+    }else if(ExisteCorreo(usuario.correo)){
+      alert("Ese correo institucional ya está en uso")
+      return false;
+    }
+    //Contraseña
+    if(usuario.contrasena!=contra2){
+      alert("Las contraseñas no coinciden")
+      return false;
+    }
+    //Edad
+    if(usuario.edad < 16){
+      alert("Necesitas tener al menos 16 años")
+      return false;
+    }
+    return true;
+  }
+
+  useEffect(()=>{
+    //handleOnLoad()
+  },[])
 
   return (
     <div className={styles.crearcuenta}>
@@ -41,19 +121,27 @@ const CrearCuenta = () => {
       <div className={styles.crearcuentaItem} />
       <div className={styles.general}>General</div>
       <div className={styles.crearcuentaInner}>
-        <input type="text" value={usuario.nombres} onChange={e => setUsuario({...usuario,nombres: e.target.value})}></input>
+        <input className={styles.dato} type="text" id="nombres" value={usuario.nombres} onChange={e => setUsuario({...usuario,nombres: e.target.value})}></input>
       </div>
       <div className={styles.rectangleDiv} />
       <div className={styles.crearcuentaChild1} />
       <div className={styles.crearcuentaChild2} />
       <div className={styles.crearcuentaChild3} />
       <div className={styles.crearcuentaChild4} />
-      <div className={styles.crearcuentaChild5} />
-      <div className={styles.crearcuentaChild6} />
-      <div className={styles.crearcuentaChild7} />
-      <div className={styles.crearcuentaChild8} />
+      <div className={styles.crearcuentaChild5}>
+        <input className={styles.dato} type="text" id="correo" value={usuario.correo} onChange={e => setUsuario({...usuario,correo: e.target.value})}></input>
+      </div>
+      <div className={styles.crearcuentaChild6}>
+        <input className={styles.dato} type="date" value={usuario.nacimiento} id="nacimiento" onChange={(e) => actualizarEdad(e)} />
+      </div>
+      <div className={styles.crearcuentaChild7}>
+        <input className={styles.dato} type="text" id="contra" value={usuario.contrasena} onChange={e => setUsuario({...usuario,contrasena: e.target.value})}></input>
+      </div>
+      <div className={styles.crearcuentaChild8}>
+        <input className={styles.dato} type="text" id="contra2" value={contra2} onChange={e => setContra2(e.target.value)}></input>
+      </div>
       <div className={styles.crearcuentaChild9} />
-      <div className={styles.crearcuentaChild10} onClick={onRectangle13Click} />
+      <div className={styles.crearcuentaChild10} onClick={onCrearCuentaClick} />
       <div className={styles.nombre}>Nombre:</div>
       <div className={styles.universidad}>Universidad:</div>
       <div className={styles.edad}>Edad:</div>
@@ -65,7 +153,7 @@ const CrearCuenta = () => {
       <div className={styles.contrasea}>Contraseña:</div>
       <div className={styles.repetirContrasea}>Repetir contraseña:</div>
       <img className={styles.userIcon} alt="" src="/user2.svg" />
-      <div className={styles.crearCuenta} onClick={onCrearCuentaTextClick}>
+      <div className={styles.crearCuenta} onClick={onCrearCuentaClick}>
         Crear cuenta
       </div>
       <div className={styles.cancelar} onClick={onCancelarTextClick}>
