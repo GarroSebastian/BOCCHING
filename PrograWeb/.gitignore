@@ -1,0 +1,7 @@
+# Ignorar la carpeta .next
+.next/
+
+# Ignorar la carpeta node_modules
+node_modules/
+
+.vscode/

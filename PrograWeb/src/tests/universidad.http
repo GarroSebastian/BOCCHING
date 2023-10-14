@@ -1,0 +1,26 @@
+GET http://localhost:3002/universidad
+########
+
+POST http://localhost:3002/universidad/
+Content-Type: application/json
+
+{
+    "idUniversidad": 1, 
+    "descripcion": "Universidad de Lima"
+}
+###
+
+PUT http://localhost:3002/universidad/
+Content-Type: application/json
+
+{
+    "idUniversidad": 2, 
+    "descripcion": "Universidad Pacifico"
+}
+
+###
+
+GET http://localhost:3002/universidad/2
+###
+
+DELETE http://localhost:3002/universidad/1

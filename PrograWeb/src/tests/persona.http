@@ -1,0 +1,37 @@
+GET http://localhost:3001/persona
+########
+
+POST http://localhost:3001/persona/
+Content-Type: application/json
+
+{
+    "idRol": 1, 
+    "nombre": "Jeje"
+}
+###
+
+PUT http://localhost:3001/persona/
+Content-Type: application/json
+
+{
+    "idPersona": 2,
+    "nombre": "Pol",
+    "apellido": "Quispe",
+    "tipoDocumento": "DNI",
+    "dni": 799999999999998,
+    "idRol": 2,
+    "email": "pol@rdm",
+    "contrasena": "adios",
+    "idCarrera": 2,
+    "tituloPresentacion": "bb",
+    "presentacion": "bb",
+    "grado": "centigrado2",
+    "imagen": ""
+}
+
+###
+
+GET http://localhost:3001/persona/2
+###
+
+DELETE http://localhost:3001/persona/1
