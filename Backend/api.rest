@@ -1,0 +1,33 @@
+POST http://localhost:3700/login
+Content-Type: application/json
+
+{
+    "correo": "correo",
+    "contrasena": "contrasena",
+}
+
+###
+
+POST http://localhost:3700/register
+Content-Type: application/json
+
+{
+    "nombre": "nombre",
+    "apellidos": "apellidos",
+    "correo": "correo",
+    "contrasena": "contrasena",
+    "apodo": "apodo",
+    "id_genero": "id_genero",
+    "nacimiento": "nacimiento",
+    "foto": "foto",
+    "carrera": "carrera",
+    "facultad": "facultad",
+    "especialidad": "especialidad",
+    "descripcion": "descripcion",
+    "mostrar_nombre": "mostrar_nombre"
+}
+
+###
+
+GET http://localhost:3700/getUser/63431714c7d6aa4cf5dbe5ca
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMWUyZTMzMTI5ZTAzNzdiNjhjOTUwOSIsImlhdCI6MTY3MTEyMjcxNiwiZXhwIjoxNjcxMjA5MTE2fQ.5PO3fDVWEyhVTaIxb2alIxGg79BvX753tY2crRX_bl8

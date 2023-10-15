@@ -49,6 +49,6 @@ const remove = async (endpoint) => {
     }
 }
 
-const Usuario = { get, put, post, remove }
+const Base = { get, put, post, remove }
 
-export default Usuario;
+export default Base;
