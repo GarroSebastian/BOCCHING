@@ -30,4 +30,31 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3700/usuario
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmMyMjg3NTA4MWViZThiOTA0OGZiYiIsImlhdCI6MTY5NzM5MTkxNSwiZXhwIjoxNjk3NDc4MzE1fQ.Ve3Qumux9F0tmjANQOCz-GbuMFoXeAAlrn3zhK8B_b4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmM0MjQ2YTcwMDdiOGNhOGQ4ZDU4MyIsImlhdCI6MTY5NzM5OTM3MCwiZXhwIjoxNjk3NDg1NzcwfQ.jHz8RSHCFjKCvp41jY2AlgdSFRSHAwCZpcVSGjIStwg
+
+###
+
+DELETE http://localhost:3700/delete-user
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmMyMjg3NTA4MWViZThiOTA0OGZiYiIsImlhdCI6MTY5NzM5NzUxNSwiZXhwIjoxNjk3NDgzOTE1fQ.wMeY3FCthVD72YMGo1TtdB3evDIXzQgfvlBbHgALmF8
+
+###
+
+PUT http://localhost:3700/update-user
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmM0MjQ2YTcwMDdiOGNhOGQ4ZDU4MyIsImlhdCI6MTY5NzM5OTM3MCwiZXhwIjoxNjk3NDg1NzcwfQ.jHz8RSHCFjKCvp41jY2AlgdSFRSHAwCZpcVSGjIStwg
+
+{
+    "nombre": "nombre",
+    "apellidos": "apellidos",
+    "correo": "correo",
+    "contrasena": "contrasena",
+    "apodo": "apodo",
+    "id_genero": "id_genero",
+    "nacimiento": "nacimiento",
+    "foto": "foto",
+    "carrera": "carrera",
+    "facultad": "facultad",
+    "especialidad": "especialidad",
+    "descripcion": "descripcion",
+    "mostrar_nombre": true
+}

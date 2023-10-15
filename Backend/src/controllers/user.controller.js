@@ -123,28 +123,40 @@ const UserController = {
             dataUpdate.imagePath = req.file.filename || "";
         }
 
-        User.find({ $or: [{apodo: dataUpdate.apodo.toLowerCase()}, {correo: dataUpdate.correo.toLowerCase()}] }, (err, users)=>{
+        User.find({ $or: [{apodo: dataUpdate.apodo.toLowerCase()}, {correo: dataUpdate.correo.toLowerCase()}] }).then((users)=>{
 
             var sameData = false;
+
             users.forEach((user)=>{
                 if(user._id != id) sameData = true;
             });
 
             if(sameData) return res.status(404).send({message: 'Los datos ya estan en uso'});
 
-            User.findByIdAndUpdate(id, dataUpdate, {new: true}, (err, userUpdated)=>{
+            User.findByIdAndUpdate(id, dataUpdate, {new: true}).then((userUpdated)=>{
 
-                if(err) return res.status(500).send({
-                    message: 'no tienes permiso para actualizar ese usuario'
-                })
-                 if(!userUpdated) return res.status(404).send({
+                if(!userUpdated) return res.status(404).send({
                      message: 'no sea podido actualizar el usuario'
-                })
+                });
 
-                return res.status(200).send(userUpdated)
+                if(userUpdated) return res.status(200).send(userUpdated);
 
             });
             
+        });
+
+    },
+
+    delete_user: async(req, res)=>{
+
+        const user_id = req.token_usuarioId;
+
+        await User.findByIdAndDelete(user_id).then((userDeleted)=>{
+
+            if(!userDeleted) return res.send("No se puede eliminar el perfil");
+
+            if(userDeleted) return res.send("Perfil eliminado");
+
         });
 
     }
