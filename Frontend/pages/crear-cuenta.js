@@ -32,12 +32,12 @@ const CrearCuenta = () => {
   }, [router]);
 
   const onCrearCuentaClick = async() => {
-    const res = await UsuarioApi.register(usuario)
-    alert(res)
-    /*if(ValidarCuenta()){
+    //const res = await UsuarioApi.register(usuario)
+    //alert(res)
+    if(ValidarCuenta()){
       alert("¡Cuenta creada exitosamente!")
       irMenu()
-    }*/
+    }
   }
   
   const actualizarEdad = (value) => {

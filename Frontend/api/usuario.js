@@ -2,8 +2,8 @@ import Base from './base.js'
 
 const endpoint = '/usuario';
 
-const create = async (request) => await Base.post(endpoint,request);
 const register = async (request) => await Base.post('/register',request);
+const login = async (request) => await Base.post('/login',request);
 
 const findAll = async() => await Base.get(endpoint);
 
@@ -20,6 +20,6 @@ const remove = async(id) => {
     return await Base.remove(newEndpoint);
 }
 
-const UsuarioApi = { create, register, findAll, findOne, update, remove }
+const UsuarioApi = { register, login, findAll, findOne, update, remove }
 
 export default UsuarioApi;
