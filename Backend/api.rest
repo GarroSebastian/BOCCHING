@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {
     "correo": "correo",
-    "contrasena": "contrasena",
+    "contrasena": "contrasena"
 }
 
 ###
@@ -24,10 +24,10 @@ Content-Type: application/json
     "facultad": "facultad",
     "especialidad": "especialidad",
     "descripcion": "descripcion",
-    "mostrar_nombre": "mostrar_nombre"
+    "mostrar_nombre": true
 }
 
 ###
 
-GET http://localhost:3700/getUser/63431714c7d6aa4cf5dbe5ca
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMWUyZTMzMTI5ZTAzNzdiNjhjOTUwOSIsImlhdCI6MTY3MTEyMjcxNiwiZXhwIjoxNjcxMjA5MTE2fQ.5PO3fDVWEyhVTaIxb2alIxGg79BvX753tY2crRX_bl8
+GET http://localhost:3700/usuario
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmMyMjg3NTA4MWViZThiOTA0OGZiYiIsImlhdCI6MTY5NzM5MTkxNSwiZXhwIjoxNjk3NDc4MzE1fQ.Ve3Qumux9F0tmjANQOCz-GbuMFoXeAAlrn3zhK8B_b4

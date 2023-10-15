@@ -16,7 +16,7 @@ function verifyToken(req, res, next){
         }
         else
         {
-            req.usuarioId = decoded.id; //Agregamos los datos por el objeto request con un metodo personalisado para que todas las rutas puedan usarlo
+            req.token_usuarioId = decoded.id; //Agregamos los datos por el objeto request con un metodo personalisado para que todas las rutas puedan usarlo
             next(); //Pasamos a otra funcion
         }
     });
