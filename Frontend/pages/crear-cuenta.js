@@ -2,6 +2,7 @@ import { useCallback } from "react";
 import { useRouter } from "next/router";
 import { useState, useEffect } from 'react'
 import styles from "./crear-cuenta.module.css";
+import UsuarioApi from "../api/usuario.js"
 
 const CrearCuenta = () => {
   
@@ -29,21 +30,13 @@ const CrearCuenta = () => {
     router.push("/");
   }, [router]);
 
-  const handleOnLoad = async() =>{
-    const result = await usuarioApi.findAll()
-    setPersonas(result.data)
-  }
-
-  const handleGuardarUsuario = async(usuario) => {
-    await usuarioApi.create(usuario)
-  }
-
-  const onCrearCuentaClick = () => {
-    console.log(usuario)
-    if(ValidarCuenta()){
+  const onCrearCuentaClick = async() => {
+    const res = await UsuarioApi.create(usuario)
+    alert(res)
+    /*if(ValidarCuenta()){
       alert("¡Cuenta creada exitosamente!")
       irMenu()
-    }
+    }*/
   }
   
   const actualizarEdad = (value) => {
