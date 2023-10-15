@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useRouter } from "next/router";
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 import styles from "./crear-cuenta.module.css";
 import UsuarioApi from "../api/usuario.js"
 
@@ -32,7 +32,7 @@ const CrearCuenta = () => {
   }, [router]);
 
   const onCrearCuentaClick = async() => {
-    const res = await UsuarioApi.create(usuario)
+    const res = await UsuarioApi.register(usuario)
     alert(res)
     /*if(ValidarCuenta()){
       alert("¡Cuenta creada exitosamente!")
