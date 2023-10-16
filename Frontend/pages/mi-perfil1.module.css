@@ -397,31 +397,6 @@
   width: 68.18px;
   height: 64.43px;
 }
-.nombreapodo {
-  position: absolute;
-  top: 643px;
-  left: 437px;
-  font-size: var(--subttulos-size);
-}
-.miperfil1Child12 {
-  position: absolute;
-  top: 651.75px;
-  left: 712.31px;
-  border-radius: var(--br-11xs);
-  width: 23.38px;
-  height: 16.06px;
-}
-.miperfil1Child13 {
-  position: absolute;
-  top: 439.65px;
-  left: 612.92px;
-  border-radius: 50%;
-  background-color: var(--cta);
-  width: 42.94px;
-  height: 38.8px;
-  transform: rotate(-0.13deg);
-  transform-origin: 0 0;
-}
 .vectorIcon2,
 .vectorIcon3,
 .vectorIcon4 {
@@ -453,66 +428,30 @@
   bottom: 68.06%;
   left: 43.48%;
 }
-.miperfil1Child14 {
+.nombreapodo {
   position: absolute;
-  top: 0;
-  left: 0;
-  background: linear-gradient(180deg, rgba(69, 57, 56, 0.77), #453938);
-  width: 164px;
-  height: 815px;
+  top: 643px;
+  left: 437px;
+  font-size: var(--subttulos-size);
 }
-.groupIcon {
+.miperfil1Child12 {
   position: absolute;
-  top: 27px;
-  left: 30px;
-  width: 104px;
-  height: 92px;
-  cursor: pointer;
+  top: 651.75px;
+  left: 712.31px;
+  border-radius: var(--br-11xs);
+  width: 23.38px;
+  height: 16.06px;
 }
-.miperfil1Child15 {
+.miperfil1Child13 {
   position: absolute;
-  top: 237px;
-  left: 47px;
-  width: 70px;
-  height: 58.71px;
-}
-.miperfil1Child16,
-.vectorIcon5 {
-  position: absolute;
-  top: 345.71px;
-  left: 51.27px;
-  width: 61.46px;
-  height: 36.29px;
-  cursor: pointer;
-}
-.miperfil1Child16 {
-  top: 432px;
-  left: 59.64px;
-  width: 44.72px;
-  height: 37.18px;
-}
-.vectorIcon6,
-.vectorIcon7,
-.xmlid273Icon {
-  position: absolute;
-  top: 519.18px;
-  left: 60.38px;
-  width: 43.24px;
-  height: 35.43px;
-  cursor: pointer;
-}
-.vectorIcon7,
-.xmlid273Icon {
-  top: 604.62px;
-  left: 63.99px;
-  width: 36.01px;
-  height: 29.65px;
-}
-.xmlid273Icon {
-  top: 684.27px;
-  left: 62.89px;
-  width: 38.23px;
-  height: 34.71px;
+  top: 439.65px;
+  left: 612.92px;
+  border-radius: 50%;
+  background-color: var(--cta);
+  width: 42.94px;
+  height: 38.8px;
+  transform: rotate(-0.13deg);
+  transform-origin: 0 0;
 }
 .miperfil1 {
   position: relative;

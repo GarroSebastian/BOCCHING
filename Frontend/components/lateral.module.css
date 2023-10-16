@@ -1,0 +1,100 @@
+.groupIcon {
+    position: absolute;
+    top: 27px;
+    left: 30px;
+    width: 104px;
+    height: 92px;
+    cursor: pointer;
+}
+.miperfil1Child14 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: linear-gradient(180deg, rgba(69, 57, 56, 0.77), #453938);
+    width: 164px;
+    height: 110%;
+}
+.miperfil1Child15 {
+    position: absolute;
+    top: 27%;
+    left: 47px;
+    width: 70px;
+    height: 58.71px;
+}
+.miperfil1Child16,
+.vectorIcon5 {
+  position: absolute;
+  top: 44%;
+  left: 51.27px;
+  width: 61.46px;
+  height: 36.29px;
+  cursor: pointer;
+}
+.miperfil1Child16 {
+    top: 57%;
+    left: 59.64px;
+    width: 44.72px;
+    height: 37.18px;
+}
+.vectorIcon2,
+.vectorIcon3,
+.vectorIcon4 {
+  position: absolute;
+  height: 0.36%;
+  width: 0.3%;
+  top: 31.63%;
+  right: 56.35%;
+  bottom: 68%;
+  left: 43.35%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.vectorIcon3,
+.vectorIcon4 {
+  height: 0.53%;
+  width: 0.46%;
+  top: 30.73%;
+  right: 55.1%;
+  bottom: 68.75%;
+  left: 44.44%;
+}
+.vectorIcon4 {
+  height: 1.03%;
+  width: 1.15%;
+  top: 30.91%;
+  right: 55.38%;
+  bottom: 68.06%;
+  left: 43.48%;
+}
+.vectorIcon6,
+.vectorIcon7,
+.xmlid273Icon {
+  position: absolute;
+  top: 71%;
+  left: 60.38px;
+  width: 43.24px;
+  height: 35.43px;
+  cursor: pointer;
+}
+.vectorIcon7,
+.xmlid273Icon {
+  top: 83%;
+  left: 63.99px;
+  width: 36.01px;
+  height: 29.65px;
+}
+.xmlid273Icon {
+  top: 95%;
+  left: 62.89px;
+  width: 38.23px;
+  height: 34.71px;
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 12.5%;
+}

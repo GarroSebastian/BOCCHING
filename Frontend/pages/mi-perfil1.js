@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from 'react';
 import styles from "./mi-perfil1.module.css";
 import { Zoom } from "../extra/zoom.js"
+import Lateral from "../components/lateral.js"
 
 const MiPerfil1 = () => {
   Zoom()
@@ -33,29 +34,27 @@ const MiPerfil1 = () => {
     router.push("/mi-perfil21");
   }, [router]);
 
-  const onGroupClick = useCallback(() => {
-    router.push("/menu");
-  }, [router]);
+  const seleccionarImagen = () => {
+    const fileInput = document.getElementById("fileInput");
+    fileInput.click();
+  }
 
-  const onVector2Click = useCallback(() => {
-    router.push("/amistades1");
-  }, [router]);
+  const mostrarImagen = () => {
+      const fileInput = document.getElementById("fileInput");
+      const imagenSeleccionada = document.getElementById("imagenSeleccionada");
+      const file = fileInput.files[0];
 
-  const onGroupIconClick = useCallback(() => {
-    router.push("/mensajes1");
-  }, [router]);
+      if (file) {
+          const reader = new FileReader();
 
-  const onVectorIcon3Click = useCallback(() => {
-    router.push("/buscar1");
-  }, [router]);
+          reader.onload = function (e) {
+              imagenSeleccionada.src = e.target.result;
+              imagenSeleccionada.style.display = "block";
+          };
 
-  const onVectorIcon4Click = useCallback(() => {
-    router.push("/solicitudes1");
-  }, [router]);
-
-  const onXMLID273IconClick = useCallback(() => {
-    router.push("/configuracin11");
-  }, [router]);
+          reader.readAsDataURL(file);
+      }
+  }
   
   return (
     <div id='container'>
@@ -131,7 +130,11 @@ const MiPerfil1 = () => {
           <textarea className={styles.datoDescripcion} id="descripcion" value={usuario.descripcion} onChange={e => setUsuario({...usuario,descripcion: e.target.value})}></textarea>
         </div>
         <div className={styles.miperfil1Child11} />
-        <div className={styles.ellipseDiv} />
+        <div className={styles.ellipseDiv}>
+          <input type="file" accept="image/*" id="fileInput" onchange={mostrarImagen}></input>
+          <button onclick={seleccionarImagen}>Seleccionar Imagen</button>
+          <img id="imagenSeleccionada" src="" alt="Imagen seleccionada" style={{display: "none", maxWidth: "100%", maxHeight: "400px"}} />
+        </div>
         <img className={styles.vectorIcon} alt="" src="/vector25.svg" />
         <img className={styles.vectorIcon1} alt="" src="/vector26.svg" />
         <div className={styles.nombreapodo}>Nombre/Apodo</div>
@@ -140,44 +143,7 @@ const MiPerfil1 = () => {
         <img className={styles.vectorIcon2} alt="" src="/vector27.svg" />
         <img className={styles.vectorIcon3} alt="" src="/vector28.svg" />
         <img className={styles.vectorIcon4} alt="" src="/vector29.svg" />
-        <div className={styles.miperfil1Child14} />
-        <img
-          className={styles.groupIcon}
-          alt=""
-          src="/group-194.svg"
-          onClick={onGroupClick}
-        />
-        <img className={styles.miperfil1Child15} alt="" src="/group-1951.svg" />
-        <img
-          className={styles.vectorIcon5}
-          alt=""
-          src="/vector17.svg"
-          onClick={onVector2Click}
-        />
-        <img
-          className={styles.miperfil1Child16}
-          alt=""
-          src="/group-197.svg"
-          onClick={onGroupIconClick}
-        />
-        <img
-          className={styles.vectorIcon6}
-          alt=""
-          src="/vector30.svg"
-          onClick={onVectorIcon3Click}
-        />
-        <img
-          className={styles.vectorIcon7}
-          alt=""
-          src="/vector31.svg"
-          onClick={onVectorIcon4Click}
-        />
-        <img
-          className={styles.xmlid273Icon}
-          alt=""
-          src="/xmlid-2732.svg"
-          onClick={onXMLID273IconClick}
-        />
+        <Lateral></Lateral>
       </div>
     </div>
   );
