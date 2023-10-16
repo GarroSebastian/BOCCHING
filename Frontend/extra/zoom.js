@@ -1,16 +1,16 @@
 import { useEffect } from 'react';
 
+let w, h;
+
 const adjustZoom = () => {
     const container = document.getElementById('container');
-    const windowWidth = window.innerWidth;
-    console.log(windowWidth)
-    const windowHeight = window.innerHeight;
-    console.log(windowHeight)
-    container.style.zoom = Math.min(windowWidth / 1325, windowHeight / 619) * 0.91;
+    container.style.zoom = Math.min(window.innerWidth / w, window.innerHeight / h) * 0.91;
 }
 
 export const Zoom = () => {
     useEffect(()=>{
+        w = window.innerWidth;
+        h = window.innerHeight;
         adjustZoom();
         window.onresize = adjustZoom;
     },[])

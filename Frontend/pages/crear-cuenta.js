@@ -2,10 +2,12 @@ import { useCallback } from "react";
 import { useRouter } from "next/router";
 import { useState, useEffect } from 'react';
 import styles from "./crear-cuenta.module.css";
+import { Zoom } from "../extra/zoom.js"
 import UsuarioApi from "../api/usuario.js"
 
 const CrearCuenta = () => {
-  
+  Zoom()
+
   const defaultUsuario = {
     nombres: '',
     apellidos: '',
@@ -149,96 +151,98 @@ const CrearCuenta = () => {
   },[])
 
   return (
-    <div className={styles.crearcuenta}>
-      <img
-        className={styles.crearcuentaChild}
-        alt=""
-        src="/rectangle-162.svg"
-      />
-      <div className={styles.crearcuentaItem} />
-      <div className={styles.general}>General</div>
-      <div className={styles.crearcuentaInner}>
-        <input className={styles.dato} type="text" id="nombres" value={usuario.nombres} onChange={e => setUsuario({...usuario,nombres: e.target.value})}></input>
-      </div>
-      <div className={styles.rectangleDiv} />
-      <div className={styles.crearcuentaChild1}>
-        {
-          isNaN(usuario.edad) || usuario.edad<0?
-            null
-          :
-            <input className={styles.dato} type="text" id="edad" disabled={true} value={usuario.edad}></input>
-        }
-      </div>
-      <div className={styles.crearcuentaChild2}>
-        <input className={styles.dato} type="text" id="apodo" value={usuario.apodo} onChange={e => setUsuario({...usuario,apodo: e.target.value})}></input>
-      </div>
-      <div className={styles.crearcuentaChild3}>
-        <input className={styles.dato} type="text" id="apellidos" value={usuario.apellidos} onChange={e => setUsuario({...usuario,apellidos: e.target.value})}></input>
-      </div>
-      <div className={styles.crearcuentaChild4}>
-        <select className={styles.dato} id="genero" value={usuario.genero} onChange={e => actualizarGenero(e.target.value)}>
-          <option value={-1}>Selecciona una opción</option>
-          <option value={0}>Masculino</option>
-          <option value={1}>Femenino</option>
-          <option value={2}>Otro</option>
-          <option value={3}>Prefiero no decirlo</option>
-        </select>
-      </div>
-      <div className={styles.crearcuentaChild5}>
-        <input className={styles.dato} type="text" id="correo" maxLength={26} value={usuario.correo} onChange={e => setUsuario({...usuario,correo: e.target.value})}></input>
-      </div>
-      <div className={styles.crearcuentaChild6}>
-        <input className={styles.dato} type="date" value={usuario.nacimiento} id="nacimiento" onChange={(e) => actualizarEdad(e.target.value)} />
-      </div>
-      <div className={styles.crearcuentaChild7}>
-        <input className={styles.dato} type="password" id="contra" value={usuario.contrasena} onChange={e => setUsuario({...usuario,contrasena: e.target.value})}></input>
-      </div>
-      <div className={styles.crearcuentaChild8}>
-        <input className={styles.dato} type="password" id="contra2" value={contra2} onChange={e => setContra2(e.target.value)}></input>
-      </div>
-      <div className={styles.crearcuentaChild9} />
-      <div className={styles.crearcuentaChild10} onClick={onCrearCuentaClick} />
-      <div className={styles.nombre}>Nombre:</div>
-      <div className={styles.universidad}>Universidad:</div>
-      <div className={styles.edad}>Edad:</div>
-      <div className={styles.apodo}>Apodo:</div>
-      <div className={styles.apellido}>Apellido:</div>
-      <div className={styles.genero}>Genero:</div>
-      <div className={styles.correoInstitucional}>Correo institucional:</div>
-      <div className={styles.fechaDeNacimiento}>Fecha de nacimiento:</div>
-      <div className={styles.contrasea}>Contraseña:</div>
-      <div className={styles.repetirContrasea}>Repetir contraseña:</div>
-      <img className={styles.userIcon} alt="" src="/user2.svg" />
-      <div className={styles.crearCuenta} onClick={onCrearCuentaClick}>
-        Crear cuenta
-      </div>
-      <div className={styles.cancelar} onClick={onCancelarTextClick}>
-        Cancelar
-      </div>
-      <img className={styles.polygonIcon} alt="" src="/polygon-34.svg" />
-      <img
-        className={styles.crearcuentaChild11}
-        alt=""
-        src="/polygon-351.svg"
-      />
-      <img
-        className={styles.transhumansWaitingIcon}
-        alt=""
-        src="/transhumans-waiting@2x.png"
-      />
-      <div className={styles.footer}>
-        <div className={styles.byTeambocching}>By: TeamBocching</div>
-      </div>
-      <img className={styles.frameIcon} alt="" src="/frame7.svg" />
-      <div className={styles.crearcuentaChild12} />
-      <div className={styles.creacinDeCuenta}>Creación de cuenta</div>
-      <div className={styles.logo}>
-        <div className={styles.logoChild} />
-        <img className={styles.vectorIcon} alt="" src="/vector35.svg" />
-        <img className={styles.vectorIcon1} alt="" src="/vector36.svg" />
-        <img className={styles.vectorIcon2} alt="" src="/vector37.svg" />
-        <img className={styles.vectorIcon3} alt="" src="/vector38.svg" />
-        <div className={styles.txt01}>Bocching</div>
+    <div id='container'>
+      <div className={styles.crearcuenta}>
+        <img
+          className={styles.crearcuentaChild}
+          alt=""
+          src="/rectangle-162.svg"
+        />
+        <div className={styles.crearcuentaItem} />
+        <div className={styles.general}>General</div>
+        <div className={styles.crearcuentaInner}>
+          <input className={styles.dato} type="text" id="nombres" value={usuario.nombres} onChange={e => setUsuario({...usuario,nombres: e.target.value})}></input>
+        </div>
+        <div className={styles.rectangleDiv} />
+        <div className={styles.crearcuentaChild1}>
+          {
+            isNaN(usuario.edad) || usuario.edad<0?
+              null
+            :
+              <input className={styles.dato} type="text" id="edad" disabled={true} value={usuario.edad}></input>
+          }
+        </div>
+        <div className={styles.crearcuentaChild2}>
+          <input className={styles.dato} type="text" id="apodo" value={usuario.apodo} onChange={e => setUsuario({...usuario,apodo: e.target.value})}></input>
+        </div>
+        <div className={styles.crearcuentaChild3}>
+          <input className={styles.dato} type="text" id="apellidos" value={usuario.apellidos} onChange={e => setUsuario({...usuario,apellidos: e.target.value})}></input>
+        </div>
+        <div className={styles.crearcuentaChild4}>
+          <select className={styles.dato} id="genero" value={usuario.genero} onChange={e => actualizarGenero(e.target.value)}>
+            <option value={-1}>Selecciona una opción</option>
+            <option value={0}>Masculino</option>
+            <option value={1}>Femenino</option>
+            <option value={2}>Otro</option>
+            <option value={3}>Prefiero no decirlo</option>
+          </select>
+        </div>
+        <div className={styles.crearcuentaChild5}>
+          <input className={styles.dato} type="text" id="correo" maxLength={26} value={usuario.correo} onChange={e => setUsuario({...usuario,correo: e.target.value})}></input>
+        </div>
+        <div className={styles.crearcuentaChild6}>
+          <input className={styles.dato} type="date" value={usuario.nacimiento} id="nacimiento" onChange={(e) => actualizarEdad(e.target.value)} />
+        </div>
+        <div className={styles.crearcuentaChild7}>
+          <input className={styles.dato} type="password" id="contra" value={usuario.contrasena} onChange={e => setUsuario({...usuario,contrasena: e.target.value})}></input>
+        </div>
+        <div className={styles.crearcuentaChild8}>
+          <input className={styles.dato} type="password" id="contra2" value={contra2} onChange={e => setContra2(e.target.value)}></input>
+        </div>
+        <div className={styles.crearcuentaChild9} />
+        <div className={styles.crearcuentaChild10} onClick={onCrearCuentaClick} />
+        <div className={styles.nombre}>Nombre:</div>
+        <div className={styles.universidad}>Universidad:</div>
+        <div className={styles.edad}>Edad:</div>
+        <div className={styles.apodo}>Apodo:</div>
+        <div className={styles.apellido}>Apellido:</div>
+        <div className={styles.genero}>Genero:</div>
+        <div className={styles.correoInstitucional}>Correo institucional:</div>
+        <div className={styles.fechaDeNacimiento}>Fecha de nacimiento:</div>
+        <div className={styles.contrasea}>Contraseña:</div>
+        <div className={styles.repetirContrasea}>Repetir contraseña:</div>
+        <img className={styles.userIcon} alt="" src="/user2.svg" />
+        <div className={styles.crearCuenta} onClick={onCrearCuentaClick}>
+          Crear cuenta
+        </div>
+        <div className={styles.cancelar} onClick={onCancelarTextClick}>
+          Cancelar
+        </div>
+        <img className={styles.polygonIcon} alt="" src="/polygon-34.svg" />
+        <img
+          className={styles.crearcuentaChild11}
+          alt=""
+          src="/polygon-351.svg"
+        />
+        <img
+          className={styles.transhumansWaitingIcon}
+          alt=""
+          src="/transhumans-waiting@2x.png"
+        />
+        <div className={styles.footer}>
+          <div className={styles.byTeambocching}>By: TeamBocching</div>
+        </div>
+        <img className={styles.frameIcon} alt="" src="/frame7.svg" />
+        <div className={styles.crearcuentaChild12} />
+        <div className={styles.creacinDeCuenta}>Creación de cuenta</div>
+        <div className={styles.logo}>
+          <div className={styles.logoChild} />
+          <img className={styles.vectorIcon} alt="" src="/vector35.svg" />
+          <img className={styles.vectorIcon1} alt="" src="/vector36.svg" />
+          <img className={styles.vectorIcon2} alt="" src="/vector37.svg" />
+          <img className={styles.vectorIcon3} alt="" src="/vector38.svg" />
+          <div className={styles.txt01}>Bocching</div>
+        </div>
       </div>
     </div>
   );
