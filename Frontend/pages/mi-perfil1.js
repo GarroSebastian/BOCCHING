@@ -2,9 +2,10 @@ import { useCallback } from "react";
 import { useRouter } from "next/router";
 import { useState, useEffect } from 'react';
 import styles from "./mi-perfil1.module.css";
-import Zoom from "../extra/zoom.js"
+import { Zoom } from "../extra/zoom.js"
 
 const MiPerfil1 = () => {
+  Zoom()
   const router = useRouter();
 
   const defaultUsuario = {
@@ -57,7 +58,7 @@ const MiPerfil1 = () => {
   }, [router]);
   
   return (
-    <div id={styles.container}>
+    <div id='container'>
       <div className={styles.miperfil1}>
         <img
           className={styles.miperfil1Child}
@@ -127,7 +128,7 @@ const MiPerfil1 = () => {
         </div>
         <div className={styles.descripccin}>Descripcción</div>
         <div className={styles.miperfil1Child10}>
-          <textarea class={styles.datoDescripcion} id="descripcion" value={usuario.descripcion} onChange={e => setUsuario({...usuario,descripcion: e.target.value})}></textarea>
+          <textarea className={styles.datoDescripcion} id="descripcion" value={usuario.descripcion} onChange={e => setUsuario({...usuario,descripcion: e.target.value})}></textarea>
         </div>
         <div className={styles.miperfil1Child11} />
         <div className={styles.ellipseDiv} />

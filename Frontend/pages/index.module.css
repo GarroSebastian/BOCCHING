@@ -255,3 +255,7 @@
   color: var(--ttulos-textos);
   font-family: var(--principal-2);
 }
+
+#container{
+  zoom: normal;
+}
