@@ -19,12 +19,19 @@ const MiPerfil1 = () => {
     apodo: 'Adri888',
     contrasena: '',
     foto: '',
-    facultad: 'Ingeniería y Arquitectura',
+    facultad: -1,
     carrera: 'Ingeniería de Sistemas',
     especialidad: 'Desarrollo de Videojuegos',
-    descripcion: 'Holaaaaaa'
+    descripcion: 'Holaaaaaa',
+    mostrarNombre: true
   }
   const [usuario, setUsuario] = useState(defaultUsuario);
+  
+  const actualizarFacultad = (value) => {
+    if(value>=0){
+      setUsuario({...usuario,facultad: value})
+    }
+  }
   
   const onRectangleClick = useCallback(() => {
     router.push("/mi-perfil241");
@@ -34,11 +41,6 @@ const MiPerfil1 = () => {
     router.push("/mi-perfil21");
   }, [router]);
 
-  const seleccionarImagen = () => {
-    const fileInput = document.getElementById("fileInput");
-    fileInput.click();
-  }
-
   const mostrarImagen = () => {
       const fileInput = document.getElementById("fileInput");
       const imagenSeleccionada = document.getElementById("imagenSeleccionada");
@@ -47,8 +49,8 @@ const MiPerfil1 = () => {
       if (file) {
           const reader = new FileReader();
 
-          reader.onload = function (e) {
-              imagenSeleccionada.src = e.target.result;
+          reader.onload = function (e) {  
+              setUsuario({...usuario,foto: e.target.result})
               imagenSeleccionada.style.display = "block";
           };
 
@@ -113,14 +115,23 @@ const MiPerfil1 = () => {
               <option value={3}>Prefiero no decirlo</option>
             </select>
         </div>
-        <div className={styles.carrera}>Carrera:</div>
-        <img className={styles.polygonIcon} alt="" src="/polygon-21.svg" />
-        <div className={styles.carreraEjemplo}>{usuario.carrera}</div>
-        <div className={styles.miperfil1Child7} />
         <div className={styles.facultad}>Facultad:</div>
-        <img className={styles.miperfil1Child8} alt="" src="/polygon-3.svg" />
-        <div className={styles.facultadEjemplo}>{usuario.facultad}</div>
-        <div className={styles.miperfil1Child9} />
+        <div className={styles.facultadEjemplo}>
+          <select className={styles.datoGenero} id="facultad" value={usuario.facultad} onChange={e => actualizarFacultad(e.target.value)}>
+            <option value={-1}>Selecciona una opción</option>
+            <option value={0}>Estudios Generales</option>
+            <option value={1}>Facultad de Arquitectura</option>
+            <option value={2}>Facultad de Ciencias Empresariales y Económicas</option>
+            <option value={3}>Facultad de Comunicación</option>
+            <option value={4}>Facultad de Derecho</option>
+            <option value={5}>Facultad de Ingeniería</option>
+            <option value={6}>Facultad de Psicología</option>
+          </select>
+        </div>
+        <div className={styles.carrera}>Carrera:</div>
+        <div className={styles.miperfil1Child9}>
+          <input className={styles.dato} type="text" id="carrera" value={usuario.carrera} onChange={e => setUsuario({...usuario,carrera: e.target.value})}></input>
+        </div>
         <div className={styles.especialidad}>Especialidad</div>
         <div className={styles.especialidadEjemploParent}>
           <input className={styles.datoEspecialidad} type="text" id="especialidad" value={usuario.especialidad} onChange={e => setUsuario({...usuario,especialidad: e.target.value})}></input>
@@ -129,17 +140,34 @@ const MiPerfil1 = () => {
         <div className={styles.miperfil1Child10}>
           <textarea className={styles.datoDescripcion} id="descripcion" value={usuario.descripcion} onChange={e => setUsuario({...usuario,descripcion: e.target.value})}></textarea>
         </div>
-        <div className={styles.miperfil1Child11} />
-        <div className={styles.ellipseDiv}>
-          <input type="file" accept="image/*" id="fileInput" onchange={mostrarImagen}></input>
-          <button onclick={seleccionarImagen}>Seleccionar Imagen</button>
-          <img id="imagenSeleccionada" src="" alt="Imagen seleccionada" style={{display: "none", maxWidth: "100%", maxHeight: "400px"}} />
+        <div className={styles.miperfil1Child11}>
+          <div className={styles.nombreapodo}>
+            <p>Mostrar mi</p>
+            {
+              usuario.mostrarNombre?
+                <p>Nombre: {usuario.nombres}</p>
+              :
+                <p>Apodo: {usuario.apodo}</p>
+            }
+          </div>
+          <button onClick={e => setUsuario({...usuario,mostrarNombre: !usuario.mostrarNombre})} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
         </div>
-        <img className={styles.vectorIcon} alt="" src="/vector25.svg" />
-        <img className={styles.vectorIcon1} alt="" src="/vector26.svg" />
-        <div className={styles.nombreapodo}>Nombre/Apodo</div>
-        <img className={styles.miperfil1Child12} alt="" src="/polygon-6.svg" />
-        <div className={styles.miperfil1Child13} />
+        <div className={styles.ellipseDiv}>
+          <img id="imagenSeleccionada" src={usuario.foto} alt="Imagen seleccionada" style={{display: "none", maxWidth: "90%", maxHeight: "90%", borderRadius: "20%"}} />
+          <input type="file" accept="image/*" id="fileInput" style={{display: 'none'}} onChange={mostrarImagen}></input>
+        </div>
+        {
+          usuario.foto==''?
+            <>
+              <img className={styles.vectorIcon} alt="" src="/vector25.svg" />
+              <img className={styles.vectorIcon1} alt="" src="/vector26.svg" />
+            </>
+          :
+            null
+        }
+        <div className={styles.miperfil1Child13}>
+          <button onClick={e => document.getElementById("fileInput").click()} style={{width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
+        </div>
         <img className={styles.vectorIcon2} alt="" src="/vector27.svg" />
         <img className={styles.vectorIcon3} alt="" src="/vector28.svg" />
         <img className={styles.vectorIcon4} alt="" src="/vector29.svg" />
