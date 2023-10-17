@@ -1,9 +1,24 @@
 import { useCallback } from "react";
 import { useRouter } from "next/router";
 import styles from "./solicitudes1.module.css";
+import { useState } from "react";
 
 const Solicitudes1 = () => {
   const router = useRouter();
+  
+  
+    const array1 = ["nombre1", "apodo1", "fecha1"];
+    const array2 = ["nombre2", "apodo2", "fecha2"];
+    const array3 = ["nombre3", "apodo3", "fecha3"];
+    const array4 = ["nombre4", "apodo4", "fecha4"];
+  
+    const [solicitudesRecibidas, setSolicitudesRecibidas] = useState({
+      solicitud1: array1,
+      solicitud2: array2,
+      solicitud3: array3,
+      solicitud4: array4,
+    });
+  
 
   const onRectangleClick = useCallback(() => {
     router.push("/solicitudes4");
@@ -28,6 +43,15 @@ const Solicitudes1 = () => {
   const onGuardadasTextClick = useCallback(() => {
     router.push("/solicitudes4");
   }, [router]);
+
+  const handleEliminarSolicitud = (solicitud) => {
+    // Crear una copia del objeto de solicitudes excluyendo la solicitud que deseamos eliminar
+    const nuevasSolicitudes = { ...solicitudesRecibidas };
+    delete nuevasSolicitudes[solicitud];
+
+    // Actualizar el estado con las nuevas solicitudes
+    setSolicitudesRecibidas(nuevasSolicitudes);
+  };
 
   return (
     <div className={styles.solicitudes1}>
@@ -75,6 +99,30 @@ const Solicitudes1 = () => {
       <div className={styles.guardadas} onClick={onGuardadasTextClick}>
         Guardadas
       </div>
+      {
+        //Desde el Child 2 al 5, las solicitudes
+        /*
+      <div className={styles.solicitudes1Child2} />
+      <div className={styles.solicitudes1Child3} />
+      <div className={styles.solicitudes1Child4} />
+      <div className={styles.solicitudes1Child5} />
+        */
+      }
+      
+        {Object.entries(solicitudesRecibidas).map(([solicitud, valores]) => (
+          
+          <div key={solicitud}>
+            
+              {valores.map((valor, index) => (
+                <span key={index}>{valor}</span>
+              ))}
+            <button onClick={() => handleEliminarSolicitud(solicitud)}>
+            Eliminar
+          </button>
+          </div>
+          
+        ))}
+        
       <div className={styles.solicitudes1Child2} />
       <div className={styles.solicitudes1Child3} />
       <div className={styles.solicitudes1Child4} />
