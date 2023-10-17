@@ -165,7 +165,8 @@
   font-family: var(--subttulos);
   cursor: pointer;
 }
-.solicitudes1Child2,
+
+.solicitudes1Child2
 .solicitudes1Child3,
 .solicitudes1Child4,
 .solicitudes1Child5 {
@@ -189,7 +190,8 @@
 .solicitudes1Child5 {
   top: 791px;
 }
-.ellipseDiv,
+
+.ellipseDiv
 .solicitudes1Child6,
 .solicitudes1Child7,
 .solicitudes1Child8 {
@@ -304,6 +306,7 @@
 .fechaOHora3 {
   top: 814px;
 }
+
 .solicitudes1Child15,
 .solicitudes1Child16,
 .solicitudes1Child17,
@@ -401,3 +404,74 @@
   color: var(--black-icon);
   font-family: var(--textos);
 }
+/*
+SE AGREGO ESTO - recomiendacion de chatGPT
+*/
+
+/* Estilos generales para elementos generados dinámicamente */
+.solicitudes1Child2 {
+  position: absolute;
+  top: 470px;
+  left: 322px;
+  border-radius: var(--br-xl);
+  background-color: var(--white-icon);
+  width: 588px;
+  height: 65px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+/* Estilos para la clase específica de solicitud1 */
+.solicitudes1Child2-solicitud1 {
+  background-color: #FF5733; /* Color de fondo personalizado */
+  width: 600px; /* Ancho personalizado */
+  height: 70px; /* Alto personalizado */
+  /* Agrega otros estilos personalizados para solicitud1 */
+}
+
+/* Estilos para la clase específica de solicitud2 */
+.solicitudes1Child2-solicitud2 {
+  background-color: #3399FF; /* Color de fondo personalizado */
+  width: 550px; /* Ancho personalizado */
+  height: 60px; /* Alto personalizado */
+  /* Agrega otros estilos personalizados para solicitud2 */
+}
+
+/* Estilos para la clase específica de solicitud3 */
+.solicitudes1Child2-solicitud3 {
+  background-color: #33FF99; /* Color de fondo personalizado */
+  width: 590px; /* Ancho personalizado */
+  height: 75px; /* Alto personalizado */
+  /* Agrega otros estilos personalizados para solicitud3 */
+}
+
+/* Estilos generales para el círculo de la imagen de perfil */
+.ellipseDiv {
+  position: absolute;
+  top: 463px;
+  left: 306px;
+  border-radius: 50%;
+  background-color: var(--white-icon);
+  border: 2px solid var(--black-icon);
+  box-sizing: border-box;
+  width: 88px;
+  height: 79px;
+}
+
+/* Estilos para la clase específica de solicitud1 */
+.ellipseDiv-solicitud1 {
+  background-color: #FF5733; /* Color de fondo personalizado */
+  width: 70px; /* Ancho personalizado */
+  height: 70px; /* Alto personalizado */
+  /* Agrega otros estilos personalizados para solicitud1 */
+}
+
+/* Estilos para la clase específica de solicitud2 */
+.ellipseDiv-solicitud2 {
+  background-color: #3399FF; /* Color de fondo personalizado */
+  width: 80px; /* Ancho personalizado */
+  height: 80px; /* Alto personalizado */
+  /* Agrega otros estilos personalizados para solicitud2 */
+}
+
+
