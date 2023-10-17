@@ -1,8 +1,10 @@
 import { useCallback } from "react";
 import { useRouter } from "next/router";
+import { Zoom } from "../extra/zoom.js"
 import styles from "./buscar1.module.css";
 
 const Buscar1 = () => {
+  Zoom()
   const router = useRouter();
 
   const onRectangle9Click = useCallback(() => {
@@ -10,6 +12,7 @@ const Buscar1 = () => {
   }, [router]);
 
   return (
+    <div id="container">
     <div className={styles.buscar1}>
       <img className={styles.buscar1Child} alt="" src="/rectangle-16.svg" />
       <div className={styles.buscar1Item} />
@@ -50,6 +53,7 @@ const Buscar1 = () => {
         src="/transhumans-puppy@2x.png"
       />
       <img className={styles.groupIcon} alt="" src="/group-1391.svg" />
+    </div>
     </div>
   );
 };

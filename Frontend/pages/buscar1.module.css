@@ -170,7 +170,7 @@
   top: 40.16%;
   right: 18.47%;
   bottom: 57.13%;
-  left: 79.31%;
+  left: 70.5%;
   max-width: 100%;
   overflow: hidden;
   max-height: 100%;
@@ -222,4 +222,8 @@
   font-size: var(--textos-size);
   color: var(--white-icon);
   font-family: var(--textos);
+}
+
+#container{
+  zoom: normal;
 }
