@@ -1,0 +1,60 @@
+POST http://localhost:3700/login
+Content-Type: application/json
+
+{
+    "correo": "20200711@aloe.ulima.edu.pe",
+    "contrasena": "contrasena"
+}
+
+###
+
+POST http://localhost:3700/register
+Content-Type: application/json
+
+{
+    "nombre": "Adrián",
+    "apellidos": "Duarte",
+    "correo": "20202721@aloe.ulima.edu.pe",
+    "contrasena": "contrasena",
+    "apodo": "Adri888",
+    "id_genero": "0",
+    "nacimiento": "2002-12-27",
+    "foto": "foto",
+    "carrera": "carrera",
+    "facultad": "2",
+    "especialidad": "especialidad",
+    "descripcion": "descripcion",
+    "mostrar_nombre": true
+}
+
+###
+
+GET http://localhost:3700/usuario
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmViYTFkZGRhY2ViN2YzZjU1NzY2ZiIsImlhdCI6MTY5NzU2MTM2MywiZXhwIjoxNjk3NjQ3NzYzfQ.jbEsAuK-Esv3aOwj6E2xgwztkV8lZU1X1wx0xLs4v6Y
+
+###
+
+DELETE http://localhost:3700/delete-user
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmMyMjg3NTA4MWViZThiOTA0OGZiYiIsImlhdCI6MTY5NzM5NzUxNSwiZXhwIjoxNjk3NDgzOTE1fQ.wMeY3FCthVD72YMGo1TtdB3evDIXzQgfvlBbHgALmF8
+
+###
+
+PUT http://localhost:3700/update-user
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmM0MjQ2YTcwMDdiOGNhOGQ4ZDU4MyIsImlhdCI6MTY5NzM5OTM3MCwiZXhwIjoxNjk3NDg1NzcwfQ.jHz8RSHCFjKCvp41jY2AlgdSFRSHAwCZpcVSGjIStwg
+
+{
+    "nombre": "nombre",
+    "apellidos": "apellidos",
+    "correo": "correo",
+    "contrasena": "contrasena",
+    "apodo": "apodo",
+    "id_genero": "id_genero",
+    "nacimiento": "nacimiento",
+    "foto": "foto",
+    "carrera": "carrera",
+    "facultad": "facultad",
+    "especialidad": "especialidad",
+    "descripcion": "descripcion",
+    "mostrar_nombre": true
+}

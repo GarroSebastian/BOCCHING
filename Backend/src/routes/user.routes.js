@@ -3,6 +3,7 @@ const router = express.Router();
 
 const UserController = require("../controllers/user.controller");
 const verifyToken = require("../middlewares/verifyToken");
+const multer = require("../middlewares/multer")
 
 //rutas
 router.post("/register", UserController.save_User);

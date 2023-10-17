@@ -16,6 +16,7 @@
   top: 285px;
   left: 588px;
   font-size: var(--subttulos-size);
+  pointer-events: none;
 }
 .miperfil1Inner,
 .rectangleDiv {
@@ -73,6 +74,9 @@
 .privacidad {
   position: absolute;
   font-size: var(--subttulos-size);
+}
+.privacidad {
+  pointer-events: none;
 }
 .informacin {
   top: 269px;
