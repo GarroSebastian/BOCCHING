@@ -54,17 +54,24 @@ const IniciarSesion = () => {
     return data.error
   } */
 
-  //CONVERTIR EN FUNCION ASYNC QUE LLAME AL BACKEND, LO MISMO PARA onINGRESARTextClick
+  const HandleLogin = async () => {
+    const res = await UsuarioApi.login(Credenciales)
+    console.log(res.data);
+    if (res.data == true){
+      onFrameContainer5Click();
+    }else{
+      alert("Se borrará system32")
+      console.log(res.data("Message"))
+    }
+      
+}
+
   const onFrameContainer5Click = useCallback (() => {
-    //const res = await UsuarioApi.login(usuario, password)
-    //alert(res);
-    //if (usuario === "res.usuario" || password ==="res.password"){
+
       console.log(Credenciales);
-      //UNA VEZ SE CONSIGAN LAS CREDENCIALES SE DEBE VERIFICAR SI EXISTEN Y COINCIDEN CON LO DEL BACKEND Y LUEGO RECIEN ENTRAR AL /menu
-      //if (res.UsuarioAPI(login) == true){router.push("/menu")}else{alert("ERROR FATAL")}
+
       router.push("/menu");
-      //}else{
-        // alert("Error en usuario o contraseña")
+
   }, [router] [Credenciales]);
 
     const onINGRESARTextClick = useCallback(() => {
@@ -103,8 +110,8 @@ const IniciarSesion = () => {
           <div className={styles.frame} />
         </div>
       </div>
-      <div className={styles.ingresarWrapper} onClick={onFrameContainer5Click}>
-        <div className={styles.ingresar} onClick={onINGRESARTextClick}>
+      <div className={styles.ingresarWrapper} onClick={HandleLogin}>
+        <div className={styles.ingresar} onClick={HandleLogin}>
           INGRESAR
         </div>
       </div>
