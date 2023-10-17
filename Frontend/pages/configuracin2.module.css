@@ -114,3 +114,6 @@
   color: var(--white-icon);
   font-family: var(--subttulos);
 }
+#container{
+  zoom: normal;
+}

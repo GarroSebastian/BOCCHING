@@ -1,9 +1,16 @@
 import { useCallback } from "react";
 import { useRouter } from "next/router";
 import styles from "./configuracin12.module.css";
+import { Zoom } from "../extra/zoom.js";
+import { useState } from "react";
 
 const Configuracin12 = () => {
+  Zoom()
   const router = useRouter();
+  //Guardar datos de forma "especial", lo ve como un objeto
+  const [codigo, setcodigo] = useState("20201166")
+  //Contra Antigua
+  const [codigoCofirmacion, setcodigoCofirmacion] = useState("");
 
   const onRectangleClick = useCallback(() => {
     router.push("/configuracin11");
@@ -13,9 +20,19 @@ const Configuracin12 = () => {
     router.push("/");
   }, [router]);
 
-  const onEliminarCuentaText1Click = useCallback(() => {
+  const onEliminarCuentaText1Click0 = useCallback(() => {
     router.push("/");
+    
   }, [router]);
+
+  const onEliminarCuentaText1Click = () => {
+    if(codigoCofirmacion === codigo){
+      onEliminarCuentaText1Click0()
+    }else{
+      console.log("ERROR de USUARIO")
+    }
+    
+  };
 
   const onCancelarTextClick = useCallback(() => {
     router.push("/configuracin11");
@@ -26,12 +43,16 @@ const Configuracin12 = () => {
   }, [router]);
 
   return (
-    <div className={styles.configuracin12}>
+    <div id="container">
+    <div id={styles.container} className={styles.configuracin12}>
       <div className={styles.eliminarCuenta}>Eliminar cuenta</div>
       <div className={styles.configuracin12Child} onClick={onRectangleClick} />
       <div className={styles.configuracin12Item} onClick={onRectangle1Click} />
       <div className={styles.configuracin12Inner} />
-      <div className={styles.cdigoDeUsuario}>Código de Usuario o correo</div>
+      <div className={styles.cdigoDeUsuario}>
+      <input
+          onChange={function(evt) {setcodigoCofirmacion(evt.target.value)}}/>
+      </div>
       <div
         className={styles.eliminarCuenta1}
         onClick={onEliminarCuentaText1Click}
@@ -72,6 +93,7 @@ const Configuracin12 = () => {
           <div className={styles.frameChild} />
         </div>
       </div>
+    </div>
     </div>
   );
 };

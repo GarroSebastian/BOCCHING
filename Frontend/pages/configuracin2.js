@@ -1,8 +1,10 @@
 import { useCallback } from "react";
 import { useRouter } from "next/router";
 import styles from "./configuracin2.module.css";
+import { Zoom } from "../extra/zoom.js";
 
 const Configuracin2 = () => {
+  //Zoom()
   const router = useRouter();
 
   const onRectangle1Click = useCallback(() => {
@@ -22,7 +24,7 @@ const Configuracin2 = () => {
   }, [router]);
 
   return (
-    <div className={styles.configuracin2}>
+    <div id='container'  className={styles.configuracin2}>
       <div className={styles.frame}>
         <img className={styles.frameChild} alt="" src="/rectangle-16.svg" />
         <img

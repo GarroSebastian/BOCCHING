@@ -1,10 +1,20 @@
 import { useCallback } from "react";
 import { useRouter } from "next/router";
 import styles from "./configuracin11.module.css";
+import { Zoom } from "../extra/zoom.js";
+import { useState } from "react";
 
 const Configuracin11 = () => {
+  Zoom()
+  //Guardar datos de forma "especial", lo ve como un objeto
+  const [password, setPassword] = useState("llama")
+  //Contra Antigua
+  const [contraseaAntigua, setcontraseaAntigua] = useState("");
+  //Contra Nueva
+  const [contraseaNueva, setcontraseaNueva] = useState("");
+  
   const router = useRouter();
-
+  
   const onRectangleClick = useCallback(() => {
     router.push("/configuracin2");
   }, [router]);
@@ -17,8 +27,20 @@ const Configuracin11 = () => {
     router.push("/configuracin2");
   }, [router]);
 
+  const handleButtonClick = () => {
+    if(contraseaAntigua===password){
+      setPassword(contraseaNueva);
+      console.log(
+        "contraseña cambiada"
+      )
+    }
+    
+  };
+
+
   return (
-    <div className={styles.configuracin11}>
+    <div id="container">
+    <div id={styles.container} className={styles.configuracin11}>
       <img
         className={styles.configuracin11Child}
         alt=""
@@ -44,7 +66,9 @@ const Configuracin11 = () => {
         </p>
       </div>
       <div className={styles.rectangleDiv} />
-      <div className={styles.cambiarContrasea}>Cambiar contraseña</div>
+      <div className={styles.cambiarContrasea}>
+      <button  onClick={handleButtonClick}>Cambiar Contraseña</button>
+      </div>
       <div className={styles.cambiarContrasea1}>Cambiar contraseña</div>
       <div className={styles.eliminarCuenta}>Eliminar cuenta</div>
       <div className={styles.configuracin11Child1} />
@@ -55,8 +79,16 @@ const Configuracin11 = () => {
         src="/group-183.svg"
         onClick={onGroupClick}
       />
-      <div className={styles.antiguaContrasea}>Antigua contraseña</div>
-      <div className={styles.nuevaContrasea}>Nueva contraseña</div>
+      <div className={styles.antiguaContrasea}>
+        <input
+          type="text"
+          onChange={function(evt) {setcontraseaAntigua(evt.target.value)}}/>
+        </div>
+      <div className={styles.nuevaContrasea}>
+        <input
+          type="text"
+          onChange={function(evt) {setcontraseaNueva(evt.target.value)}}/>    
+        </div>
       <div className={styles.configuracin11Child3} />
       <div className={styles.configuracin11Child4} />
       <div className={styles.configuracin}>Configuración</div>
@@ -69,6 +101,8 @@ const Configuracin11 = () => {
         alt=""
         src="/group-1921.svg"
       />
+      
+    </div>
     </div>
   );
 };

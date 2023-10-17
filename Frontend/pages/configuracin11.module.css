@@ -17,8 +17,11 @@
   left: 255px;
 }
 .configuracin11Inner {
+  
   top: 351px;
   left: 251px;
+  
+  
   background-color: var(--black-icon);
   border: 4px solid var(--white-icon);
   box-sizing: border-box;
@@ -119,6 +122,10 @@
 }
 .configuracin11Child4 {
   top: 630px;
+  pointer-events: none;
+}
+.configuracin11Child3 {
+  pointer-events: none;
 }
 .configuracin {
   position: absolute;
@@ -158,4 +165,7 @@
   font-size: var(--subttulos-size);
   color: var(--white-icon);
   font-family: var(--subttulos);
+}
+#container{
+  zoom: normal;
 }
