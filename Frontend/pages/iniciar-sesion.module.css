@@ -183,3 +183,7 @@
   color: var(--black-icon);
   font-family: var(--subttulos);
 }
+
+#container{
+  zoom: normal;
+}

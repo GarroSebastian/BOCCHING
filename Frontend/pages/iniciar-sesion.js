@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { Zoom } from "../extra/zoom.js"
 import styles from "./iniciar-sesion.module.css";
 import UsuarioApi from "../api/usuario.js"
 
@@ -8,6 +9,7 @@ import UsuarioApi from "../api/usuario.js"
 
 
 const IniciarSesion = () => {
+  Zoom()
   const router = useRouter();
 
   const [usuario, setUsuario] = useState(" ");
@@ -33,9 +35,14 @@ const IniciarSesion = () => {
     return data.error
   } */
 
-  const onFrameContainer5Click = useCallback(() => {
-    
-    router.push("/menu");
+  //CONVERTIR EN FUNCION ASYNC QUE LLAME AL BACKEND, LO MISMO PARA onINGRESARTextClick
+  const onFrameContainer5Click = useCallback (() => {
+    //const res = await UsuarioApi.login(usuario, password)
+    //alert(res);
+    //if (usuario === "res.usuario" || password ==="res.password"){
+      router.push("/menu");
+      //}else{
+        // alert("Error en usuario o contraseña")
   }, [router]);
 
   const onINGRESARTextClick = useCallback(() => {
@@ -47,6 +54,7 @@ const IniciarSesion = () => {
   }, [router]);
 
   return (
+    <div id='container'>
     <div className={styles.iniciarsesion}>
       <div className={styles.inicioDeSesin}>Inicio de Sesión</div>
       <div className={styles.frameParent}>
@@ -89,6 +97,7 @@ const IniciarSesion = () => {
         src="/transhumans-pacheco@2x.png"
       />
       <div className={styles.iniciarsesionChild1} />
+    </div>
     </div>
   );
 };
