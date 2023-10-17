@@ -8,7 +8,7 @@ const Menu = () => {
   const router = useRouter();
 
   const onFrameContainerClick = useCallback(() => {
-    router.push("/mi-perfil1");
+    router.push("/mi-perfil");
   }, [router]);
 
   const onFrameContainer1Click = useCallback(() => {

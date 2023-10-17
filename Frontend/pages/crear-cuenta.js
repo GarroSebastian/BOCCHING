@@ -7,17 +7,22 @@ import UsuarioApi from "../api/usuario.js"
 
 const CrearCuenta = () => {
   Zoom()
+  const [edad, setEdad] = useState(-1)
 
   const defaultUsuario = {
-    nombres: '',
+    nombre: '',
     apellidos: '',
     correo: '',
-    genero: -1,
+    id_genero: -1,
     nacimiento: '',
-    edad: -1,
     apodo: '',
     contrasena: '',
-    foto: ''
+    foto: '',
+    carrera: "carrera",
+    facultad: "2",
+    especialidad: "especialidad",
+    descripcion: "descripcion",
+    mostrar_nombre: true
   }
   const [usuario, setUsuario] = useState(defaultUsuario);
   const [usuarios, setUsuarios] = useState([]);
@@ -34,11 +39,15 @@ const CrearCuenta = () => {
   }, [router]);
 
   const onCrearCuentaClick = async() => {
-    //const res = await UsuarioApi.register(usuario)
-    //alert(res)
     if(ValidarCuenta()){
-      alert("¡Cuenta creada exitosamente!")
-      irMenu()
+      const res = await UsuarioApi.register(usuario)
+      console.log(res.data)
+      if(res.data.hasOwnProperty("message")){
+        alert(res.data.message)
+      }else{
+        alert("¡Cuenta creada exitosamente!")
+        irMenu()
+      }
     }
   }
   
@@ -49,13 +58,14 @@ const CrearCuenta = () => {
       alert("Esa fecha todavía no ha transcurrido")
     }else{
       const dif = today.setDate(today.getDate()+1) - f;
-      setUsuario({...usuario, nacimiento:value, edad: Math.floor(dif/(1000*60*60*24*365.25))})
+      setUsuario({...usuario, nacimiento:value})
+      setEdad(Math.floor(dif/(1000*60*60*24*365.25)))
     }
   }
 
   const actualizarGenero = (value) => {
     if(value>=0){
-      setUsuario({...usuario,genero: value})
+      setUsuario({...usuario,id_genero: value})
     }
   }
   
@@ -78,13 +88,13 @@ const CrearCuenta = () => {
   const ValidarCuenta = () => {
     let r=[];
     //Datos obligatorios
-    if(usuario.nombres==''){
+    if(usuario.nombre==''){
       r.push('el nombre')
     }
     if(usuario.correo==''){
       r.push('el correo')
     }
-    if(usuario.genero==-1){
+    if(usuario.id_genero==-1){
       r.push('el género')
     }
     if(usuario.nacimiento===''){
@@ -139,7 +149,7 @@ const CrearCuenta = () => {
       return false;
     }
     //Edad
-    if(usuario.edad < 16){
+    if(edad < 16){
       alert("Necesitas tener al menos 16 años")
       return false;
     }
@@ -161,15 +171,15 @@ const CrearCuenta = () => {
         <div className={styles.crearcuentaItem} />
         <div className={styles.general}>General</div>
         <div className={styles.crearcuentaInner}>
-          <input className={styles.dato} type="text" id="nombres" value={usuario.nombres} onChange={e => setUsuario({...usuario,nombres: e.target.value})}></input>
+          <input className={styles.dato} type="text" id="nombre" value={usuario.nombre} onChange={e => setUsuario({...usuario,nombre: e.target.value})}></input>
         </div>
         <div className={styles.rectangleDiv} />
         <div className={styles.crearcuentaChild1}>
           {
-            isNaN(usuario.edad) || usuario.edad<0?
+            isNaN(edad) || edad<0?
               null
             :
-              <input className={styles.dato} type="text" id="edad" disabled={true} value={usuario.edad}></input>
+              <input className={styles.dato} type="text" id="edad" disabled={true} value={edad}></input>
           }
         </div>
         <div className={styles.crearcuentaChild2}>
@@ -179,7 +189,7 @@ const CrearCuenta = () => {
           <input className={styles.dato} type="text" id="apellidos" value={usuario.apellidos} onChange={e => setUsuario({...usuario,apellidos: e.target.value})}></input>
         </div>
         <div className={styles.crearcuentaChild4}>
-          <select className={styles.dato} id="genero" value={usuario.genero} onChange={e => actualizarGenero(e.target.value)}>
+          <select className={styles.dato} id="genero" value={usuario.id_genero} onChange={e => actualizarGenero(e.target.value)}>
             <option value={-1}>Selecciona una opción</option>
             <option value={0}>Masculino</option>
             <option value={1}>Femenino</option>
