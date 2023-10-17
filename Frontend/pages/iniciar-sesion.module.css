@@ -5,6 +5,27 @@
   font-family: var(--principal-2);
   color: var(--ttulos-textos);
 }
+
+.barratexto{
+  position: absolute;
+  background-color: #453938;
+  color: whitesmoke;
+  border-color: #453938;
+  width: 25em;
+  height: 24px;
+}
+
+.barratexto2{
+  position: absolute;
+  background-color: #453938;
+  color: whitesmoke;
+  border-color: #453938;
+  width: 25em;
+  height: 25px;
+  margin-top: -10.5px;
+  
+}
+
 .userIcon {
   position: relative;
   width: 29px;
