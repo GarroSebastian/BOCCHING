@@ -62,6 +62,15 @@ const MiPerfil = () => {
   }
 
   const handleOnLoad = async() => {
+
+    var token = localStorage.getItem("token");
+
+
+    UsuarioApi.findAll(token).then((user)=>{
+
+      console.log(user.data);
+    });
+    
     //console.log(UsuarioApi.findCurrent())
     /*const requestOptions = {
       method: 'GET',
@@ -84,7 +93,7 @@ const MiPerfil = () => {
   }
 
   useEffect(() => {
-    //handleOnLoad();
+    handleOnLoad();
   }, [])
   
   return (

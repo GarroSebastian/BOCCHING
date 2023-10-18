@@ -5,7 +5,7 @@ const endpoint = '/usuario';
 const register = async (request) => await Base.post('/register',request);
 const login = async (request) => await Base.post('/login',request);
 
-const findAll = async() => await Base.get(endpoint);
+const findAll = async(token) => await Base.get('/usuario', token);
 
 const findCurrent = async() => {
     //const newEndpoint = endpoint.concat('/',id);

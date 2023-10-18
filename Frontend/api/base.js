@@ -6,15 +6,15 @@ const URI = 'http://localhost:3700';
 const get = async (endpoint, token) => {
     try {
         const url = URI.concat(endpoint);
-        const bodyParameters = {
-            key: "value"
-         };
-        const config = {
+
+        const authAxios = axios.create({
+            baseURL: URI,
             headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        };
-        return await axios.get(url, bodyParameters, {headers: {'Authorization': token},}).catch(error => alert(error));
+                Authorization: token
+            }
+        })
+
+        return await authAxios.get(url).catch(error => alert(error));
     } catch(err) {
         console.error(err);
         return null;

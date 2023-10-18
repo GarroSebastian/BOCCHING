@@ -2,8 +2,8 @@ POST http://localhost:3700/login
 Content-Type: application/json
 
 {
-    "correo": "90000000@aloe.ulima.edu.pe",
-    "contrasena": "BocchiThe"
+    "correo": "20200373@aloe.ulima.edu.pe",
+    "contrasena": "contrasena"
 }
 
 ###
@@ -12,11 +12,11 @@ POST http://localhost:3700/register
 Content-Type: application/json
 
 {
-    "nombre": "Adrián",
-    "apellidos": "Duarte",
-    "correo": "20202721@aloe.ulima.edu.pe",
+    "nombre": "Sebas",
+    "apellidos": "Camayo",
+    "correo": "20200373@aloe.ulima.edu.pe",
     "contrasena": "contrasena",
-    "apodo": "Adri888",
+    "apodo": "apodo",
     "id_genero": "0",
     "nacimiento": "2002-12-27",
     "foto": "foto",
