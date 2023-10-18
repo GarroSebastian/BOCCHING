@@ -16,9 +16,10 @@ app.use(express.static(path.resolve("public")));
 
 //cors
 const corsOptions = {
-    origin: 'http://localhost:3000',
-    allowedHeaders: ['Content-Type', 'Authorization'], // Agrega 'Content-Type' a los encabezados permitidos
-  };
+  origin: 'http://localhost:3000',
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  methods: 'GET,POST,PUT,DELETE'
+};
 app.use(cors(corsOptions));
 
 //rutas

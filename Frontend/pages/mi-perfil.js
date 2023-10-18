@@ -30,6 +30,14 @@ const MiPerfil = () => {
   }
   const [usuario, setUsuario] = useState(defaultUsuario);
   
+  const onRectangle11Click = useCallback(() => {
+    router.push("/mi-perfil23");
+  }, [router]);
+
+  const onRectangle12Click = useCallback(() => {
+    router.push("/mi-perfil22");
+  }, [router]);
+  
   const actualizarFacultad = (value) => {
     if(value>=0){
       setUsuario({...usuario,facultad: value})
@@ -54,12 +62,29 @@ const MiPerfil = () => {
   }
 
   const handleOnLoad = async() => {
-    console.log(UsuarioApi.findCurrent())
+    //console.log(UsuarioApi.findCurrent())
+    /*const requestOptions = {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmYyN2I4YTAyNzNmZjQ3ODY3ZGJiMCIsImlhdCI6MTY5NzU4OTE3OCwiZXhwIjoxNjk3Njc1NTc4fQ.jAGQLCbiMXaspWoRBi2sEm4naSq8aN31xadV_OFAhjE`,
+        'Content-Type': 'application/json',
+      },
+    };
+    fetch('http://localhost:3700/usuario', requestOptions).then(res => {
+      if(!response.ok){
+        throw new Error('Error en la solicitud');
+      }
+      return response.json();
+    }).then(data => {
+      console.log(data);
+    }).catch(error => {
+      console.error(error);
+    });*/
     //setUsuario()
   }
 
   useEffect(() => {
-    handleOnLoad();
+    //handleOnLoad();
   }, [])
   
   return (
@@ -179,7 +204,82 @@ const MiPerfil = () => {
           <img className={styles.vectorIcon4} alt="" src="/vector29.svg" />
         </div>
       :
-        null
+        <>
+        {
+          pag==2?
+            <div className={styles.miperfil21}>
+              <img className={styles.miperfil21Child} alt="" src="/rectangle-161.svg" />
+              <img
+                className={styles.miperfil21Item}
+                alt=""
+                src="/rectangle-29.svg"
+                onClick={onRectangle1Click}
+              />
+              <img
+                className={styles.miperfil21Inner}
+                alt=""
+                src="/rectangle-29.svg"
+                onClick={onRectangle2Click}
+              />
+              <div className={styles.colecciones}>Colecciones</div>
+              <div className={styles.rectangleDiv} />
+              <div className={styles.miperfil21Child1} />
+              <img className={styles.recDerIcon} alt="" src="/rec-der1.svg" />
+              <img className={styles.derechaIcon} alt="" src="/derecha3.svg" />
+              <img className={styles.recDerIcon1} alt="" src="/rec-der1.svg" />
+              <div className={styles.miperfil21Child2} />
+              <img className={styles.groupIcon} alt="" src="/group.svg" />
+              <div className={styles.miperfil21Child3} />
+              <div className={styles.miperfil21Child4} />
+              <div className={styles.miperfil21Child5} />
+              <div className={styles.miperfil21Child6} />
+              <div className={styles.tipo}>Tipo</div>
+              <div className={styles.subtipo}>Subtipo</div>
+              <div className={styles.nombre}>Nombre</div>
+              <div className={styles.afinidad}>Afinidad</div>
+              <div className={styles.duracin}>Duración</div>
+              <div className={styles.hobby}>Hobby</div>
+              <div className={styles.hobby1}>Hobby</div>
+              <div className={styles.hobby2}>Hobby</div>
+              <div className={styles.hobby3}>Hobby</div>
+              <div className={styles.xd}>xd</div>
+              <div className={styles.xd1}>xd</div>
+              <div className={styles.xd2}>xd</div>
+              <div className={styles.xd3}>xd</div>
+              <div className={styles.xd4}>xd</div>
+              <div className={styles.xd5}>xd</div>
+              <div className={styles.xd6}>xd</div>
+              <div className={styles.xd7}>xd</div>
+              <div className={styles.xd8}>xd</div>
+              <div className={styles.xd9}>xd</div>
+              <div className={styles.xd10}>xd</div>
+              <div className={styles.xd11}>xd</div>
+              <div className={styles.xd12}>xd</div>
+              <div className={styles.xd13}>xd</div>
+              <div className={styles.xd14}>xd</div>
+              <div className={styles.xd15}>xd</div>
+              <img className={styles.derechaIcon1} alt="" src="/derecha2.svg" />
+              <div className={styles.miPerfil}>Mi Perfil</div>
+              <div className={styles.informacin} onClick={onInformacinTextClick}>
+                Información
+              </div>
+              <div className={styles.privacidad} onClick={onPrivacidadTextClick}>
+                Privacidad
+              </div>
+              <div className={styles.misColecciones}>Mis Colecciones</div>
+              <div className={styles.aquPodrsAgregar}>
+                Aquí podrás agregar tus gustos personales, editarlos o eliminarlos
+              </div>
+              <div className={styles.miperfil21Child7} />
+              <div className={styles.miperfil21Child8} onClick={onRectangle11Click} />
+              <div className={styles.miperfil21Child9} onClick={onRectangle12Click} />
+              <div className={styles.editar}>Editar</div>
+              <div className={styles.aadir}>Añadir</div>
+            </div>
+          :
+          null
+        }
+        </>
       }
       <Lateral></Lateral>
     </div>

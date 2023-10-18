@@ -29,30 +29,6 @@ const MiPerfil21 = () => {
     router.push("/mi-perfil22");
   }, [router]);
 
-  const onGroupClick = useCallback(() => {
-    router.push("/menu");
-  }, [router]);
-
-  const onVectorClick = useCallback(() => {
-    router.push("/amistades1");
-  }, [router]);
-
-  const onGroupIcon1Click = useCallback(() => {
-    router.push("/mensajes1");
-  }, [router]);
-
-  const onVectorIconClick = useCallback(() => {
-    router.push("/buscar1");
-  }, [router]);
-
-  const onVectorIcon1Click = useCallback(() => {
-    router.push("/solicitudes1");
-  }, [router]);
-
-  const onXMLID273IconClick = useCallback(() => {
-    router.push("/configuracin11");
-  }, [router]);
-
   return (
     <div className={styles.miperfil21}>
       <img className={styles.miperfil21Child} alt="" src="/rectangle-161.svg" />
@@ -122,44 +98,6 @@ const MiPerfil21 = () => {
       <div className={styles.miperfil21Child9} onClick={onRectangle12Click} />
       <div className={styles.editar}>Editar</div>
       <div className={styles.aadir}>Añadir</div>
-      <div className={styles.miperfil21Child10} />
-      <img
-        className={styles.miperfil21Child11}
-        alt=""
-        src="/group-194.svg"
-        onClick={onGroupClick}
-      />
-      <img className={styles.miperfil21Child12} alt="" src="/group-195.svg" />
-      <img
-        className={styles.vectorIcon}
-        alt=""
-        src="/vector22.svg"
-        onClick={onVectorClick}
-      />
-      <img
-        className={styles.miperfil21Child13}
-        alt=""
-        src="/group-197.svg"
-        onClick={onGroupIcon1Click}
-      />
-      <img
-        className={styles.vectorIcon1}
-        alt=""
-        src="/vector23.svg"
-        onClick={onVectorIconClick}
-      />
-      <img
-        className={styles.vectorIcon2}
-        alt=""
-        src="/vector24.svg"
-        onClick={onVectorIcon1Click}
-      />
-      <img
-        className={styles.xmlid273Icon}
-        alt=""
-        src="/xmlid-2731.svg"
-        onClick={onXMLID273IconClick}
-      />
     </div>
   );
 };
