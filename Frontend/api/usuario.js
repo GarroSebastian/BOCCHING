@@ -7,10 +7,10 @@ const login = async (request) => await Base.post('/login',request);
 
 const findAll = async() => await Base.get(endpoint);
 
-const findOne = async(id) => {
-    const newEndpoint = endpoint.concat('/',id);
-
-    return await Base.get(newEndpoint);
+const findCurrent = async() => {
+    //const newEndpoint = endpoint.concat('/',id);
+    //return await Base.get(newEndpoint);
+    return await Base.get(endpoint, window.localStorage.token);
 }
 
 const update = async(request) => await Base.put(endpoint,request);
@@ -20,6 +20,6 @@ const remove = async(id) => {
     return await Base.remove(newEndpoint);
 }
 
-const UsuarioApi = { register, login, findAll, findOne, update, remove }
+const UsuarioApi = { register, login, findAll, findCurrent, update, remove }
 
 export default UsuarioApi;

@@ -2,8 +2,8 @@ POST http://localhost:3700/login
 Content-Type: application/json
 
 {
-    "correo": "20200711@aloe.ulima.edu.pe",
-    "contrasena": "contrasena"
+    "correo": "90000000@aloe.ulima.edu.pe",
+    "contrasena": "BocchiThe"
 }
 
 ###
@@ -30,7 +30,7 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3700/usuario
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmViYTFkZGRhY2ViN2YzZjU1NzY2ZiIsImlhdCI6MTY5NzU2MTM2MywiZXhwIjoxNjk3NjQ3NzYzfQ.jbEsAuK-Esv3aOwj6E2xgwztkV8lZU1X1wx0xLs4v6Y
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmYyN2I4YTAyNzNmZjQ3ODY3ZGJiMCIsImlhdCI6MTY5NzU4OTE3OCwiZXhwIjoxNjk3Njc1NTc4fQ.jAGQLCbiMXaspWoRBi2sEm4naSq8aN31xadV_OFAhjE
 
 ###
 

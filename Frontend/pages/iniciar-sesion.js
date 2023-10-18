@@ -6,33 +6,14 @@ import styles from "./iniciar-sesion.module.css";
 import UsuarioApi from "../api/usuario.js"
 
 
-
-
 const IniciarSesion = () => {
   Zoom()
-  const [Credenciales, setCredenciales] = useState({
+  const defaultCredenciales = {
     correo: '',
     contrasena: ''
-  });
+  }
+  const [Credenciales, setCredenciales] = useState(defaultCredenciales);
   const router = useRouter();
-
-  
-  const [usuario, setUsuario] = useState({
-    correo: '',
-    contrasena: ''
-  });
-
-  const onCorreoChange = (event) => {
-  const updatedUsuario = { ...usuario, correo: event.target.value };
-  setUsuario(updatedUsuario);
-  setCredenciales(updatedUsuario);
-  }
-
-  const onContrasenaChange = (event) => {
-    const updatedUsuario = { ...usuario, contrasena: event.target.value };
-    setUsuario(updatedUsuario);
-    setCredenciales(updatedUsuario);
-  }
 
  /* EJEMPLO LOGIN CON BACKEND
  const loginHttp = async function(usuario,password){
@@ -56,28 +37,17 @@ const IniciarSesion = () => {
 
   const HandleLogin = async () => {
     const res = await UsuarioApi.login(Credenciales)
-    console.log(res.data);
-    if (res.data == true){
+    if (res != null){
+      window.localStorage.setItem("token", res.data.token);
       onFrameContainer5Click();
     }else{
-      alert("Se borrará system32")
-      console.log(res.data("Message"))
-    }
-      
-}
+      alert("Correo o contraseña incorrectos")
+    }   
+  }
 
   const onFrameContainer5Click = useCallback (() => {
-
-      console.log(Credenciales);
-
       router.push("/menu");
-
-  }, [router] [Credenciales]);
-
-    const onINGRESARTextClick = useCallback(() => {
-      console.log(Credenciales);
-      router.push("/menu");
-  }, [router] [Credenciales]);
+  }, [router]);
 
  // const onINGRESARTextClick = useCallback(() => {
     
@@ -97,7 +67,7 @@ const IniciarSesion = () => {
           <div className={styles.userParent}>
             <img className={styles.userIcon} alt="" src="/user1.svg" />
             <div className={styles.correoInstitucional}>
-            <input className={styles.barratexto} type="text" id="correo" value={usuario.correo} onChange={onCorreoChange}></input>
+            <input className={styles.barratexto} type="text" id="correo" value={Credenciales.correo} onChange={e => setCredenciales({...Credenciales,correo: e.target.value})}></input>
             </div>
           </div>
         </div>
@@ -105,13 +75,13 @@ const IniciarSesion = () => {
           <div className={styles.passwordParent}>
             <img className={styles.passwordIcon} alt="" src="/password.svg" />
             <div className={styles.contrasea}>
-            <input className={styles.barratexto2} type="password" id="contrasea" value={usuario.contrasena} onChange={onContrasenaChange}></input></div>
+            <input className={styles.barratexto2} type="password" id="contrasea" value={Credenciales.contrasena} onChange={e => setCredenciales({...Credenciales,contrasena: e.target.value})}></input></div>
           </div>
           <div className={styles.frame} />
         </div>
       </div>
       <div className={styles.ingresarWrapper} onClick={HandleLogin}>
-        <div className={styles.ingresar} onClick={HandleLogin}>
+        <div className={styles.ingresar}>
           INGRESAR
         </div>
       </div>

@@ -3,11 +3,18 @@ import axios from 'axios'
 
 const URI = 'http://localhost:3700';
 
-const get = async (endpoint) => {
+const get = async (endpoint, token) => {
     try {
         const url = URI.concat(endpoint);
-
-        return await axios.get(url);
+        const bodyParameters = {
+            key: "value"
+         };
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        };
+        return await axios.get(url, bodyParameters, {headers: {'Authorization': token},}).catch(error => alert(error));
     } catch(err) {
         console.error(err);
         return null;
@@ -18,7 +25,6 @@ const post = async (endpoint, request) => {
 
     try {
         const url = URI.concat(endpoint);
-
         return await axios.post(url,request);
     } catch(err) {
         console.error(err);

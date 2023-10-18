@@ -41,11 +41,16 @@ const CrearCuenta = () => {
   const onCrearCuentaClick = async() => {
     if(ValidarCuenta()){
       const res = await UsuarioApi.register(usuario)
-      console.log(res.data)
       if(res.data.hasOwnProperty("message")){
         alert(res.data.message)
       }else{
         alert("¡Cuenta creada exitosamente!")
+        const defaultCredenciales = {
+          correo: usuario.correo,
+          contrasena: usuario.contrasena
+        }
+        const res = await UsuarioApi.login(defaultCredenciales)
+        window.localStorage.setItem("token", res.data.token);
         irMenu()
       }
     }
@@ -155,10 +160,6 @@ const CrearCuenta = () => {
     }
     return true;
   }
-
-  useEffect(()=>{
-    //handleOnLoad()
-  },[])
 
   return (
     <div id='container'>

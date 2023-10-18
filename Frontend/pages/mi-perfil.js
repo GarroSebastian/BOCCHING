@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import styles from "./mi-perfil.module.css";
 import { Zoom } from "../extra/zoom.js"
 import Lateral from "../components/lateral.js"
+import UsuarioApi from "../api/usuario";
 
 const MiPerfil = () => {
   const [pag, setPag] = useState(1);
@@ -12,19 +13,19 @@ const MiPerfil = () => {
   const router = useRouter();
 
   const defaultUsuario = {
-    nombres: 'Adrián',
-    apellidos: 'Duarte',
-    correo: '20200711@aloe.ulima.edu.pe',
+    nombres: '',
+    apellidos: '',
+    correo: '',
     genero: 0,
-    nacimiento: '2002-12-27',
-    edad: 20,
-    apodo: 'Adri888',
+    nacimiento: '',
+    edad: 0,
+    apodo: '',
     contrasena: '',
     foto: '',
     facultad: -1,
-    carrera: 'Ingeniería de Sistemas',
-    especialidad: 'Desarrollo de Videojuegos',
-    descripcion: 'Holaaaaaa',
+    carrera: '',
+    especialidad: '',
+    descripcion: '',
     mostrarNombre: true
   }
   const [usuario, setUsuario] = useState(defaultUsuario);
@@ -51,6 +52,15 @@ const MiPerfil = () => {
           reader.readAsDataURL(file);
       }
   }
+
+  const handleOnLoad = async() => {
+    console.log(UsuarioApi.findCurrent())
+    //setUsuario()
+  }
+
+  useEffect(() => {
+    handleOnLoad();
+  }, [])
   
   return (
     <div id='container'>
