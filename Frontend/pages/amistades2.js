@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import { useRouter } from "next/router";
 import styles from "./amistades2.module.css";
+import { useState, useEffect } from 'react';
 
 const Amistades2 = () => {
   const router = useRouter();
@@ -17,6 +18,31 @@ const Amistades2 = () => {
     router.push("/amistades1");
   }, [router]);
 
+  const defaultUsuario = {
+    nombres: '',
+    apellidos: '',
+    correo: '',
+    genero: 0,
+    nacimiento: '',
+    edad: 0,
+    apodo: '',
+    contrasena: '',
+    foto: '',
+    facultad: -1,
+    carrera: '',
+    especialidad: '',
+    descripcion: '',
+    mostrarNombre: true,
+    //Agregue universidad
+    universidad:'',
+    ejemplo:''
+  }
+  const [usuario, setUsuario] = useState(defaultUsuario);
+
+  const onClickChat = useCallback(() => {
+    router.push("//mensajes2");
+  }, [router]);
+
   return (
     <div className={styles.amistades2}>
       <div className={styles.general}>General</div>
@@ -26,45 +52,99 @@ const Amistades2 = () => {
       <div className={styles.frameParent}>
         <div className={styles.nombresParent}>
           <div className={styles.nombres}>Nombres:</div>
-          <div className={styles.frameChild} />
-          <div className={styles.nombre1Nombre}>Nombre 1 Nombre 2</div>
+          <div className={styles.frameChild}>
+          <input className={styles.dato} type="text" id="nombres" value={usuario.nombres} onChange={e => setUsuario({...usuario,nombres: e.target.value})}></input>
+          </div>
+          {
+            //<div className={styles.nombre1Nombre}>Nombre 1 Nombre 2</div>
+          }
+          
         </div>
         <div className={styles.nombresParent}>
           <div className={styles.nombres}>Género:</div>
-          <div className={styles.frameChild} />
-          <div className={styles.gneroEjemplo}>Género ejemplo</div>
+          <div className={styles.frameChild}>
+            <select className={styles.datoGenero} id="genero" value={usuario.genero} onChange={e => setUsuario({...usuario,genero: value})}>
+                <option value={-1}>Selecciona una opción</option>
+                <option value={0}>Masculino</option>
+                <option value={1}>Femenino</option>
+                <option value={2}>Otro</option>
+                <option value={3}>Prefiero no decirlo</option>
+            </select>
+          </div>
+          {
+            //<div className={styles.gneroEjemplo}>Género ejemplo</div>
+          }
         </div>
         <div className={styles.nombresParent}>
           <div className={styles.nombres}>Facultad:</div>
-          <div className={styles.frameChild} />
-          <div className={styles.gneroEjemplo}>Facultad ejemplo</div>
+          <div className={styles.frameChild}>
+          <select className={styles.datoGenero} id="facultad" value={usuario.facultad} onChange={e => setUsuario({...usuario,facultad: value})}>
+              <option value={-1}>Selecciona una opción</option>
+              <option value={0}>Estudios Generales</option>
+              <option value={1}>Facultad de Arquitectura</option>
+              <option value={2}>Facultad de Ciencias Empresariales y Económicas</option>
+              <option value={3}>Facultad de Comunicación</option>
+              <option value={4}>Facultad de Derecho</option>
+              <option value={5}>Facultad de Ingeniería</option>
+              <option value={6}>Facultad de Psicología</option>
+            </select>
+          </div>
+          {
+            //<div className={styles.gneroEjemplo}>Facultad ejemplo</div>
+          }
         </div>
         <div className={styles.nombresParent}>
-          <div className={styles.nombres}>Universidad</div>
-          <div className={styles.frameChild} />
-          <div className={styles.gneroEjemplo}>Universidad ejemplo</div>
+          <div className={styles.nombres}>Universidad:</div>
+          <div className={styles.frameChild}>
+            <select className={styles.datoGenero} id="facultad" value={usuario.universidad} onChange={e => setUsuario({...usuario,universidad: value})}>
+              <option value={-1}>Selecciona una opción</option>
+              <option value={0}>Universidad Ulima</option>
+              <option value={1}>Universidad nacional mayor de san marcos</option>
+              <option value={2}>Pacifico</option>
+            </select>
+          </div>
+          {
+            //<div className={styles.gneroEjemplo}>Universidad ejemplo</div>
+          }
         </div>
       </div>
       <div className={styles.frameGroup}>
         <div className={styles.nombresParent}>
           <div className={styles.nombres}>Apellidos:</div>
-          <div className={styles.frameChild} />
-          <div className={styles.gneroEjemplo}>Apellido 1 Apellido 2</div>
+          <div className={styles.frameChild}>
+            <input className={styles.dato} type="text" id="apellidos" value={usuario.apellidos} onChange={e => setUsuario({...usuario,apellidos: e.target.value})}></input>
+          </div>
+          {
+            //<div className={styles.gneroEjemplo}>Apellido 1 Apellido 2</div>
+            //<input className={styles.dato} type="text" id="nombres" value={usuario.nombres} onChange={e => setUsuario({...usuario,nombres: e.target.value})}></input>
+          }
         </div>
         <div className={styles.nombresParent}>
           <div className={styles.nombres}>Carrera:</div>
-          <div className={styles.frameChild} />
-          <div className={styles.carreraEjemplo}>Carrera ejemplo</div>
+          <div className={styles.frameChild}>
+            <input className={styles.dato} type="text" id="nombres" value={usuario.nombres} onChange={e => setUsuario({...usuario,carrera: e.target.value})}></input>
+          </div>
+          {
+            //<div className={styles.carreraEjemplo}>Carrera ejemplo</div>
+          }
         </div>
         <div className={styles.nombresParent}>
           <div className={styles.nombres}>Especialidad:</div>
-          <div className={styles.frameChild} />
-          <div className={styles.especialidadEjemplo}>Especialidad ejemplo</div>
+          <div className={styles.frameChild}>
+            <input className={styles.dato} type="text" id="nombres" value={usuario.nombres} onChange={e => setUsuario({...usuario,especialidad: e.target.value})}></input>
+          </div>
+          {
+            //<div className={styles.especialidadEjemplo}>Especialidad ejemplo</div>
+          }
         </div>
         <div className={styles.nombresParent}>
           <div className={styles.nombres}>Ejemplo:</div>
-          <div className={styles.frameChild} />
-          <div className={styles.especialidadEjemplo}>Ejemplo</div>
+          <div className={styles.frameChild}>
+            <input className={styles.dato} type="text" id="nombres" value={usuario.ejemplo} onChange={e => setUsuario({...usuario,especialidad: e.target.value})}></input>
+          </div>
+          {
+            //<div className={styles.especialidadEjemplo}>Ejemplo</div>
+          }
         </div>
       </div>
       <div className={styles.igualdadDeDatos}>Igualdad de datos</div>
@@ -78,16 +158,33 @@ const Amistades2 = () => {
       <div className={styles.amistades2Child4} />
       <div className={styles.ellipseDiv} />
       <img className={styles.groupIcon} alt="" src="/group-32.svg" />
-      <div className={styles.nombreapodo}>Nombre/Apodo</div>
-      <div className={styles.amistades2Child5} />
-      <img className={styles.amistades2Child6} alt="" src="/group-1351.svg" />
+
+            <div className={styles.nombreapodo}>
+              {
+                usuario.mostrarNombre?
+                  <p>Nombre: {usuario.nombres}</p>
+                :
+                  <p>Apodo: {usuario.apodo}</p>
+              }
+            <button onClick={e => setUsuario({...usuario,mostrarNombre: !usuario.mostrarNombre})} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
+            </div>
+            
+      
+      <div className={styles.amistades2Child5} onClick={onClickChat}/>
+      
+      <img className={styles.amistades2Child6} alt="" src="/group-1351.svg" onClick={onClickChat}/>
       <div className={styles.descripccin}>Descripcción</div>
       <div className={styles.descripcinAModoDeEjemploWrapper}>
         <div className={styles.descripcinAModoContainer}>
-          <p className={styles.descripcinAModo}>
+          {
+            /*
+            <p className={styles.descripcinAModo}>
             Descripción a modo de ejemplo que
-          </p>
-          <p className={styles.descripcinAModo}>el usuario podrá escribir.</p>
+            </p>
+            <p className={styles.descripcinAModo}>el usuario podrá escribir.</p>
+            */
+          }
+          <textarea className={styles.datoDescripcion} id="descripcion" value={usuario.descripcion} onChange={e => setUsuario({...usuario,descripcion: e.target.value})}></textarea>
         </div>
       </div>
       <div className={styles.amistades2Child7} />
