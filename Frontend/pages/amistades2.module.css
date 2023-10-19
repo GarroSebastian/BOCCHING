@@ -960,22 +960,6 @@ Se agrego estilos
   width: 95%;
 }
 
-.datoGenero{
-  border: none; /* Oculta todos los bordes */
-  background-color: transparent; /* Para ocultar el fondo si es necesario */
-  margin-top: 0.5%;
-  margin-left: -0.5%;
-  font-size: 15px;
-  width: 98%;
-}
-.datoEspecialidad{
-  border: none; /* Oculta todos los bordes */
-  background-color: transparent; /* Para ocultar el fondo si es necesario */
-  margin-top: -10%;
-  margin-left: -0.5%;
-  font-size: 15px;
-  width: 95%;
-}
 .datoDescripcion{
   border: none; /* Oculta todos los bordes */
   background-color: transparent; /* Para ocultar el fondo si es necesario */
