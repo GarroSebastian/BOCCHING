@@ -119,10 +119,6 @@ const UserController = {
         const dataUpdate = req.body;
         delete dataUpdate.contrasena;
 
-        if(req.file){
-            dataUpdate.imagePath = req.file.filename || "";
-        }
-
         User.find({ $or: [{apodo: dataUpdate.apodo.toLowerCase()}, {correo: dataUpdate.correo.toLowerCase()}] }).then((users)=>{
 
             var sameData = false;

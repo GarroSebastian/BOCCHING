@@ -32,23 +32,37 @@ const post = async (endpoint, request) => {
     }
 }
 
-const put = async (endpoint,request) => {
+const put = async (endpoint, request, token) => {
     try {
         const url = URI.concat(endpoint);
 
-        return await axios.put(url,request);
+        const authAxios = axios.create({
+            baseURL: URI,
+            headers: {
+                Authorization: token
+            }
+        })
+
+        return await authAxios.put(url, request);
     } catch(err) {
         console.error(err);
         return null;
     }
 }
 
-const remove = async (endpoint) => {
+const remove = async (endpoint, token) => {
 
     try {
         const url = URI.concat(endpoint);
 
-        return await axios.delete(url);
+        const authAxios = axios.create({
+            baseURL: URI,
+            headers: {
+                Authorization: token
+            }
+        })
+
+        return await authAxios.delete(url);
     } catch(err) {
         console.error(err);
         return null;

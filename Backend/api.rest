@@ -1,8 +1,10 @@
+## Usuarios
+
 POST http://localhost:3700/login
 Content-Type: application/json
 
 {
-    "correo": "correo",
+    "correo": "correo2",
     "contrasena": "contrasena"
 }
 
@@ -12,11 +14,11 @@ POST http://localhost:3700/register
 Content-Type: application/json
 
 {
-    "nombre": "nombre",
+    "nombre": "nombre2",
     "apellidos": "apellidos",
-    "correo": "correo",
+    "correo": "correo2",
     "contrasena": "contrasena",
-    "apodo": "apodo",
+    "apodo": "apodo2",
     "id_genero": "id_genero",
     "nacimiento": "nacimiento",
     "foto": "foto",
@@ -30,7 +32,7 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3700/usuario
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmM0MjQ2YTcwMDdiOGNhOGQ4ZDU4MyIsImlhdCI6MTY5NzM5OTM3MCwiZXhwIjoxNjk3NDg1NzcwfQ.jHz8RSHCFjKCvp41jY2AlgdSFRSHAwCZpcVSGjIStwg
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzA1Y2EwZGZiYzFmMjcwN2MwMTBjMSIsImlhdCI6MTY5NzY2ODI2NSwiZXhwIjoxNjk3NzU0NjY1fQ.VRXBl_0PKvC2l6THSPDtruQSzf7VqMh3WV5B3X4SVhU
 
 ###
 
@@ -58,3 +60,28 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmM0MjQ2YTcwMDdi
     "descripcion": "descripcion",
     "mostrar_nombre": true
 }
+
+### Solicitudes
+
+POST http://localhost:3700/save-solicitud/65305c0adfbc1f2707c010bb
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzA1Y2EwZGZiYzFmMjcwN2MwMTBjMSIsImlhdCI6MTY5NzY3MTc2NiwiZXhwIjoxNjk3NzU4MTY2fQ.0mbLEn_m5xVhMLRlLN0xBmR9XtFxsThBlxg_Z8ucC2Q
+Content-Type: application/json
+
+{
+    "tipo": 0
+}
+
+###
+
+DELETE http://localhost:3700/delete-solicitud/65305ca0dfbc1f2707c010c1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzA1YzBhZGZiYzFmMjcwN2MwMTBiYiIsImlhdCI6MTY5NzY2ODEyMywiZXhwIjoxNjk3NzU0NTIzfQ.EuapJXhRsqkCSyH8mXJYOlWrC93FMz8I3Y5sTh11vF0
+
+###
+
+GET http://localhost:3700/getAllSolicitudes
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzA1Y2EwZGZiYzFmMjcwN2MwMTBjMSIsImlhdCI6MTY5NzY3MTc2NiwiZXhwIjoxNjk3NzU4MTY2fQ.0mbLEn_m5xVhMLRlLN0xBmR9XtFxsThBlxg_Z8ucC2Q
+
+###
+
+GET http://localhost:3700/getSolicitud/65305c0adfbc1f2707c010bb
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzA1Y2EwZGZiYzFmMjcwN2MwMTBjMSIsImlhdCI6MTY5NzY3MTc2NiwiZXhwIjoxNjk3NzU4MTY2fQ.0mbLEn_m5xVhMLRlLN0xBmR9XtFxsThBlxg_Z8ucC2Q

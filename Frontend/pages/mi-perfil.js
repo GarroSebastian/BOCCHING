@@ -66,7 +66,7 @@ const MiPerfil = () => {
     var token = localStorage.getItem("token");
 
 
-    UsuarioApi.findAll(token).then((user)=>{
+    UsuarioApi.findUser(token).then((user)=>{
 
       console.log(user.data);
     });

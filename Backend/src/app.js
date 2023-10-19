@@ -4,6 +4,7 @@ const cors = require("cors");
 const path = require("path");
 
 const UserRoutes = require("./routes/user.routes");
+const RequestRoutes = require("./routes/request.routes");
 
 const app = express();
 
@@ -24,5 +25,6 @@ app.use(cors(corsOptions));
 
 //rutas
 app.use(UserRoutes);
+app.use(RequestRoutes);
 
 module.exports = app;
