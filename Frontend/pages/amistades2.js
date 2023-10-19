@@ -34,8 +34,7 @@ const Amistades2 = () => {
     descripcion: 'Hola estoy usando Bocching.',
     mostrarNombre: true,
     //Agregue universidad
-    universidad:'Universidad de Lima',
-    ejemplo:'Programar'
+    universidad:'Universidad de Lima'
   }
   const [usuario, setUsuario] = useState(defaultUsuario);
 
@@ -117,15 +116,7 @@ const Amistades2 = () => {
             //<div className={styles.especialidadEjemplo}>Especialidad ejemplo</div>
           }
         </div>
-        <div className={styles.nombresParent}>
-          <div className={styles.nombres}>Ejemplo:</div>
-          <div className={styles.frameChild}>
-            <div className={styles.dato}>{usuario.ejemplo}</div>
-          </div>
-          {
-            //<div className={styles.especialidadEjemplo}>Ejemplo</div>
-          }
-        </div>
+        
       </div>
       <div className={styles.igualdadDeDatos}>Igualdad de datos</div>
       <div className={styles.igualdadDeDatos1}>Igualdad de datos</div>
