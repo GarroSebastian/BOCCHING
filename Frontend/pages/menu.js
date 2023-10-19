@@ -48,6 +48,7 @@ const Menu = () => {
           <div className={styles.frameInner} />
           <div className={styles.miPerfil}>Amistades</div>
           <div className={styles.ellipseDiv} />
+          <img className={styles.vectorIcon} alt="" src="/vector34.svg" />
         </div>
         <div
           className={styles.rectangleContainer}
@@ -56,6 +57,7 @@ const Menu = () => {
           <div className={styles.frameInner} />
           <div className={styles.miPerfil}>Mensajes</div>
           <div className={styles.frameChild1} />
+          <img className={styles.vectorIcon} alt="" src="/group-16.svg" />
         </div>
         <div className={styles.frameDiv} onClick={onFrameContainer3Click}>
           <div className={styles.frameChild2} />
@@ -75,13 +77,12 @@ const Menu = () => {
           <div className={styles.frameChild7} />
           <img className={styles.xmlid273Icon} alt="" src="/xmlid-2733.svg" />
         </div>
-        <img className={styles.vectorIcon2} alt="" src="/vector34.svg" />
         <div className={styles.menuChild1} />
+        
         <img className={styles.vectorIcon3} alt="" src="/vector13.svg" />
         <img className={styles.vectorIcon4} alt="" src="/vector14.svg" />
         <img className={styles.vectorIcon5} alt="" src="/vector15.svg" />
         <img className={styles.vectorIcon6} alt="" src="/vector16.svg" />
-        <img className={styles.groupIcon} alt="" src="/group-16.svg" />
         <img
           className={styles.transhumansAstroIcon}
           alt=""

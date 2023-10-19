@@ -1,25 +1,41 @@
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { useRouter } from "next/router";
 import styles from "./solicitudes1.module.css";
 import { useState } from "react";
 import { Zoom } from "../extra/zoom.js";
+import UsuarioApi from "../api/usuario";
+//Solicitudes Recibidas
 
 const Solicitudes1 = () => {
   Zoom()
+  
+
+
+  const SolicitudRecibida = {
+    emisor : '',
+    receptor : '',
+    tipo: Number,
+    date_cambio: Date
+  }
   const router = useRouter();
   
-    const array1 = ["nombre1", "apodo1", "fecha1"];
-    const array2 = ["nombre2", "apodo2", "fecha2"];
-    const array3 = ["nombre3", "apodo3", "fecha3"];
-    const array4 = ["nombre4", "apodo4", "fecha4"];
+    const array1 = ["nombre1 ", "apodo1 ", "fecha1"];
+    const array2 = ["nombre2 ", "apodo2 ", "fecha2"];
+    const array3 = ["nombre3 ", "apodo3 ", "fecha3"];
+    const array4 = ["nombre4 ", "apodo4 ", "fecha4"];
   
-    const [solicitudesRecibidas, setSolicitudesRecibidas] = useState({
-      solicitud1: array1,
-      solicitud2: array2,
-      solicitud3: array3,
-      solicitud4: array4,
-    });
+    const [solicitudesRecibidas, setSolicitudesRecibidas] = useState([]);
   
+    useEffect(() =>{
+      fetch(UsuarioApi.SolicitudRecibida)
+      .then((response) => response.json())
+      .then((data) => {
+        setSolicitudesRecibidas(data);
+      })
+      .catch((error) => {
+        console.log("Error", error);
+      });
+      }, []);
 
   const onRectangleClick = useCallback(() => {
     router.push("/solicitudes4");
