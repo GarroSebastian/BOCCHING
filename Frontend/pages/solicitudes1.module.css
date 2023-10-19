@@ -45,6 +45,8 @@
   width: 1159px;
   height: 601px;
 }
+
+
 .vectorIcon,
 .vectorIcon1,
 .vectorIcon2,
@@ -120,10 +122,10 @@
   top: 411px;
   left: 1233px;
   font-size: var(--subtitulos2-size);
-  color: var(--color-white);
+  color: whitesmoke;
   display: inline-block;
   width: 105px;
-  height: 20px;
+  height: 5px;
 }
 .aceptar,
 .enviadas,
@@ -136,10 +138,10 @@
   top: 411px;
   left: 1062px;
   font-size: var(--subtitulos2-size);
-  color: var(--color-white);
+  color: whitesmoke;
   display: inline-block;
   width: 126px;
-  height: 20px;
+  height: 5px;
 }
 .enviadas,
 .ocultas {

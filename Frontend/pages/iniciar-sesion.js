@@ -15,26 +15,6 @@ const IniciarSesion = () => {
   const [Credenciales, setCredenciales] = useState(defaultCredenciales);
   const router = useRouter();
 
- /* EJEMPLO LOGIN CON BACKEND
- const loginHttp = async function(usuario,password){
-
-    const response = await fetch(
-      "/*BACKEND ejemplo:*/ /* http://localhost:8000/endpoints/login",
-      {
-        method:"POST",
-        body: JSON.stringify(
-          {
-            username : username,
-            password : password
-          }
-        )
-      }
-    )
-    const data = await.response.json()
-
-    return data.error
-  } */
-
   const HandleLogin = async () => {
     const res = await UsuarioApi.login(Credenciales)
     if (res != null){
