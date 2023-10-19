@@ -1,8 +1,9 @@
 import { useCallback } from "react";
 import { useRouter } from "next/router";
 import { useState, useEffect } from 'react';
+import pako from 'pako';
+import { Zoom } from "../extra/zoom.js";
 import styles from "./mi-perfil.module.css";
-import { Zoom } from "../extra/zoom.js"
 import Lateral from "../components/lateral.js"
 import UsuarioApi from "../api/usuario";
 
@@ -13,12 +14,11 @@ const MiPerfil = () => {
   const router = useRouter();
 
   const defaultUsuario = {
-    nombres: '',
+    nombre: '',
     apellidos: '',
     correo: '',
-    genero: 0,
+    id_genero: 0,
     nacimiento: '',
-    edad: 0,
     apodo: '',
     contrasena: '',
     foto: '',
@@ -26,7 +26,7 @@ const MiPerfil = () => {
     carrera: '',
     especialidad: '',
     descripcion: '',
-    mostrarNombre: true
+    mostrar_nombre: true
   }
   const [usuario, setUsuario] = useState(defaultUsuario);
   
@@ -61,35 +61,34 @@ const MiPerfil = () => {
       }
   }
 
+  const Guardar = async() => {
+    UsuarioApi.updateCurrent(usuario).then((user)=>{
+      handleOnLoad()
+      alert("¡Cambios guardados!")
+    })
+    /*UsuarioApi.updateCurrent({...usuario, foto: pako.Deflate(usuario.foto, {to: 'string'})}).then((user)=>{
+      handleOnLoad()
+      alert("¡Cambios guardados!")
+    })*/
+  }
+  
   const handleOnLoad = async() => {
-
-    var token = localStorage.getItem("token");
-
-
-    UsuarioApi.findUser(token).then((user)=>{
+    //var token = localStorage.getItem("token");
+    /*UsuarioApi.findUser(token).then((user)=>{
 
       console.log(user.data);
-    });
-    
-    //console.log(UsuarioApi.findCurrent())
-    /*const requestOptions = {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmYyN2I4YTAyNzNmZjQ3ODY3ZGJiMCIsImlhdCI6MTY5NzU4OTE3OCwiZXhwIjoxNjk3Njc1NTc4fQ.jAGQLCbiMXaspWoRBi2sEm4naSq8aN31xadV_OFAhjE`,
-        'Content-Type': 'application/json',
-      },
-    };
-    fetch('http://localhost:3700/usuario', requestOptions).then(res => {
-      if(!response.ok){
-        throw new Error('Error en la solicitud');
-      }
-      return response.json();
-    }).then(data => {
-      console.log(data);
-    }).catch(error => {
-      console.error(error);
     });*/
-    //setUsuario()
+
+    UsuarioApi.findCurrent().then((user)=>{
+      const aux = user.data.usuario;
+      setUsuario(aux)
+      /*if(aux.foto!=''){
+        setUsuario({...aux, foto: pako.Deflate(aux.foto, {to: 'string'})})
+      }else{
+        setUsuario(aux)
+      }*/
+    });
+
   }
 
   useEffect(() => {
@@ -127,7 +126,7 @@ const MiPerfil = () => {
           <div className={styles.ejemplodecorreocorreoejemplo}>{usuario.correo}</div>
           <div className={styles.cdigoUniversitario}>Código Universitario:</div>
           <div className={styles.codigouniversitarioejemplo}>{usuario.correo.substring(0,8)}</div>
-          <div className={styles.bchadri888}>BchAdri888 (falta)</div>
+          <div className={styles.bchadri888}>{usuario._id}</div>
           <div className={styles.idbocching}>IdBocching:</div>
           <div className={styles.edadejemploEnAos}>{usuario.edad}</div>
           <div className={styles.edad}>Edad:</div>
@@ -136,7 +135,7 @@ const MiPerfil = () => {
           </div>
           <div className={styles.nombres}>Nombres:</div>
           <div className={styles.miperfil1Child4}>
-            <input className={styles.dato} type="text" id="nombres" value={usuario.nombres} onChange={e => setUsuario({...usuario,nombres: e.target.value})}></input>
+            <input className={styles.dato} type="text" id="nombre" value={usuario.nombre} onChange={e => setUsuario({...usuario,nombre: e.target.value})}></input>
           </div>
           <div className={styles.apellidos}>Apellidos:</div>
           <div className={styles.miperfil1Child5}>
@@ -148,7 +147,7 @@ const MiPerfil = () => {
           </div>
           <div className={styles.gnero}>Género:</div>
           <div className={styles.gneroEjemploParent}>
-            <select className={styles.datoGenero} id="genero" value={usuario.genero} onChange={e => setUsuario({...usuario,genero: e.target.value})}>
+            <select className={styles.datoGenero} id="genero" value={usuario.id_genero} onChange={e => setUsuario({...usuario,id_genero: e.target.value})}>
                 <option value={0}>Masculino</option>
                 <option value={1}>Femenino</option>
                 <option value={2}>Otro</option>
@@ -184,13 +183,13 @@ const MiPerfil = () => {
             <div className={styles.nombreapodo}>
               <p>Mostrar mi</p>
               {
-                usuario.mostrarNombre?
-                  <p>Nombre: {usuario.nombres}</p>
+                usuario.mostrar_nombre?
+                  <p>Nombre: {usuario.nombre}</p>
                 :
                   <p>Apodo: {usuario.apodo}</p>
               }
             </div>
-            <button onClick={e => setUsuario({...usuario,mostrarNombre: !usuario.mostrarNombre})} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
+            <button onClick={e => setUsuario({...usuario,mostrar_nombre: !usuario.mostrar_nombre})} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
           </div>
           <div className={styles.ellipseDiv}>
             <img id="imagenSeleccionada" src={usuario.foto} alt="Imagen seleccionada" style={{display: "none", maxWidth: "90%", maxHeight: "90%", borderRadius: "20%"}} />
@@ -211,6 +210,12 @@ const MiPerfil = () => {
           <img className={styles.vectorIcon2} alt="" src="/vector27.svg" />
           <img className={styles.vectorIcon3} alt="" src="/vector28.svg" />
           <img className={styles.vectorIcon4} alt="" src="/vector29.svg" />
+          <div className={styles.miperfil1Child11} style={{top: "1395px", left: "910px"}}>
+            <div className={styles.nombreapodo}>
+              <p>Guardar</p>
+            </div>
+            <button onClick={Guardar} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
+          </div>
         </div>
       :
         <>

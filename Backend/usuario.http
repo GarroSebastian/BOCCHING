@@ -30,7 +30,7 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3700/usuario
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmYyN2I4YTAyNzNmZjQ3ODY3ZGJiMCIsImlhdCI6MTY5NzU4OTE3OCwiZXhwIjoxNjk3Njc1NTc4fQ.jAGQLCbiMXaspWoRBi2sEm4naSq8aN31xadV_OFAhjE
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzBhNWIyNjBjOGExYmNiNmQxNjVlYSIsImlhdCI6MTY5NzY4Njk2MywiZXhwIjoxNjk3NzczMzYzfQ.Jj3MdYHJgStYHsQOs4MNZhNYzcfzqhooYSVPg8gRRiQ
 
 ###
 
@@ -41,20 +41,20 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmMyMjg3NTA4MWVi
 
 PUT http://localhost:3700/update-user
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmM0MjQ2YTcwMDdiOGNhOGQ4ZDU4MyIsImlhdCI6MTY5NzM5OTM3MCwiZXhwIjoxNjk3NDg1NzcwfQ.jHz8RSHCFjKCvp41jY2AlgdSFRSHAwCZpcVSGjIStwg
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzBhNWIyNjBjOGExYmNiNmQxNjVlYSIsImlhdCI6MTY5NzY4Njk2MywiZXhwIjoxNjk3NzczMzYzfQ.Jj3MdYHJgStYHsQOs4MNZhNYzcfzqhooYSVPg8gRRiQ
 
 {
-    "nombre": "nombre",
-    "apellidos": "apellidos",
-    "correo": "correo",
-    "contrasena": "contrasena",
-    "apodo": "apodo",
-    "id_genero": "id_genero",
-    "nacimiento": "nacimiento",
-    "foto": "foto",
-    "carrera": "carrera",
-    "facultad": "facultad",
-    "especialidad": "especialidad",
-    "descripcion": "descripcion",
-    "mostrar_nombre": true
+    "nombre": "Hitori",
+    "apellidos": "Bocchi",
+    "correo": "90909090@aloe.ulima.edu.pe",
+    "contrasena": "$2b$08$0jojNeRN9nCX/0/LtAs4NuPly5lPn/TdspMMk0WKO9Ix9DzFPFY4K",
+    "apodo": "GuitarHero",
+    "id_genero": "1",
+    "nacimiento": "2004-02-10",
+    "foto": "",
+    "carrera": "Música",
+    "facultad": "0",
+    "especialidad": "Guitarra",
+    "descripcion": "Sumigod",
+    "mostrar_nombre": false
 }
