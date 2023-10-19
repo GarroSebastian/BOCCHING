@@ -227,7 +227,7 @@
   top: 40.75%;
   right: 88.19%;
   bottom: 55.88%;
-  left: 8.61%;
+  left: 7.5%;
   max-width: 100%;
   overflow: hidden;
   max-height: 100%;
@@ -252,7 +252,13 @@
 .vectorIcon4 {
   top: 91.29px;
 }
-.groupIcon,
+.groupIcon{
+  position: absolute;
+  top: 60.79px;
+  left: 65.99px;
+  width: 31.03px;
+  height: 12.71px;
+}
 .vectorIcon5,
 .vectorIcon6 {
   position: absolute;
