@@ -19,23 +19,23 @@ const Amistades2 = () => {
   }, [router]);
 
   const defaultUsuario = {
-    nombres: '',
-    apellidos: '',
+    nombres: 'Adrian',
+    apellidos: 'Duarte',
     correo: '',
-    genero: 0,
+    genero: 'Masculino',
     nacimiento: '',
     edad: 0,
-    apodo: '',
+    apodo: 'Adri',
     contrasena: '',
     foto: '',
-    facultad: -1,
-    carrera: '',
-    especialidad: '',
-    descripcion: '',
+    facultad: 'Facultad de ingienieria',
+    carrera: 'Ingienieria de sistemas',
+    especialidad: 'Ingienieria de software',
+    descripcion: 'Hola estoy usando Bocching.',
     mostrarNombre: true,
     //Agregue universidad
-    universidad:'',
-    ejemplo:''
+    universidad:'Universidad de Lima',
+    ejemplo:'Programar'
   }
   const [usuario, setUsuario] = useState(defaultUsuario);
 
@@ -53,7 +53,7 @@ const Amistades2 = () => {
         <div className={styles.nombresParent}>
           <div className={styles.nombres}>Nombres:</div>
           <div className={styles.frameChild}>
-          <input className={styles.dato} type="text" id="nombres" value={usuario.nombres} onChange={e => setUsuario({...usuario,nombres: e.target.value})}></input>
+          <div className={styles.dato}>{usuario.nombres}</div>
           </div>
           {
             //<div className={styles.nombre1Nombre}>Nombre 1 Nombre 2</div>
@@ -63,13 +63,7 @@ const Amistades2 = () => {
         <div className={styles.nombresParent}>
           <div className={styles.nombres}>Género:</div>
           <div className={styles.frameChild}>
-            <select className={styles.datoGenero} id="genero" value={usuario.genero} onChange={e => setUsuario({...usuario,genero: value})}>
-                <option value={-1}>Selecciona una opción</option>
-                <option value={0}>Masculino</option>
-                <option value={1}>Femenino</option>
-                <option value={2}>Otro</option>
-                <option value={3}>Prefiero no decirlo</option>
-            </select>
+            <div className={styles.dato}>{usuario.genero}</div>
           </div>
           {
             //<div className={styles.gneroEjemplo}>Género ejemplo</div>
@@ -78,16 +72,7 @@ const Amistades2 = () => {
         <div className={styles.nombresParent}>
           <div className={styles.nombres}>Facultad:</div>
           <div className={styles.frameChild}>
-          <select className={styles.datoGenero} id="facultad" value={usuario.facultad} onChange={e => setUsuario({...usuario,facultad: value})}>
-              <option value={-1}>Selecciona una opción</option>
-              <option value={0}>Estudios Generales</option>
-              <option value={1}>Facultad de Arquitectura</option>
-              <option value={2}>Facultad de Ciencias Empresariales y Económicas</option>
-              <option value={3}>Facultad de Comunicación</option>
-              <option value={4}>Facultad de Derecho</option>
-              <option value={5}>Facultad de Ingeniería</option>
-              <option value={6}>Facultad de Psicología</option>
-            </select>
+            <div className={styles.dato}>{usuario.facultad}</div>
           </div>
           {
             //<div className={styles.gneroEjemplo}>Facultad ejemplo</div>
@@ -96,12 +81,7 @@ const Amistades2 = () => {
         <div className={styles.nombresParent}>
           <div className={styles.nombres}>Universidad:</div>
           <div className={styles.frameChild}>
-            <select className={styles.datoGenero} id="facultad" value={usuario.universidad} onChange={e => setUsuario({...usuario,universidad: value})}>
-              <option value={-1}>Selecciona una opción</option>
-              <option value={0}>Universidad Ulima</option>
-              <option value={1}>Universidad nacional mayor de san marcos</option>
-              <option value={2}>Pacifico</option>
-            </select>
+            <div className={styles.dato}>{usuario.universidad}</div>
           </div>
           {
             //<div className={styles.gneroEjemplo}>Universidad ejemplo</div>
@@ -112,7 +92,7 @@ const Amistades2 = () => {
         <div className={styles.nombresParent}>
           <div className={styles.nombres}>Apellidos:</div>
           <div className={styles.frameChild}>
-            <input className={styles.dato} type="text" id="apellidos" value={usuario.apellidos} onChange={e => setUsuario({...usuario,apellidos: e.target.value})}></input>
+            <div className={styles.dato}>{usuario.apellidos}</div>
           </div>
           {
             //<div className={styles.gneroEjemplo}>Apellido 1 Apellido 2</div>
@@ -122,7 +102,7 @@ const Amistades2 = () => {
         <div className={styles.nombresParent}>
           <div className={styles.nombres}>Carrera:</div>
           <div className={styles.frameChild}>
-            <input className={styles.dato} type="text" id="nombres" value={usuario.nombres} onChange={e => setUsuario({...usuario,carrera: e.target.value})}></input>
+            <div className={styles.dato}>{usuario.carrera}</div>
           </div>
           {
             //<div className={styles.carreraEjemplo}>Carrera ejemplo</div>
@@ -131,7 +111,7 @@ const Amistades2 = () => {
         <div className={styles.nombresParent}>
           <div className={styles.nombres}>Especialidad:</div>
           <div className={styles.frameChild}>
-            <input className={styles.dato} type="text" id="nombres" value={usuario.nombres} onChange={e => setUsuario({...usuario,especialidad: e.target.value})}></input>
+            <div className={styles.dato}>{usuario.especialidad}</div>
           </div>
           {
             //<div className={styles.especialidadEjemplo}>Especialidad ejemplo</div>
@@ -140,7 +120,7 @@ const Amistades2 = () => {
         <div className={styles.nombresParent}>
           <div className={styles.nombres}>Ejemplo:</div>
           <div className={styles.frameChild}>
-            <input className={styles.dato} type="text" id="nombres" value={usuario.ejemplo} onChange={e => setUsuario({...usuario,especialidad: e.target.value})}></input>
+            <div className={styles.dato}>{usuario.ejemplo}</div>
           </div>
           {
             //<div className={styles.especialidadEjemplo}>Ejemplo</div>
@@ -184,7 +164,9 @@ const Amistades2 = () => {
             <p className={styles.descripcinAModo}>el usuario podrá escribir.</p>
             */
           }
-          <textarea className={styles.datoDescripcion} id="descripcion" value={usuario.descripcion} onChange={e => setUsuario({...usuario,descripcion: e.target.value})}></textarea>
+          <p className={styles.datoDescripcion}>
+          {usuario.descripcion}
+            </p>
         </div>
       </div>
       <div className={styles.amistades2Child7} />
