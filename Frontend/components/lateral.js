@@ -14,7 +14,7 @@ const Lateral = () => {
     }, [router]);
 
     const onGroupIconClick = useCallback(() => {
-        router.push("/mensajes1");
+        router.push("/mensajes");
     }, [router]);
     
     const onVectorIcon3Click = useCallback(() => {

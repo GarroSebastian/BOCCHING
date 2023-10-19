@@ -16,7 +16,7 @@ const Menu = () => {
   }, [router]);
 
   const onFrameContainer2Click = useCallback(() => {
-    router.push("/mensajes1");
+    router.push("/mensajes");
   }, [router]);
 
   const onFrameContainer3Click = useCallback(() => {
