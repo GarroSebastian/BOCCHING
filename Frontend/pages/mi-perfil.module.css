@@ -14,7 +14,7 @@
 .colecciones {
   position: absolute;
   top: 285px;
-  left: 588px;
+  left: 622px;
   font-size: var(--subttulos-size);
   pointer-events: none;
 }

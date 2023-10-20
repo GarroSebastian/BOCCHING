@@ -29,6 +29,7 @@ const MiPerfil = () => {
     mostrar_nombre: true
   }
   const [usuario, setUsuario] = useState(defaultUsuario);
+  const [edad, setEdad] = useState(0);
   
   const onRectangle11Click = useCallback(() => {
     router.push("/mi-perfil23");
@@ -61,11 +62,22 @@ const MiPerfil = () => {
       }
   }
 
+  const ValidarCuenta = () => {
+    //Datos obligatorios
+    if(usuario.nombre==''){
+      alert('No puedes dejar tu nombre vacío')
+      return false;
+    }
+    return true;
+  }
+  
   const Guardar = async() => {
-    UsuarioApi.updateCurrent(usuario).then((user)=>{
-      handleOnLoad()
-      alert("¡Cambios guardados!")
-    })
+    if(ValidarCuenta()){
+      UsuarioApi.updateCurrent(usuario).then((user)=>{
+        handleOnLoad()
+        alert("¡Cambios guardados!")
+      })
+    }
     /*UsuarioApi.updateCurrent({...usuario, foto: pako.Deflate(usuario.foto, {to: 'string'})}).then((user)=>{
       handleOnLoad()
       alert("¡Cambios guardados!")
@@ -87,6 +99,10 @@ const MiPerfil = () => {
       }else{
         setUsuario(aux)
       }*/
+      const f = new Date(aux.nacimiento)
+      const today = new Date()
+      const dif = today.setDate(today.getDate()+1) - f;
+      setEdad(Math.floor(dif/(1000*60*60*24*365.25)))
     });
 
   }
@@ -112,7 +128,7 @@ const MiPerfil = () => {
             src="/rectangle-29.svg"
             onClick={e => setPag(2)}
           />
-          <div className={styles.colecciones}>Colecciones</div>
+          <div className={styles.colecciones}>Gustos</div>
           <img className={styles.miperfil1Inner} alt="" src="/rectangle-161.svg" />
           <div className={styles.rectangleDiv} />
           <div className={styles.miperfil1Child1} />
@@ -128,7 +144,7 @@ const MiPerfil = () => {
           <div className={styles.codigouniversitarioejemplo}>{usuario.correo.substring(0,8)}</div>
           <div className={styles.bchadri888}>{usuario._id}</div>
           <div className={styles.idbocching}>IdBocching:</div>
-          <div className={styles.edadejemploEnAos}>{usuario.edad}</div>
+          <div className={styles.edadejemploEnAos}>{edad}</div>
           <div className={styles.edad}>Edad:</div>
           <div className={styles.estaInformacinNo}>
             **Esta información no se puede modificar
@@ -147,7 +163,7 @@ const MiPerfil = () => {
           </div>
           <div className={styles.gnero}>Género:</div>
           <div className={styles.gneroEjemploParent}>
-            <select className={styles.datoGenero} id="genero" value={usuario.id_genero} onChange={e => setUsuario({...usuario,id_genero: e.target.value})}>
+            <select className={styles.datoGenero} id="genero" value={usuario.id_genero} onChange={e => setUsuario({...usuario,id_genero: e.target.value})} style={{width: "100%"}}>
                 <option value={0}>Masculino</option>
                 <option value={1}>Femenino</option>
                 <option value={2}>Otro</option>
@@ -156,7 +172,7 @@ const MiPerfil = () => {
           </div>
           <div className={styles.facultad}>Facultad:</div>
           <div className={styles.facultadEjemplo}>
-            <select className={styles.datoGenero} id="facultad" value={usuario.facultad} onChange={e => actualizarFacultad(e.target.value)}>
+            <select className={styles.datoGenero} id="facultad" value={usuario.facultad} onChange={e => actualizarFacultad(e.target.value)} style={{width: "101%"}}>
               <option value={-1}>Selecciona una opción</option>
               <option value={0}>Estudios Generales</option>
               <option value={1}>Facultad de Arquitectura</option>
@@ -212,7 +228,7 @@ const MiPerfil = () => {
           <img className={styles.vectorIcon4} alt="" src="/vector29.svg" />
           <div className={styles.miperfil1Child11} style={{top: "1395px", left: "910px"}}>
             <div className={styles.nombreapodo}>
-              <p>Guardar</p>
+              <p style={{marginTop: "13px"}}>Guardar</p>
             </div>
             <button onClick={Guardar} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
           </div>

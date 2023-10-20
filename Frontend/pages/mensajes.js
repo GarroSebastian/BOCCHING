@@ -16,14 +16,16 @@ const Mensajes = () => {
   }
   const [mensajes, setMensajes] = useState([]);
   const defaultChat = {
+    idUsuario: "",
     nombre: "",
     texto: "",
     fecha: "2022",
     foto: ""
   }
   const [chats, setChats] = useState([]);
+  const [busqChat, setBusqChat] = useState("");
 
-  const [tokenConv, setTokenConv] = useState("");
+  const [idConv, setIdConv] = useState("");
 
   const onRectangleClick = useCallback(() => {
     router.push("/mensajes1");
@@ -33,15 +35,24 @@ const Mensajes = () => {
     router.push("/mensajes1");
   }, [router]);
 
+  const findChat = (id) => {
+    for(const item of chats){
+      if(item.idUsuario === id){
+        return item;
+      }
+    }
+    return null;
+  }
+  
   const handleOnLoad = () => {
-    setChats([{...defaultChat,nombre: "Adrián", texto: "hola"}, {...defaultChat,nombre: "Rodrigo", texto: "mob"}, {...defaultChat,nombre: "Camayo", texto: "AAAAA"}])
+    setChats([{...defaultChat,idUsuario: "1", nombre: "Adrián", texto: "hola"}, {...defaultChat,idUsuario: "2", nombre: "Rodrigo", texto: "mob"}, {...defaultChat,idUsuario: "3", nombre: "Camayo", texto: "AAAAA"}])
     setMensajes([
-      {...defaultMensaje,idEmisor: "1", idReceptor: "2", mensaje: "hola1"},
-      {...defaultMensaje,idEmisor: "2", idReceptor: "1", mensaje: "hola2"},
-      {...defaultMensaje,idEmisor: "1", idReceptor: "3", mensaje: "mob1"},
-      {...defaultMensaje,idEmisor: "3", idReceptor: "1", mensaje: "mob2"},
-      {...defaultMensaje,idEmisor: "1", idReceptor: "4", mensaje: "AAA1"},
-      {...defaultMensaje,idEmisor: "4", idReceptor: "1", mensaje: "AAA2"},
+      {...defaultMensaje,idEmisor: "0", idReceptor: "1", mensaje: "hola1"},
+      {...defaultMensaje,idEmisor: "1", idReceptor: "0", mensaje: "hola2"},
+      {...defaultMensaje,idEmisor: "0", idReceptor: "2", mensaje: "mob1"},
+      {...defaultMensaje,idEmisor: "2", idReceptor: "0", mensaje: "mob2"},
+      {...defaultMensaje,idEmisor: "0", idReceptor: "3", mensaje: "AAA1"},
+      {...defaultMensaje,idEmisor: "3", idReceptor: "0", mensaje: "AAA2"}
     ]);
   }
   
@@ -54,7 +65,7 @@ const Mensajes = () => {
       <div className={styles.mensajes2}>
         <div className={styles.mensajes2Item} />
         {
-          tokenConv!=""?
+          idConv!=""?
             <>
               <div className={styles.mensajes2Inner} />
               <div className={styles.daDeLa}>Día de la conversación</div>
@@ -81,7 +92,9 @@ const Mensajes = () => {
               <div className={styles.hora3}>Hora</div>
               <div className={styles.mensajes2Child9} />
               <div className={styles.mensajes2Child10} />
-              <div className={styles.escribirMensaje}>Escribir mensaje</div>
+              <div className={styles.escribirMensaje}>
+                <textarea></textarea>
+              </div>
               <div className={styles.mensajes2Child31} />
               <img className={styles.vectorIcon1} alt="" src="/vector6.svg" />
             </>
@@ -99,14 +112,17 @@ const Mensajes = () => {
             </>
         }
         <div className={styles.mensajes}>Mensajes</div>
-        <div className={styles.mensajes2Child11}>
-          <button onClick={e => console.log("a")} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
+
+        <div className={styles.mensajes2Child11} />
+        <div className={styles.bsqueda}>
+          <input type="text" placeholder="Búsqueda" value={busqChat} onChange={e => setBusqChat(e.target.value)} style={{width: "140%", background: "transparent", border: "none"}}></input>
         </div>
+        
         <img className={styles.vectorIcon} alt="" src="/vector12.svg" />
         <div className={styles.lineDiv} />
         <div className={styles.mensajes2Child12} />
         {
-          chats?.map((item, index) => {
+          chats?.filter((item) => item.nombre.toLowerCase().includes(busqChat.toLowerCase())).map((item, index) => {
             const primero=360, salto=97;
             return(
               <>
@@ -114,7 +130,7 @@ const Mensajes = () => {
                   <button onClick={e => console.log(mensajes.filter((item) => item.idEmisor==index+1))} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
                 </div>
                 <div className={styles.mensajes2Child19} style={{top: `${primero-7+salto*index}px`}}>
-                  <button onClick={e => setTokenConv(1)} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
+                  <button onClick={e => setIdConv(item.idUsuario)} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
                 </div>
                 <b className={styles.nombre1} style={{top: `${primero+4+salto*index}px`}}>{item.nombre}</b>
                 <div className={styles.mensaje0001} style={{top: `${primero+31+salto*index}px`}}>{item.texto}</div>
@@ -124,9 +140,9 @@ const Mensajes = () => {
             )
           })
         }
-        <div className={styles.bsqueda}>Búsqueda</div>
-        <div className={styles.nombre11}>Nombre 1</div>
+        <div className={styles.nombre11}>{findChat(idConv)?.nombre}</div>
       </div>
+      <Lateral pantalla="Mensajes"></Lateral>
     </div>
   );
 };
