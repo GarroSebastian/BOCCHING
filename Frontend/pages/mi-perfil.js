@@ -14,6 +14,7 @@ const MiPerfil = () => {
   const router = useRouter();
 
   const defaultUsuario = {
+    _id: '',
     nombre: '',
     apellidos: '',
     correo: '',
