@@ -31,6 +31,19 @@ const MiPerfil = () => {
   }
   const [usuario, setUsuario] = useState(defaultUsuario);
   const [edad, setEdad] = useState(0);
+
+  const defaultGusto = {
+    idUsuario: '',
+    idTipo: 0,
+    subtipo: '',
+    nombre: '',
+    idAfinidad: 0,
+    idDuracion: 0,
+    idCompania: 0,
+    priNombre: 0,
+    idPrivacidad: 0
+  }
+  const [gustos, setGustos] = useState([])
   
   const onRectangle11Click = useCallback(() => {
     router.push("/mi-perfil23");
@@ -38,6 +51,14 @@ const MiPerfil = () => {
 
   const onRectangle12Click = useCallback(() => {
     router.push("/mi-perfil22");
+  }, [router]);
+
+  const onRectangle2Click = useCallback(() => {
+    router.push("/mi-perfil241");
+  }, [router]);
+
+  const onPrivacidadTextClick = useCallback(() => {
+    router.push("/mi-perfil241");
   }, [router]);
   
   const actualizarFacultad = (value) => {
@@ -105,6 +126,11 @@ const MiPerfil = () => {
       const dif = today.setDate(today.getDate()+1) - f;
       setEdad(Math.floor(dif/(1000*60*60*24*365.25)))
     });
+
+    setGustos([
+      {...defaultGusto,idTipo: 0, subtipo: '', nombre: 'Jugar tenis', idAfinidad: 0, idDuracion: 0, idCompania: 0},
+      {...defaultGusto,idTipo: 1, subtipo: '', nombre: 'Jugar videojuegos', idAfinidad: 1, idDuracion: 1, idCompania: 1}
+    ])
 
   }
 
@@ -244,7 +270,7 @@ const MiPerfil = () => {
                 className={styles.miperfil21Item}
                 alt=""
                 src="/rectangle-29.svg"
-                onClick={onRectangle1Click}
+                onClick={e => setPag(1)}
               />
               <img
                 className={styles.miperfil21Inner}
@@ -252,52 +278,42 @@ const MiPerfil = () => {
                 src="/rectangle-29.svg"
                 onClick={onRectangle2Click}
               />
-              <div className={styles.colecciones}>Colecciones</div>
-              <div className={styles.rectangleDiv} />
+              <div className={styles.colecciones2}>Gustos</div>
+              <div className={styles.rectangleDiv2} />
               <div className={styles.miperfil21Child1} />
               <img className={styles.recDerIcon} alt="" src="/rec-der1.svg" />
               <img className={styles.derechaIcon} alt="" src="/derecha3.svg" />
               <img className={styles.recDerIcon1} alt="" src="/rec-der1.svg" />
               <div className={styles.miperfil21Child2} />
               <img className={styles.groupIcon} alt="" src="/group.svg" />
-              <div className={styles.miperfil21Child3} />
-              <div className={styles.miperfil21Child4} />
-              <div className={styles.miperfil21Child5} />
-              <div className={styles.miperfil21Child6} />
               <div className={styles.tipo}>Tipo</div>
               <div className={styles.subtipo}>Subtipo</div>
               <div className={styles.nombre}>Nombre</div>
               <div className={styles.afinidad}>Afinidad</div>
               <div className={styles.duracin}>Duración</div>
-              <div className={styles.hobby}>Hobby</div>
-              <div className={styles.hobby1}>Hobby</div>
-              <div className={styles.hobby2}>Hobby</div>
-              <div className={styles.hobby3}>Hobby</div>
-              <div className={styles.xd}>xd</div>
-              <div className={styles.xd1}>xd</div>
-              <div className={styles.xd2}>xd</div>
-              <div className={styles.xd3}>xd</div>
-              <div className={styles.xd4}>xd</div>
-              <div className={styles.xd5}>xd</div>
-              <div className={styles.xd6}>xd</div>
-              <div className={styles.xd7}>xd</div>
-              <div className={styles.xd8}>xd</div>
-              <div className={styles.xd9}>xd</div>
-              <div className={styles.xd10}>xd</div>
-              <div className={styles.xd11}>xd</div>
-              <div className={styles.xd12}>xd</div>
-              <div className={styles.xd13}>xd</div>
-              <div className={styles.xd14}>xd</div>
-              <div className={styles.xd15}>xd</div>
+              {
+                gustos?.map((item) => {
+                  return(
+                    <>
+                      <div className={styles.hobby}>Hobby</div>
+                      <div className={styles.xd}>xd</div>
+                      <div className={styles.xd4}>{item.nombre}</div>
+                      <div className={styles.xd8}>xd</div>
+                      <div className={styles.xd12}>xd</div>
+                      <div className={styles.miperfil21Child3}/>
+                    </>
+                  )
+                })
+              }
               <img className={styles.derechaIcon1} alt="" src="/derecha2.svg" />
               <div className={styles.miPerfil}>Mi Perfil</div>
-              <div className={styles.informacin} onClick={onInformacinTextClick}>
+              <div className={styles.informacin2} onClick={e => setPag(1)}>
                 Información
               </div>
               <div className={styles.privacidad} onClick={onPrivacidadTextClick}>
                 Privacidad
               </div>
-              <div className={styles.misColecciones}>Mis Colecciones</div>
+              <div className={styles.misColecciones}>Mis Gustos</div>
               <div className={styles.aquPodrsAgregar}>
                 Aquí podrás agregar tus gustos personales, editarlos o eliminarlos
               </div>

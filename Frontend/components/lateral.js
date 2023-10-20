@@ -53,12 +53,12 @@ const Lateral = (props) => {
                 :
                     null
             }
-            <img
-            className={styles.vectorIcon6}
-            alt=""
-            src="/vector30.svg"
-            onClick={onVectorIcon3Click}
-            />
+            {
+                pantalla!="Buscar"?
+                <img className={styles.vectorIcon6} alt="" src="/vector30.svg" onClick={onVectorIcon3Click}/>
+                :
+                null
+            }
             <img
             className={styles.vectorIcon7}
             alt=""

@@ -119,6 +119,7 @@ const Mensajes = () => {
     if(mensajes.length>0){
       asignarChats().then((result) => {
         setChats(result)
+        console.log(mensajes)
       })
     }
   }, [mensajes])
@@ -126,10 +127,7 @@ const Mensajes = () => {
   const CompararFechas = (ano, mes, dia, diaSem, hora, minuto) => {
     const fecha = new Date(`${ano}-${mes}-${dia}`);
     const hoy = new Date();
-    console.log(hoy)
-    console.log(fecha)
     const dif = Math.floor((hoy-fecha) / (1000 * 60 * 60 * 24));
-    console.log(dif)
     if(dif<0){
       return "Error: Resta negativa";
     }else if(dif===0){
@@ -149,7 +147,7 @@ const Mensajes = () => {
       const idOtro = m.idEmisor===usuario._id? m.idReceptor : m.idEmisor;
       const i = posChat(chats, idOtro);
       const f = CompararFechas(m.ano, m.mes, m.dia, m.diaSem, m.hora, m.minuto)
-      if(i==-1){
+      if(i==-1){ //Actualizar si mensaje es más reciente, Ordenar chats
         chats.push({...defaultChat,idOtro: idOtro, nombre: usuarios.find((u) => u._id===idOtro).mostrar_nombre? usuarios.find((u) => u._id===idOtro).nombre : usuarios.find((u) => u._id===idOtro).apodo, texto: m.mensaje, fecha: f})
       }else{
         chats[i] = {...chats[i],texto: m.mensaje, fecha: f}
@@ -187,24 +185,26 @@ const Mensajes = () => {
               <div className={styles.rectangleDiv} />
               <div className={styles.ellipseDiv} />
               <img className={styles.groupIcon} alt="" src="/group-147.svg" />
-              <div className={styles.mensajes2Child1} />
-              <div className={styles.mensajes2Child2} />
-              <img className={styles.mensajes2Child3} alt="" src="/group-140.svg" />
-              <img className={styles.mensajes2Child4} alt="" src="/group-140.svg" />
-              <div className={styles.mensajes2Child5} />
+              {
+                mensajes?.filter((item) => item.idEmisor === chats[posChat(chats,idConv)]?.idOtro).map((item) => {
+                  <>
+                    <div className={styles.mensajes2Child1} />
+                    <img className={styles.mensajes2Child3} alt="" src="/group-140.svg" />
+                    <div className={styles.mensajes2Child5} />
+                    <b className={styles.nombre01}>{chats[posChat(chats,idConv)]?.nombre}</b>
+                    <div className={styles.mensaje00011}>Mensaje 0001.1</div>
+                    <div className={styles.hora2}>Hora</div>
+                  </>
+                })
+              }
+
               <div className={styles.mensajes2Child6} />
               <div className={styles.mensajes2Child7} />
-              <div className={styles.mensajes2Child8} />
-              <b className={styles.nombre01}>Nombre 01</b>
-              <b className={styles.nombre011}>Nombre 01</b>
-              <div className={styles.mensaje00011}>Mensaje 0001.1</div>
               <div className={styles.mensaje00012}>Mensaje 0001.2</div>
               <div className={styles.mensaje00013}>Mensaje 0001.3</div>
-              <div className={styles.mensaje00014}>Mensaje 0001.4</div>
               <div className={styles.hora}>Hora</div>
               <div className={styles.hora1}>Hora</div>
-              <div className={styles.hora2}>Hora</div>
-              <div className={styles.hora3}>Hora</div>
+              
               <div className={styles.mensajes2Child9} />
               <div className={styles.mensajes2Child10} />
               <div className={styles.escribirMensaje}>
