@@ -35,7 +35,7 @@
 }
 .rectangleDiv {
   position: absolute;
-  top: 388px;
+  top: 333px;
   left: 694px;
   border-radius: var(--br-xl);
   background-color: var(--cta);
@@ -44,7 +44,7 @@
 }
 .ellipseDiv {
   position: absolute;
-  top: 397px;
+  top: 342px;
   left: 1267px;
   border-radius: 50%;
   background-color: var(--white-icon);
@@ -55,7 +55,7 @@
 }
 .groupIcon {
   position: absolute;
-  top: 415px;
+  top: 360px;
   left: 1287px;
   width: 48.66px;
   height: 40.46px;
@@ -265,12 +265,12 @@
 }
 .mensajes2Child12 {
   position: absolute;
-  top: 389px;
+  top: 334px;
   left: 654px;
   border-radius: var(--br-xl);
   background-color: var(--cta);
   width: 15px;
-  height: 655px;
+  height: 710px;
 }
 .mensajes2Child13,
 .mensajes2Child14,
@@ -315,7 +315,7 @@
 .bsqueda {
   position: absolute;
   top: 257px;
-  left: 321px;
+  left: 310px;
   color: var(--ttulos-textos);
 }
 .mensajes2Child19,
@@ -515,7 +515,7 @@
   top: 986px;
 }
 .nombre11 {
-  top: 429px;
+  top: 368px;
   left: 1134px;
   font-size: var(--subtitulos2-size);
   font-family: var(--subttulos);
@@ -567,7 +567,7 @@
 }
 .seleccioneUnaConversacin {
   position: absolute;
-  top: 613px;
+  top: 513px;
   left: 711px;
   font-size: 37px;
   font-family: var(--principal-2);
@@ -577,8 +577,8 @@
 }
 .transhumansGrowthIcon {
   position: absolute;
-  top: 482px;
-  left: 837px;
+  top: 407px;
+  left: 830px;
   width: 634px;
   height: 509px;
   object-fit: cover;

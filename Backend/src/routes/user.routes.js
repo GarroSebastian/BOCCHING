@@ -15,4 +15,5 @@ router.delete("/delete-user", verifyToken, UserController.delete_user);
 
 router.put("/update-user", verifyToken, UserController.update_user);
 
+router.get("/find-all-users", verifyToken, UserController.find_all_users);
 module.exports = router;

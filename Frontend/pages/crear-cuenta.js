@@ -127,7 +127,7 @@ const CrearCuenta = () => {
     }else if(usuario.correo.length<26){
       alert("El correo institucional está incompleto")
       return false;
-    }else if(parseInt(usuario.correo.substring(0,8))<=9999999 || !usuario.correo.endsWith('@aloe.ulima.edu.pe')){
+    }else if(parseInt(usuario.correo.substring(0,8))<=9999999 || isNaN(usuario.correo.substring(0,8)) || !usuario.correo.endsWith('@aloe.ulima.edu.pe')){
       alert("Formato del correo institucional incorrecto")
       return false;
     }else if(ExisteCorreo(usuario.correo)){
@@ -174,7 +174,12 @@ const CrearCuenta = () => {
         <div className={styles.crearcuentaInner}>
           <input className={styles.dato} type="text" id="nombre" value={usuario.nombre} onChange={e => setUsuario({...usuario,nombre: e.target.value})}></input>
         </div>
-        <div className={styles.rectangleDiv} />
+        {
+          false?
+            <div className={styles.rectangleDiv} />
+          :
+            null
+        }
         <div className={styles.crearcuentaChild1}>
           {
             isNaN(edad) || edad<0?
@@ -184,13 +189,13 @@ const CrearCuenta = () => {
           }
         </div>
         <div className={styles.crearcuentaChild2}>
-          <input className={styles.dato} type="text" id="apodo" value={usuario.apodo} onChange={e => setUsuario({...usuario,apodo: e.target.value})}></input>
+          <input className={styles.dato} type="text" id="apodo" value={usuario.apodo} onChange={e => setUsuario({...usuario,apodo: e.target.value})} style={{width: "90%"}}></input>
         </div>
         <div className={styles.crearcuentaChild3}>
           <input className={styles.dato} type="text" id="apellidos" value={usuario.apellidos} onChange={e => setUsuario({...usuario,apellidos: e.target.value})}></input>
         </div>
         <div className={styles.crearcuentaChild4}>
-          <select className={styles.dato} id="genero" value={usuario.id_genero} onChange={e => actualizarGenero(e.target.value)}>
+          <select className={styles.dato} id="genero" value={usuario.id_genero} onChange={e => actualizarGenero(e.target.value)} style={{width: "95%"}}>
             <option value={-1}>Selecciona una opción</option>
             <option value={0}>Masculino</option>
             <option value={1}>Femenino</option>
@@ -202,22 +207,27 @@ const CrearCuenta = () => {
           <input className={styles.dato} type="text" id="correo" maxLength={26} value={usuario.correo} onChange={e => setUsuario({...usuario,correo: e.target.value})}></input>
         </div>
         <div className={styles.crearcuentaChild6}>
-          <input className={styles.dato} type="date" value={usuario.nacimiento} id="nacimiento" onChange={(e) => actualizarEdad(e.target.value)} />
+          <input className={styles.dato} type="date" value={usuario.nacimiento} id="nacimiento" onChange={(e) => actualizarEdad(e.target.value)} style={{width: "93%"}}/>
         </div>
         <div className={styles.crearcuentaChild7}>
-          <input className={styles.dato} type="password" id="contra" value={usuario.contrasena} onChange={e => setUsuario({...usuario,contrasena: e.target.value})}></input>
+          <input className={styles.dato} type="password" id="contra" value={usuario.contrasena} onChange={e => setUsuario({...usuario,contrasena: e.target.value})} style={{width: "93%"}}></input>
         </div>
         <div className={styles.crearcuentaChild8}>
-          <input className={styles.dato} type="password" id="contra2" value={contra2} onChange={e => setContra2(e.target.value)}></input>
+          <input className={styles.dato} type="password" id="contra2" value={contra2} onChange={e => setContra2(e.target.value)} style={{width: "93%"}}></input>
         </div>
         <div className={styles.crearcuentaChild9} />
         <div className={styles.crearcuentaChild10} onClick={onCrearCuentaClick} />
         <div className={styles.nombre}>Nombre:</div>
-        <div className={styles.universidad}>Universidad:</div>
+        {
+          false?
+            <div className={styles.universidad}>Universidad:</div>
+          :
+            null
+        }
         <div className={styles.edad}>Edad:</div>
         <div className={styles.apodo}>Apodo:</div>
         <div className={styles.apellido}>Apellido:</div>
-        <div className={styles.genero}>Genero:</div>
+        <div className={styles.genero}>Género:</div>
         <div className={styles.correoInstitucional}>Correo institucional:</div>
         <div className={styles.fechaDeNacimiento}>Fecha de nacimiento:</div>
         <div className={styles.contrasea}>Contraseña:</div>
@@ -229,7 +239,6 @@ const CrearCuenta = () => {
         <div className={styles.cancelar} onClick={onCancelarTextClick}>
           Cancelar
         </div>
-        <img className={styles.polygonIcon} alt="" src="/polygon-34.svg" />
         <img
           className={styles.crearcuentaChild11}
           alt=""
@@ -243,7 +252,6 @@ const CrearCuenta = () => {
         <div className={styles.footer}>
           <div className={styles.byTeambocching}>By: TeamBocching</div>
         </div>
-        <img className={styles.frameIcon} alt="" src="/frame7.svg" />
         <div className={styles.crearcuentaChild12} />
         <div className={styles.creacinDeCuenta}>Creación de cuenta</div>
         <div className={styles.logo}>

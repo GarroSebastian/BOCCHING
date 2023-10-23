@@ -5,6 +5,7 @@ const path = require("path");
 
 const UserRoutes = require("./routes/user.routes");
 const RequestRoutes = require("./routes/request.routes");
+const mensajeRoutes = require("./mensaje.routes");
 
 const app = express();
 
@@ -14,6 +15,13 @@ app.use(express.json({limit: '10mb'}));
 app.use(express.urlencoded({ extended: true, limit: '10mb'}));
 
 app.use(express.static(path.resolve("public")));
+
+app.use("/mensajes", mensajeRoutes); 
+// Iniciar el servidor
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Servidor en ejecución en el puerto ${PORT}`);
+});
 
 //cors
 const corsOptions = {

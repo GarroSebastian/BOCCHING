@@ -2,7 +2,9 @@ import { useCallback } from "react";
 import { useRouter } from "next/router";
 import styles from "./lateral.module.css";
 
-const Lateral = () => {
+const Lateral = (props) => {
+    const {pantalla} = props;
+    
     const router = useRouter();
     
     const onGroupClick = useCallback(() => {
@@ -39,24 +41,24 @@ const Lateral = () => {
             onClick={onGroupClick}
             />
             <img className={styles.miperfil1Child15} alt="" src="/group-1951.svg" />
-            <img
-            className={styles.vectorIcon5}
-            alt=""
-            src="/vector17.svg"
-            onClick={onVector2Click}
-            />
-            <img
-            className={styles.miperfil1Child16}
-            alt=""
-            src="/group-197.svg"
-            onClick={onGroupIconClick}
-            />
-            <img
-            className={styles.vectorIcon6}
-            alt=""
-            src="/vector30.svg"
-            onClick={onVectorIcon3Click}
-            />
+            {
+                pantalla!="Amistades"?
+                    <img className={styles.vectorIcon5} alt="" src="/vector17.svg" onClick={onVector2Click}/>
+                :
+                    null
+            }
+            {
+                pantalla!="Mensajes"?
+                    <img className={styles.miperfil1Child16} alt="" src="/group-197.svg" onClick={onGroupIconClick}/>
+                :
+                    null
+            }
+            {
+                pantalla!="Buscar"?
+                <img className={styles.vectorIcon6} alt="" src="/vector30.svg" onClick={onVectorIcon3Click}/>
+                :
+                null
+            }
             <img
             className={styles.vectorIcon7}
             alt=""

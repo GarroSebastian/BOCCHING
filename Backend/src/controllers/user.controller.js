@@ -112,6 +112,14 @@ const UserController = {
 
         res.send({usuario: user});
     },
+    find_all_users: (req, res) => {
+        User.find({}, { contrasena: 0 }, (err, users) => {
+            if (err) {
+                return res.status(500).send("Error while fetching users");
+            }
+            return res.status(200).json(users);
+        });
+    },
 
     update_user: async(req, res)=>{
 

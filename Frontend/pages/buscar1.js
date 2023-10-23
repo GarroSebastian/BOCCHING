@@ -2,6 +2,7 @@ import { useCallback } from "react";
 import { useRouter } from "next/router";
 import { Zoom } from "../extra/zoom.js"
 import styles from "./buscar1.module.css";
+import Lateral from "../components/lateral.js"
 
 const Buscar1 = () => {
   Zoom()
@@ -52,8 +53,8 @@ const Buscar1 = () => {
         alt=""
         src="/transhumans-puppy@2x.png"
       />
-      <img className={styles.groupIcon} alt="" src="/group-1391.svg" />
     </div>
+    <Lateral pantalla="Buscar"></Lateral>
     </div>
   );
 };
