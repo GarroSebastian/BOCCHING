@@ -44,7 +44,7 @@ const RequestController = {
     getAllRequests: (req, res)=>{
         const userid = req.token_usuarioId;
         
-        Request.find({emisor: userid}).then(requests=>{
+        Request.find({emisor: userid}).populate({path: 'emisor receptor'}).then(requests=>{
             if(!requests) return res.send({message: "No se encontraron solicitudes"});
 
             if(requests) return res.send({solicitudes: requests});
@@ -56,7 +56,7 @@ const RequestController = {
         const userid = req.token_usuarioId;
         const ReceptorId = req.params.id;
         
-        Request.find({emisor: userid, receptor: ReceptorId}).then(request=>{
+        Request.find({emisor: userid, receptor: ReceptorId}).populate({path: 'emisor receptor'}).then(request=>{
             if(!request) return res.send({message: "No se encontró solicitud"});
 
             if(request) return res.send({solicitud: request});
