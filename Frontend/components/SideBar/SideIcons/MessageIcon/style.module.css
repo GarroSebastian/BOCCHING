@@ -1,0 +1,56 @@
+.messageIconStatusDefault {
+height: 37px;
+left: 0;
+position: absolute;
+top: 0;
+width: 45px;
+}
+
+.messageIconStatusSelect {
+align-items: flex-start;
+display: inline-flex;
+flex-direction: column;
+gap: 10px;
+position: relative;
+}
+
+.messageIconSelect {
+align-items: flex-start;
+display: inline-flex;
+flex: 0 0 auto;
+flex-direction: column;
+gap: 10px;
+position: relative;
+}
+
+.rectangle {
+background-color: #ffffff;
+border-radius: 26px;
+height: 58.71px;
+position: relative;
+width: 70px;
+}
+
+.bochMessa {
+height: 37px;
+left: 12px;
+position: absolute;
+top: 10px;
+width: 45px;
+}
+
+.img {
+height: 7px;
+left: 22px;
+position: absolute;
+top: 25px;
+width: 8px;
+}
+
+.bochMessa2 {
+height: 7px;
+left: 38px;
+position: absolute;
+top: 25px;
+width: 8px;
+}

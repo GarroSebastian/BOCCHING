@@ -1,0 +1,41 @@
+.settingsIconStatusDefault {
+height: 55px;
+left: 0;
+position: absolute;
+top: 0;
+width: 58px;
+}
+
+.settingsIconStatusSelect {
+align-items: flex-start;
+display: inline-flex;
+flex-direction: column;
+gap: 10px;
+padding: 10px;
+position: relative;
+}
+
+.settingsIconSelect {
+align-items: flex-start;
+display: inline-flex;
+flex: 0 0 auto;
+flex-direction: column;
+gap: 10px;
+position: relative;
+}
+
+.rectangle {
+background-color: #ffffff;
+border-radius: 26px;
+height: 58.71px;
+position: relative;
+width: 70px;
+}
+
+.bochSett {
+height: 35px;
+left: 16px;
+position: absolute;
+top: 12px;
+width: 38px;
+}
