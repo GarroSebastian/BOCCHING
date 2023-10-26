@@ -1,0 +1,43 @@
+/* style.module.css */
+.subpestaA {
+align-items: center;
+border-radius: 19px;
+display: inline-flex;
+flex-direction: column;
+gap: 10px;
+justify-content: center;
+padding: 10px 93.5px;
+position: relative;
+}
+
+.text {
+align-self: stretch;
+font-family: var(--subt-tulos-font-family);
+font-size: var(--subt-tulos-font-size);
+font-style: var(--subt-tulos-font-style);
+font-weight: var(--subt-tulos-font-weight);
+letter-spacing: var(--subt-tulos-letter-spacing);
+line-height: var(--subt-tulos-line-height);
+position: relative;
+text-align: center;
+}
+
+.select {
+background-color: #453938;
+height: 156px;
+}
+
+.default {
+background-color: #ffffff;
+border: 5px solid;
+border-color: var(--variable-collection-normal);
+height: 118px;
+}
+
+.select .text {
+color: #ffffff;
+}
+
+.default .text {
+color: #453938;
+}

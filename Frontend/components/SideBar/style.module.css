@@ -15,7 +15,7 @@ position: relative;
 
 .side-bar .rectangle {
 background: linear-gradient(180deg, rgba(69, 57, 56, 0.77) 0%, rgb(69, 57, 56) 100%);
-height: 900px;
+height: 1050px;
 position: relative;
 width: 164px;
 }
@@ -40,7 +40,7 @@ align-items: center;
 display: inline-flex;
 flex: 0 0 auto;
 flex-direction: column;
-gap: 38px;
+gap: 4.3em;
 justify-content: center;
 position: relative;
 }

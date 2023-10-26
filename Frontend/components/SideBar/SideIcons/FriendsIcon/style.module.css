@@ -1,9 +1,11 @@
 .friendsIconStatusDefault {
-height: 56px;
-left: 0;
-position: absolute;
-top: 0;
-width: 81px;
+align-items: center;
+display: inline-flex;
+flex: 0 0 auto;
+flex-direction: column;
+gap: 10px;
+justify-content: center;
+position: relative;
 }
 
 .friendsIconStatusSelect {

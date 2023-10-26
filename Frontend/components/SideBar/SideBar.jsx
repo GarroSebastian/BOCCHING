@@ -17,12 +17,12 @@ return (
     <div className={styles["barside-icons"]}>
     <BocchingLogo className={styles["icon-instance-node"]} />
     <div className={styles.icons}>
-        <PerfilIcon status={"select"} className={styles["icon-instance-node"]} />
-        <FriendsIcon status={"select"} className={styles["icon-instance-node"]} />
-        <MessageIcon status={"select"} className={styles["icon-instance-node"]} />
-        <SearchIcon status={"select"} className={styles["icon-instance-node"]} />
-        <RequestIcon status={"select"} className={styles["icon-instance-node"]} />
-        <SettingsIcon status={"select"} className={styles["icon-instance-node"]} />
+        <PerfilIcon status={"default"} className={styles["icon-instance-node"]} />
+        <FriendsIcon status={"default"} className={styles["icon-instance-node"]} />
+        <MessageIcon status={"default"} className={styles["icon-instance-node"]} />
+        <SearchIcon status={"default"} className={styles["icon-instance-node"]} />
+        <RequestIcon status={"default"} className={styles["icon-instance-node"]} />
+        <SettingsIcon status={"default"} className={styles["icon-instance-node"]} />
     </div>
     </div>
 </div>
