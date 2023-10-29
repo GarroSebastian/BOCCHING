@@ -4,18 +4,31 @@ const TasteController = {
 
     saveTaste: (req, res)=>{
         
-        const data = req.body;
         const newTaste = new Taste();
         
         const userid = req.token_usuarioId;
-        const dataText = data.text;
+        const { franquicia,
+            juego_de_mesa,
+            hobby,
+            pasatiempo,
+            alimento,
+            musica,
+            creador_de_contenido,
+            deporte } = req.body;
 
-        if(dataText){
+        if(userid){
 
             newTaste.usuario = userid;
-            newTaste.text = dataText;
+            newTaste.franquicia = franquicia;
+            newTaste.juego_de_mesa = juego_de_mesa;
+            newTaste.hobby = hobby;
+            newTaste.pasatiempo = pasatiempo;
+            newTaste.alimento = alimento;
+            newTaste.musica = musica;
+            newTaste.creador_de_contenido = creador_de_contenido;
+            newTaste.deporte = deporte;
     
-            Taste.find({usuario: userid, text: dataText}).then((tastes)=>{
+            Taste.find({usuario: userid}).then((tastes)=>{
     
                 if(tastes && tastes.length >= 1) {
                     return res.send("Ya existe este gusto");
@@ -40,9 +53,8 @@ const TasteController = {
 
     deleteTaste: (req, res)=>{
         const userid = req.token_usuarioId;
-        const taste_id = req.params.id
 
-        Taste.findOneAndDelete({_id: taste_id, usuario: userid}).then(taste=>{
+        Taste.findOneAndDelete({usuario: userid}).then(taste=>{
             if(!taste) return res.send("No se encontró el gusto");
 
             if(taste) return res.send({message: "El gusto fue eliminado"});
@@ -64,10 +76,10 @@ const TasteController = {
         const userid = req.token_usuarioId;
         const data = req.body;
 
-        Taste.findByIdAndUpdate({usuario: userid}, data).then(taste=>{
-            if(!taste) return res.send({message: "No se encontró gusto"});
+        Taste.findOneAndUpdate({usuario: userid}, data, {new: true}).then((tasteUpdated)=>{
+            if(!tasteUpdated) return res.send({message: "No se encontró gusto"});
 
-            if(taste) return res.send({gusto: taste});
+            if(tasteUpdated) return res.send({gusto: tasteUpdated});
         });
 
     }

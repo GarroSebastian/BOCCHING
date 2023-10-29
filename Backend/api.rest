@@ -4,7 +4,7 @@ POST http://localhost:3700/login
 Content-Type: application/json
 
 {
-    "correo": "correo2",
+    "correo": "correo",
     "contrasena": "contrasena"
 }
 
@@ -85,3 +85,47 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzA1Y2EwZGZiYzFm
 
 GET http://localhost:3700/getSolicitud/65305c0adfbc1f2707c010bb
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzA1Y2EwZGZiYzFmMjcwN2MwMTBjMSIsImlhdCI6MTY5ODA4ODg3NSwiZXhwIjoxNjk4MTc1Mjc1fQ._0rWGrhELmxT5G36c-cbpFu2EkEDaNZFEgFz2aw-a7s
+
+### GUSTOS
+
+POST http://localhost:3700/save-gusto
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzA1Y2EwZGZiYzFmMjcwN2MwMTBjMSIsImlhdCI6MTY5ODYxMTQwNCwiZXhwIjoxNjk4Njk3ODA0fQ.Skl0ORi4WhQ8nj5thux3WQ7nLZjUb3ZmDFL9KIOx2Pg
+Content-Type: application/json
+
+{
+    "franquicia": "aaa",
+    "juego_de_mesa": "aassss",
+    "hobby": "adda",
+    "pasatiempo": "ddda",
+    "alimento": "adda",
+    "musica": "sdaa",
+    "creador_de_contenido": "dasda",
+    "deporte": "asddsaa"
+}
+
+###
+
+GET http://localhost:3700/gusto
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzA1Y2EwZGZiYzFmMjcwN2MwMTBjMSIsImlhdCI6MTY5ODYxMTQwNCwiZXhwIjoxNjk4Njk3ODA0fQ.Skl0ORi4WhQ8nj5thux3WQ7nLZjUb3ZmDFL9KIOx2Pg
+
+###
+
+DELETE http://localhost:3700/delete-gusto
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzA1Y2EwZGZiYzFmMjcwN2MwMTBjMSIsImlhdCI6MTY5ODYxMTQwNCwiZXhwIjoxNjk4Njk3ODA0fQ.Skl0ORi4WhQ8nj5thux3WQ7nLZjUb3ZmDFL9KIOx2Pg
+
+###
+
+PUT http://localhost:3700/update-gusto
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzA1Y2EwZGZiYzFmMjcwN2MwMTBjMSIsImlhdCI6MTY5ODYxMTQwNCwiZXhwIjoxNjk4Njk3ODA0fQ.Skl0ORi4WhQ8nj5thux3WQ7nLZjUb3ZmDFL9KIOx2Pg
+Content-Type: application/json
+
+{
+    "franquicia": "bbbbbb",
+    "juego_de_mesa": "aasbbbsss",
+    "hobby": "adbbda",
+    "pasatiempo": "ddada",
+    "alimento": "addbba",
+    "musica": "sdaa",
+    "creador_de_contenido": "dasda",
+    "deporte": "asbbdaa"
+}
