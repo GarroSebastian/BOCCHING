@@ -44,6 +44,18 @@ const MiPerfil = () => {
     idPrivacidad: 0
   }
   const [gustos, setGustos] = useState([])
+
+  const tipo = ['musica','dibujo','futbol']
+  const subtipo = ['realizar actividades','ver contenido relacionado','hablar del tema']
+
+  const defaultGustos2 = {
+    nombre: '',
+    afinidad: '',
+    duracion: '',
+    verTipo: '',
+    subTipo: ''
+  }
+  const [gustos2, setgustos2] = useState(defaultGustos2);
   
   const onRectangle11Click = useCallback(() => {
     router.push("/mi-perfil23");

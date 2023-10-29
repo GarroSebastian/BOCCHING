@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import { useRouter } from "next/router";
 import styles from "./mi-perfil23.module.css";
+import { useState, useEffect } from 'react';
 
 const MiPerfil23 = () => {
   const router = useRouter();
@@ -49,6 +50,18 @@ const MiPerfil23 = () => {
     router.push("/configuracin11");
   }, [router]);
 
+  const tipo = ['musica','dibujo','futbol']
+  const subtipo = ['realizar actividades','ver contenido relacionado','hablar del tema']
+
+  const defaultGustos2 = {
+    nombre: 'pintar',
+    afinidad: 'que es eso???',
+    duracion: '1 hora',
+    verTipo: 'dibujo',
+    subTipo: 'realizar actividades'
+  }
+  const [gustos2, setgustos2] = useState(defaultGustos2);
+
   return (
     <div className={styles.miperfil23}>
       <img className={styles.miperfil23Child} alt="" src="/rectangle-161.svg" />
@@ -79,8 +92,24 @@ const MiPerfil23 = () => {
         <img className={styles.frameChild} alt="" src="/polygon-35.svg" />
       </div>
       <div className={styles.frameDiv}>
-        <div className={styles.xd}>xd</div>
-        <img className={styles.frameChild} alt="" src="/polygon-35.svg" />
+        <div className={styles.xd}>
+          <select  value={gustos2.subTipo} onChange={e => setgustos2(e.target.value)} 
+          style={{width: "200%"}}>
+                <option value={-1}>{gustos2.subTipo}</option>
+                {
+                  subtipo?.map((item, index)=>{
+                    if(gustos2.subTipo!=item){
+                      return(
+                        <>
+                        <option value={index}>{item}</option>
+                        </>
+                      )
+                    }  
+                  }
+                  )
+                }
+              </select>
+        </div>
       </div>
       <div className={styles.xdParent1}>
         <div className={styles.xd}>xd</div>
@@ -95,8 +124,13 @@ const MiPerfil23 = () => {
         <img className={styles.frameChild} alt="" src="/polygon-35.svg" />
       </div>
       <div className={styles.xdParent4}>
-        <div className={styles.xd}>xd</div>
-        <img className={styles.frameChild} alt="" src="/polygon-35.svg" />
+        <div className={styles.xd}>
+        <input type="text"
+                value={gustos2.nombre} onChange={e => setgustos2({...gustos2,nombre: e.target.value})} 
+                style={{width: "100px"}}>
+                </input>
+        </div>
+        
       </div>
       <div className={styles.xdParent5}>
         <div className={styles.xd}>xd</div>
@@ -111,8 +145,12 @@ const MiPerfil23 = () => {
         <img className={styles.frameChild} alt="" src="/polygon-35.svg" />
       </div>
       <div className={styles.xdParent8}>
-        <div className={styles.xd}>xd</div>
-        <img className={styles.frameChild} alt="" src="/polygon-35.svg" />
+        <div className={styles.xd}>
+        <input type="text" value={gustos2.afinidad}
+                onChange={e => setgustos2({...gustos2,afinidad: e.target.value})} 
+                style={{width: "100px"}}>
+          </input>
+        </div>
       </div>
       <div className={styles.xdParent9}>
         <div className={styles.xd}>xd</div>
@@ -127,8 +165,12 @@ const MiPerfil23 = () => {
         <img className={styles.frameChild} alt="" src="/polygon-35.svg" />
       </div>
       <div className={styles.xdParent12}>
-        <div className={styles.xd}>xd</div>
-        <img className={styles.frameChild} alt="" src="/polygon-35.svg" />
+        <div className={styles.xd}>
+        <input type="text" value={gustos2.duracion}
+                onChange={e => setgustos2({...gustos2,duracion: e.target.value})} 
+                style={{ width: "100px"}}>
+                </input>
+        </div>
       </div>
       <img className={styles.derechaIcon} alt="" src="/derecha2.svg" />
       <div className={styles.miPerfil}>Mi Perfil</div>
@@ -162,7 +204,23 @@ const MiPerfil23 = () => {
         <div className={styles.xd}>Afinidad</div>
         <div className={styles.xd}>Duración</div>
       </div>
-      <div className={styles.hobby}>Hobby</div>
+      <div className={styles.hobby}>
+      <select  value={gustos2.verTipo} onChange={e => setgustos2(e.target.value)} >
+                <option value={-1}>{gustos2.verTipo}</option>
+                {
+                  tipo?.map((item, index)=>{
+                    if(gustos2.verTipo!=item){
+                      return(
+                        <>
+                        <option value={index}>{item}</option>
+                        </>
+                      )
+                    }                    
+                  }
+                  )
+                }
+              </select>
+      </div>
       <div className={styles.hobby1}>Hobby</div>
       <div className={styles.hobby2}>Hobby</div>
       <div className={styles.hobby3}>Hobby</div>
