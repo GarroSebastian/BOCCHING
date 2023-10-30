@@ -2,6 +2,7 @@ import { useCallback } from "react";
 import { useRouter } from "next/router";
 import styles from "./mi-perfil23.module.css";
 import { useState, useEffect } from 'react';
+import GustoApi from "../api/gusto";
 
 const MiPerfil23 = () => {
   const router = useRouter();
@@ -49,13 +50,32 @@ const MiPerfil23 = () => {
   const onXMLID273IconClick = useCallback(() => {
     router.push("/configuracin11");
   }, [router]);
+  //useState
+  const defaultgusto = {
+    gustos: ''
+  }
+  const [gusto, setgusto] = useState(defaultgusto);
+
+  
+  //Llamado al Get
+  const handleGetGustos = () => {
+    GustoApi.getGusto(window.localStorage.token).then((gusto)=>{
+      console.log(gusto)
+      const aux = gusto.data;
+      setgusto(aux)
+    })
+  }
+  //Use effect
+  useEffect(() => {
+    handleGetGustos();
+  }, [])
 
   const tipo = ['musica','dibujo','futbol']
   const subtipo = ['realizar actividades','ver contenido relacionado','hablar del tema']
 
   const defaultGustos2 = {
     nombre: 'pintar',
-    afinidad: 'que es eso???',
+    afinidad: 'me gusta mucho',
     duracion: '1 hora',
     verTipo: 'dibujo',
     subTipo: 'realizar actividades'

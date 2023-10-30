@@ -128,6 +128,7 @@ const MiPerfil = () => {
     UsuarioApi.findCurrent().then((user)=>{
       const aux = user.data.usuario;
       setUsuario(aux)
+      console.log(aux)
       /*if(aux.foto!=''){
         setUsuario({...aux, foto: pako.Deflate(aux.foto, {to: 'string'})})
       }else{
