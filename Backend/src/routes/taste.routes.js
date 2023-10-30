@@ -7,10 +7,12 @@ const verifyToken = require("../middlewares/verifyToken");
 //rutas
 router.post("/save-gusto", verifyToken, TasteController.saveTaste);
 
-router.get("/gusto", verifyToken, TasteController.getTaste);
+router.get("/gustos", verifyToken, TasteController.getTastes);
 
-router.delete("/delete-gusto", verifyToken, TasteController.deleteTaste);
+router.get("/gusto/:id", verifyToken, TasteController.getTaste);
 
-router.put("/update-gusto", verifyToken, TasteController.updateTaste);
+router.delete("/delete-gusto/:id", verifyToken, TasteController.deleteTaste);
+
+router.put("/update-gusto/:id", verifyToken, TasteController.updateTaste);
 
 module.exports = router;
