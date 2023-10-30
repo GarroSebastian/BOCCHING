@@ -23,31 +23,10 @@ const guardarGusto = async(request, token) => {
 
 }
 
-const borrarGusto = async(token) => {
+const getGustos = async(token) => {
 
     try {
-        const url = URI.concat('/delete-gusto');
-
-        const authAxios = axios.create({
-            baseURL: URI,
-            headers: {
-                Authorization: token
-            }
-        });
-
-        return await authAxios.delete(url);
-
-    } catch(err) {
-        console.error(err);
-        return null;
-    }
-
-}
-
-const getGusto = async(token) => {
-
-    try {
-        const url = URI.concat('/gusto');
+        const url = URI.concat('/gustos');
 
         const authAxios = axios.create({
             baseURL: URI,
@@ -65,10 +44,52 @@ const getGusto = async(token) => {
 
 }
 
-const actualizarGusto = async(request, token) => {
+const getGusto = async(idReceptor, token) => {
 
     try {
-        const url = URI.concat('/update-gusto');
+        const url = URI.concat('/gusto/'+idReceptor);
+
+        const authAxios = axios.create({
+            baseURL: URI,
+            headers: {
+                Authorization: token
+            }
+        });
+
+        return await authAxios.get(url);
+
+    } catch(err) {
+        console.error(err);
+        return null;
+    }
+
+}
+
+const borrarGusto = async(idReceptor, token) => {
+
+    try {
+        const url = URI.concat('/delete-gusto/'+idReceptor);
+
+        const authAxios = axios.create({
+            baseURL: URI,
+            headers: {
+                Authorization: token
+            }
+        });
+
+        return await authAxios.delete(url);
+
+    } catch(err) {
+        console.error(err);
+        return null;
+    }
+
+}
+
+const actualizarGusto = async(request, idReceptor, token) => {
+
+    try {
+        const url = URI.concat('/update-gusto/'+idReceptor);
 
         const authAxios = axios.create({
             baseURL: URI,
@@ -86,6 +107,6 @@ const actualizarGusto = async(request, token) => {
 
 }
 
-const SolicitudApi = { guardarGusto, borrarGusto, getGusto, actualizarGusto }
+const GustoApi = { guardarGusto, getGustos, getGusto, borrarGusto, actualizarGusto }
 
-export default SolicitudApi;
+export default GustoApi;

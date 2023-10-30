@@ -89,43 +89,52 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzA1Y2EwZGZiYzFm
 ### GUSTOS
 
 POST http://localhost:3700/save-gusto
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzA1Y2EwZGZiYzFmMjcwN2MwMTBjMSIsImlhdCI6MTY5ODYxMTQwNCwiZXhwIjoxNjk4Njk3ODA0fQ.Skl0ORi4WhQ8nj5thux3WQ7nLZjUb3ZmDFL9KIOx2Pg
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzA1Y2EwZGZiYzFmMjcwN2MwMTBjMSIsImlhdCI6MTY5ODcwMTQxNiwiZXhwIjoxNjk4Nzg3ODE2fQ.GhsJIfMS6E7PFHHfs-K3dttQADax8ECfV_H76oYkGyU
 Content-Type: application/json
 
 {
-    "franquicia": "aaa",
-    "juego_de_mesa": "aassss",
-    "hobby": "adda",
-    "pasatiempo": "ddda",
-    "alimento": "adda",
-    "musica": "sdaa",
-    "creador_de_contenido": "dasda",
-    "deporte": "asddsaa"
+    "tipo" : 0,
+    "nombre" : "Hola",
+    "subtipo": "aaa",
+    "afinidad": "aaa",
+    "posesion": "aaaaa",
+    "duracion": "aaaaa",
+    "conversacion": "aaaa",
+    "musica": "aaaa",
+    "frecuencia": "aaaa",
+    "compania": "aaaa"
 }
 
 ###
 
-GET http://localhost:3700/gusto
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzA1Y2EwZGZiYzFmMjcwN2MwMTBjMSIsImlhdCI6MTY5ODYxMTQwNCwiZXhwIjoxNjk4Njk3ODA0fQ.Skl0ORi4WhQ8nj5thux3WQ7nLZjUb3ZmDFL9KIOx2Pg
+GET http://localhost:3700/gustos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzA1Y2EwZGZiYzFmMjcwN2MwMTBjMSIsImlhdCI6MTY5ODcwMTQxNiwiZXhwIjoxNjk4Nzg3ODE2fQ.GhsJIfMS6E7PFHHfs-K3dttQADax8ECfV_H76oYkGyU
 
 ###
 
-DELETE http://localhost:3700/delete-gusto
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzA1Y2EwZGZiYzFmMjcwN2MwMTBjMSIsImlhdCI6MTY5ODYxMTQwNCwiZXhwIjoxNjk4Njk3ODA0fQ.Skl0ORi4WhQ8nj5thux3WQ7nLZjUb3ZmDFL9KIOx2Pg
+GET http://localhost:3700/gusto/654026e2399b9416d1d0be53
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzA1Y2EwZGZiYzFmMjcwN2MwMTBjMSIsImlhdCI6MTY5ODcwMTQxNiwiZXhwIjoxNjk4Nzg3ODE2fQ.GhsJIfMS6E7PFHHfs-K3dttQADax8ECfV_H76oYkGyU
 
 ###
 
-PUT http://localhost:3700/update-gusto
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzA1Y2EwZGZiYzFmMjcwN2MwMTBjMSIsImlhdCI6MTY5ODYxMTQwNCwiZXhwIjoxNjk4Njk3ODA0fQ.Skl0ORi4WhQ8nj5thux3WQ7nLZjUb3ZmDFL9KIOx2Pg
+DELETE http://localhost:3700/delete-gusto/654026d4399b9416d1d0be4e
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzA1Y2EwZGZiYzFmMjcwN2MwMTBjMSIsImlhdCI6MTY5ODcwMTQxNiwiZXhwIjoxNjk4Nzg3ODE2fQ.GhsJIfMS6E7PFHHfs-K3dttQADax8ECfV_H76oYkGyU
+
+###
+
+PUT http://localhost:3700/update-gusto/654027bd35390724a6bbbed8
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzA1Y2EwZGZiYzFmMjcwN2MwMTBjMSIsImlhdCI6MTY5ODcwMTQxNiwiZXhwIjoxNjk4Nzg3ODE2fQ.GhsJIfMS6E7PFHHfs-K3dttQADax8ECfV_H76oYkGyU
 Content-Type: application/json
 
 {
-    "franquicia": "bbbbbb",
-    "juego_de_mesa": "aasbbbsss",
-    "hobby": "adbbda",
-    "pasatiempo": "ddada",
-    "alimento": "addbba",
-    "musica": "sdaa",
-    "creador_de_contenido": "dasda",
-    "deporte": "asbbdaa"
+    "tipo" : 0,
+    "nombre" : "Hola3",
+    "subtipo": "aaa",
+    "afinidad": "aaa",
+    "posesion": "aaaaa",
+    "duracion": "aaaaa",
+    "conversacion": "aaaa",
+    "musica": "aaaa",
+    "frecuencia": "aaaa",
+    "compania": "aaaa"
 }
