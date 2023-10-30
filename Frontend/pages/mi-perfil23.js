@@ -4,6 +4,7 @@ import styles from "./mi-perfil23.module.css";
 import { useState, useEffect } from 'react';
 import GustoApi from "../api/gusto";
 
+
 const MiPerfil23 = () => {
   const router = useRouter();
 
@@ -90,13 +91,14 @@ const MiPerfil23 = () => {
     subTipo: 'realizar actividades'
   }
   */
-  
+  const arrayTipo = ['musica','dibujo','futbol'];
+  const arraySubTipo = ['realizar actividades','ver contenido relacionado','hablar del tema'];
   const [id, setid] = useState('1');
   const [nombre, setnombre] = useState('pintar');
   const [afinidad, setafinidad] = useState('me gusta mucho');
   const [duracion, setduracion] = useState('1 hora');
-  const [verTipo, setverTipo] = useState(['musica','dibujo','futbol']);
-  const [subTipo, setsubTipo] = useState(['realizar actividades','ver contenido relacionado','hablar del tema']);
+  const [verTipo, setverTipo] = useState('musica');
+  const [subTipo, setsubTipo] = useState('realizar actividades');
 
   const defaultGustos2 = {
     id: id,
@@ -109,18 +111,25 @@ const MiPerfil23 = () => {
 
   const [gustos2, setgustos2] = useState(defaultGustos2);
   //Posiblemente la rpta seria crear otras variables
+  const [id2, setid2] = useState(id);
+  const [nombre2, setnombre2] = useState(nombre);
+  const [afinidad2, setafinidad2] = useState(afinidad);
+  const [duracion2, setduracion2] = useState(duracion);
+  const [verTipo2, setverTipo2] = useState(verTipo);
+  const [subTipo2, setsubTipo2] = useState(subTipo);
+  console.log("Datos acutalizados 1, ",gustos2)
   const actualizarGusto =()=>{
     const defaultGustos3 = {
-      id: id,
-      nombre: nombre,
-      afinidad: afinidad,
-      duracion: duracion,
-      verTipo: verTipo,
-      subTipo: subTipo
+      id: id2,
+      nombre: nombre2,
+      afinidad: afinidad2,
+      duracion: duracion2,
+      verTipo: verTipo2,
+      subTipo: subTipo2
     }
     setgustos2(defaultGustos3)
   }
-  
+  console.log("Datos acutalizados 2, ",gustos2)
 
   
 
@@ -155,18 +164,23 @@ const MiPerfil23 = () => {
       </div>
       <div className={styles.frameDiv}>
         <div className={styles.xd}>
-          <select  value={gustos2.subTipo[2]} onChange={e => setsubTipo(e.target.value)} 
+          <select  value={subTipo2} 
+          onChange={(e) => {
+            setsubTipo2(e.target.value)
+          }} 
           style={{width: "200%"}}>
-                <option value={-1}>{gustos2.subTipo[2]}</option>
+                
                 {
-                  gustos2.subTipo.map((item, index)=>{
-                    if(gustos2.subTipo[2]!=item){
-                      return(
-                        <>
-                        <option value={index}>{item}</option>
-                        </>
-                      )
-                    }  
+                  arraySubTipo.map((item, index)=>{
+                    return(
+                      <>
+                      {
+                        //el value={item} es el verdadero valor que guardas
+                        //osea la id
+                      }
+                      <option value={item}>{item}</option>
+                      </>
+                    ) 
                   }
                   )
                 }
@@ -188,7 +202,7 @@ const MiPerfil23 = () => {
       <div className={styles.xdParent4}>
         <div className={styles.xd}>
         <input type="text"
-                value={gustos2.nombre} onChange={e => setnombre({...gustos2,nombre: e.target.value})} 
+                value={nombre2} onChange={e => setnombre2(e.target.value)} 
                 style={{width: "100px"}}>
                 </input>
         </div>
@@ -208,8 +222,8 @@ const MiPerfil23 = () => {
       </div>
       <div className={styles.xdParent8}>
         <div className={styles.xd}>
-        <input type="text" value={gustos2.afinidad}
-                onChange={e => setafinidad({...gustos2,afinidad: e.target.value})} 
+        <input type="text" value={afinidad2}
+                onChange={e => setafinidad2(e.target.value)} 
                 style={{width: "100px"}}>
           </input>
         </div>
@@ -228,8 +242,8 @@ const MiPerfil23 = () => {
       </div>
       <div className={styles.xdParent12}>
         <div className={styles.xd}>
-        <input type="text" value={gustos2.duracion}
-                onChange={e => setduracion({...gustos2,duracion: e.target.value})} 
+        <input type="text" value={duracion2}
+                onChange={e => setduracion2(e.target.value)} 
                 style={{ width: "100px"}}>
                 </input>
         </div>
@@ -267,17 +281,19 @@ const MiPerfil23 = () => {
         <div className={styles.xd}>Duración</div>
       </div>
       <div className={styles.hobby}>
-      <select  value={gustos2.verTipo[2]} onChange={e => setverTipo(e.target.value)} >
-                <option value={-1}>{gustos2.verTipo[2]}</option>
+      <select  value={verTipo2} onChange={e => setverTipo2(e.target.value)} >
+                
                 {
-                  gustos2.verTipo.map((item, index)=>{
-                    if(gustos2.verTipo[2]!=item){
-                      return(
-                        <>
-                        <option value={index}>{item}</option>
-                        </>
-                      )
-                    }                    
+                  arrayTipo.map((item, index)=>{
+                    return(
+                      <>
+                      {
+                        //el value={item} es el verdadero valor que guardas
+                        //osea la id
+                      }
+                      <option value={item}>{item}</option>
+                      </>
+                    ) 
                   }
                   )
                 }
@@ -338,9 +354,7 @@ const MiPerfil23 = () => {
         src="/xmlid-2731.svg"
         onClick={onXMLID273IconClick}
       />
-      {
-        console.log("asdfasdfsadfasdf:",gustos2)
-      }
+      
     </div>
   );
 };
