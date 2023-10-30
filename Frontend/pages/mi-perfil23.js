@@ -71,26 +71,7 @@ const MiPerfil23 = () => {
   }, [])
 
   
-  /*
-  EDITAR DATOS
-  const acutalizar = () =>{
-    GustoApi.actualizarGusto('',window.localStorage.token)
-  }
   
-  
-
-  const tipo = ['musica','dibujo','futbol']
-  const subtipo = ['realizar actividades','ver contenido relacionado','hablar del tema']
-
-  const defaultGustos2 = {
-    id: '1',
-    nombre: 'pintar',
-    afinidad: 'me gusta mucho',
-    duracion: '1 hora',
-    verTipo: 'dibujo',
-    subTipo: 'realizar actividades'
-  }
-  */
   const arrayTipo = ['musica','dibujo','futbol'];
   const arraySubTipo = ['realizar actividades','ver contenido relacionado','hablar del tema'];
   const [id, setid] = useState('1');
