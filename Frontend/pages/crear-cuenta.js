@@ -38,28 +38,39 @@ const CrearCuenta = () => {
     router.push("/");
   }, [router]);
 
+  const [cargando, setCargando] = useState(false);
   const onCrearCuentaClick = async() => {
-    if(ValidarCuenta()){
-      const res = await UsuarioApi.register(usuario)
-      if(res.data.hasOwnProperty("message")){
-        alert(res.data.message)
-      }else{
-        alert("¡Cuenta creada exitosamente!")
-        const defaultCredenciales = {
-          correo: usuario.correo,
-          contrasena: usuario.contrasena
+    if(cargando===false){
+      setCargando(true)
+      if(ValidarCuenta()){
+        if(confirm("¿Estás segur@? No podrás modificar tu correo institucional ni tu fecha de nacimiento posteriormente")){
+          try{
+            const res = await UsuarioApi.register(usuario)
+            if(res.data.hasOwnProperty("message")){
+              alert(res.data.message)
+            }else{
+              alert("¡Cuenta creada exitosamente!")
+              const defaultCredenciales = {
+                correo: usuario.correo,
+                contrasena: usuario.contrasena
+              }
+              const res = await UsuarioApi.login(defaultCredenciales)
+              window.localStorage.setItem("token", res.data.token);
+              irMenu()
+            }
+          }catch(e){
+            alert("Error. Backend no encendido")
+          }
         }
-        const res = await UsuarioApi.login(defaultCredenciales)
-        window.localStorage.setItem("token", res.data.token);
-        irMenu()
       }
+      setCargando(false)
     }
   }
   
   const actualizarEdad = (value) => {
     const f = new Date(value)
     const today = new Date()
-    if(f>today.setDate(today.getDate()-1)){
+    if(f>today.setDate(today.getDate())){ 
       alert("Esa fecha todavía no ha transcurrido")
     }else{
       const dif = today.setDate(today.getDate()+1) - f;
@@ -120,6 +131,28 @@ const CrearCuenta = () => {
       alert(t)
       return false;
     }
+    //Espacios
+    if(usuario.nombre[0]===' '||usuario.nombre[usuario.nombre.length-1]===' '){
+      r.push('tu nombre')
+    }
+    if(usuario.apellidos[0]===' '||usuario.apellidos[usuario.apellidos.length-1]===' '){
+      r.push('tu apellido')
+    }
+    if(usuario.apodo[0]===' '||usuario.apodo[usuario.apodo.length-1]===' '){
+      r.push('tu apodo')
+    }
+    if(r.length!=0){
+      let t=`No puedes iniciar ni acabar ${r[0]}, `
+      for(let i=1;i<r.length;i++){
+        if(i==r.length-1){
+          t+="ni ";
+        }
+        t+=r[i]+", ";
+      }
+      t = t.substring(0, t.length-2)
+      alert(t+" con espacios")
+      return false;
+    }
     //Correo institucional
     if(!usuario.correo.includes('@aloe.ulima.edu.pe')){
       alert("Solo se permiten correos institucionales de la Ulima (@aloe.ulima.edu.pe)")
@@ -157,6 +190,9 @@ const CrearCuenta = () => {
     if(edad < 16){
       alert("Necesitas tener al menos 16 años")
       return false;
+    }else if(edad > 70){
+      alert("No puedes tener más de 70 años")
+      return false;
     }
     return true;
   }
@@ -172,7 +208,7 @@ const CrearCuenta = () => {
         <div className={styles.crearcuentaItem} />
         <div className={styles.general}>General</div>
         <div className={styles.crearcuentaInner}>
-          <input className={styles.dato} type="text" id="nombre" value={usuario.nombre} onChange={e => setUsuario({...usuario,nombre: e.target.value})}></input>
+          <input className={styles.dato} type="text" id="nombre" maxLength={30} value={usuario.nombre} onChange={e => setUsuario({...usuario,nombre: e.target.value})}></input>
         </div>
         {
           false?
@@ -189,10 +225,10 @@ const CrearCuenta = () => {
           }
         </div>
         <div className={styles.crearcuentaChild2}>
-          <input className={styles.dato} type="text" id="apodo" value={usuario.apodo} onChange={e => setUsuario({...usuario,apodo: e.target.value})} style={{width: "90%"}}></input>
+          <input className={styles.dato} type="text" id="apodo" maxLength={20} value={usuario.apodo} onChange={e => setUsuario({...usuario,apodo: e.target.value})} style={{width: "90%"}}></input>
         </div>
         <div className={styles.crearcuentaChild3}>
-          <input className={styles.dato} type="text" id="apellidos" value={usuario.apellidos} onChange={e => setUsuario({...usuario,apellidos: e.target.value})}></input>
+          <input className={styles.dato} type="text" id="apellidos" maxLength={30} value={usuario.apellidos} onChange={e => setUsuario({...usuario,apellidos: e.target.value})}></input>
         </div>
         <div className={styles.crearcuentaChild4}>
           <select className={styles.dato} id="genero" value={usuario.id_genero} onChange={e => actualizarGenero(e.target.value)} style={{width: "95%"}}>
@@ -207,13 +243,13 @@ const CrearCuenta = () => {
           <input className={styles.dato} type="text" id="correo" maxLength={26} value={usuario.correo} onChange={e => setUsuario({...usuario,correo: e.target.value})}></input>
         </div>
         <div className={styles.crearcuentaChild6}>
-          <input className={styles.dato} type="date" value={usuario.nacimiento} id="nacimiento" onChange={(e) => actualizarEdad(e.target.value)} style={{width: "93%"}}/>
+          <input className={styles.dato} type="date" id="nacimiento" value={usuario.nacimiento} onChange={(e) => actualizarEdad(e.target.value)} style={{width: "93%"}}/>
         </div>
         <div className={styles.crearcuentaChild7}>
-          <input className={styles.dato} type="password" id="contra" value={usuario.contrasena} onChange={e => setUsuario({...usuario,contrasena: e.target.value})} style={{width: "93%"}}></input>
+          <input className={styles.dato} type="password" id="contra" maxLength={40} value={usuario.contrasena} onChange={e => setUsuario({...usuario,contrasena: e.target.value})} style={{width: "93%"}}></input>
         </div>
         <div className={styles.crearcuentaChild8}>
-          <input className={styles.dato} type="password" id="contra2" value={contra2} onChange={e => setContra2(e.target.value)} style={{width: "93%"}}></input>
+          <input className={styles.dato} type="password" id="contra2" maxLength={40} value={contra2} onChange={e => setContra2(e.target.value)} style={{width: "93%"}}></input>
         </div>
         <div className={styles.crearcuentaChild9} />
         <div className={styles.crearcuentaChild10} onClick={onCrearCuentaClick} />

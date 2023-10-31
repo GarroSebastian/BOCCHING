@@ -14,15 +14,22 @@ const IniciarSesion = () => {
   }
   const [Credenciales, setCredenciales] = useState(defaultCredenciales);
   const router = useRouter();
+  const [cargando, setCargando] = useState(false);
 
   const HandleLogin = async () => {
-    const res = await UsuarioApi.login(Credenciales)
-    if (res != null){
-      window.localStorage.setItem("token", res.data.token);
-      onFrameContainer5Click();
-    }else{
-      alert("Correo o contraseña incorrectos")
-    }   
+    if(Credenciales.correo==='' || Credenciales.contrasena===''){
+      alert("Complete todos los campos")
+    }else if(cargando===false){
+      setCargando(true)
+      const res = await UsuarioApi.login(Credenciales)
+      if (res != null){
+        window.localStorage.setItem("token", res.data.token);
+        onFrameContainer5Click();
+      }else{
+        alert("Correo o contraseña incorrectos")
+      }
+      setCargando(false)
+    }
   }
 
   const onFrameContainer5Click = useCallback (() => {
@@ -57,7 +64,6 @@ const IniciarSesion = () => {
             <div className={styles.contrasea}>
             <input className={styles.barratexto2} type="password" id="contrasea" value={Credenciales.contrasena} onChange={e => setCredenciales({...Credenciales,contrasena: e.target.value})}></input></div>
           </div>
-          <div className={styles.frame} />
         </div>
       </div>
       <div className={styles.ingresarWrapper} onClick={HandleLogin}>
