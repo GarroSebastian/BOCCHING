@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useRouter } from "next/router";
 import styles from "./solicitudes2.module.css";
-
+//Solicitudes Enviadas
 const Solicitudes2 = () => {
   const router = useRouter();
 

@@ -1,7 +1,6 @@
 import { useCallback } from "react";
 import { useRouter } from "next/router";
 import { useState, useEffect } from 'react';
-import pako from 'pako';
 import { Zoom } from "../extra/zoom.js";
 import styles from "./mi-perfil.module.css";
 import Lateral from "../components/lateral.js"

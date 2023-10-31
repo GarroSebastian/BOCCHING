@@ -6,6 +6,7 @@ import GustoApi from "../api/gusto";
 
 
 const MiPerfil23 = () => {
+  Zoom();
   const router = useRouter();
 
   const onRectangle1Click = useCallback(() => {
@@ -115,6 +116,7 @@ const MiPerfil23 = () => {
   
 
   return (
+    <div id="container">
     <div className={styles.miperfil23}>
       <img className={styles.miperfil23Child} alt="" src="/rectangle-161.svg" />
       <img
@@ -336,6 +338,7 @@ const MiPerfil23 = () => {
         onClick={onXMLID273IconClick}
       />
       
+    </div>
     </div>
   );
 };

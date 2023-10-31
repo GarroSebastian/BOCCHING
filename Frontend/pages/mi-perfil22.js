@@ -2,8 +2,11 @@ import { useCallback } from "react";
 import { useRouter } from "next/router";
 import styles from "./mi-perfil22.module.css";
 import { useState, useEffect } from 'react';
+import { Zoom } from "../extra/zoom.js"
+import GustoApi from "../api/gusto";
 
 const MiPerfil22 = () => {
+  Zoom();
   const router = useRouter();
 
   const onRectangle1Click = useCallback(() => {
@@ -22,9 +25,27 @@ const MiPerfil22 = () => {
     router.push("/mi-perfil241");
   }, [router]);
 
-  const onRectangle12Click = useCallback(() => {
-    router.push("/mi-perfil21");
-  }, [router]);
+  const onRectangle12Click = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await GustoApi.guardarGusto(gustos2, token);
+      console.log(token);
+  
+      if (response && response.status === 201) {
+        // La data fue guardada en la DB
+        console.log('Gustos guardados correctamente');
+      } else {
+        console.log(gustos2);
+        console.log(response, response.status);
+        console.error('Error al guardar gustos');
+      }
+    } catch (error) {
+      console.error('Ocurrió un error', error);
+    }
+  };
+
+    //router.push("/mi-perfil21");
+
 
   const onGroupClick = useCallback(() => {
     router.push("/menu");
@@ -57,12 +78,12 @@ const MiPerfil22 = () => {
     nombre: '',
     afinidad: '',
     duracion: '',
-    verTipo: '',
     subTipo: ''
   }
   const [gustos2, setgustos2] = useState(defaultGustos2);
 
   return (
+    <div id="container">
     <div className={styles.miperfil22}>
       <img className={styles.miperfil22Child} alt="" src="/rectangle-161.svg" />
       <img
@@ -119,7 +140,7 @@ const MiPerfil22 = () => {
       <div className={styles.xd15}>xd</div>
       
       <div className={styles.hobby4}>
-        <select onChange={e => setgustos2(e.target.value)} >
+        <select onChange={e => setgustos2({ ...gustos2, tipo: e.target.value })} >
                 <option value={-1}>Selecciona</option>
                 {
                   tipo?.map((item, index)=>{
@@ -137,7 +158,7 @@ const MiPerfil22 = () => {
       <div className={styles.miperfil22Child6} />
       <div className={styles.xdParent}>
         <div className={styles.tipo}>
-          <select onChange={e => setgustos2(e.target.value)} 
+          <select onChange={e => setgustos2({ ...gustos2, subTipo: e.target.value })} 
           style={{width: "130%"}}>
                 <option value={-1}>Selecciona</option>
                 {
@@ -235,6 +256,7 @@ const MiPerfil22 = () => {
         src="/xmlid-2731.svg"
         onClick={onXMLID273IconClick}
       />
+    </div>
     </div>
   );
 };

@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { useRouter } from "next/router";
 import { Zoom } from "../extra/zoom";
 import styles from "./solicitudes3.module.css";
-
+//Solicitudes Ocultas
 const Solicitudes3 = () => {
   Zoom();
   const router = useRouter();
