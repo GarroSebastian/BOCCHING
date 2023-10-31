@@ -1,2 +1,18 @@
-GET http://localhost:3700/gusto
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1M2ZjY2I0YTdhNzI2MWU3NzAzMWY4NCIsImlhdCI6MTY5ODY3OTk5NCwiZXhwIjoxNjk4NzY2Mzk0fQ.PMws7K0lLf8fsuEV9HWNhAsunFnO5R5rwBk2ArGeomI
+GET http://localhost:3700/gustos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NDEyN2VjZWJjY2NlZDkyZDRkMjliOCIsImlhdCI6MTY5ODc3MDUwMCwiZXhwIjoxNjk4ODU2OTAwfQ.AJvNktqCICFUe0roBK_QDKwvivwCaeRxgAssr0zuqq8
+
+###
+POST http://localhost:3700/save-gusto
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NDEyN2VjZWJjY2NlZDkyZDRkMjliOCIsImlhdCI6MTY5ODc3MDUwMCwiZXhwIjoxNjk4ODU2OTAwfQ.AJvNktqCICFUe0roBK_QDKwvivwCaeRxgAssr0zuqq8
+
+{
+    "tipo":"valor 1",
+    "nombre":"valor 2",
+    "subtipo":"valor 3",
+    "afinidad":"adsaf",
+    "posesion":"asdf",
+    "duracion":"asdf",
+    "conversacion":"asdf",
+    "musica":"asdf",
+    "frecuencia":"asdf",
+}

@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import styles from "./mi-perfil23.module.css";
 import { useState, useEffect } from 'react';
 import GustoApi from "../api/gusto";
-
+import { Zoom } from "../extra/zoom.js"
 
 const MiPerfil23 = () => {
   Zoom();
@@ -61,7 +61,7 @@ const MiPerfil23 = () => {
   //Llamado al Get
   const handleGetGustos = () => {
     GustoApi.getGusto(window.localStorage.token).then((gusto)=>{
-      console.log(gusto)
+      console.log("GUSTO GOD",gusto)
       const aux = gusto.data;
       setgusto(aux)
     })
@@ -111,10 +111,34 @@ const MiPerfil23 = () => {
     }
     setgustos2(defaultGustos3)
   }
-  console.log("Datos acutalizados 2, ",gustos2)
 
+  const defaultGustos4 = {
+    nombre: '',
+    afinidad: '',
+    duracion: '',
+    subTipo: ''
+  }
+  const [cosas, setcosas] = useState(defaultGustos4);
   
-
+  const onClick = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await GustoApi.getGusto(token, cosas);
+      console.log(token);
+  
+      if (response && response.status === 201) {
+        // La data fue guardada en la DB
+        console.log('Gustos guardados correctamente');
+      } else {
+        console.log(cosas);
+        console.log(response, response.status);
+        console.error('Error al guardar gustos');
+      }
+    } catch (error) {
+      console.error('Ocurrió un error', error);
+    }
+  };
+  console.log("Datos acutalizados 2, ",cosas)
   return (
     <div id="container">
     <div className={styles.miperfil23}>
