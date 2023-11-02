@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from 'react';
 import styles from "./crear-cuenta.module.css";
 import { Zoom } from "../extra/zoom.js"
+import Global from "../extra/global.js"
 import UsuarioApi from "../api/usuario.js"
 
 const CrearCuenta = () => {
@@ -37,6 +38,12 @@ const CrearCuenta = () => {
   const onCancelarTextClick = useCallback(() => {
     router.push("/");
   }, [router]);
+  
+  const cambiarUsuario = (tipo, dato) => { //nombre y apellidos
+    if (Global.ValidarTexto(dato)) {
+      setUsuario({...usuario,[tipo]: dato})
+    }
+  }
 
   const [cargando, setCargando] = useState(false);
   const onCrearCuentaClick = async() => {
@@ -208,7 +215,7 @@ const CrearCuenta = () => {
         <div className={styles.crearcuentaItem} />
         <div className={styles.general}>General</div>
         <div className={styles.crearcuentaInner}>
-          <input className={styles.dato} type="text" id="nombre" maxLength={30} value={usuario.nombre} onChange={e => setUsuario({...usuario,nombre: e.target.value})}></input>
+          <input className={styles.dato} type="text" id="nombre" maxLength={30} value={usuario.nombre} onChange={e => cambiarUsuario("nombre", e.target.value)}></input>
         </div>
         {
           false?
@@ -228,7 +235,7 @@ const CrearCuenta = () => {
           <input className={styles.dato} type="text" id="apodo" maxLength={20} value={usuario.apodo} onChange={e => setUsuario({...usuario,apodo: e.target.value})} style={{width: "90%"}}></input>
         </div>
         <div className={styles.crearcuentaChild3}>
-          <input className={styles.dato} type="text" id="apellidos" maxLength={30} value={usuario.apellidos} onChange={e => setUsuario({...usuario,apellidos: e.target.value})}></input>
+          <input className={styles.dato} type="text" id="apellidos" maxLength={30} value={usuario.apellidos} onChange={e => cambiarUsuario("apellidos", e.target.value)}></input>
         </div>
         <div className={styles.crearcuentaChild4}>
           <select className={styles.dato} id="genero" value={usuario.id_genero} onChange={e => actualizarGenero(e.target.value)} style={{width: "95%"}}>

@@ -54,7 +54,7 @@ const IniciarSesion = () => {
           <div className={styles.userParent}>
             <img className={styles.userIcon} alt="" src="/user1.svg" />
             <div className={styles.correoInstitucional}>
-            <input className={styles.barratexto} type="text" id="correo" value={Credenciales.correo} onChange={e => setCredenciales({...Credenciales,correo: e.target.value})}></input>
+            <input className={styles.barratexto} type="text" id="correo" placeholder="Ingrese su correo institucional" value={Credenciales.correo} onChange={e => setCredenciales({...Credenciales,correo: e.target.value})}></input>
             </div>
           </div>
         </div>
@@ -62,7 +62,7 @@ const IniciarSesion = () => {
           <div className={styles.passwordParent}>
             <img className={styles.passwordIcon} alt="" src="/password.svg" />
             <div className={styles.contrasea}>
-            <input className={styles.barratexto2} type="password" id="contrasea" value={Credenciales.contrasena} onChange={e => setCredenciales({...Credenciales,contrasena: e.target.value})}></input></div>
+            <input className={styles.barratexto2} type="password" id="contrasea" placeholder="Ingrese su contraseña" value={Credenciales.contrasena} onChange={e => setCredenciales({...Credenciales,contrasena: e.target.value})}></input></div>
           </div>
         </div>
       </div>
