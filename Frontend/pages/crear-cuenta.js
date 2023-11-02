@@ -19,14 +19,13 @@ const CrearCuenta = () => {
     apodo: '',
     contrasena: '',
     foto: '',
-    carrera: "carrera",
-    facultad: "2",
-    especialidad: "especialidad",
-    descripcion: "descripcion",
+    carrera: "",
+    facultad: -1,
+    especialidad: "",
+    descripcion: "",
     mostrar_nombre: true
   }
   const [usuario, setUsuario] = useState(defaultUsuario);
-  const [usuarios, setUsuarios] = useState([]);
   const [contra2, setContra2] = useState('');
   
   const router = useRouter();
@@ -90,11 +89,6 @@ const CrearCuenta = () => {
     if(value>=0){
       setUsuario({...usuario,id_genero: value})
     }
-  }
-  
-  const ExisteCorreo = (correo) => {
-    const u = usuarios.find((u) => u.correo == correo)
-    return (u !== undefined);
   }
 
   const DiferentesContra = (contra) => {
@@ -170,10 +164,7 @@ const CrearCuenta = () => {
     }else if(parseInt(usuario.correo.substring(0,8))<=9999999 || isNaN(usuario.correo.substring(0,8)) || !usuario.correo.endsWith('@aloe.ulima.edu.pe')){
       alert("Formato del correo institucional incorrecto")
       return false;
-    }else if(ExisteCorreo(usuario.correo)){
-      alert("Ese correo institucional ya está en uso")
-      return false;
-    }
+    }//Correo duplicado se revisa en Backend
     //Contraseña
     if(usuario.contrasena!=contra2){
       alert("Las contraseñas no coinciden")

@@ -2,6 +2,7 @@ import { useCallback } from "react";
 import { useRouter } from "next/router";
 import { useState, useEffect } from 'react';
 import { Zoom } from "../extra/zoom.js";
+import Global from "../extra/global.js";
 import styles from "./mi-perfil.module.css";
 import Lateral from "../components/lateral.js"
 import UsuarioApi from "../api/usuario";
@@ -95,10 +96,39 @@ const MiPerfil = () => {
       }
   }
 
+  const cambiarUsuario = (tipo, dato) => { //nombre y apellidos
+    if (Global.ValidarTexto(dato)) {
+      setUsuario({...usuario,[tipo]: dato})
+    }
+  }
+
   const ValidarCuenta = () => {
     //Datos obligatorios
     if(usuario.nombre==''){
       alert('No puedes dejar tu nombre vacío')
+      return false;
+    }
+    let r=[];
+    //Espacios
+    if(usuario.nombre[0]===' '||usuario.nombre[usuario.nombre.length-1]===' '){
+      r.push('tu nombre')
+    }
+    if(usuario.apellidos[0]===' '||usuario.apellidos[usuario.apellidos.length-1]===' '){
+      r.push('tu apellido')
+    }
+    if(usuario.apodo[0]===' '||usuario.apodo[usuario.apodo.length-1]===' '){
+      r.push('tu apodo')
+    }
+    if(r.length!=0){
+      let t=`No puedes iniciar ni acabar ${r[0]}, `
+      for(let i=1;i<r.length;i++){
+        if(i==r.length-1){
+          t+="ni ";
+        }
+        t+=r[i]+", ";
+      }
+      t = t.substring(0, t.length-2)
+      alert(t+" con espacios")
       return false;
     }
     return true;
@@ -127,7 +157,6 @@ const MiPerfil = () => {
     UsuarioApi.findCurrent().then((user)=>{
       const aux = user.data.usuario;
       setUsuario(aux)
-      console.log(aux)
       /*if(aux.foto!=''){
         setUsuario({...aux, foto: pako.Deflate(aux.foto, {to: 'string'})})
       }else{
@@ -190,15 +219,15 @@ const MiPerfil = () => {
           </div>
           <div className={styles.nombres}>Nombres:</div>
           <div className={styles.miperfil1Child4}>
-            <input className={styles.dato} type="text" id="nombre" value={usuario.nombre} onChange={e => setUsuario({...usuario,nombre: e.target.value})}></input>
+            <input className={styles.dato} type="text" id="nombre" maxLength={30} value={usuario.nombre} onChange={e => cambiarUsuario("nombre", e.target.value)}></input>
           </div>
           <div className={styles.apellidos}>Apellidos:</div>
           <div className={styles.miperfil1Child5}>
-            <input className={styles.dato} type="text" id="apellidos" value={usuario.apellidos} onChange={e => setUsuario({...usuario,apellidos: e.target.value})}></input>
+            <input className={styles.dato} type="text" id="apellidos" maxLength={30} value={usuario.apellidos} onChange={e => cambiarUsuario("apellidos", e.target.value)}></input>
           </div>
           <div className={styles.apodo}>Apodo:</div>
           <div className={styles.miperfil1Child6}>
-            <input className={styles.dato} type="text" id="apodo" value={usuario.apodo} onChange={e => setUsuario({...usuario,apodo: e.target.value})}></input>
+            <input className={styles.dato} type="text" id="apodo" maxLength={20} value={usuario.apodo} onChange={e => setUsuario({...usuario,apodo: e.target.value})}></input>
           </div>
           <div className={styles.gnero}>Género:</div>
           <div className={styles.gneroEjemploParent}>
@@ -239,9 +268,15 @@ const MiPerfil = () => {
               <p>Mostrar mi</p>
               {
                 usuario.mostrar_nombre?
-                  <p>Nombre: {usuario.nombre}</p>
+                  usuario.nombre.length<=15?
+                    <p>Nombre: {usuario.nombre}</p>
+                  :
+                    <p>Nombre: {usuario.nombre.substring(0,13)}...</p>
                 :
-                  <p>Apodo: {usuario.apodo}</p>
+                  usuario.apodo.length<=15?
+                    <p>Apodo: {usuario.apodo}</p>
+                  :
+                    <p>Apodo: {usuario.apodo.substring(0,13)}...</p>
               }
             </div>
             <button onClick={e => setUsuario({...usuario,mostrar_nombre: !usuario.mostrar_nombre})} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>

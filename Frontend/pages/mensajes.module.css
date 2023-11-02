@@ -212,8 +212,9 @@
 .escribirMensaje,
 .mensajes {
   position: absolute;
-  top: 990px;
-  left: 754px;
+  top: 975px;
+  left: 731px;
+  height: 45px;
   font-size: var(--font-size-mini);
   color: var(--ttulos-textos);
 }
@@ -541,6 +542,7 @@
   left: 1276px;
   width: 36.01px;
   height: 29.65px;
+  pointer-events: none;
 }
 .mensajes2Child32 {
   position: absolute;

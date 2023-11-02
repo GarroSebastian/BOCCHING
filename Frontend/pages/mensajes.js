@@ -48,6 +48,7 @@ const Mensajes = () => {
   }
   const [chats, setChats] = useState([]);
   const [busqChat, setBusqChat] = useState("");
+  const [textareas, setTextareas] = useState([])
   const [idConv, setIdConv] = useState("");
 
   const onRectangleClick = useCallback(() => {
@@ -117,6 +118,10 @@ const Mensajes = () => {
 
   useEffect(() => {
     if(mensajes.length>0){
+      for(let i=0;i<mensajes.length;i++){
+        setTextareas([...textareas, ""])
+      }
+      console.log(textareas)
       asignarChats().then((result) => {
         setChats(result)
         console.log(mensajes)
@@ -172,6 +177,15 @@ const Mensajes = () => {
       handleOnLoad();
     }
   }, [])
+
+  const cambiarChat = (id) => {
+    setTextareas("")
+    setIdConv(id)
+  }
+  
+  const EnviarMensaje = () => {
+
+  }
   
   return (
     <div id="container">
@@ -208,9 +222,11 @@ const Mensajes = () => {
               <div className={styles.mensajes2Child9} />
               <div className={styles.mensajes2Child10} />
               <div className={styles.escribirMensaje}>
-                <textarea></textarea>
+                <textarea value={textareas[idConv]} onChange={e => setTextareas(e.target.value)} style={{width: "262%", height: "100%", resize: "none", border: "none"}}/>
               </div>
-              <div className={styles.mensajes2Child31} />
+              <div className={styles.mensajes2Child31}>
+                <button onClick={e => EnviarMensaje()} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
+              </div>
               <img className={styles.vectorIcon1} alt="" src="/vector6.svg" />
             </>
           :
@@ -245,7 +261,7 @@ const Mensajes = () => {
                   <button onClick={e => console.log(mensajes.filter((item) => item.idEmisor==index+1))} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
                 </div>
                 <div className={styles.mensajes2Child19} style={{top: `${primero-7+salto*index}px`}}>
-                  <button onClick={e => setIdConv(item.idOtro)} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
+                  <button onClick={e => cambiarChat(item.idOtro)} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
                 </div>
                 <b className={styles.nombre1} style={{top: `${primero+4+salto*index}px`}}>{item.nombre}</b>
                 <div className={styles.mensaje0001} style={{top: `${primero+31+salto*index}px`}}>{item.texto}</div>
