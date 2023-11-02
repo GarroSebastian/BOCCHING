@@ -52,6 +52,7 @@ const MiPerfil23 = () => {
   const onXMLID273IconClick = useCallback(() => {
     router.push("/configuracin11");
   }, [router]);
+  /*
   //variables importantes 1
   const defaultgusto = {
     gustos: ''
@@ -70,48 +71,37 @@ const MiPerfil23 = () => {
   useEffect(() => {
     handleGetGustos();
   }, [])
-
+  */
   
   
-  const arrayTipo = ['musica','dibujo','futbol'];
-  const arraySubTipo = ['realizar actividades','ver contenido relacionado','hablar del tema'];
-  const [id, setid] = useState('1');
-  const [nombre, setnombre] = useState('pintar');
-  const [afinidad, setafinidad] = useState('me gusta mucho');
-  const [duracion, setduracion] = useState('1 hora');
-  const [verTipo, setverTipo] = useState('musica');
-  const [subTipo, setsubTipo] = useState('realizar actividades');
-
+  const arrayTipo = ['Sin especificar','Franquicia','Juego de mesa','Hobby','Pasatiempo + Juego',
+  'Alimento','Música','Creador(a) de contenido','Deporte','Otro'];
+  const [ID_Tipo, setID_Tipo] = useState(0);
+  const arrayFranquicia = ['Sin especificar','Videojuego','Serie','Libro','Otro']
+  const arrayPasatiempo = ['Sin especificar','Aire libre','Espacio cerrado','Mixto']
+  const arrayAlimento = ['Sin especificar','Comida','Bebida']
+  const arrayMusica = ['Sin especificar','Solista','Grupo','Mixto']
+  const arrayCreador = ['Sin especificar','Gameplays','Tops','Crítico','Cómico','Informativo',
+    'Historia','Día a día','Otro']
+  const arraySubTipo = [[],arrayFranquicia,[],[],arrayPasatiempo,arrayAlimento,arrayMusica,arrayCreador,[],[]];
   const defaultGustos2 = {
-    id: id,
-    nombre: nombre,
-    afinidad: afinidad,
-    duracion: duracion,
-    verTipo: verTipo,
-    subTipo: subTipo
+    id: '1',
+    nombre: 'pintar',
+    afinidad: 'me gusta mucho',
+    duracion: '1 hora',
+    verTipo: [],
+    subTipo: 'Sin especificar'
   }
 
   const [gustos2, setgustos2] = useState(defaultGustos2);
-  //Posiblemente la rpta seria crear otras variables
-  const [id2, setid2] = useState(id);
-  const [nombre2, setnombre2] = useState(nombre);
-  const [afinidad2, setafinidad2] = useState(afinidad);
-  const [duracion2, setduracion2] = useState(duracion);
-  const [verTipo2, setverTipo2] = useState(verTipo);
-  const [subTipo2, setsubTipo2] = useState(subTipo);
   console.log("Datos acutalizados 1, ",gustos2)
-  const actualizarGusto =()=>{
-    const defaultGustos3 = {
-      id: id2,
-      nombre: nombre2,
-      afinidad: afinidad2,
-      duracion: duracion2,
-      verTipo: verTipo2,
-      subTipo: subTipo2
-    }
-    setgustos2(defaultGustos3)
-  }
-
+  //Quiero cambiar nombre
+  //setgustos2({...gustos2, nombre:value})
+  //Posiblemente la rpta seria crear otras variables
+  
+  
+  console.log("Datos acutalizados 2, ",gustos2)
+  /*
   const defaultGustos4 = {
     nombre: '',
     afinidad: '',
@@ -139,6 +129,8 @@ const MiPerfil23 = () => {
     }
   };
   console.log("Datos acutalizados 2, ",cosas)
+  */
+ console.log("OJITO",ID_Tipo)
   return (
     <div id="container">
     <div className={styles.miperfil23}>
@@ -171,22 +163,16 @@ const MiPerfil23 = () => {
       </div>
       <div className={styles.frameDiv}>
         <div className={styles.xd}>
-          <select  value={subTipo2} 
-          onChange={(e) => {
-            setsubTipo2(e.target.value)
-          }} 
+          <select  value={gustos2.subTipo} 
+          onChange={e => 
+            setgustos2({...gustos2, subTipo:e.target.value})
+          } 
           style={{width: "200%"}}>
                 
                 {
-                  arraySubTipo.map((item, index)=>{
+                  arraySubTipo[ID_Tipo].map((item, index)=>{
                     return(
-                      <>
-                      {
-                        //el value={item} es el verdadero valor que guardas
-                        //osea la id
-                      }
-                      <option value={item}>{item}</option>
-                      </>
+                      <option key={index} value={item}>{item}</option>
                     ) 
                   }
                   )
@@ -209,7 +195,7 @@ const MiPerfil23 = () => {
       <div className={styles.xdParent4}>
         <div className={styles.xd}>
         <input type="text"
-                value={nombre2} onChange={e => setnombre2(e.target.value)} 
+                value={gustos2.nombre} onChange={e => setgustos2({...gustos2, nombre:e.target.value})} 
                 style={{width: "100px"}}>
                 </input>
         </div>
@@ -229,8 +215,8 @@ const MiPerfil23 = () => {
       </div>
       <div className={styles.xdParent8}>
         <div className={styles.xd}>
-        <input type="text" value={afinidad2}
-                onChange={e => setafinidad2(e.target.value)} 
+        <input type="text" value={gustos2.afinidad}
+                onChange={e => setgustos2({...gustos2, afinidad: e.target.value})} 
                 style={{width: "100px"}}>
           </input>
         </div>
@@ -249,8 +235,8 @@ const MiPerfil23 = () => {
       </div>
       <div className={styles.xdParent12}>
         <div className={styles.xd}>
-        <input type="text" value={duracion2}
-                onChange={e => setduracion2(e.target.value)} 
+        <input type="text" value={gustos2.duracion}
+                onChange={e => setgustos2({...gustos2, duracion: e.target.value})} 
                 style={{ width: "100px"}}>
                 </input>
         </div>
@@ -287,24 +273,20 @@ const MiPerfil23 = () => {
         <div className={styles.xd}>Afinidad</div>
         <div className={styles.xd}>Duración</div>
       </div>
-      <div className={styles.hobby}>
-      <select  value={verTipo2} onChange={e => setverTipo2(e.target.value)} >
-                
-                {
-                  arrayTipo.map((item, index)=>{
-                    return(
-                      <>
-                      {
-                        //el value={item} es el verdadero valor que guardas
-                        //osea la id
-                      }
-                      <option value={item}>{item}</option>
-                      </>
-                    ) 
-                  }
-                  )
-                }
-              </select>
+      <div className={styles.hobby} style={{ marginRight: '100px' }}>
+      <select  value={gustos2.verTipo} onChange={e => {
+        const selectedIndex = e.target.selectedIndex; // Obtiene el índice del elemento seleccionado
+        setgustos2({ ...gustos2, verTipo: e.target.value });
+        setID_Tipo(selectedIndex)
+      }}
+      style={{ maxWidth: "65%" }}>
+        {
+        arrayTipo.map((item, index) => {
+          return (<option key={index} value={item}>{item}</option>);
+        })
+        }
+      </select>
+
       </div>
       <div className={styles.hobby1}>Hobby</div>
       <div className={styles.hobby2}>Hobby</div>
@@ -314,10 +296,17 @@ const MiPerfil23 = () => {
       <div className={styles.miperfil23Child9} onClick={onRectangle12Click} />
       <div className={styles.editar}>Editar</div>
       <div className={styles.confirmar}>
-        <button type="submit" onClick={actualizarGusto}>
-          Guardar
-        </button>
-        Confirmarz
+
+
+
+
+        Confirmar
+
+
+
+
+
+
       </div>
       <img className={styles.groupIcon} alt="" src="/group-70.svg" />
       <img className={styles.miperfil23Child10} alt="" src="/group-70.svg" />
