@@ -1,5 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { Zoom } from "../extra/zoom.js"
 import styles from "./mensajes.module.css";
 import Lateral from "../components/lateral.js"
@@ -7,7 +6,6 @@ import UsuarioApi from "../api/usuario";
 
 const Mensajes = () => {
   Zoom()
-  const router = useRouter();
 
   const defaultUsuario = {
     _id: '',
@@ -36,28 +34,22 @@ const Mensajes = () => {
     dia: 0,
     diaSem: '',
     hora: 0,
-    minuto: 0
+    minuto: 0,
+    segundo: 0,
+    mili: 0
   }
   const [mensajes, setMensajes] = useState([]);
   const defaultChat = {
     idOtro: "",
     nombre: "",
-    texto: "",
+    ultimo: "",
     fecha: "",
-    foto: ""
+    foto: "",
+    mensaje: ""
   }
   const [chats, setChats] = useState([]);
   const [busqChat, setBusqChat] = useState("");
-  const [textareas, setTextareas] = useState([])
   const [idConv, setIdConv] = useState("");
-
-  const onRectangleClick = useCallback(() => {
-    router.push("/mensajes1");
-  }, [router]);
-
-  const onConversacinTextClick = useCallback(() => {
-    router.push("/mensajes1");
-  }, [router]);
 
   const filtrarMensajes = async() => {
     const filtrados = []
@@ -95,12 +87,14 @@ const Mensajes = () => {
   useEffect(() => {
     if(usuario!==defaultUsuario){
       setSinfiltrar([
-        {...defaultMensaje,idEmisor: "0", idReceptor: "1", mensaje: "hola1", ano: 2023, mes: 10, dia: 20, diaSem: "Viernes", hora: 3, minuto: 53},
-        {...defaultMensaje,idEmisor: "1", idReceptor: "0", mensaje: "hola2", ano: 2023, mes: 10, dia: 20, diaSem: "Viernes", hora: 3, minuto: 55},
-        {...defaultMensaje,idEmisor: "0", idReceptor: "2", mensaje: "mob1", ano: 2023, mes: 10, dia: 19, diaSem: "Jueves", hora: 3, minuto: 53},
-        {...defaultMensaje,idEmisor: "2", idReceptor: "0", mensaje: "mob2", ano: 2023, mes: 10, dia: 19, diaSem: "Jueves", hora: 3, minuto: 55},
-        {...defaultMensaje,idEmisor: "0", idReceptor: "3", mensaje: "AAA1", ano: 2023, mes: 10, dia: 18, diaSem: "Miércoles", hora: 3, minuto: 53},
-        {...defaultMensaje,idEmisor: "3", idReceptor: "0", mensaje: "AAA2", ano: 2023, mes: 10, dia: 18, diaSem: "Miércoles", hora: 3, minuto: 55},
+        {...defaultMensaje,idEmisor: "0", idReceptor: "1", mensaje: "hola1", ano: 2023, mes: 11, dia: 2, diaSem: "Jueves", hora: 3, minuto: 53},
+        {...defaultMensaje,idEmisor: "0", idReceptor: "1", mensaje: "hola2", ano: 2023, mes: 11, dia: 2, diaSem: "Jueves", hora: 3, minuto: 55},
+        {...defaultMensaje,idEmisor: "2", idReceptor: "0", mensaje: "mob1", ano: 2023, mes: 11, dia: 1, diaSem: "Miércoles", hora: 3, minuto: 53},
+        {...defaultMensaje,idEmisor: "2", idReceptor: "0", mensaje: "mob2", ano: 2023, mes: 11, dia: 1, diaSem: "Miércoles", hora: 3, minuto: 55},
+        {...defaultMensaje,idEmisor: "0", idReceptor: "3", mensaje: "AAA1", ano: 2023, mes: 10, dia: 31, diaSem: "Martes", hora: 3, minuto: 53},
+        {...defaultMensaje,idEmisor: "3", idReceptor: "0", mensaje: "AAA2", ano: 2023, mes: 10, dia: 31, diaSem: "Martes", hora: 3, minuto: 55},
+        {...defaultMensaje,idEmisor: "4", idReceptor: "0", mensaje: "Bocchingn't1", ano: 2023, mes: 9, dia: 1, diaSem: "Sábado", hora: 2, minuto: 55},
+        {...defaultMensaje,idEmisor: "0", idReceptor: "4", mensaje: "Bocchingn't2", ano: 2023, mes: 9, dia: 1, diaSem: "Sábado", hora: 3, minuto: 55},
         {...defaultMensaje,idEmisor: "3", idReceptor: "1", mensaje: "si salgo mueres", ano: 2023, mes: 10, dia: 20, hora: 3, minuto: 53}
       ])
     }
@@ -118,13 +112,8 @@ const Mensajes = () => {
 
   useEffect(() => {
     if(mensajes.length>0){
-      for(let i=0;i<mensajes.length;i++){
-        setTextareas([...textareas, ""])
-      }
-      console.log(textareas)
       asignarChats().then((result) => {
         setChats(result)
-        console.log(mensajes)
       })
     }
   }, [mensajes])
@@ -142,32 +131,23 @@ const Mensajes = () => {
     }else if(dif<7){
       return diaSem;
     }else{
-      return `${dia}/${mes}/${ano}`;
+      return `${dia<10?"0":""}${dia}/${mes<10?"0":""}${mes}/${ano}`;
     }
   }
   
   const asignarChats = async() => {
-    const chats = [];
+    const aux = [];
     for(const m of mensajes){
       const idOtro = m.idEmisor===usuario._id? m.idReceptor : m.idEmisor;
-      const i = posChat(chats, idOtro);
+      const i = aux.findIndex((item) => item.idOtro===idOtro);
       const f = CompararFechas(m.ano, m.mes, m.dia, m.diaSem, m.hora, m.minuto)
-      if(i==-1){ //Actualizar si mensaje es más reciente, Ordenar chats
-        chats.push({...defaultChat,idOtro: idOtro, nombre: usuarios.find((u) => u._id===idOtro).mostrar_nombre? usuarios.find((u) => u._id===idOtro).nombre : usuarios.find((u) => u._id===idOtro).apodo, texto: m.mensaje, fecha: f})
-      }else{
-        chats[i] = {...chats[i],texto: m.mensaje, fecha: f}
+      if(i==-1){ //Ordenar chats
+        aux.push({...defaultChat,idOtro: idOtro, nombre: usuarios.find((u) => u._id===idOtro).mostrar_nombre? usuarios.find((u) => u._id===idOtro).nombre : usuarios.find((u) => u._id===idOtro).apodo, ultimo: m.mensaje, fecha: f})
+      }else if(true){ //Mensaje más reciente
+        aux[i] = {...aux[i],ultimo: m.mensaje, fecha: f}
       }
     }
-    return chats;
-  }
-
-  const posChat = (chats, idOtro) => {
-    for(let i=0; i<chats.length; i++){
-      if(chats[i].idOtro===idOtro){
-        return i;
-      }
-    }
-    return -1;
+    return aux;
   }
   
   let n = true;
@@ -178,13 +158,72 @@ const Mensajes = () => {
     }
   }, [])
 
-  const cambiarChat = (id) => {
-    setTextareas("")
-    setIdConv(id)
+  const cambiarTextareas = (texto) => {
+    const aux = chats.map((item) => {
+      if(item.idOtro === idConv){
+        return {...item, mensaje: texto}
+      }else{
+        return item
+      }
+    })
+    setChats(aux)
+  }
+  
+  const prepararMensaje = async() => {
+    let sem;
+    switch(new Date().getDay()){
+      case 1:
+        sem = "Lunes"
+        break;
+      case 2:
+        sem = "Martes"
+        break;
+      case 3:
+        sem = "Miércoles"
+        break;
+      case 4:
+        sem = "Jueves"
+        break;
+      case 5:
+        sem = "Viernes"
+        break;
+      case 6:
+        sem = "Sábado"
+        break;
+      case 7:
+        sem = "Domingo"
+        break;
+      default:
+        sem = "Error"
+        break;
+    }
+    const aux = {
+      idEmisor: usuario._id,
+      idReceptor: idConv,
+      mensaje: ChatActual().mensaje,
+      ano: new Date().getFullYear(),
+      mes: new Date().getMonth()+1,
+      dia: new Date().getDate(),
+      diaSem: sem,
+      hora: new Date().getHours(),
+      minuto: new Date().getMinutes(),
+      segundo: new Date().getSeconds(),
+      mili: new Date().getMilliseconds()
+    }
+    return aux;
+  }
+
+  const ChatActual = () => {
+    return chats.find((item) => item.idOtro === idConv);
   }
   
   const EnviarMensaje = () => {
-
+    if(ChatActual().mensaje.length>0){
+      prepararMensaje().then((mensaje) => {
+        //MensajesApi.sendMessage(mensaje)
+        cambiarTextareas("")
+      })
+    }
   }
   
   return (
@@ -200,29 +239,35 @@ const Mensajes = () => {
               <div className={styles.ellipseDiv} />
               <img className={styles.groupIcon} alt="" src="/group-147.svg" />
               {
-                mensajes?.filter((item) => item.idEmisor === chats[posChat(chats,idConv)]?.idOtro).map((item) => {
-                  <>
-                    <div className={styles.mensajes2Child1} />
-                    <img className={styles.mensajes2Child3} alt="" src="/group-140.svg" />
-                    <div className={styles.mensajes2Child5} />
-                    <b className={styles.nombre01}>{chats[posChat(chats,idConv)]?.nombre}</b>
-                    <div className={styles.mensaje00011}>Mensaje 0001.1</div>
-                    <div className={styles.hora2}>Hora</div>
-                  </>
+                mensajes?.filter((item) => item.idEmisor===idConv || item.idReceptor===idConv).map((item, index) => {
+                  if(item.idEmisor===usuario._id){
+                    const primero=500, salto=110;
+                    return(
+                      <>
+                        <div className={styles.mensajes2Child6} style={{top: `${primero+salto*index}px`}}/>
+                        <div className={styles.mensaje00012} style={{top: `${primero+17+salto*index}px`}}>{item.mensaje}</div>
+                        <div className={styles.hora} style={{top: `${primero+68.5+salto*index}px`}}>{item.hora}:{item.minuto}</div>
+                      </>
+                    )
+                  }else{
+                    const primero=480, salto=110;
+                    return(
+                      <>
+                        <div className={styles.mensajes2Child1} style={{top: `${primero+salto*index}px`}}/>
+                        <img className={styles.mensajes2Child3} style={{top: `${primero+10.88+salto*index}px`}} alt="" src="/group-140.svg" />
+                        <div className={styles.mensajes2Child5} style={{top: `${primero+45+salto*index}px`}}/>
+                        <b className={styles.nombre01} style={{top: `${primero+12+salto*index}px`}}>{ChatActual()?.nombre}</b>
+                        <div className={styles.mensaje00011} style={{top: `${primero+55+salto*index}px`}}>{item.mensaje}</div>
+                        <div className={styles.hora2} style={{top: `${primero+107+salto*index}px`}}>{item.hora}:{item.minuto}</div>
+                      </>
+                    )
+                  }
                 })
               }
-
-              <div className={styles.mensajes2Child6} />
-              <div className={styles.mensajes2Child7} />
-              <div className={styles.mensaje00012}>Mensaje 0001.2</div>
-              <div className={styles.mensaje00013}>Mensaje 0001.3</div>
-              <div className={styles.hora}>Hora</div>
-              <div className={styles.hora1}>Hora</div>
-              
               <div className={styles.mensajes2Child9} />
               <div className={styles.mensajes2Child10} />
               <div className={styles.escribirMensaje}>
-                <textarea value={textareas[idConv]} onChange={e => setTextareas(e.target.value)} style={{width: "262%", height: "100%", resize: "none", border: "none"}}/>
+                <textarea value={ChatActual()?.mensaje} onChange={e => cambiarTextareas(e.target.value)} style={{width: "262%", height: "100%", resize: "none", border: "none"}}/>
               </div>
               <div className={styles.mensajes2Child31}>
                 <button onClick={e => EnviarMensaje()} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
@@ -258,20 +303,20 @@ const Mensajes = () => {
             return(
               <>
                 <div className={styles.mensajes2Child13} style={{top: `${primero+salto*index}px`}}>
-                  <button onClick={e => console.log(mensajes.filter((item) => item.idEmisor==index+1))} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
+                  <button onClick={e => setIdConv(item.idOtro)} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
                 </div>
                 <div className={styles.mensajes2Child19} style={{top: `${primero-7+salto*index}px`}}>
-                  <button onClick={e => cambiarChat(item.idOtro)} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
+                  <button onClick={e => setIdConv(item.idOtro)} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
                 </div>
                 <b className={styles.nombre1} style={{top: `${primero+4+salto*index}px`}}>{item.nombre}</b>
-                <div className={styles.mensaje0001} style={{top: `${primero+31+salto*index}px`}}>{item.texto}</div>
+                <div className={styles.mensaje0001} style={{top: `${primero+31+salto*index}px`}}>{item.ultimo}</div>
                 <div className={styles.horaOFecha} style={{top: `${primero+48+salto*index}px`}}>{item.fecha}</div>
                 <img className={styles.mensajes2Child25} style={{top: `${primero+11+salto*index}px`}} alt="" src="/group-147.svg" />
               </>
             )
           })
         }
-        <div className={styles.nombre11}>{chats[posChat(chats,idConv)]?.nombre}</div>
+        <div className={styles.nombre11}>{ChatActual()?.nombre}</div>
       </div>
       <Lateral pantalla="Mensajes"></Lateral>
     </div>

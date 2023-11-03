@@ -29,7 +29,7 @@
 }
 .daDeLa {
   position: absolute;
-  top: 505px;
+  top: 450px;
   left: 960px;
   color: var(--ttulos-textos);
 }
@@ -63,7 +63,6 @@
 .mensajes2Child1,
 .mensajes2Child2 {
   position: absolute;
-  top: 543px;
   left: 720px;
   border-radius: 50%;
   background-color: var(--white-icon);
@@ -80,7 +79,6 @@
 .mensajes2Child4,
 .mensajes2Child5 {
   position: absolute;
-  top: 553.88px;
   left: 732.05px;
   width: 28.29px;
   height: 23.52px;
@@ -91,7 +89,6 @@
   left: 740.05px;
 }
 .mensajes2Child5 {
-  top: 588px;
   left: 791px;
   border-radius: var(--br-3xs);
   background-color: var(--black-icon);
@@ -132,7 +129,6 @@
 .nombre01,
 .nombre011 {
   position: absolute;
-  top: 555px;
   left: 791px;
   display: inline-block;
   color: var(--ttulos-textos);
@@ -145,7 +141,6 @@
 }
 .mensaje00011 {
   position: absolute;
-  top: 598px;
   left: 798px;
   color: var(--white-icon);
 }
@@ -153,7 +148,6 @@
 .mensaje00013,
 .mensaje00014 {
   position: absolute;
-  top: 675px;
   left: 1201px;
 }
 .mensaje00013,
@@ -170,7 +164,6 @@
 .hora2,
 .hora3 {
   position: absolute;
-  top: 721px;
   left: 1085px;
   font-size: var(--font-size-mini);
   color: var(--ttulos-textos);
@@ -182,7 +175,6 @@
 }
 .hora2,
 .hora3 {
-  top: 650px;
   left: 1006px;
 }
 .hora3 {
@@ -300,11 +292,6 @@
 .mensajes2Child17,
 .mensajes2Child18 {
   top: 683px;
-}
-.mensajes2Child16,
-.mensajes2Child17,
-.mensajes2Child18 {
-  top: 780px;
 }
 .mensajes2Child17,
 .mensajes2Child18 {
