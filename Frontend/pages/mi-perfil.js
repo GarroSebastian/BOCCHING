@@ -188,7 +188,7 @@ const MiPerfil = () => {
             className={styles.miperfil1Child}
             alt=""
             src="/rectangle-29.svg"
-            onClick={e => setPag(3)}
+            onClick={onRectangle2Click}
           />
           <img
             className={styles.miperfil1Item}

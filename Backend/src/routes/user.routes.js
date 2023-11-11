@@ -16,4 +16,6 @@ router.delete("/delete-user", verifyToken, UserController.delete_user);
 router.put("/update-user", verifyToken, UserController.update_user);
 
 router.get("/find-all-users", verifyToken, UserController.find_all_users);
+
+router.get("/verify-delete-code/:confirmationCode", UserController.verify_delete_code);
 module.exports = router;
