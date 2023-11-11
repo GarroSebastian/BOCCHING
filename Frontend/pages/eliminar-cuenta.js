@@ -4,7 +4,7 @@ import styles from "./configuracin12.module.css";
 import { Zoom } from "../extra/zoom.js";
 import { useState } from "react";
 
-const Configuracin12 = () => {
+const EliminarCuenta = () => {
   Zoom()
   const router = useRouter();
   //Guardar datos de forma "especial", lo ve como un objeto
@@ -98,4 +98,4 @@ const Configuracin12 = () => {
   );
 };
 
-export default Configuracin12;
+export default EliminarCuenta;

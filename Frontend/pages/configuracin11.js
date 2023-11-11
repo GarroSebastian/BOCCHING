@@ -20,7 +20,7 @@ const Configuracin11 = () => {
   }, [router]);
 
   const onGroupClick = useCallback(() => {
-    router.push("/configuracin12");
+    router.push("/eliminar-cuenta");
   }, [router]);
 
   const onCerrarSesinTextClick = useCallback(() => {
