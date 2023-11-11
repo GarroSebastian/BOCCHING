@@ -9,7 +9,7 @@ const Amistades1 = () => {
   const router = useRouter();
 
   const onRectangle3Click = useCallback(() => {
-    router.push("/amistades2");
+    router.push("/AmigosManuales");
   }, [router]);
 
   const onRectangle4Click = useCallback(() => {
