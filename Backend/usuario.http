@@ -2,8 +2,8 @@ POST http://localhost:3700/login
 Content-Type: application/json
 
 {
-    "correo": "20200373@aloe.ulima.edu.pe",
-    "contrasena": "contrasena"
+    "correo": "29182713@aloe.ulima.edu.pe",
+    "contrasena": "12345678"
 }
 
 ###
@@ -30,11 +30,10 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3700/usuario
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzBhNWIyNjBjOGExYmNiNmQxNjVlYSIsImlhdCI6MTY5NzY4Njk2MywiZXhwIjoxNjk3NzczMzYzfQ.Jj3MdYHJgStYHsQOs4MNZhNYzcfzqhooYSVPg8gRRiQ
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NDk5NDY5MTBiMWQ3MzMxODdhMzI4MSIsImlhdCI6MTY5OTMyNDAzMSwiZXhwIjoxNjk5NDEwNDMxfQ.VoQuKullV_AvMF0XIAMJpV_KteOWk4GcMOYJsVGfE_U
 ###
 GET http://localhost:3700/find-all-users
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzBhNWIyNjBjOGExYmNiNmQxNjVlYSIsImlhdCI6MTY5NzY4Njk2MywiZXhwIjoxNjk3NzczMzYzfQ.Jj3MdYHJgStYHsQOs4MNZhNYzcfzqhooYSVPg8gRRiQ
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NDk5NDY5MTBiMWQ3MzMxODdhMzI4MSIsImlhdCI6MTY5OTMyMzU4MSwiZXhwIjoxNjk5NDA5OTgxfQ.QfBDVttfAdB2VpLGUJf-M56P5kNs-u-chXzTcEZa7j4
 ###
 
 DELETE http://localhost:3700/delete-user
@@ -61,3 +60,11 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzBhNWIyNjBjOGEx
     "descripcion": "Sumigod",
     "mostrar_nombre": false
 }
+
+
+
+###
+
+
+GET http://localhost:3700/verify-delete-code/123
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NDk5NDY5MTBiMWQ3MzMxODdhMzI4MSIsImlhdCI6MTY5OTMyNDAzMSwiZXhwIjoxNjk5NDEwNDMxfQ.VoQuKullV_AvMF0XIAMJpV_KteOWk4GcMOYJsVGfE_U

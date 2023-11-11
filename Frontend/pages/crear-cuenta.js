@@ -23,7 +23,8 @@ const CrearCuenta = () => {
     facultad: -1,
     especialidad: "",
     descripcion: "",
-    mostrar_nombre: true
+    mostrar_nombre: true ,
+    confirmationCode: ""
   }
   const [usuario, setUsuario] = useState(defaultUsuario);
   const [contra2, setContra2] = useState('');

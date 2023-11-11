@@ -21,7 +21,8 @@ const Mensajes = () => {
     carrera: '',
     especialidad: '',
     descripcion: '',
-    mostrar_nombre: true
+    mostrar_nombre: true,
+    confirmationCode: ""
   }
   const [usuario, setUsuario] = useState(defaultUsuario);
   const [usuarios, setUsuarios] = useState([]);

@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import styles from "./configuracin12.module.css";
 import { Zoom } from "../extra/zoom.js";
 import { useState } from "react";
+import axios from 'axios';
 
 const Configuracin12 = () => {
   Zoom()
@@ -11,7 +12,30 @@ const Configuracin12 = () => {
   const [codigo, setcodigo] = useState("20201166")
   //Contra Antigua
   const [codigoCofirmacion, setcodigoCofirmacion] = useState("");
-
+  const handleDeleteAccount = () => {
+    if (codigoConfirmacion) {
+      // Realiza la solicitud GET para verificar el código de confirmación
+      axios.get('http://localhost:3700/verify-delete-code/' + codigoConfirmacion)
+        .then((response) => {
+          if (response.status === 200 && response.data === "Cuenta eliminada exitosamente") {
+            // El código de confirmación es correcto, la cuenta ha sido eliminada en el servidor
+            alert('Tu cuenta ha sido eliminada exitosamente.');
+            router.push('/');
+          } else if (response.status === 401) {
+            // El código de confirmación es incorrecto
+            console.log("ERROR: Código de confirmación incorrecto");
+          } else {
+            // Otro error en la verificación del código
+            console.error('Error en la verificación del código de confirmación:', response.data);
+          }
+        })
+        .catch((error) => {
+          console.error('Error en la verificación del código de confirmación:', error);
+        });
+    } else {
+      console.log("ERROR: Debes ingresar el código de confirmación");
+    }
+  };
   const onRectangleClick = useCallback(() => {
     router.push("/configuracin11");
   }, [router]);
@@ -51,14 +75,15 @@ const Configuracin12 = () => {
       <div className={styles.configuracin12Inner} />
       <div className={styles.cdigoDeUsuario}>
       <input
-          onChange={function(evt) {setcodigoCofirmacion(evt.target.value)}}/>
-      </div>
-      <div
-        className={styles.eliminarCuenta1}
-        onClick={onEliminarCuentaText1Click}
-      >
-        Eliminar Cuenta
-      </div>
+onChange={(evt) => setcodigoCofirmacion(evt.target.value)}
+placeholder="Código de confirmación"
+/>      </div>
+        <div
+          className={styles.eliminarCuenta1}
+          onClick={handleDeleteAccount}
+        >
+          Eliminar Cuenta
+        </div>
       <div className={styles.siEliminasTuContainer}>
         <p className={styles.siEliminasTu}>
           Si eliminas tu cuenta perderás todos los datos y historial registrado

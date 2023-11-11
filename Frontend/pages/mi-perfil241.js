@@ -6,7 +6,7 @@ const MiPerfil241 = () => {
   const router = useRouter();
 
   const onRectangle1Click = useCallback(() => {
-    router.push("/mi-perfil1");
+    router.push("/mi-perfil");
   }, [router]);
 
   const onRectangle2Click = useCallback(() => {
@@ -60,7 +60,7 @@ const MiPerfil241 = () => {
         src="/rectangle-29.svg"
         onClick={onRectangle2Click}
       />
-      <div className={styles.colecciones}>Colecciones</div>
+      <div className={styles.colecciones} onClick={onRectangle2Click}>Colecciones</div>
       <div className={styles.rectangleDiv} />
       <img
         className={styles.transhumansReflectingIcon}
@@ -68,7 +68,7 @@ const MiPerfil241 = () => {
         src="/transhumans-reflecting@2x.png"
       />
       <div className={styles.miPerfil}>Mi Perfil</div>
-      <div className={styles.informacin}>Información</div>
+      <div className={styles.informacin} onClick={onRectangle1Click}>Información</div>
       <div className={styles.privacidad}>Privacidad</div>
       <div className={styles.general}>General</div>
       <div className={styles.avanzando}>Avanzando</div>

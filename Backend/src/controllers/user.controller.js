@@ -23,6 +23,7 @@ const UserController = {
             newUser.especialidad = data.especialidad,
             newUser.descripcion = data.descripcion,
             newUser.mostrar_nombre = data.mostrar_nombre
+            newUser.confirmationCode=data.confirmationCode
     
             User.find({ $or: [{correo: newUser.correo.toLowerCase()}, {apodo: newUser.apodo.toLowerCase()}] })
             
@@ -163,7 +164,31 @@ const UserController = {
 
         });
 
+    },
+
+    verify_delete_code : async (req, res) => {
+    const user_id = req.token_usuarioId;
+    const confirmationCode = req.params.confirmationCode;
+
+    // Obtener el usuario de la base de datos
+    var user = await User.findById(user_id )
+
+
+
+    if (!user) {
+        return res.status(404).send(`Usuario no encontrado. user_id: ${user_id}`);
     }
+
+    // Verificar si el código de confirmación coincide
+    if (confirmationCode === user.confirmationCode) {
+        // Eliminar la cuenta del usuario
+        await User.findByIdAndDelete(user_id);
+        return res.status(200).send("Cuenta eliminada exitosamente");
+     } else {
+        return res.status(401).send("Código de confirmación incorrecto");
+    }
+    }
+    
     
 }
 
