@@ -29,12 +29,16 @@ const IniciarSesion = () => {
       alert("Formato del correo institucional incorrecto")
     }else if(cargando===false){
       setCargando(true)
-      const res = await UsuarioApi.login(Credenciales)
-      if (res != null){
-        window.localStorage.setItem("token", res.data.token);
-        onFrameContainer5Click();
-      }else{
-        alert("Correo o contraseña incorrectos")
+      try{
+        const res = await UsuarioApi.login(Credenciales)
+        if (res.data.hasOwnProperty("token")){
+          window.localStorage.setItem("token", res.data.token);
+          onFrameContainer5Click();
+        }else{
+          alert("Correo o contraseña incorrectos")
+        }
+      }catch(e){
+        alert("Error. Backend no encendido")
       }
       setCargando(false)
     }

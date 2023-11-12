@@ -22,19 +22,23 @@ const Inicio = () => {
         adjustZoom();
         window.onresize = adjustZoom;
     }else{
-        window.location.pathname = '';
+        window.location.pathname = '/iniciar-sesion';
     }
 }
 
 export const Zoom = () => {  
     useEffect(()=>{
-        Inicio();
+        w = window.innerWidth;
+        h = window.innerHeight;
+        adjustZoom();
+        window.onresize = adjustZoom;
+        /*Inicio();
         // Suscribirse al evento popstate cuando el componente se monta
         window.addEventListener('popstate', Inicio);
         
         // Limpiar el evento cuando el componente se desmonta
         return () => {
             window.removeEventListener('popstate', Inicio);
-        };
+        };*/
     },[])
 }

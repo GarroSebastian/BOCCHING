@@ -35,9 +35,7 @@ const Mensajes = () => {
     dia: 0,
     diaSem: '',
     hora: 0,
-    minuto: 0,
-    segundo: 0,
-    mili: 0
+    minuto: 0
   }
   const [mensajes, setMensajes] = useState([]);
   const defaultChat = {
@@ -208,8 +206,6 @@ const Mensajes = () => {
       diaSem: sem,
       hora: new Date().getHours(),
       minuto: new Date().getMinutes(),
-      segundo: new Date().getSeconds(),
-      mili: new Date().getMilliseconds()
     }
     return aux;
   }
