@@ -8,6 +8,7 @@ import { useState } from "react";
 const Configuracin11 = () => {
   const [pag, setPag] = useState(1);
   Zoom()
+
   //Guardar datos de forma "especial", lo ve como un objeto
   const [password, setPassword] = useState("llama")
   //Contra Antigua
@@ -16,17 +17,9 @@ const Configuracin11 = () => {
   const [contraseaNueva, setcontraseaNueva] = useState("");
   
   const router = useRouter();
-  
-  const onRectangleClick = useCallback(() => {
-    router.push("/configuracin2");
-  }, [router]);
 
   const onGroupClick = useCallback(() => {
     router.push("/eliminar-cuenta");
-  }, [router]);
-
-  const onCerrarSesinTextClick = useCallback(() => {
-    router.push("/configuracin2");
   }, [router]);
 
   const handleButtonClick = () => {
@@ -35,6 +28,7 @@ const Configuracin11 = () => {
       console.log(
         "contraseña cambiada"
       )
+      alert('Tu contraseña fue cambiada exitosamente.');
     }
     
   };
@@ -120,7 +114,13 @@ return
       </div>
       <div className={styles.rectangleDiv} />
       <div className={styles.cambiarContrasea}>
-      <button  onClick={handleButtonClick}>Cambiar Contraseña</button>
+      <button  onClick={handleButtonClick}
+      style={{ 
+        background: 'transparent', border: '0px solid #ccc', padding: '5px',
+        width: '150%', // Establece el ancho al 100% del contenedor
+        boxSizing: 'border-box',  // Incluye el relleno y el borde en el ancho total
+      }}
+      >Cambiar Contraseña</button>
       </div>
       <div className={styles.cambiarContrasea1}>Cambiar contraseña</div>
       <div className={styles.eliminarCuenta}>Eliminar cuenta</div>
@@ -135,12 +135,24 @@ return
       <div className={styles.antiguaContrasea}>
         <input
           type="text"
-          onChange={function(evt) {setcontraseaAntigua(evt.target.value)}}/>
+          onChange={function(evt) {setcontraseaAntigua(evt.target.value)}}
+          style={{ 
+            background: 'transparent', border: '0px solid #ccc', padding: '5px',
+            width: '220%', // Establece el ancho al 100% del contenedor
+            boxSizing: 'border-box',  // Incluye el relleno y el borde en el ancho total
+          }}
+          />
         </div>
       <div className={styles.nuevaContrasea}>
         <input
           type="text"
-          onChange={function(evt) {setcontraseaNueva(evt.target.value)}}/>    
+          onChange={function(evt) {setcontraseaNueva(evt.target.value)}}
+          style={{ 
+            background: 'transparent', border: '0px solid #ccc', padding: '5px',
+            width: '220%', // Establece el ancho al 100% del contenedor
+            boxSizing: 'border-box',  // Incluye el relleno y el borde en el ancho total
+          }}
+          />    
         </div>
       <div className={styles.configuracin11Child3} />
       <div className={styles.configuracin11Child4} />
