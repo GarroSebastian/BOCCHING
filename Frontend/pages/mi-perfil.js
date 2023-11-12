@@ -6,6 +6,7 @@ import Global from "../extra/global.js";
 import styles from "./mi-perfil.module.css";
 import Lateral from "../components/lateral.js"
 import UsuarioApi from "../api/usuario";
+import GustoApi from "../api/gusto.js";//Lo dejo aca por si lo quieren
 
 const MiPerfil = () => {
   const [pag, setPag] = useState(1);
@@ -175,6 +176,7 @@ const MiPerfil = () => {
     ])
 
   }
+
 
   useEffect(() => {
     //handleOnLoad();
