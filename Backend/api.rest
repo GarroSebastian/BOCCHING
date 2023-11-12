@@ -138,3 +138,28 @@ Content-Type: application/json
     "frecuencia": "aaaa",
     "compania": "aaaa"
 }
+
+### MENSAJES
+
+POST http://localhost:3700/mensaje/65305c0adfbc1f2707c010bb
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzAzOTkxZWY1YTNjNmVmMjdkNTFiZiIsImlhdCI6MTY5OTc1NjM2MCwiZXhwIjoxNjk5ODQyNzYwfQ.b9DpJWPt1jplBiREd-SRIjPCc0asLMOaxlLhB3n7p7U
+Content-Type: application/json
+
+{
+    "text": "holaaaaaaa4"
+}
+
+###
+
+GET http://localhost:3700/mensajes-recibidos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzAzOTkxZWY1YTNjNmVmMjdkNTFiZiIsImlhdCI6MTY5OTc1NjQ1OCwiZXhwIjoxNjk5ODQyODU4fQ.RoD6e_8iN6_XRFV4gymiRZQHCa1KRVwexZ1oql0uY3o
+
+###
+
+GET http://localhost:3700/mensajes-emitidos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzAzOTkxZWY1YTNjNmVmMjdkNTFiZiIsImlhdCI6MTY5OTc1NjQ1OCwiZXhwIjoxNjk5ODQyODU4fQ.RoD6e_8iN6_XRFV4gymiRZQHCa1KRVwexZ1oql0uY3o
+
+###
+
+GET http://localhost:3700/mensajes
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzAzOTkxZWY1YTNjNmVmMjdkNTFiZiIsImlhdCI6MTY5OTc1NjQ1OCwiZXhwIjoxNjk5ODQyODU4fQ.RoD6e_8iN6_XRFV4gymiRZQHCa1KRVwexZ1oql0uY3o

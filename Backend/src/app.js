@@ -6,6 +6,7 @@ const path = require("path");
 const UserRoutes = require("./routes/user.routes");
 const RequestRoutes = require("./routes/request.routes");
 const TasteRoutes = require("./routes/taste.routes");
+const MessageRoutes = require("./routes/message.routes");
 
 const app = express();
 
@@ -30,5 +31,6 @@ app.use(cors());
 app.use(UserRoutes);
 app.use(RequestRoutes);
 app.use(TasteRoutes);
+app.use(MessageRoutes);
 
 module.exports = app;
