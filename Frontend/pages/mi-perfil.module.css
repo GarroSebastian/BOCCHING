@@ -610,7 +610,6 @@
 .miperfil21Child5,
 .miperfil21Child6 {
   position: absolute;
-  top: 695px;
   left: 303px;
   background-color: var(--white-icon);
   width: 906px;
@@ -664,21 +663,7 @@
 .hobby2,
 .hobby3 {
   position: absolute;
-  top: 659px;
   left: 333px;
-}
-.hobby1,
-.hobby2,
-.hobby3 {
-  top: 714px;
-}
-.hobby2,
-.hobby3 {
-  top: 770px;
-}
-.hobby3 {
-  top: 830px;
-  left: 336px;
 }
 .xd,
 .xd1,
@@ -686,27 +671,13 @@
 .xd3,
 .xd4 {
   position: absolute;
-  top: 658px;
   left: 464px;
 }
-.xd1,
-.xd2,
 .xd3,
 .xd4 {
-  top: 713px;
-}
-.xd2,
-.xd3,
-.xd4 {
-  top: 769px;
-}
-.xd3,
-.xd4 {
-  top: 829px;
   left: 467px;
 }
 .xd4 {
-  top: 658px;
   left: 627px;
 }
 .xd10,
@@ -716,49 +687,22 @@
 .xd8,
 .xd9 {
   position: absolute;
-  top: 713px;
   left: 627px;
 }
 .xd10,
-.xd6,
-.xd7,
 .xd8,
 .xd9 {
-  top: 769px;
-}
-.xd10,
-.xd7,
-.xd8,
-.xd9 {
-  top: 829px;
-}
-.xd10,
-.xd8,
-.xd9 {
-  top: 659px;
   left: 793px;
-}
-.xd10,
-.xd9 {
-  top: 714px;
-}
-.xd10 {
-  top: 770px;
 }
 .xd11,
 .xd12,
 .xd13 {
   position: absolute;
-  top: 829px;
   left: 792px;
 }
 .xd12,
 .xd13 {
-  top: 660px;
   left: 960px;
-}
-.xd13 {
-  top: 715px;
 }
 .derechaIcon1,
 .xd14,

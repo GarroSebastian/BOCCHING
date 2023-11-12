@@ -161,25 +161,7 @@ const MiPerfil23 = () => {
         <div className={styles.xd}>xd</div>
         <img className={styles.frameChild} alt="" src="/polygon-35.svg" />
       </div>
-      <div className={styles.frameDiv}>
-        <div className={styles.xd}>
-          <select  value={gustos2.subTipo} 
-          onChange={e => 
-            setgustos2({...gustos2, subTipo:e.target.value})
-          } 
-          style={{width: "200%"}}>
-                
-                {
-                  arraySubTipo[ID_Tipo].map((item, index)=>{
-                    return(
-                      <option key={index} value={item}>{item}</option>
-                    ) 
-                  }
-                  )
-                }
-              </select>
-        </div>
-      </div>
+      
       <div className={styles.xdParent1}>
         <div className={styles.xd}>xd</div>
         <img className={styles.frameChild} alt="" src="/polygon-35.svg" />
@@ -192,15 +174,7 @@ const MiPerfil23 = () => {
         <div className={styles.xd}>xd</div>
         <img className={styles.frameChild} alt="" src="/polygon-35.svg" />
       </div>
-      <div className={styles.xdParent4}>
-        <div className={styles.xd}>
-        <input type="text"
-                value={gustos2.nombre} onChange={e => setgustos2({...gustos2, nombre:e.target.value})} 
-                style={{width: "100px"}}>
-                </input>
-        </div>
-        
-      </div>
+      
       <div className={styles.xdParent5}>
         <div className={styles.xd}>xd</div>
         <img className={styles.frameChild} alt="" src="/polygon-35.svg" />
@@ -213,14 +187,7 @@ const MiPerfil23 = () => {
         <div className={styles.xd}>xd</div>
         <img className={styles.frameChild} alt="" src="/polygon-35.svg" />
       </div>
-      <div className={styles.xdParent8}>
-        <div className={styles.xd}>
-        <input type="text" value={gustos2.afinidad}
-                onChange={e => setgustos2({...gustos2, afinidad: e.target.value})} 
-                style={{width: "100px"}}>
-          </input>
-        </div>
-      </div>
+      
       <div className={styles.xdParent9}>
         <div className={styles.xd}>xd</div>
         <img className={styles.frameChild} alt="" src="/polygon-35.svg" />
@@ -233,14 +200,7 @@ const MiPerfil23 = () => {
         <div className={styles.xd}>xd</div>
         <img className={styles.frameChild} alt="" src="/polygon-35.svg" />
       </div>
-      <div className={styles.xdParent12}>
-        <div className={styles.xd}>
-        <input type="text" value={gustos2.duracion}
-                onChange={e => setgustos2({...gustos2, duracion: e.target.value})} 
-                style={{ width: "100px"}}>
-                </input>
-        </div>
-      </div>
+      
       <img className={styles.derechaIcon} alt="" src="/derecha2.svg" />
       <div className={styles.miPerfil}>Mi Perfil</div>
       <div className={styles.informacin} onClick={onInformacinTextClick}>
@@ -273,21 +233,7 @@ const MiPerfil23 = () => {
         <div className={styles.xd}>Afinidad</div>
         <div className={styles.xd}>Duración</div>
       </div>
-      <div className={styles.hobby} style={{ marginRight: '100px' }}>
-      <select  value={gustos2.verTipo} onChange={e => {
-        const selectedIndex = e.target.selectedIndex; // Obtiene el índice del elemento seleccionado
-        setgustos2({ ...gustos2, verTipo: e.target.value });
-        setID_Tipo(selectedIndex)
-      }}
-      style={{ maxWidth: "65%" }}>
-        {
-        arrayTipo.map((item, index) => {
-          return (<option key={index} value={item}>{item}</option>);
-        })
-        }
-      </select>
-
-      </div>
+      
       <div className={styles.hobby1}>Hobby</div>
       <div className={styles.hobby2}>Hobby</div>
       <div className={styles.hobby3}>Hobby</div>

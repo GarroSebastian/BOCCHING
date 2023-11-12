@@ -44,19 +44,20 @@ const MiPerfil = () => {
     idPrivacidad: 0
   }
   const [gustos, setGustos] = useState([])
+  const [nuevoGusto, setNuevoGusto] = useState(defaultGusto)
 
-  const tipo = ['musica','dibujo','futbol']
-  const subtipo = ['realizar actividades','ver contenido relacionado','hablar del tema']
-
-  const defaultGustos2 = {
-    nombre: '',
-    afinidad: '',
-    duracion: '',
-    verTipo: '',
-    subTipo: ''
-  }
-  const [gustos2, setgustos2] = useState(defaultGustos2);
+  const arrayTipo = ['Sin especificar','Franquicia','Juego de mesa','Hobby','Pasatiempo + Juego',
+  'Alimento','Música','Creador(a) de contenido','Deporte','Otro'];
+  const [ID_Tipo, setID_Tipo] = useState(0);
+  const arrayFranquicia = ['Sin especificar','Videojuego','Serie','Libro','Otro']
+  const arrayPasatiempo = ['Sin especificar','Aire libre','Espacio cerrado','Mixto']
+  const arrayAlimento = ['Sin especificar','Comida','Bebida']
+  const arrayMusica = ['Sin especificar','Solista','Grupo','Mixto']
+  const arrayCreador = ['Sin especificar','Gameplays','Tops','Crítico','Cómico','Informativo','Historia','Día a día','Otro']
+  const arraySubTipo = [[],arrayFranquicia,[],[],arrayPasatiempo,arrayAlimento,arrayMusica,arrayCreador,[],[]];
   
+  const primero=663, salto=50;
+
   const onRectangle11Click = useCallback(() => {
     router.push("/mi-perfil23");
   }, [router]);
@@ -343,15 +344,15 @@ const MiPerfil = () => {
               <div className={styles.afinidad}>Afinidad</div>
               <div className={styles.duracin}>Duración</div>
               {
-                gustos?.map((item) => {
+                gustos?.map((item, index) => {
                   return(
                     <>
-                      <div className={styles.hobby}>Hobby</div>
-                      <div className={styles.xd}>xd</div>
-                      <div className={styles.xd4}>{item.nombre}</div>
-                      <div className={styles.xd8}>xd</div>
-                      <div className={styles.xd12}>xd</div>
-                      <div className={styles.miperfil21Child3}/>
+                      <div className={styles.hobby} style={{top: `${primero+salto*index}px`}}>Hobby</div>
+                      <div className={styles.xd} style={{top: `${primero+salto*index}px`}}>xd</div>
+                      <div className={styles.xd4} style={{top: `${primero+salto*index}px`}}>{item.nombre}</div>
+                      <div className={styles.xd8} style={{top: `${primero+salto*index}px`}}>xd</div>
+                      <div className={styles.xd12} style={{top: `${primero+salto*index}px`}}>xd</div>
+                      <div className={styles.miperfil21Child3} style={{top: `${695+salto*index}px`}} />
                     </>
                   )
                 })
@@ -373,6 +374,47 @@ const MiPerfil = () => {
               <div className={styles.miperfil21Child9} onClick={onRectangle12Click} />
               <div className={styles.editar}>Editar</div>
               <div className={styles.aadir}>Añadir</div>
+              
+              <div className={styles.hobby} style={{marginLeft: '-3px', top: `${primero+salto*gustos.length}px`}}>
+                <select value={nuevoGusto.idTipo} onChange={e => {
+                  const selectedIndex = e.target.selectedIndex; // Obtiene el índice del elemento seleccionado
+                  setNuevoGusto({ ...nuevoGusto,idTipo: e.target.value});
+                  setID_Tipo(selectedIndex)
+                }} >
+                  {
+                    arrayTipo.map((item, index) => {return (<option key={index}>{item}</option>)})
+                  }
+                </select>
+              </div>
+
+              <div className={styles.frameDiv}>
+                <div className={styles.xd}>
+                  <select  value={nuevoGusto.subtipo} onChange={e => setgustos2({...gustos2, subTipo:e.target.value})} style={{width: "200%"}}>
+                    {
+                      arraySubTipo[ID_Tipo].map((item, index)=>{return(<option key={index} value={item}>{item}</option>)})
+                    }
+                  </select>
+                </div>
+              </div>
+
+              <div className={styles.xdParent4}>
+                <div className={styles.xd}>
+                  <input type="text" value={nuevoGusto.nombre} onChange={e => setgustos2({...gustos2, nombre:e.target.value})} style={{width: "100px"}} />
+                </div>
+              </div>
+
+              <div className={styles.xdParent8}>
+                <div className={styles.xd}>
+                  <input type="text" value={nuevoGusto.idAfinidad} onChange={e => setgustos2({...gustos2, afinidad: e.target.value})} style={{width: "100px"}} />
+                </div>
+              </div>
+
+              <div className={styles.xdParent12}>
+                <div className={styles.xd}>
+                  <input type="text" value={nuevoGusto.idDuracion} onChange={e => setgustos2({...gustos2, duracion: e.target.value})} style={{ width: "100px"}} />
+                </div>
+              </div>
+
             </div>
           :
           null
