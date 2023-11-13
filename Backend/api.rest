@@ -14,11 +14,11 @@ POST http://localhost:3700/register
 Content-Type: application/json
 
 {
-    "nombre": "nombre2",
+    "nombre": "hola",
     "apellidos": "apellidos",
-    "correo": "correo2",
+    "correo": "correo",
     "contrasena": "contrasena",
-    "apodo": "apodo2",
+    "apodo": "apodo",
     "id_genero": "id_genero",
     "nacimiento": "nacimiento",
     "foto": "foto",
@@ -32,7 +32,7 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3700/usuario
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTFiNWM5MmZjODBlNmNlOTBmOTkzMyIsImlhdCI6MTY5OTg2ODg0NywiZXhwIjoxNjk5OTU1MjQ3fQ.6dA3YtCG2POWyPGFvajpszjLA1m3qiWqBVlRMsLyU0A
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTI5MTFlMTFmM2ZjOTM3Njc0ZGNmZiIsImlhdCI6MTY5OTkwOTk3MCwiZXhwIjoxNjk5OTk2MzcwfQ.E1T5qRZZ9pNwdhJWITgwG9Q6rYi3ckcWqsVK3qqP_g8
 
 ###
 
@@ -162,3 +162,14 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzAzOTkxZWY1YTNj
 
 GET http://localhost:3700/mensajes
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzAzOTkxZWY1YTNjNmVmMjdkNTFiZiIsImlhdCI6MTY5OTc1NjQ1OCwiZXhwIjoxNjk5ODQyODU4fQ.RoD6e_8iN6_XRFV4gymiRZQHCa1KRVwexZ1oql0uY3o
+
+### GRUPOS
+
+POST http://localhost:3700/save-grupo
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTI5MTFlMTFmM2ZjOTM3Njc0ZGNmZiIsImlhdCI6MTY5OTkwOTk3MCwiZXhwIjoxNjk5OTk2MzcwfQ.E1T5qRZZ9pNwdhJWITgwG9Q6rYi3ckcWqsVK3qqP_g8
+Content-Type: application/json
+
+{
+    "usuarios": ["6552933d7d0b41aec55c8651", "6552935a7d0b41aec55c8654"]
+}
+

@@ -75,7 +75,7 @@ const UserController = {
             
             if(user){
 
-                bcrypt.compare(dataContrasena, user.contrasena).then(async(check)=>{
+                bcrypt.compare(dataContrasena, user.contrasena, async(err, check)=>{
     
                     if(check){
 
@@ -87,13 +87,13 @@ const UserController = {
 
                     }
     
-                    if(!check) return res.status(404).send("error");
+                    if(err) return res.status(404).send("error 2");
     
                 });
             }
             else
             {
-                return res.status(404).send("error");
+                return res.status(404).send("error 1");
             }
     
         });
