@@ -10,6 +10,7 @@ posible que no sea necesario ponerlo. además faltaría dar la opción de crear 
 
 const AmigosManual = () => {
 
+  //Conseguir amigos desde backend a través de la api ?
 const [friends, setFriends] = useState([
     {
       id: 1,
@@ -50,7 +51,7 @@ const [friends, setFriends] = useState([
       console.log(friends);
     };
 
-
+    //Guardar amigos a través de la api en backend
     const addFriendToGroup = (friendId) => {
       setFriends((prevFriends) =>
         prevFriends.map((friend) => {
@@ -62,7 +63,7 @@ const [friends, setFriends] = useState([
             console.log('añadido');
             console.log(friendId);
             
-            //friend.selectedGroup = ''; // Reset selectedGroup after adding
+            friend.selectedGroup = ''; // Reset selectedGroup después de añadirlo, descomentar para que se borren los grupos y ver los cambios o comentar para ver en la consola los logs
           }
           
           return friend;
@@ -70,7 +71,7 @@ const [friends, setFriends] = useState([
       );
     };
 
-
+    //crear botón para eliminar amigo de un grupo, necesario ver los grupos para esto
       function removeFriendFromGroup(friendId, groupName) {
         // Encontrar amigo por su ID
         let index = friends.findIndex((f) => f.id == friendId);
@@ -96,7 +97,7 @@ const [friends, setFriends] = useState([
                 <option value="">Select Group</option>
                 <option value="Group A">Group A</option>
                 <option value="Group B">Group B</option>
-                {/* Add more options as needed */}
+                {/* Add more options as needed, se pueden añadir de acuerdo a los grupos existentes o creados */}
               </select>
     
               {/* Button to add friend to selected group */}
