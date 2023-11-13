@@ -5,58 +5,50 @@ import { Zoom } from "../extra/zoom.js";
 import { useState } from "react";
 import axios from 'axios';
 
-const EliminarCuenta = () => {
+const eliminar_Cuenta = () => {
   Zoom()
   const router = useRouter();
   //Guardar datos de forma "especial", lo ve como un objeto
-  const [codigo, setcodigo] = useState("20201166")
   //Contra Antigua
   const [codigoCofirmacion, setcodigoCofirmacion] = useState("");
-  const handleDeleteAccount = () => {
-    if (codigoCofirmacion) {
-      // Realiza la solicitud GET para verificar el código de confirmación
-      axios.get('http://localhost:3700/verify-delete-code/' + codigoCofirmacion)
-        .then((response) => {
-          if (response.status === 200 && response.data === "Cuenta eliminada exitosamente") {
-            // El código de confirmación es correcto, la cuenta ha sido eliminada en el servidor
-            alert('Tu cuenta ha sido eliminada exitosamente.');
-            router.push('/');
-          } else if (response.status === 401) {
-            // El código de confirmación es incorrecto
-            console.log("ERROR: Código de confirmación incorrecto");
-          } else {
-            // Otro error en la verificación del código
-            console.error('Error en la verificación del código de confirmación:', response.data);
-          }
-        })
-        .catch((error) => {
-          console.error('Error en la verificación del código de confirmación:', error);
-        });
-    } else {
-      console.log("ERROR: Debes ingresar el código de confirmación");
-    }
-  };
+const handleDeleteAccount = () => {
+  const token = localStorage.getItem('token'); // Obtener el token del Local Storage
+  if (!token) {
+    console.log('No se encontró el token en el Local Storage');
+    return;
+  }
+
+  if (codigoCofirmacion) {
+    // Configura los encabezados con el token de autorización
+    const headers = {
+      Authorization: token,
+    };
+
+    // Realiza la solicitud GET para verificar el código de confirmación
+    axios
+      .get('http://localhost:3700/verify-delete-code/' + codigoCofirmacion, { headers })
+      .then((response) => {
+        //console.log('Response status:', response.status);
+        //console.log('Response data:', response.data);
+        if (response.status === 200 && response.data === "Cuenta eliminada exitosamente") {
+          // El código de confirmación es correcto, la cuenta ha sido eliminada en el servidor
+          alert('Tu cuenta ha sido eliminada exitosamente.');
+          router.push('/');
+        }
+      })
+      .catch((error) => {
+        alert('Codigo de confirmacion Incorrecta')
+        console.error('Error en la verificación del código de confirmación(1):', error);
+      });
+  } else {
+    alert("ERROR: Debes ingresar el código de confirmación");
+  }
+};
   const onRectangleClick = useCallback(() => {
     router.push("/configuracin11");
   }, [router]);
 
-  const onRectangle1Click = useCallback(() => {
-    router.push("/");
-  }, [router]);
 
-  const onEliminarCuentaText1Click0 = useCallback(() => {
-    router.push("/");
-    
-  }, [router]);
-
-  const onEliminarCuentaText1Click = () => {
-    if(codigoCofirmacion === codigo){
-      onEliminarCuentaText1Click0()
-    }else{
-      console.log("ERROR de USUARIO")
-    }
-    
-  };
 
   const onCancelarTextClick = useCallback(() => {
     router.push("/configuracin11");
@@ -71,18 +63,14 @@ const EliminarCuenta = () => {
     <div id={styles.container} className={styles.configuracin12}>
       <div className={styles.eliminarCuenta}>Eliminar cuenta</div>
       <div className={styles.configuracin12Child} onClick={onRectangleClick} />
-      <div className={styles.configuracin12Item} onClick={onRectangle1Click} />
+      <div className={styles.configuracin12Item} onClick={handleDeleteAccount} />
       <div className={styles.configuracin12Inner} />
       <div className={styles.cdigoDeUsuario}>
       <input
 onChange={(evt) => setcodigoCofirmacion(evt.target.value)}
 placeholder="Código de confirmación"
-style={{ 
-  background: 'transparent', border: '0px solid #ccc', padding: '5px',
-  width: '315%', // Establece el ancho al 100% del contenedor
-  boxSizing: 'border-box',  // Incluye el relleno y el borde en el ancho total
-}}
-/>      </div>
+/>      
+</div>
         <div
           className={styles.eliminarCuenta1}
           onClick={handleDeleteAccount}
@@ -106,7 +94,7 @@ style={{
         Cancelar
       </div>
       <div className={styles.ingreseSuCdigo}>
-        Ingrese su código de usuario o correo
+        Ingrese su codigo de Confirmacion
       </div>
       <div className={styles.rectangleDiv} />
       <img
@@ -128,4 +116,4 @@ style={{
   );
 };
 
-export default EliminarCuenta;
+export default eliminar_Cuenta;

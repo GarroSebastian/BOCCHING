@@ -3,9 +3,14 @@ import { useEffect } from 'react';
 let w, h;
 
 const adjustZoom = () => {
-    const container = document.getElementById('container');
-    container.style.zoom = Math.min(window.innerWidth / w, window.innerHeight / h) * (window.location.pathname==='/eliminar-cuenta' ? 1.21 : 0.91);
-}
+    // Espera a que se cargue el DOM antes de acceder al elemento "container"
+    window.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('container');
+      if (container) {
+        container.style.zoom = Math.min(window.innerWidth / w, window.innerHeight / h) * (window.location.pathname === '/eliminar-cuenta' ? 1.21 : 0.91);
+      }
+    });
+  }
 
 const PantallasIniciales = () => {
     if(window.location.pathname==='/' || window.location.pathname==='/crear-cuenta' || window.location.pathname==='/iniciar-sesion'){

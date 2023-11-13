@@ -1,9 +1,73 @@
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react"; 
 import { useRouter } from "next/router";
 import styles from "./solicitudes2.module.css";
+import axios from 'axios';
+import SolicitudItem from "../components/CardSolicitud";
 //Solicitudes Enviadas
 const Solicitudes2 = () => {
   const router = useRouter();
+  const [solicitudes, setSolicitudes] = useState([]);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      console.log('No se encontró el token en el Local Storage');
+      return;
+    }
+
+    const headers = {
+      Authorization: token,
+    };
+
+    axios
+      .get('http://localhost:3700/getAllSolicitudes', { headers })
+      .then((response) => {
+        console.log('Response status:', response.status);
+        console.log('Response data:', response.data);
+        
+        if (response.status === 200) {
+          const solicitudesData = response.data.solicitudes;
+          setSolicitudes(solicitudesData);
+        }
+      })
+      .catch((error) => {
+        console.error('Error al obtener las solicitudes:', error);
+      });
+  }, []);
+
+    // Agrega un manejador de eventos para eliminar una solicitud
+    const handleDeleteSolicitud = (solicitudToDelete) => {
+      if (!solicitudToDelete.receptor || !solicitudToDelete.receptor._id) {
+        console.log('La solicitud no tiene receptor o el receptor no tiene _id.');
+        return;
+      }
+    const token = localStorage.getItem('token');
+    
+    if (!token) {
+      console.log('No se encontró el token en el Local Storage');
+      return;
+    }
+
+    const headers = {
+      Authorization: token,
+    };
+      // Envía una solicitud para eliminar la solicitud en el servidor
+      // Debes implementar la lógica del servidor para esto
+      axios
+        .delete(`http://localhost:3700/delete-solicitud/${solicitudToDelete.receptor._id}`, { headers})
+        .then((response) => {
+          if (response.status === 200) {
+            // La solicitud se eliminó correctamente en el servidor
+            // Actualiza la lista de solicitudes para reflejar la eliminación
+            setSolicitudes((prevSolicitudes) =>
+              prevSolicitudes.filter((solicitud) => solicitud._id !== solicitudToDelete._id)
+            );
+          }
+        })
+        .catch((error) => {
+          console.error('Error al eliminar la solicitud:', error);
+        });
+    };
 
   const onRectangleClick = useCallback(() => {
     router.push("/solicitudes1");
@@ -29,6 +93,8 @@ const Solicitudes2 = () => {
     router.push("/solicitudes4");
   }, [router]);
 
+  
+
   return (
     <div className={styles.solicitudes2}>
       <img
@@ -51,49 +117,20 @@ const Solicitudes2 = () => {
         onClick={onRectangle3Click}
       />
       <div className={styles.rectangleDiv} />
-      <img className={styles.vectorIcon} alt="" src="/vector2.svg" />
-      <img className={styles.vectorIcon1} alt="" src="/vector2.svg" />
-      <img className={styles.vectorIcon2} alt="" src="/vector2.svg" />
       <div className={styles.solicitudes}>Solicitudes</div>
       <div className={styles.solicitudesEnviadas}>Solicitudes Enviadas</div>
       <div className={styles.cancelar}>Cancelar</div>
       <div className={styles.ocultar}>Ocultar</div>
-      <div className={styles.solicitudes2Child1} />
-      <div className={styles.solicitudes2Child2} />
-      <div className={styles.solicitudes2Child3} />
-      <div className={styles.solicitudes2Child4} />
-      <div className={styles.solicitudes2Child5} />
-      <div className={styles.ellipseDiv} />
-      <div className={styles.solicitudes2Child6} />
-      <div className={styles.solicitudes2Child7} />
-      <div className={styles.solicitudes2Child8} />
-      <b className={styles.nombreYApellido}>Nombre y Apellido / Apodo</b>
-      <b className={styles.nombreYApellido1}>Nombre y Apellido / Apodo</b>
-      <b className={styles.nombreYApellido2}>Nombre y Apellido / Apodo</b>
-      <b className={styles.nombreYApellido3}>Nombre y Apellido / Apodo</b>
-      <img className={styles.groupIcon} alt="" src="/group-147.svg" />
-      <img className={styles.solicitudes2Child9} alt="" src="/group-147.svg" />
-      <img className={styles.solicitudes2Child10} alt="" src="/group-147.svg" />
-      <img className={styles.solicitudes2Child11} alt="" src="/group-147.svg" />
-      <div className={styles.lineDiv} />
-      <div className={styles.solicitudes2Child12} />
-      <div className={styles.solicitudes2Child13} />
-      <div className={styles.solicitudes2Child14} />
-      <div className={styles.fechaOHora}>Fecha o hora</div>
-      <div className={styles.fechaOHora1}>Fecha o hora</div>
-      <div className={styles.fechaOHora2}>Fecha o hora</div>
-      <div className={styles.fechaOHora3}>Fecha o hora</div>
-      <div className={styles.solicitudes2Child15} />
-      <div className={styles.solicitudes2Child16} />
-      <div className={styles.solicitudes2Child17} />
-      <div className={styles.solicitudes2Child18} />
-      <img className={styles.vectorIcon3} alt="" src="/vector2.svg" />
-      <img className={styles.solicitudes2Child19} alt="" src="/group-180.svg" />
-      <img className={styles.solicitudes2Child20} alt="" src="/group-180.svg" />
-      <img className={styles.solicitudes2Child21} alt="" src="/group-180.svg" />
-      <img className={styles.solicitudes2Child22} alt="" src="/group-180.svg" />
-      <img className={styles.frameIcon} alt="" src="/frame1.svg" />
-      <img className={styles.frameIcon1} alt="" src="/frame1.svg" />
+      <ul className={styles.SoliciAH}>
+        {solicitudes.map((solicitud) => (
+          <li key={solicitud._id}>
+            <SolicitudItem solicitud={solicitud} onDeleteSolicitud={handleDeleteSolicitud} />
+          </li>
+        ))}
+      </ul>
+
+
+
       <div className={styles.recibidas} onClick={onRecibidasTextClick}>
         Recibidas
       </div>
@@ -104,8 +141,7 @@ const Solicitudes2 = () => {
       <div className={styles.guardadas} onClick={onGuardadasTextClick}>
         Guardadas
       </div>
-      <img className={styles.frameIcon2} alt="" src="/frame1.svg" />
-      <img className={styles.frameIcon3} alt="" src="/frame1.svg" />
+
       <img className={styles.solicitudes2Child23} alt="" src="/group-146.svg" />
     </div>
   );

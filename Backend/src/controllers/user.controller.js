@@ -178,15 +178,15 @@ const UserController = {
     if (!user) {
         return res.status(404).send(`Usuario no encontrado. user_id: ${user_id}`);
     }
-
     // Verificar si el código de confirmación coincide
     if (confirmationCode === user.confirmationCode) {
         // Eliminar la cuenta del usuario
         await User.findByIdAndDelete(user_id);
         return res.status(200).send("Cuenta eliminada exitosamente");
      } else {
-        return res.status(401).send("Código de confirmación incorrecto");
+        return res.status(400).send("Código de confirmación incorrecto");
     }
+    
     }
     
     

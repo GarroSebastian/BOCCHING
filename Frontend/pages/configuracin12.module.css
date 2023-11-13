@@ -8,10 +8,12 @@
   display: inline-block;
   width: 614px;
 }
+
+
 .configuracin12Child,
 .configuracin12Item {
   position: absolute;
-  top: 590px;
+  top: 650px;
   left: 48px;
   border-radius: var(--br-3xs);
   background-color: var(--black-icon);
@@ -27,24 +29,39 @@
 }
 .configuracin12Inner {
   position: absolute;
-  top: 484px;
-  left: 45px;
+  top: 500px;
+  left: 71px;
   border-radius: var(--br-3xs);
   border: 3px solid var(--black-icon);
   box-sizing: border-box;
-  width: 602px;
-  height: 53px;
+  width: 400px;
+  height: 60px;
 }
 .cdigoDeUsuario {
   position: absolute;
+  top: 520px;
+  left: 120px;
+  font-family: var(--textos);
+  color: var(--black-icon);
+}
+.correoUsuario{
+  position: absolute;
   top: 500px;
-  left: 71px;
+  left: 120px;
+  font-family: var(--textos);
+  color: var(--black-icon);
+
+}
+.contrasenaUsuario {
+  position: absolute;
+  top: 530px;
+  left: 120px;
   font-family: var(--textos);
   color: var(--black-icon);
 }
 .eliminarCuenta1 {
   position: absolute;
-  top: 601px;
+  top: 659px;
   left: 417px;
   font-size: var(--subtitulos2-size);
   cursor: pointer;
@@ -63,7 +80,7 @@
 }
 .cancelar {
   position: absolute;
-  top: 601px;
+  top: 659px;
   left: 56px;
   font-size: var(--subtitulos2-size);
   color: var(--color-white);
@@ -71,7 +88,7 @@
 }
 .ingreseSuCdigo {
   position: absolute;
-  top: 411px;
+  top: 420px;
   left: 71px;
   font-size: var(--subttulos-size);
 }

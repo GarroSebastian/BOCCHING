@@ -14,8 +14,8 @@ Content-Type: application/json
 {
     "nombre": "Sebas",
     "apellidos": "Camayo",
-    "correo": "20200373@aloe.ulima.edu.pe",
-    "contrasena": "contrasena",
+    "correo": "29182713@aloe.ulima.edu.pe",
+    "contrasena": "12345678",
     "apodo": "apodo",
     "id_genero": "0",
     "nacimiento": "2002-12-27",
@@ -24,7 +24,8 @@ Content-Type: application/json
     "facultad": "2",
     "especialidad": "especialidad",
     "descripcion": "descripcion",
-    "mostrar_nombre": true
+    "mostrar_nombre": true,
+    "confirmationCode":"12345678"
 }
 
 ###
@@ -66,5 +67,5 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzBhNWIyNjBjOGEx
 ###
 
 
-GET http://localhost:3700/verify-delete-code/123
+GET http://localhost:3700/verify-delete-code/12345678
 Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NDk5NDY5MTBiMWQ3MzMxODdhMzI4MSIsImlhdCI6MTY5OTMyNDAzMSwiZXhwIjoxNjk5NDEwNDMxfQ.VoQuKullV_AvMF0XIAMJpV_KteOWk4GcMOYJsVGfE_U

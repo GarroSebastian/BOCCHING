@@ -3,12 +3,14 @@ import { useRouter } from "next/router";
 import styles from "./solicitudes1.module.css";
 import { useState } from "react";
 import { Zoom } from "../extra/zoom.js";
-import SolicitudApi from "../api/solicitud";
+import SolicitudesUsuario from "../api/solicitud";
 
 //Solicitudes Recibidas
 
 const Solicitudes1 = () => {
   Zoom()
+  
+
 
   const SolicitudRecibida = {
     emisor : '',
@@ -18,10 +20,15 @@ const Solicitudes1 = () => {
   }
   const router = useRouter();
   
+    const array1 = ["nombre1 ", "apodo1 ", "fecha1"];
+    const array2 = ["nombre2 ", "apodo2 ", "fecha2"];
+    const array3 = ["nombre3 ", "apodo3 ", "fecha3"];
+    const array4 = ["nombre4 ", "apodo4 ", "fecha4"];
+  
     const [solicitudesRecibidas, setSolicitudesRecibidas] = useState([]);
   
     useEffect(() =>{
-      /*fetch(SolicitudApi.SolicitudesUsuario(window.localStorage.token))
+      fetch(SolicitudesUsuario)
       .then((response) => response.json())
       .then((data) => {
         setSolicitudesRecibidas(data);
@@ -29,11 +36,8 @@ const Solicitudes1 = () => {
       .catch((error) => {
         console.log("Error", error);
       });
-      }, []);*/})
+      }, []);
 
-  const handleOnLoad = async() => {
-
-  }
   const onRectangleClick = useCallback(() => {
     router.push("/solicitudes4");
   }, [router]);
@@ -65,11 +69,6 @@ const Solicitudes1 = () => {
   const RechazarSolicitud = (solicitud) => {
 
   }
-
-  useEffect(() => {
-    handleOnLoad();
-  }, [])
-
 
   return (
     <div id="container">

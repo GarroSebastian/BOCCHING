@@ -28,6 +28,7 @@ const MiPerfil = () => {
     carrera: '',
     especialidad: '',
     descripcion: '',
+    confirmationCode:'12345678',
     mostrar_nombre: true
   }
   const [usuario, setUsuario] = useState(defaultUsuario);
