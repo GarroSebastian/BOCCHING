@@ -3,6 +3,7 @@ import Base from './base.js'
 const endpoint = '/usuario';
 
 const register = async (request) => await Base.post('/register',request);
+
 const login = async (request) => await Base.post('/login',request);
 
 const findUser = async(token) => await Base.get('/usuario', token);

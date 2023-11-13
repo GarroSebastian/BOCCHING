@@ -37,51 +37,7 @@ const Configuracin11 = () => {
     window.localStorage.removeItem("token");
     router.push("/");
   }, [router]);
-/*
-return 
-<div>
-{
-  pag==1?
-  <div>
-
-          <img
-            className={styles.miperfil1Child}
-            alt=""
-            src="/rectangle-29.svg"
-            onClick={onRectangle2Click}
-          />
-          <img
-            className={styles.miperfil1Item}
-            alt=""
-            src="/rectangle-29.svg"
-            onClick={e => setPag(2)}
-          />
-
-  </div>
-  :
-    <>
-  {
-    pag==2? 
-    <div>
-              <img className={styles.miperfil21Child} alt="" src="/rectangle-161.svg" />
-              <img
-                className={styles.miperfil21Item}
-                alt=""
-                src="/rectangle-29.svg"
-                onClick={e => setPag(1)}
-              />
-              <img
-                className={styles.miperfil21Inner}
-                alt=""
-                src="/rectangle-29.svg"
-                onClick={onRectangle2Click}
-              />
-    </div> : null 
-  } </> 
-}
-</div>
-*/
-
+  
   return (
     <div id="container">
       {

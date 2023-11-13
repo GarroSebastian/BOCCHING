@@ -13,9 +13,9 @@ const EliminarCuenta = () => {
   //Contra Antigua
   const [codigoCofirmacion, setcodigoCofirmacion] = useState("");
   const handleDeleteAccount = () => {
-    if (codigoConfirmacion) {
+    if (codigoCofirmacion) {
       // Realiza la solicitud GET para verificar el código de confirmación
-      axios.get('http://localhost:3700/verify-delete-code/' + codigoConfirmacion)
+      axios.get('http://localhost:3700/verify-delete-code/' + codigoCofirmacion)
         .then((response) => {
           if (response.status === 200 && response.data === "Cuenta eliminada exitosamente") {
             // El código de confirmación es correcto, la cuenta ha sido eliminada en el servidor
@@ -77,6 +77,11 @@ const EliminarCuenta = () => {
       <input
 onChange={(evt) => setcodigoCofirmacion(evt.target.value)}
 placeholder="Código de confirmación"
+style={{ 
+  background: 'transparent', border: '0px solid #ccc', padding: '5px',
+  width: '315%', // Establece el ancho al 100% del contenedor
+  boxSizing: 'border-box',  // Incluye el relleno y el borde en el ancho total
+}}
 />      </div>
         <div
           className={styles.eliminarCuenta1}
