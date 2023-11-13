@@ -33,6 +33,9 @@ const Solicitudes3Ocultas = () => {
     // ... other friend requests
   ]);
 
+
+
+  //Async peticion a backend para pedir id del que envía y destinatario. uso de API ?
   const onEnviarClick = (friendId) => {
     setFriendRequests((prevRequests) =>
       prevRequests.map((request) =>
