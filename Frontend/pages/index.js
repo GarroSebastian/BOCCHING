@@ -4,7 +4,7 @@ import styles from "./index.module.css";
 import { Zoom } from "../extra/zoom.js"
 
 const Inicio = () => {
-  Zoom()
+  Zoom();
   const router = useRouter();
 
   const onFrameContainer10Click = useCallback(() => {

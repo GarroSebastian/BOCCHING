@@ -33,17 +33,13 @@ const Inicio = () => {
 
 export const Zoom = () => {  
     useEffect(()=>{
-        w = window.innerWidth;
-        h = window.innerHeight;
-        adjustZoom();
-        window.onresize = adjustZoom;
-        /*Inicio();
+        Inicio();
         // Suscribirse al evento popstate cuando el componente se monta
         window.addEventListener('popstate', Inicio);
         
         // Limpiar el evento cuando el componente se desmonta
         return () => {
             window.removeEventListener('popstate', Inicio);
-        };*/
+        };
     },[])
 }

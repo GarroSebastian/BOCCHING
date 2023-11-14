@@ -180,11 +180,7 @@ const MiPerfil = () => {
 
 
   useEffect(() => {
-    //handleOnLoad();
-    setGustos([
-      {...defaultGusto,idTipo: 0, subtipo: '', nombre: 'Jugar tenis', idAfinidad: 0, idDuracion: 0, idCompania: 0},
-      {...defaultGusto,idTipo: 1, subtipo: '', nombre: 'Jugar videojuegos', idAfinidad: 1, idDuracion: 1, idCompania: 1}
-    ])
+    handleOnLoad();
   }, [])
   
   return (
