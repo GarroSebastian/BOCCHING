@@ -49,7 +49,7 @@ const MiPerfil = () => {
   const [nuevoGusto, setNuevoGusto] = useState(defaultGusto)
 
   const arrayTipo = ['Sin especificar','Franquicia','Juego de mesa','Hobby','Pasatiempo + Juego',
-  'Alimento','Música','Creador(a) de contenido','Deporte','Otro'];
+  'Alimento','Músic@','Creador(a) de contenido','Deporte','Otro'];
   const [ID_Tipo, setID_Tipo] = useState(0);
   const arrayFranquicia = ['Sin especificar','Videojuego','Serie','Libro','Otro']
   const arrayPasatiempo = ['Sin especificar','Aire libre','Espacio cerrado','Mixto']
@@ -155,17 +155,6 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTE2ZmE4YTIwZmMxZWY3MmRjY2Y3OSI
 usuario._id
 "65516fa8a20fc1ef72dccf79"
 */
-
-  const handleGustos = async() =>{
-    var token = localStorage.getItem("token");
-
-    GustoApi.getGustos(token).then((user)=>{
-      
-      const aux = user.data.gustos;
-      setGustos(aux)
-      
-    });
-  }
   
   const handleOnLoad = async() => {
     //var token = localStorage.getItem("token");
@@ -188,17 +177,15 @@ usuario._id
       setEdad(Math.floor(dif/(1000*60*60*24*365.25)))
     });
 
-    setGustos([
-      {...defaultGusto,idTipo: 0, subtipo: '', nombre: 'Jugar tenis', idAfinidad: 0, idDuracion: 0, idCompania: 0},
-      {...defaultGusto,idTipo: 1, subtipo: '', nombre: 'Jugar videojuegos', idAfinidad: 1, idDuracion: 1, idCompania: 1}
-    ])
+    GustoApi.getGustosCurrent().then((user)=>{
+      const aux = user.data.gustos;
+      setGustos(aux)
+    });
 
   }
 
-
   useEffect(() => {
     handleOnLoad();
-    handleGustos();
   }, [])
   
   return (
@@ -412,33 +399,25 @@ usuario._id
                 </select>
               </div>
 
-              <div className={styles.frameDiv}>
-                <div className={styles.xd}>
-                  <select  value={nuevoGusto.subtipo} onChange={e => setgustos2({...gustos2, subTipo:e.target.value})} style={{width: "200%"}}>
-                    {
-                      arraySubTipo[ID_Tipo].map((item, index)=>{return(<option key={index} value={item}>{item}</option>)})
-                    }
-                  </select>
-                </div>
+              <div className={styles.hobby} style={{left: '500px', marginLeft: '-3px', top: `${primero+salto*gustos.length}px`}}>
+                <select value={nuevoGusto.subtipo} onChange={e => setNuevoGusto({ ...nuevoGusto,subtipo: e.target.value})} style={{width: "200%"}}>
+                  {
+                    arraySubTipo[ID_Tipo].map((item, index)=>{return(<option key={index} value={item}>{item}</option>)})
+                  }
+                </select>
               </div>
 
-              <div className={styles.xdParent4}>
-                <div className={styles.xd}>
-                  <input type="text" value={nuevoGusto.nombre} onChange={e => setgustos2({...gustos2, nombre:e.target.value})} style={{width: "100px"}} />
+                <div className={styles.hobby} style={{left: '700px', marginLeft: '-3px', top: `${primero+salto*gustos.length}px`}}>
+                  <input type="text" value={nuevoGusto.nombre} onChange={e => setNuevoGusto({ ...nuevoGusto,nombre: e.target.value})} style={{width: "100px"}} />
                 </div>
-              </div>
 
-              <div className={styles.xdParent8}>
-                <div className={styles.xd}>
-                  <input type="text" value={nuevoGusto.idAfinidad} onChange={e => setgustos2({...gustos2, afinidad: e.target.value})} style={{width: "100px"}} />
+                <div className={styles.hobby} style={{left: '900px', marginLeft: '-3px', top: `${primero+salto*gustos.length}px`}}>
+                  <input type="text" value={nuevoGusto.idAfinidad} onChange={e => setNuevoGusto({ ...nuevoGusto,idAfinidad: e.target.value})} style={{width: "100px"}} />
                 </div>
-              </div>
 
-              <div className={styles.xdParent12}>
-                <div className={styles.xd}>
-                  <input type="text" value={nuevoGusto.idDuracion} onChange={e => setgustos2({...gustos2, duracion: e.target.value})} style={{ width: "100px"}} />
+                <div className={styles.hobby} style={{left: '1100px', marginLeft: '-3px', top: `${primero+salto*gustos.length}px`}}>
+                  <input type="text" value={nuevoGusto.idDuracion} onChange={e => setNuevoGusto({ ...nuevoGusto,idDuracion: e.target.value})} style={{ width: "100px"}} />
                 </div>
-              </div>
 
             </div>
           :

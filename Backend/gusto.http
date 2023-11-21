@@ -1,12 +1,12 @@
 GET http://localhost:3700/gustos
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTEyZGVmNjI4YmY1ZTI0ODNmNDA0ZCIsImlhdCI6MTY5OTgxODk5NCwiZXhwIjoxNjk5OTA1Mzk0fQ.ojaQySrcK1apQCCAcNnY7o3dA3xdP0fof2QKJO_-nVc
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGU5MjEyYzM0MzAxYzJjZTc4ZWFlZiIsImlhdCI6MTcwMDU4NDU0NCwiZXhwIjoxNzAwNjcwOTQ0fQ.J69YGw6G-iiPm3FNq9FV1uWv3oSzcxhJ_jcGU910mXo
 
 ###
 POST http://localhost:3700/save-gusto
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTEyZGVmNjI4YmY1ZTI0ODNmNDA0ZCIsImlhdCI6MTY5OTgxODk5NCwiZXhwIjoxNjk5OTA1Mzk0fQ.ojaQySrcK1apQCCAcNnY7o3dA3xdP0fof2QKJO_-nVc
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGU5MjEyYzM0MzAxYzJjZTc4ZWFlZiIsImlhdCI6MTcwMDU4NDU0NCwiZXhwIjoxNzAwNjcwOTQ0fQ.J69YGw6G-iiPm3FNq9FV1uWv3oSzcxhJ_jcGU910mXo
 
 {
-    "tipo":"valor 1",
+    "tipo": 2,
     "nombre":"valor 2",
     "subtipo":"valor 3",
     "afinidad":"adsaf",
@@ -15,4 +15,5 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTEyZGVmNjI4YmY1
     "conversacion":"asdf",
     "musica":"asdf",
     "frecuencia":"asdf",
+    "compania": "a"
 }

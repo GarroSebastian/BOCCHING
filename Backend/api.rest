@@ -88,12 +88,12 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTE2ZmE4YTIwZmMx
 ### GUSTOS
 
 POST http://localhost:3700/save-gusto
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTE2ZmE4YTIwZmMxZWY3MmRjY2Y3OSIsImlhdCI6MTcwMDQwMzIxNSwiZXhwIjoxNzAwNDg5NjE1fQ.GOBiEEXwQPiaIwm3vzMkh7Ig_-V-PTmT3z6JBZ1anTU
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGU5MjEyYzM0MzAxYzJjZTc4ZWFlZiIsImlhdCI6MTcwMDU4NDU0NCwiZXhwIjoxNzAwNjcwOTQ0fQ.J69YGw6G-iiPm3FNq9FV1uWv3oSzcxhJ_jcGU910mXo
 Content-Type: application/json
 
 {
     "tipo" : 0,
-    "nombre" : "Holaaa",
+    "nombre" : "waos",
     "subtipo": "aaa",
     "afinidad": "aaa",
     "posesion": "aaaaa",

@@ -43,6 +43,26 @@ const getGustos = async(token) => {
     }
 
 }
+const getGustosCurrent = async() => {
+    
+    try {
+        const url = URI.concat('/gustos');
+
+        const authAxios = axios.create({
+            baseURL: URI,
+            headers: {
+                Authorization: window.localStorage.token
+            }
+        });
+
+        return await authAxios.get(url);
+
+    } catch(err) {
+        console.error(err);
+        return null;
+    }
+
+}
 //Con gusto me retorna un solo gusto, pasando como entrada su id
 const getGusto = async(idReceptor, token) => {
 
@@ -107,6 +127,6 @@ const actualizarGusto = async(request, idReceptor, token) => {
 
 }
 
-const GustoApi = { guardarGusto, getGustos, getGusto, borrarGusto, actualizarGusto }
+const GustoApi = { guardarGusto, getGustos, getGustosCurrent, getGusto, borrarGusto, actualizarGusto }
 
 export default GustoApi;
