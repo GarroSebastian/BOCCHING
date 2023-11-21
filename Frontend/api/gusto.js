@@ -22,9 +22,9 @@ const guardarGusto = async(request, token) => {
     }
 
 }
-
+//Cons Gustos me retorna una lista de gustos
 const getGustos = async(token) => {
-
+    
     try {
         const url = URI.concat('/gustos');
 
@@ -43,7 +43,7 @@ const getGustos = async(token) => {
     }
 
 }
-
+//Con gusto me retorna un solo gusto, pasando como entrada su id
 const getGusto = async(idReceptor, token) => {
 
     try {

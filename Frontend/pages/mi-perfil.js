@@ -56,7 +56,7 @@ const MiPerfil = () => {
   const arrayAlimento = ['Sin especificar','Comida','Bebida']
   const arrayMusica = ['Sin especificar','Solista','Grupo','Mixto']
   const arrayCreador = ['Sin especificar','Gameplays','Tops','Crítico','Cómico','Informativo','Historia','Día a día','Otro']
-  const arraySubTipo = [[],arrayFranquicia,[],[],arrayPasatiempo,arrayAlimento,arrayMusica,arrayCreador,[],[]];
+  const arraySubTipo = [[''],arrayFranquicia,[''],[''],arrayPasatiempo,arrayAlimento,arrayMusica,arrayCreador,[''],['']];
   
   const primero=663, salto=50;
 
@@ -149,6 +149,23 @@ const MiPerfil = () => {
       alert("¡Cambios guardados!")
     })*/
   }
+/*
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTE2ZmE4YTIwZmMxZWY3MmRjY2Y3OSIsImlhdCI6MTcwMDQwMzIxNSwiZXhwIjoxNzAwNDg5NjE1fQ.GOBiEEXwQPiaIwm3vzMkh7Ig_-V-PTmT3z6JBZ1anTU
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTE2ZmE4YTIwZmMxZWY3MmRjY2Y3OSIsImlhdCI6MTcwMDQwMzIxNSwiZXhwIjoxNzAwNDg5NjE1fQ.GOBiEEXwQPiaIwm3vzMkh7Ig_-V-PTmT3z6JBZ1anTU
+usuario._id
+"65516fa8a20fc1ef72dccf79"
+*/
+
+  const handleGustos = async() =>{
+    var token = localStorage.getItem("token");
+
+    GustoApi.getGustos(token).then((user)=>{
+      
+      const aux = user.data.gustos;
+      setGustos(aux)
+      
+    });
+  }
   
   const handleOnLoad = async() => {
     //var token = localStorage.getItem("token");
@@ -181,6 +198,7 @@ const MiPerfil = () => {
 
   useEffect(() => {
     handleOnLoad();
+    handleGustos();
   }, [])
   
   return (
@@ -346,11 +364,19 @@ const MiPerfil = () => {
                 gustos?.map((item, index) => {
                   return(
                     <>
-                      <div className={styles.hobby} style={{top: `${primero+salto*index}px`}}>Hobby</div>
-                      <div className={styles.xd} style={{top: `${primero+salto*index}px`}}>xd</div>
+                      <div className={styles.hobby} style={{top: `${primero+salto*index}px`}}>
+                        {
+                          arrayTipo[item.tipo]
+                        }
+                      </div>
+                      <div className={styles.xd} style={{top: `${primero+salto*index}px`}}>
+                        {
+                          arraySubTipo[item.tipo][0]
+                        }
+                      </div>
                       <div className={styles.xd4} style={{top: `${primero+salto*index}px`}}>{item.nombre}</div>
-                      <div className={styles.xd8} style={{top: `${primero+salto*index}px`}}>xd</div>
-                      <div className={styles.xd12} style={{top: `${primero+salto*index}px`}}>xd</div>
+                      <div className={styles.xd8} style={{top: `${primero+salto*index}px`}}>{item.afinidad}</div>
+                      <div className={styles.xd12} style={{top: `${primero+salto*index}px`}}>{item.duracion}</div>
                       <div className={styles.miperfil21Child3} style={{top: `${695+salto*index}px`}} />
                     </>
                   )

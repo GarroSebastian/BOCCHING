@@ -83,17 +83,17 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTFiNWM5MmZjODBl
 ###
 
 GET http://localhost:3700/getSolicitud/6551b5c92fc80e6ce90f9933
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTFiNWM5MmZjODBlNmNlOTBmOTkzMyIsImlhdCI6MTY5OTg2ODA3NiwiZXhwIjoxNjk5OTU0NDc2fQ.FnLH7W0GjdFhZqvpsORxroAZcFuYpM0RnSJdVrtukXU
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTE2ZmE4YTIwZmMxZWY3MmRjY2Y3OSIsImlhdCI6MTcwMDQwMzIxNSwiZXhwIjoxNzAwNDg5NjE1fQ.GOBiEEXwQPiaIwm3vzMkh7Ig_-V-PTmT3z6JBZ1anTU
 
 ### GUSTOS
 
 POST http://localhost:3700/save-gusto
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzA1Y2EwZGZiYzFmMjcwN2MwMTBjMSIsImlhdCI6MTY5ODcwMTQxNiwiZXhwIjoxNjk4Nzg3ODE2fQ.GhsJIfMS6E7PFHHfs-K3dttQADax8ECfV_H76oYkGyU
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTE2ZmE4YTIwZmMxZWY3MmRjY2Y3OSIsImlhdCI6MTcwMDQwMzIxNSwiZXhwIjoxNzAwNDg5NjE1fQ.GOBiEEXwQPiaIwm3vzMkh7Ig_-V-PTmT3z6JBZ1anTU
 Content-Type: application/json
 
 {
     "tipo" : 0,
-    "nombre" : "Hola",
+    "nombre" : "Holaaa",
     "subtipo": "aaa",
     "afinidad": "aaa",
     "posesion": "aaaaa",
@@ -107,12 +107,12 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3700/gustos
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzA1Y2EwZGZiYzFmMjcwN2MwMTBjMSIsImlhdCI6MTY5ODcwMTQxNiwiZXhwIjoxNjk4Nzg3ODE2fQ.GhsJIfMS6E7PFHHfs-K3dttQADax8ECfV_H76oYkGyU
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTE2ZmE4YTIwZmMxZWY3MmRjY2Y3OSIsImlhdCI6MTcwMDQwMzIxNSwiZXhwIjoxNzAwNDg5NjE1fQ.GOBiEEXwQPiaIwm3vzMkh7Ig_-V-PTmT3z6JBZ1anTU
 
 ###
 
 GET http://localhost:3700/gusto/654026e2399b9416d1d0be53
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzA1Y2EwZGZiYzFmMjcwN2MwMTBjMSIsImlhdCI6MTY5ODcwMTQxNiwiZXhwIjoxNjk4Nzg3ODE2fQ.GhsJIfMS6E7PFHHfs-K3dttQADax8ECfV_H76oYkGyU
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTE2ZmE4YTIwZmMxZWY3MmRjY2Y3OSIsImlhdCI6MTcwMDQwMzIxNSwiZXhwIjoxNzAwNDg5NjE1fQ.GOBiEEXwQPiaIwm3vzMkh7Ig_-V-PTmT3z6JBZ1anTU
 
 ###
 
