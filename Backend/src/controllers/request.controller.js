@@ -62,7 +62,26 @@ const RequestController = {
             if(request) return res.send({solicitud: request});
         });
 
-    }
+    },
+    getAllReceivedRequests: (req, res) => {
+        const userId = req.token_usuarioId;
+
+        Request.find({ receptor: userId })
+            .populate({ path: 'emisor receptor' })
+            .then(requests => {
+                if (!requests) return res.send({ message: "No se encontraron solicitudes recibidas" });
+
+                if (requests) return res.send({ solicitudesRecibidas: requests });
+            });
+    },
+
+    actualizarViewerSolicitudes : (req, res) => {
+        const userId = req.token_usuarioId;
+      
+        Request.updateMany({ receptor: userId }, { viewer: 1 })
+          .then(() => res.send({ message: 'Viewer actualizado para todas las solicitudes recibidas' }))
+          .catch((error) => res.status(500).send({ error: 'Error al actualizar el viewer', details: error }));
+      }
     
 }
 

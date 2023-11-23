@@ -45,7 +45,16 @@
   width: 1159px;
   height: 601px;
 }
-
+.floatingMessage {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #ff0000; /* Color de fondo del mensaje */
+  color: #ffffff; /* Color del texto del mensaje */
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
 
 .vectorIcon,
 .vectorIcon1,
