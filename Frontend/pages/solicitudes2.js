@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import styles from "./solicitudes2.module.css";
 import axios from 'axios';
 import SolicitudItem from "../components/CardSolicitud";
+import SolicitudApi from "../api/solicitud";
 //Solicitudes Enviadas
 const Solicitudes2 = () => {
   const router = useRouter();
@@ -15,17 +16,10 @@ const Solicitudes2 = () => {
       return;
     }
 
-    const headers = {
-      Authorization: token,
-    };
-
-    axios
-      .get('http://localhost:3700/getAllSolicitudes', { headers })
+    // Utiliza la función SolicitudesUsuario de tu API de solicitudes
+    SolicitudApi.SolicitudesUsuario(token)
       .then((response) => {
-        console.log('Response status:', response.status);
-        console.log('Response data:', response.data);
-        
-        if (response.status === 200) {
+        if (response && response.data) {
           const solicitudesData = response.data.solicitudes;
           setSolicitudes(solicitudesData);
         }
@@ -35,39 +29,27 @@ const Solicitudes2 = () => {
       });
   }, []);
 
-    // Agrega un manejador de eventos para eliminar una solicitud
-    const handleDeleteSolicitud = (solicitudToDelete) => {
-      if (!solicitudToDelete.receptor || !solicitudToDelete.receptor._id) {
-        console.log('La solicitud no tiene receptor o el receptor no tiene _id.');
-        return;
-      }
+  const handleDeleteSolicitud = (solicitudToDelete) => {
     const token = localStorage.getItem('token');
-    
+
     if (!token) {
       console.log('No se encontró el token en el Local Storage');
       return;
     }
 
-    const headers = {
-      Authorization: token,
-    };
-      // Envía una solicitud para eliminar la solicitud en el servidor
-      // Debes implementar la lógica del servidor para esto
-      axios
-        .delete(`http://localhost:3700/delete-solicitud/${solicitudToDelete.receptor._id}`, { headers})
-        .then((response) => {
-          if (response.status === 200) {
-            // La solicitud se eliminó correctamente en el servidor
-            // Actualiza la lista de solicitudes para reflejar la eliminación
-            setSolicitudes((prevSolicitudes) =>
-              prevSolicitudes.filter((solicitud) => solicitud._id !== solicitudToDelete._id)
-            );
-          }
-        })
-        .catch((error) => {
-          console.error('Error al eliminar la solicitud:', error);
-        });
-    };
+    // Utiliza la función borrarSolicitud de tu API de solicitudes
+    SolicitudApi.borrarSolicitud(solicitudToDelete.receptor._id, token)
+      .then((response) => {
+        if (response && response.status === 200) {
+          setSolicitudes((prevSolicitudes) =>
+            prevSolicitudes.filter((solicitud) => solicitud._id !== solicitudToDelete._id)
+          );
+        }
+      })
+      .catch((error) => {
+        console.error('Error al eliminar la solicitud:', error);
+      });
+  };
 
   const onRectangleClick = useCallback(() => {
     router.push("/solicitudes1");
@@ -93,7 +75,7 @@ const Solicitudes2 = () => {
     router.push("/solicitudes4");
   }, [router]);
 
-  
+  console.log(solicitudes);
 
   return (
     <div className={styles.solicitudes2}>
@@ -126,6 +108,7 @@ const Solicitudes2 = () => {
           <li key={solicitud._id}>
             <SolicitudItem solicitud={solicitud} onDeleteSolicitud={handleDeleteSolicitud} />
           </li>
+          
         ))}
       </ul>
 

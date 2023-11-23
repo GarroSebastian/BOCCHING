@@ -65,10 +65,9 @@ const SolicitudesUsuario = async(token) => {
 
 }
 
-const ObtenerSolicitudUsuario = async(idReceptor, token) => {
-
+const SolicitudesRecibidasUsuario = async (token) => {
     try {
-        const url = URI.concat('/getSolicitud/'+idReceptor);
+        const url = URI.concat('/get-all-received-requests');
 
         const authAxios = axios.create({
             baseURL: URI,
@@ -79,13 +78,54 @@ const ObtenerSolicitudUsuario = async(idReceptor, token) => {
 
         return await authAxios.get(url);
 
-    } catch(err) {
+    } catch (err) {
         console.error(err);
         return null;
     }
-
 }
 
-const SolicitudApi = { guardarSolicitud, borrarSolicitud, SolicitudesUsuario, ObtenerSolicitudUsuario }
+const ObtenerSolicitudUsuario = async (idReceptor, token) => {
+    try {
+        const url = URI.concat('/getSolicitud/' + idReceptor);
 
+        const authAxios = axios.create({
+            baseURL: URI,
+            headers: {
+                Authorization: token
+            }
+        });
+
+        return await authAxios.get(url);
+
+    } catch (err) {
+        console.error(err);
+        return null;
+    }
+}
+const actualizarViewerSolicitudes = async (token) => {
+    try {
+      const url = URI.concat('/actualizar-viewer-solicitudes');
+  
+      const authAxios = axios.create({
+        baseURL: URI,
+        headers: {
+          Authorization: token,
+        },
+      });
+  
+      return await authAxios.put(url);
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
+  };
+
+  const SolicitudApi = {
+    guardarSolicitud,
+    borrarSolicitud,
+    SolicitudesUsuario,
+    ObtenerSolicitudUsuario,
+    SolicitudesRecibidasUsuario,
+    actualizarViewerSolicitudes, 
+  };
 export default SolicitudApi;
