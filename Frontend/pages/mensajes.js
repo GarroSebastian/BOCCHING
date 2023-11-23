@@ -4,6 +4,12 @@ import styles from "./mensajes.module.css";
 import Lateral from "../components/lateral.js"
 import UsuarioApi from "../api/usuario";
 
+/*
+- Ordenar el arreglo chats según quien tiene el atributo fecha más recientes. La función CompararFechas() asigna dicho valor, para referencia
+- Al mostrarse los mensajes en pantalla, deben mostrarse separados por fecha (como en Whatsapp). Actualmente no lo hacen, corregir
+- Coordina con Garro para saber qué tanto avanzó con la búsqueda de mensajes
+*/
+
 const Mensajes = () => {
   Zoom()
 

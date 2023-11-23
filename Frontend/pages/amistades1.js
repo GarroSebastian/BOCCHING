@@ -6,6 +6,15 @@ import Lateral from "../components/lateral.js";
 import Card from "../components/CardN.js";
 import { useState, useEffect } from 'react';
 
+/*
+- Cargar del Backend todas las solicitudes donde el usuario es emisor o receptor, y que sean de tipo 2 (Amigos)
+- Si el usuario es el emisor, mostrar la info del receptor; y viceversa
+- Utilizar el id del otro usuario para agarrar sus datos del UsuarioApi (nombre, foto, etc)
+- Cada uno tiene botón de "Cancelar amistad": 1. confirm("¿Estás segur@?") 2. Si retorna true, DELETE Solicitud)
+- Aparecen en pantalla en orden alfabético
+- Al darles clic, llevan a http://localhost:3000/perfil?id={} (reemplazar {} por el id del otro usuario)
+*/
+
 const Amistades1 = () => {
   Zoom()
   const router = useRouter();

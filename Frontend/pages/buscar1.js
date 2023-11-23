@@ -4,13 +4,19 @@ import { Zoom } from "../extra/zoom.js"
 import styles from "./buscar1.module.css";
 import Lateral from "../components/lateral.js"
 
-/*Datos de entrada: El algoritmo retorna los usuarios que cumplan con al menos 1 criterio. Coordinar con Rodrigo para aspecto visual
+/*Búsqueda: Pueden cambiar el orden de los componentes
+Datos de entrada: El algoritmo retorna los usuarios que cumplan con al menos 1 criterio. Coordinar con Rodrigo para aspecto visual
 - <input> único: Acepta idBocching o nombre+apellidos o código institucional o correo institucional
 - <checkboxes> género [Masculino, Femenino, Otros]
 - <checkboxes> estudio: [Otras facultades, Misma facultad, Otras carreras (misma facultad), Misma carrera, Otras especialidades (misma carrera), Misma especialidad]
+- <textarea> palabras: El usuario escribe frases separadas por Enter. El algoritmo buscará perfiles que las hayan escrito
+- <checkboxes> Gustos: Salen los nombres de todos los gustos del usuario
 Botones: Coordinar con Rodrigo para aspecto visual. Aparecen por cada <checkboxes>
-- "Cualquiera": Asigna todos los <inputs> a "Cualquiera"
-- "Igual a mí": Asigna a todos los <inputs> a "Igual a mí"
+- "Cualquiera": Asigna todos los datos a "Cualquiera" (o vacío, dependiendo del caso)
+- "Igual a mí": Asigna a todos los datos a "Igual a mí" (o seleccionando todo, dependiendo del caso)
+- Switch de 2 opciones: En el <checkboxes> Gustos, considerar solo Tipo-Subtipo-Nombre-Afinidad vs considerar también Duración-Compañía
+- Switch de 2 opciones: Considerar solo amigos
+- Buscar: Realiza la búsqueda
 */
 
 const Buscar1 = () => {

@@ -7,12 +7,41 @@ import { Zoom } from "../extra/zoom.js";
 import SolicitudApi from "../api/solicitud";
 import SolicitudItem from "../components/CardSolicitud.js";
 
+/*Recibidas:
+- Cargar del Backend todas las solicitudes donde el usuario es receptor, y que sean de tipo 0 (Solicitud enviada)
+- Cada una tiene 2 botones: Aceptar (UPDATE Solicitud, cambiando Tipo a 2), rechazar (DELETE Solicitud)
+Enviadas:
+- Cargar del Backend todas las solicitudes donde el usuario es emisor, y que sean de tipo 0 (Solicitud enviada)
+- Cada una tiene 2 botones: Ocultar (UPDATE Solicitud, cambiando Tipo a 1), cancelar (DELETE Solicitud)
+Ocultas:
+- Cargar del Backend todas las solicitudes donde el usuario es emisor, y que sean de tipo 1 (Solicitud oculta)
+- Cada una tiene 2 botones: Enviar (UPDATE Solicitud, cambiando Tipo a 0), cancelar (DELETE Solicitud)
+Guardadas: Eliminar
+
+Por cada solicitud:
+- Utilizar el id del otro usuario para agarrar sus datos del UsuarioApi (nombre, foto, etc)
+- Si la variable mostrar-nombre es true, mostrar el nombre; sino, el apodo
+- Mostrar foto
+- Al darles clic, llevan a http://localhost:3000/perfil?id={} (reemplazar {} por el id del otro usuario)
+
+- Abajo están las variables del objeto Solicitud, cada una explicadas
+- UNIFICAR PANTALLAS, CAMBIAR EL NOMBRE DE ÉSTA A solicitudes, pasar el contenido del resto a ésta y tras eso ELIMINARLOS CON SUS MODULE.CSS
+- Después de hacer cualquier llamado al Backend, volver a recargar los datos (GET)
+*/
+
 const Solicitudes1 = () => {
   Zoom();
   const router = useRouter();
   const [solicitudes, setSolicitudes] = useState([]);
   const [showMessage, setShowMessage] = useState(false);
   const [solicitudesSinViewer, setSolicitudesSinViewer] = useState(0);
+
+  const defaultSolicitud = {
+    _id: '', //el id de la solicitud
+    idEmisor: '', //el id del usuario que creó la solicitud
+    idReceptor: '', //el id del usuario al que se le envió la solicitud
+    tipo: 0 //si es 0, es una solicitud normal; 1, solicitud oculta; 2, ya son amigos
+  }
 
   useEffect(() => {
     const token = localStorage.getItem("token");

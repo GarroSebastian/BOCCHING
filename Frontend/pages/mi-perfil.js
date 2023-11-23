@@ -8,11 +8,13 @@ import Lateral from "../components/lateral.js"
 import UsuarioApi from "../api/usuario";
 import GustoApi from "../api/gusto.js";
 
-/*Editar Gustos:
+/*Validar Perfil:
+- Basarse en las validaciones de crear-cuenta y agregar las necesarias en la función ValidarCuenta()
+
+Editar Gustos:
 - Intenta coordinar con Rodrigo para que te haga componentes nuevos que puedas usar más fácilmente
 - Ya te dejé las variables que componen el objeto Gusto (también comenté qué hace cada una), y coordinaré con Backend para que las tenga iguales
 - Actualmente, la pantalla muestra los gustos leídos del Backend arriba, y abajo hay <select> e <input> para introducir los datos de un nuevo gusto. Cámbialo como necesites
-- Aaron ya hizo la mayoría de los <select> de Tipo y Subtipo
 - Si se te ocurre cómo renombrar el tipo "Alimento" para que quede mejor con sus subtipos "Comida" y "Bebida", genial
 - Subtipos "Franquicia" y "Creador@ de contenido" deberían ser checkboxs en vez de <select> (permite marcar de 1 a muchos, "Sin especificar" desmarca el resto)
 - Afinidad es un <select> con los valores [Sin especificar, Me encanta, Me fascina, Me gusta, Me es indiferente, Me aburre, Me disgusta]
@@ -27,6 +29,8 @@ Guardar en Backend:
 - "Eliminar" debe eliminar el Gusto del Backend y tras eso llamar al handleGustos() para recargar los datos
 - Para "Editar", puedes hacer que lleve a una pestaña nueva, o eliminar el botón e integrar la opción en la pestaña actual; luego puede haber un Editar al costado de cada Gusto, o uno general (recomiendo este). Si lo necesitas, puedes cambiar los text por inputs o coordinar con Rodrigo
 - Si elegiste la opción que recomendé, "Editar" haría un update de todos los Gustos (uno por uno), y tras eso llamar al handleGustos() para recargar los datos
+
+- ELIMINAR PESTAÑA "PRIVACIDAD"
 */
 
 const MiPerfil = () => {
@@ -56,13 +60,13 @@ const MiPerfil = () => {
   const [edad, setEdad] = useState(0);
 
   const defaultGusto = {
-    idUsuario: '', //el id del usuario al que pertenece el gusto
-    idTipo: 0, //el id del tipo de gusto
-    subtipo: '', //si el subtipo es un <select>, el id del subtipo. si son checkboxes, cada caracter es un valor booleano de si el checkbox se marcó o no
-    nombre: '', //el nombre del gusto
-    idAfinidad: 0, //el id de la afinidad del gusto
-    idDuracion: 0, //el id de la duracion del gusto
-    idCompania: 0 //el id de la compañía del gusto
+    idUsuario: '', //el id del usuario al que pertenece el gusto. No se muestra en pantalla
+    idTipo: 0, //el id del tipo de gusto. Se guarda como número pero en pantalla se muestra como texto. Aaron ya hizo un <select> borrador
+    subtipo: '', //si el subtipo es un <select>, es el id del subtipo. si son checkboxes, cada caracter es un valor booleano de si el checkbox se marcó o no. Aaron ya hizo un <select> borrador
+    nombre: '', //el nombre del gusto. Se muestra en pantalla
+    idAfinidad: 0, //el id de la afinidad del gusto. Se guarda como número pero en pantalla se muestra como texto
+    idDuracion: 0, //el id de la duracion del gusto. Se guarda como número pero en pantalla se muestra como texto
+    idCompania: 0 //el id de la compañía del gusto. Se guarda como número pero en pantalla se muestra como texto
   }
   const [gustos, setGustos] = useState([])
   const [nuevoGusto, setNuevoGusto] = useState(defaultGusto)
