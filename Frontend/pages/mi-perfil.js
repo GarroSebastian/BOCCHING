@@ -6,7 +6,28 @@ import Global from "../extra/global.js";
 import styles from "./mi-perfil.module.css";
 import Lateral from "../components/lateral.js"
 import UsuarioApi from "../api/usuario";
-import GustoApi from "../api/gusto.js";//Lo dejo aca por si lo quieren
+import GustoApi from "../api/gusto.js";
+
+/*Editar Gustos:
+- Intenta coordinar con Rodrigo para que te haga componentes nuevos que puedas usar más fácilmente
+- Ya te dejé las variables que componen el objeto Gusto (también comenté qué hace cada una), y coordinaré con Backend para que las tenga iguales
+- Actualmente, la pantalla muestra los gustos leídos del Backend arriba, y abajo hay <select> e <input> para introducir los datos de un nuevo gusto. Cámbialo como necesites
+- Aaron ya hizo la mayoría de los <select> de Tipo y Subtipo
+- Si se te ocurre cómo renombrar el tipo "Alimento" para que quede mejor con sus subtipos "Comida" y "Bebida", genial
+- Subtipos "Franquicia" y "Creador@ de contenido" deberían ser checkboxs en vez de <select> (permite marcar de 1 a muchos, "Sin especificar" desmarca el resto)
+- Afinidad es un <select> con los valores [Sin especificar, Me encanta, Me fascina, Me gusta, Me es indiferente, Me aburre, Me disgusta]
+- Duración es un <select> con los valores [Sin especificar, Duración ilimitada, Ya lo consumí, Lo estoy consumiendo, Lo consumiré pronto, Espero consumirlo próximamente]
+- Compañía son checkboxs con las opciones [Sin especificar, Solo, con una persona, en grupo] (“Sin especificar” desmarca todo)
+- REVISA LA TABLA DE LA PÁGINA 17 DEL WORD DE FUNCIONALIDADES para saber qué atributos aparecen con qué Tipos (verde = aparecen, rojo = no aparecen). Si puedes intenta cumplir el amarillo, sino descártalo
+
+Guardar en Backend:
+- Jala tu código de la otra pantalla. Cuando verifiques que ya pasaste todo bien, borra la otra pantalla y su module.css
+- "Añadir" debe subir el Gusto al Backend y tras eso llamar al handleGustos() para recargar los datos
+- "Eliminar" no tiene botón. Puedes pedirle uno a Rodrigo o ponerlo dentro de "Editar". Más fácil sería poner un botón Eliminar al costado de cada Gusto, dentro del .map()
+- "Eliminar" debe eliminar el Gusto del Backend y tras eso llamar al handleGustos() para recargar los datos
+- Para "Editar", puedes hacer que lleve a una pestaña nueva, o eliminar el botón e integrar la opción en la pestaña actual; luego puede haber un Editar al costado de cada Gusto, o uno general (recomiendo este). Si lo necesitas, puedes cambiar los text por inputs o coordinar con Rodrigo
+- Si elegiste la opción que recomendé, "Editar" haría un update de todos los Gustos (uno por uno), y tras eso llamar al handleGustos() para recargar los datos
+*/
 
 const MiPerfil = () => {
   const [pag, setPag] = useState(1);
@@ -35,15 +56,13 @@ const MiPerfil = () => {
   const [edad, setEdad] = useState(0);
 
   const defaultGusto = {
-    idUsuario: '',
-    idTipo: 0,
-    subtipo: '',
-    nombre: '',
-    idAfinidad: 0,
-    idDuracion: 0,
-    idCompania: 0,
-    priNombre: 0,
-    idPrivacidad: 0
+    idUsuario: '', //el id del usuario al que pertenece el gusto
+    idTipo: 0, //el id del tipo de gusto
+    subtipo: '', //si el subtipo es un <select>, el id del subtipo. si son checkboxes, cada caracter es un valor booleano de si el checkbox se marcó o no
+    nombre: '', //el nombre del gusto
+    idAfinidad: 0, //el id de la afinidad del gusto
+    idDuracion: 0, //el id de la duracion del gusto
+    idCompania: 0 //el id de la compañía del gusto
   }
   const [gustos, setGustos] = useState([])
   const [nuevoGusto, setNuevoGusto] = useState(defaultGusto)
@@ -51,11 +70,11 @@ const MiPerfil = () => {
   const arrayTipo = ['Sin especificar','Franquicia','Juego de mesa','Hobby','Pasatiempo + Juego',
   'Alimento','Músic@','Creador(a) de contenido','Deporte','Otro'];
   const [ID_Tipo, setID_Tipo] = useState(0);
-  const arrayFranquicia = ['Sin especificar','Videojuego','Serie','Libro','Otro']
-  const arrayPasatiempo = ['Sin especificar','Aire libre','Espacio cerrado','Mixto']
+  const arrayFranquicia = ['Sin especificar','Videojuego','Película','Serie','Libro','Otro']
+  const arrayPasatiempo = ['Sin especificar','Aire libre','Espacio cerrado','Ambos']
   const arrayAlimento = ['Sin especificar','Comida','Bebida']
-  const arrayMusica = ['Sin especificar','Solista','Grupo','Mixto']
-  const arrayCreador = ['Sin especificar','Gameplays','Tops','Crítico','Cómico','Informativo','Historia','Día a día','Otro']
+  const arrayMusica = ['Sin especificar','Solista','Grupo','Ambos']
+  const arrayCreador = ['Sin especificar','Gameplays','Tops','Críticas','Aprendizaje','Sketches','Informativo','Historia','Día a día','Otro']
   const arraySubTipo = [[''],arrayFranquicia,[''],[''],arrayPasatiempo,arrayAlimento,arrayMusica,arrayCreador,[''],['']];
   
   const primero=663, salto=50;
@@ -137,10 +156,10 @@ const MiPerfil = () => {
     return true;
   }
   
-  const Guardar = async() => {
+  const GuardarPerfil = async() => {
     if(ValidarCuenta()){
       UsuarioApi.updateCurrent(usuario).then((user)=>{
-        handleOnLoad()
+        handlePerfil()
         alert("¡Cambios guardados!")
       })
     }
@@ -156,7 +175,7 @@ usuario._id
 "65516fa8a20fc1ef72dccf79"
 */
   
-  const handleOnLoad = async() => {
+  const handlePerfil = async() => {
     //var token = localStorage.getItem("token");
     /*UsuarioApi.findUser(token).then((user)=>{
 
@@ -177,15 +196,18 @@ usuario._id
       setEdad(Math.floor(dif/(1000*60*60*24*365.25)))
     });
 
+  }
+
+  const handleGustos = async() => {
     GustoApi.getGustosCurrent().then((user)=>{
       const aux = user.data.gustos;
       setGustos(aux)
     });
-
   }
 
   useEffect(() => {
-    handleOnLoad();
+    handlePerfil();
+    handleGustos();
   }, [])
   
   return (
@@ -313,7 +335,7 @@ usuario._id
             <div className={styles.nombreapodo}>
               <p style={{marginTop: "13px"}}>Guardar</p>
             </div>
-            <button onClick={Guardar} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
+            <button onClick={GuardarPerfil} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
           </div>
         </div>
       :

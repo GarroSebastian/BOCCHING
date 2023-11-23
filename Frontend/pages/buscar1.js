@@ -4,6 +4,15 @@ import { Zoom } from "../extra/zoom.js"
 import styles from "./buscar1.module.css";
 import Lateral from "../components/lateral.js"
 
+/*Datos de entrada: El algoritmo retorna los usuarios que cumplan con al menos 1 criterio. Coordinar con Rodrigo para aspecto visual
+- <input> único: Acepta idBocching o nombre+apellidos o código institucional o correo institucional
+- <checkboxes> género [Masculino, Femenino, Otros]
+- <checkboxes> estudio: [Otras facultades, Misma facultad, Otras carreras (misma facultad), Misma carrera, Otras especialidades (misma carrera), Misma especialidad]
+Botones: Coordinar con Rodrigo para aspecto visual. Aparecen por cada <checkboxes>
+- "Cualquiera": Asigna todos los <inputs> a "Cualquiera"
+- "Igual a mí": Asigna a todos los <inputs> a "Igual a mí"
+*/
+
 const Buscar1 = () => {
   Zoom()
   const router = useRouter();
