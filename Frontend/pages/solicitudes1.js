@@ -44,8 +44,9 @@ const Solicitudes1 = () => {
   const defaultSolicitud = {
     _id: '', //el id de la solicitud
     idEmisor: '', //el id del usuario que creó la solicitud
-    idReceptor: '', //el id del usuario al que se le envió la solicitud
-    tipo: 0 //si es 0, es una solicitud normal; 1, solicitud oculta; 2, ya son amigos
+    idReceptor: '', //el id del usuario al que se le envió la solicitud. Si existe una Solicitud con emisor X y receptor Y, no puede existir una con emisor Y y receptor X
+    tipo: 0, //si es 0, es una solicitud normal; 1, solicitud oculta; 2, ya son amigos
+    viewed: false //si es false, el usuario todavía no ha visto la solicitud y debe ser notificado
   }
 
   useEffect(() => {

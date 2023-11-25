@@ -33,6 +33,7 @@ const Mensajes = () => {
   const [usuario, setUsuario] = useState(defaultUsuario);
   const [usuarios, setUsuarios] = useState([]);
   const defaultMensaje = {
+    _id: '', //el id del mensaje
     idEmisor: "",
     idReceptor: "",
     mensaje: "",

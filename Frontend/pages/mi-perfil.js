@@ -60,10 +60,11 @@ const MiPerfil = () => {
   const [edad, setEdad] = useState(0);
 
   const defaultGusto = {
+    _id: '', //el id del gusto
     idUsuario: '', //el id del usuario al que pertenece el gusto. No se muestra en pantalla
     idTipo: 0, //el id del tipo de gusto. Se guarda como número pero en pantalla se muestra como texto. Aaron ya hizo un <select> borrador
     subtipo: '', //cada caracter es un valor booleano de si el checkbox se marcó o no. Aaron ya hizo un <select> borrador
-    nombre: '', //el nombre del gusto. Se muestra en pantalla
+    nombre: '', //el nombre del gusto. Se muestra en pantalla. Un mismo usuario no puede tener 2 gustos con el mismo nombre
     idAfinidad: 0, //el id de la afinidad del gusto. Se guarda como número pero en pantalla se muestra como texto
     idDuracion: 0, //el id de la duracion del gusto. Se guarda como número pero en pantalla se muestra como texto
     idCompania: 0 //el id de la compañía del gusto. Se guarda como número pero en pantalla se muestra como texto

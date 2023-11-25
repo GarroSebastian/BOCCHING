@@ -190,12 +190,14 @@ Content-Type: application/json
 - Modificar Usuario para soportar foto de perfil (foto vacía por default)
 - Si es que existen, eliminar los atributos de Privacidad de Usuario
 - Alguna forma de vaciar todas las bases de datos
+- Si es necesario, agrega la variable _id
 
 const defaultGusto = {
+    _id: '', //el id del gusto
     idUsuario: '', //el id del usuario al que pertenece el gusto
     idTipo: 0, //el id del tipo de gusto
     subtipo: '', //cada caracter es un valor booleano de
-    nombre: '', //el nombre del gusto
+    nombre: '', //el nombre del gusto. Un mismo usuario no puede tener 2 gustos con el mismo nombre
     idAfinidad: 0, //el id de la afinidad del gusto
     idDuracion: 0, //el id de la duracion del gusto
     idCompania: 0 //el id de la compañía del gusto
@@ -208,8 +210,9 @@ const defaultGusto = {
 const defaultSolicitud = {
     _id: '', //el id de la solicitud
     idEmisor: '', //el id del usuario que creó la solicitud
-    idReceptor: '', //el id del usuario al que se le envió la solicitud
-    tipo: 0 //si es 0, es una solicitud normal; 1, solicitud oculta; 2, ya son amigos
+    idReceptor: '', //el id del usuario al que se le envió la solicitud. Si existe una Solicitud con emisor X y receptor Y, no puede existir una con emisor Y y receptor X
+    tipo: 0, //si es 0, es una solicitud normal; 1, solicitud oculta; 2, ya son amigos
+    viewed: false //si es false, el usuario todavía no ha visto la solicitud
 }
 - Pide IdUsuario/Token (como sueles hacerlo) -> Retorna todas las solicitudes donde el usuario es emisor o receptor
 - Pide defaultSolicitud -> Actualiza la solicitud existente
@@ -217,21 +220,20 @@ const defaultSolicitud = {
 - Pide IdSolicitud -> Elimina dicha solicitud
 
 const defaultMensaje = {
-    idEmisor: "",
-    idReceptor: "",
-    mensaje: "",
-    ano: 0,
-    mes: 0,
-    dia: 0,
-    diaSem: '',
-    hora: 0,
-    minuto: 0
+    _id: '', //el id del mensaje
+    idEmisor: "", //el usuario que manda el mensaje
+    idReceptor: "", //el usuario que recibe el mensaje
+    mensaje: "", //el contenido del mensaje
+    ano: 0, //el año
+    mes: 0, //mes
+    dia: 0, //dia
+    diaSem: '', //dia de la semana
+    hora: 0, //hora
+    minuto: 0 //minuto en el que se envió el mensaje
 }
 - Pide defaultMensaje -> Crea un mensaje nuevo
 - Pide IdUsuario/Token (como sueles hacerlo) -> Retorna todos los mensajes donde el usuario es emisor o receptor
 - Frontend no necesita actualizar/borrar
 
 HORARIO TODAVÍA NO LO HE HECHO; TE LO PASO PRÓXIMAMENTE
-GEORGE CREO QUE AÑADIÓ UNA VARIABLE A DEFAULTSOLICITUD, TE AVISO CUANDO ME CONFIRME
-
 -->
