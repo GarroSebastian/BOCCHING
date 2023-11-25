@@ -8,6 +8,7 @@ import Lateral from "../components/lateral.js"
 import UsuarioApi from "../api/usuario";
 import GustoApi from "../api/gusto.js";
 
+
 /*Validar Perfil:
 - Basarse en las validaciones de crear-cuenta y agregar las necesarias en la función ValidarCuenta()
 
@@ -82,14 +83,16 @@ const MiPerfil = () => {
   const arraySubTipo = [[''],arrayFranquicia,[''],[''],arrayPasatiempo,arrayAlimento,arrayMusica,arrayCreador,[''],['']];
   
   const primero=663, salto=50;
-
+  const [contador, setContador] = useState(false);
   const onRectangle11Click = useCallback(() => {
-    router.push("/mi-perfil23");
-  }, [router]);
+    // Cambiar el valor de contador cuando se presiona el botón 
+    setContador(prevContador => !prevContador);
+  }, []);
 
   const onRectangle12Click = useCallback(() => {
-    router.push("/mi-perfil22");
-  }, [router]);
+    // Cambiar el valor de contador cuando se presiona el botón 
+    setContador(prevContador => !prevContador);
+  }, []);
 
   const onRectangle2Click = useCallback(() => {
     router.push("/mi-perfil241");
@@ -387,7 +390,16 @@ usuario._id
                           arraySubTipo[item.tipo][0]
                         }
                       </div>
-                      <div className={styles.xd4} style={{top: `${primero+salto*index}px`}}>{item.nombre}</div>
+                      <div className={styles.xd4} style={{top: `${primero+salto*index}px`}}>
+                        {
+                          //condicion para ver si se editan los valores o no
+                          contador==1?
+                            item.nombre
+                          :
+                            <input type="text" value={item.nombre} readOnly={!contador} onChange={e => handleInputChange(index, e) }></input>
+                        }
+                        {item.nombre}
+                        </div>
                       <div className={styles.xd8} style={{top: `${primero+salto*index}px`}}>{item.afinidad}</div>
                       <div className={styles.xd12} style={{top: `${primero+salto*index}px`}}>{item.duracion}</div>
                       <div className={styles.miperfil21Child3} style={{top: `${695+salto*index}px`}} />
