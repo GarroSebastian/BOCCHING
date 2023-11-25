@@ -182,3 +182,56 @@ Content-Type: application/json
     "usuarios": ["6552933d7d0b41aec55c8651", "6552935a7d0b41aec55c8654"]
 }
 
+<!--
+- Corregir Login con correo existente pero contraseña incorrecta
+- Quitar Apodo como dato irrepetible, o sino ponerle su propio mensaje de error
+- Citando a George: Error en solicitudes1 , problemas con leer las solicitudes recibidas, que el encargado lo revise y solucione lo antes posible
+- Verificar si existe findAllUsuarios, findOneUsuario(idUsuario), updateUsuario(idUsuario/token, como sueles hacerlo)
+- Modificar Usuario para soportar foto de perfil (foto vacía por default)
+- Si es que existen, eliminar los atributos de Privacidad de Usuario
+- Alguna forma de vaciar todas las bases de datos
+
+const defaultGusto = {
+    idUsuario: '', //el id del usuario al que pertenece el gusto
+    idTipo: 0, //el id del tipo de gusto
+    subtipo: '', //cada caracter es un valor booleano de
+    nombre: '', //el nombre del gusto
+    idAfinidad: 0, //el id de la afinidad del gusto
+    idDuracion: 0, //el id de la duracion del gusto
+    idCompania: 0 //el id de la compañía del gusto
+}
+- Pide IdUsuario/Token (como sueles hacerlo) -> Retorna todos los gustos pertenecientes a dicho usuario
+- Pide defaultGusto -> Agrega un gusto nuevo
+- Pide IdGusto -> Elimina dicho gusto
+- Pide defaultGusto -> Actualiza un gusto existente
+
+const defaultSolicitud = {
+    _id: '', //el id de la solicitud
+    idEmisor: '', //el id del usuario que creó la solicitud
+    idReceptor: '', //el id del usuario al que se le envió la solicitud
+    tipo: 0 //si es 0, es una solicitud normal; 1, solicitud oculta; 2, ya son amigos
+}
+- Pide IdUsuario/Token (como sueles hacerlo) -> Retorna todas las solicitudes donde el usuario es emisor o receptor
+- Pide defaultSolicitud -> Actualiza la solicitud existente
+- Pide defaultSolicitud -> Crea una solicitud nueva
+- Pide IdSolicitud -> Elimina dicha solicitud
+
+const defaultMensaje = {
+    idEmisor: "",
+    idReceptor: "",
+    mensaje: "",
+    ano: 0,
+    mes: 0,
+    dia: 0,
+    diaSem: '',
+    hora: 0,
+    minuto: 0
+}
+- Pide defaultMensaje -> Crea un mensaje nuevo
+- Pide IdUsuario/Token (como sueles hacerlo) -> Retorna todos los mensajes donde el usuario es emisor o receptor
+- Frontend no necesita actualizar/borrar
+
+HORARIO TODAVÍA NO LO HE HECHO; TE LO PASO PRÓXIMAMENTE
+GEORGE CREO QUE AÑADIÓ UNA VARIABLE A DEFAULTSOLICITUD, TE AVISO CUANDO ME CONFIRME
+
+-->

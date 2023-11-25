@@ -23,14 +23,14 @@ Editar Gustos:
 - REVISA LA TABLA DE LA PÁGINA 17 DEL WORD DE FUNCIONALIDADES para saber qué atributos aparecen con qué Tipos (verde = aparecen, rojo = no aparecen). Si puedes intenta cumplir el amarillo, sino descártalo
 
 Guardar en Backend:
-- Jala tu código de la otra pantalla. Cuando verifiques que ya pasaste todo bien, borra la otra pantalla y su module.css
-- "Añadir" debe subir el Gusto al Backend y tras eso llamar al handleGustos() para recargar los datos
+- "Añadir" debe subir el Gusto al Backend (POST) y tras eso llamar al handleGustos() para recargar los datos
 - "Eliminar" no tiene botón. Puedes pedirle uno a Rodrigo o ponerlo dentro de "Editar". Más fácil sería poner un botón Eliminar al costado de cada Gusto, dentro del .map()
-- "Eliminar" debe eliminar el Gusto del Backend y tras eso llamar al handleGustos() para recargar los datos
-- Para "Editar", puedes hacer que lleve a una pestaña nueva, o eliminar el botón e integrar la opción en la pestaña actual; luego puede haber un Editar al costado de cada Gusto, o uno general (recomiendo este). Si lo necesitas, puedes cambiar los text por inputs o coordinar con Rodrigo
+- "Eliminar" debe eliminar el Gusto del Backend (DELETE) y tras eso llamar al handleGustos() para recargar los datos
+- Para "Editar" (PUT), puedes hacer que lleve a una pestaña nueva, o eliminar el botón e integrar la opción en la pestaña actual; luego puede haber un Editar al costado de cada Gusto, o uno general (recomiendo este). Si lo necesitas, puedes cambiar los text por inputs o coordinar con Rodrigo
 - Si elegiste la opción que recomendé, "Editar" haría un update de todos los Gustos (uno por uno), y tras eso llamar al handleGustos() para recargar los datos
 
 - ELIMINAR PESTAÑA "PRIVACIDAD"
+- Unifiquen todo mi-perfil aquí. Cuando verifiquen que ya está todo, borren las otras pantallas con sus module.css
 */
 
 const MiPerfil = () => {
@@ -62,7 +62,7 @@ const MiPerfil = () => {
   const defaultGusto = {
     idUsuario: '', //el id del usuario al que pertenece el gusto. No se muestra en pantalla
     idTipo: 0, //el id del tipo de gusto. Se guarda como número pero en pantalla se muestra como texto. Aaron ya hizo un <select> borrador
-    subtipo: '', //si el subtipo es un <select>, es el id del subtipo. si son checkboxes, cada caracter es un valor booleano de si el checkbox se marcó o no. Aaron ya hizo un <select> borrador
+    subtipo: '', //cada caracter es un valor booleano de si el checkbox se marcó o no. Aaron ya hizo un <select> borrador
     nombre: '', //el nombre del gusto. Se muestra en pantalla
     idAfinidad: 0, //el id de la afinidad del gusto. Se guarda como número pero en pantalla se muestra como texto
     idDuracion: 0, //el id de la duracion del gusto. Se guarda como número pero en pantalla se muestra como texto

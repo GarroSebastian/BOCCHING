@@ -17,6 +17,8 @@ Botones: Coordinar con Rodrigo para aspecto visual. Aparecen por cada <checkboxe
 - Switch de 2 opciones: En el <checkboxes> Gustos, considerar solo Tipo-Subtipo-Nombre-Afinidad vs considerar también Duración-Compañía
 - Switch de 2 opciones: Considerar solo amigos
 - Buscar: Realiza la búsqueda
+
+- Cambiar nombre de pantalla a "buscar"
 */
 
 const Buscar1 = () => {
