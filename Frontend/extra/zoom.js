@@ -5,7 +5,7 @@ let w, h;
 const adjustZoom = () => {
     const container = document.getElementById('container');
     if (container) {
-        container.style.zoom = Math.min(window.innerWidth / w, window.innerHeight / h) * (window.location.pathname === '/eliminar-cuenta' ? 1.52 : 1.14);
+        container.style.zoom = Math.min(window.innerWidth / w, window.innerHeight / h) * (window.location.pathname === '/eliminar-cuenta' ? 1.21 : 0.91);
     }
 }
 
@@ -17,8 +17,17 @@ const PantallasIniciales = () => {
     }
 }
 
-const Start = () => {
-    if(PantallasIniciales() || (!PantallasIniciales() && window.localStorage.getItem("token")!==null)){
+export const Zoom = () => {  
+    useEffect(()=>{
+        if(PantallasIniciales()){
+            if(window.localStorage.token!==undefined && window.localStorage.token!==null){
+                window.location.pathname = '/menu';
+                return;
+            }
+        }else if(window.localStorage.token===undefined || window.localStorage.token===null){
+            window.location.pathname = '/iniciar-sesion';
+            return;
+        }
         w = window.innerWidth;
         h = window.innerHeight;
         adjustZoom();
@@ -28,14 +37,7 @@ const Start = () => {
         // Limpia el evento de redimensionamiento cuando el componente se desmonta
         window.removeEventListener('resize', adjustZoom);
         };
-    }else{
-        window.location.pathname = '/iniciar-sesion';
-    }
-}
-
-export const Zoom = () => {  
-    useEffect(()=>{
-        Start();
+        
         // Suscribirse al evento popstate cuando el componente se monta
         //window.addEventListener('popstate', Inicio);
         

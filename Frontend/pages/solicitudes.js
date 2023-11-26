@@ -1,15 +1,10 @@
-
 import { useCallback, useEffect } from "react";
 import { useRouter } from "next/router";
-import styles from "./solicitudes1.module.css";
-import styles2 from "./solicitudes2.module.css";
-import styles3 from './solicitudes3.module.css';
-import styles4 from "./solicitudes4.module.css";
+import styles from "./solicitudes.module.css";
 import Lateral from "../components/lateral.js";
 import { useState } from "react";
 import { Zoom } from "../extra/zoom.js";
 import SolicitudApi from "../api/solicitud.js";
-import SolicitudItem from "../components/CardSolicitud.js";
 
 /*Recibidas:
 - Cargar del Backend todas las solicitudes donde el usuario es receptor, y que sean de tipo 0 (Solicitud enviada)
@@ -33,13 +28,32 @@ Por cada solicitud:
 - Después de hacer cualquier llamado al Backend, volver a recargar los datos (GET)
 */
 
-const Solicitudes1 = () => {
+const Solicitudes = () => {
   Zoom();
   const router = useRouter();
   const [solicitudes, setSolicitudes] = useState([]);
   const [showMessage, setShowMessage] = useState(false);
   const [solicitudesSinViewer, setSolicitudesSinViewer] = useState(0);
   const [pag, setPag] = useState(1);
+
+  const defaultUsuario = {
+    _id: '',
+    nombre: '',
+    apellidos: '',
+    correo: '',
+    id_genero: 0,
+    nacimiento: '',
+    apodo: '',
+    contrasena: '',
+    foto: '',
+    facultad: -1,
+    carrera: '',
+    especialidad: '',
+    descripcion: '',
+    mostrar_nombre: true,
+    confirmationCode: ""
+  }
+  const [usuario, setUsuario] = useState(defaultUsuario);
 
   const defaultSolicitud = {
     _id: '', //el id de la solicitud
@@ -50,14 +64,9 @@ const Solicitudes1 = () => {
   }
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      console.log("No se encontró el token en el Local Storage");
-      return;
-    }
 
     // Utiliza la función SolicitudesRecibidasUsuario de tu API de solicitudes
-    SolicitudApi.SolicitudesRecibidasUsuario(token)
+    SolicitudApi.SolicitudesRecibidasUsuario(window.localStorage.token)
       .then((response) => {
         if (response && response.data) {
           //const solicitudesData = response.data.solicitudesRecibidas;
@@ -70,8 +79,13 @@ const Solicitudes1 = () => {
             {...defaultSolicitud,_id:'4',idEmisor:'0',idReceptor:'5',tipo:1},
             {...defaultSolicitud,_id:'5',idEmisor:'0',idReceptor:'6',tipo:2},
             {...defaultSolicitud,_id:'6',idEmisor:'0',idReceptor:'7',tipo:2},
-          ]
-          );
+          ]);
+          
+          //UsuarioApi.findCurrent().then((user) => {
+          //const aux = user.data.usuario;
+          //setUsuario(aux)
+          setUsuario({...defaultUsuario,_id:'0',nombre:'Yo',apodo:'YoApodo',mostrar_nombre:true})
+
           // Calcular la cantidad de solicitudes sin viewer en 1
           /*
           const solicitudesSinViewerCount = solicitudesData.filter(
@@ -92,7 +106,7 @@ const Solicitudes1 = () => {
 
     // Llama a la función para actualizar el campo viewer
     
-    SolicitudApi.actualizarViewerSolicitudes(token)
+    SolicitudApi.actualizarViewerSolicitudes(window.localStorage.token)
       .then((response) => {
         if (response && response.data) {
           console.log(response.data.message);
@@ -130,13 +144,6 @@ const Solicitudes1 = () => {
       */
   };
 
-  console.log("hola",solicitudes);
-  console.log(solicitudes.filter(solicitud => solicitud.tipo === 0))
-  
-  const onRectangleClick = useCallback(() => {
-    router.push("/solicitudes4");
-  }, [router]);
-
   const onRectangle2Click = useCallback(() => {
     router.push("/solicitudes2");
   }, [router]);
@@ -153,347 +160,93 @@ const Solicitudes1 = () => {
     router.push("/solicitudes3");
   }, [router]);
 
-  const onGuardadasTextClick = useCallback(() => {
-    router.push("/solicitudes4");
-  }, [router]);
-
   const AceptarSolicitud = (solicitud) => {};
 
   const RechazarSolicitud = (solicitud) => {};
 
-  /*
-  <div id='container'>
-      {
-        pag==1?<div></div>
-        :<>{
-          pag==2?<div></div>
-          :
-          null
-        }<>{
-          pag==3?<div></div>
-          :
-          null
-        }<>{
-          pag==4?<div></div>
-          :
-          null
-        }
-        </>
-      }
-    <Lateral></Lateral>
-  </div>
-  */
-
   return (
-    
     <div id='container'>
-  {
-    pag === 1 ? <div id="container">
-    <div className={styles.solicitudes1}>
-      <img
-        className={styles.solicitudes1Child}
-        alt=""
-        src="/rectangle-29.svg"
-        onClick={onRectangleClick}
-      />
-      <img className={styles.solicitudes1Item} alt="" src="/rectangle-16.svg" />
-      <img
-        className={styles.solicitudes1Inner}
-        alt=""
-        src="/rectangle-29.svg"
-        onClick={onRectangle2Click}
-      />
-      <img
-        className={styles.rectangleIcon}
-        alt=""
-        src="/rectangle-29.svg"
-        onClick={onRectangle3Click}
-      />
+      <div className={styles.solicitudes1}>
+        <img className={styles.solicitudes1Item} alt="" src="/rectangle-16.svg" />
+        <img
+          className={styles.solicitudes1Inner}
+          alt=""
+          src="/rectangle-29.svg"
+          onClick={onRectangle2Click}
+        />
+        <img
+          className={styles.rectangleIcon}
+          alt=""
+          src="/rectangle-29.svg"
+          onClick={onRectangle3Click}
+        />
 
-      <div className={styles.rectangleDiv} />
-      <ul className={styles.SoliciAH}>
+        <div className={styles.rectangleDiv} />
+        
         {solicitudes.filter(solicitud => solicitud.tipo === 0).map((solicitud, index) => {
-          
-            return(
-              <li key={solicitud._id}>
-              <SolicitudItem
-                solicitud={solicitud}
-                onDeleteSolicitud={handleDeleteSolicitud}
-              />
-              </li>
-            )
-        
-          
-          
+              
+          // Convierte la fecha en un objeto Date
+          const dateObj = new Date(solicitud.date);
+          // Obtiene el día, mes, año, hora y minutos
+          const day = dateObj.getDate();
+          const month = dateObj.getMonth() + 1; // Los meses comienzan en 0, por lo que sumamos 1
+          const year = dateObj.getFullYear() % 100; // Obtiene los últimos dos dígitos del año
+          const hours = dateObj.getHours();
+          const minutes = dateObj.getMinutes();
+          // Formatea la fecha y la hora
+          const formattedDate = `${day.toString().padStart(2, '0')}/${month.toString().padStart(2, '0')}/${year.toString().padStart(2, '0')}`;
+          const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+
+          return(
+            <>
+              <div className={styles.Caja} />
+              <div className={styles.Elipse} />
+              <div className={styles.contlax} />
+              <img className={styles.lax} alt="" src="/group-180.svg" onClick={e => onDeleteSolicitud(solicitud)} />
+              <img className={styles.img} alt="" src="/group-147.svg" />
+              <img className={styles.ojoMa} alt="" src="/vector2.svg" />
+              <img className={styles.ojo} alt="" src="/frame1.svg" />
+              <p className={styles.nombres}>
+                {solicitud.receptor ?
+                  <>{solicitud.receptor.nombre} / {solicitud.receptor.apodo || 'No disponible'}</>
+                :
+                  'No disponible'
+                }
+              </p>
+              <div className={styles.linediv} /> {/* Línea divisoria */}
+              <p className={styles.fechas}>{formattedDate} - {formattedTime}</p>
+            </>
+          )
         })}
-      </ul>
 
-      <div className={styles.solicitudes}>Solicitudes</div>
-      <div className={styles.recibidas}>Recibidas</div>
+        <div className={styles.solicitudes}>Solicitudes</div>
+        <div className={styles.recibidas}>Recibidas</div>
 
-      <div className={styles.solicitudesRecibidas}>
-        Solicitudes recibidas
-      </div>
-      <button className={styles.aceptar} onClick={AceptarSolicitud}>
-        Aceptar
-      </button>
-      <button className={styles.rechazar} onClick={RechazarSolicitud}>
-        Rechazar
-      </button>
-      <div className={styles.enviadas} onClick={onEnviadasTextClick}>
-        Enviadas
-      </div>
-      <div className={styles.ocultas} onClick={onOcultasTextClick}>
-        Ocultas
-      </div>
-      <div className={styles.solicitudes1Child1} />
-      <div className={styles.guardadas} onClick={onGuardadasTextClick}>
-        Guardadas
-      </div>
-
-      {/* Mensaje flotante */}
-      {showMessage && (
-        <div className={styles.floatingMessage}>
-          Hay {solicitudesSinViewer} solicitudes sin viewer en 1.
+        <div className={styles.solicitudesRecibidas}>Solicitudes recibidas</div>
+        <button className={styles.aceptar} onClick={AceptarSolicitud}>
+          Aceptar
+        </button>
+        <button className={styles.rechazar} onClick={RechazarSolicitud}>
+          Rechazar
+        </button>
+        <div className={styles.enviadas} onClick={onEnviadasTextClick}>
+          Enviadas
         </div>
-      )}
-    </div>
-  </div> : null
-  }
-  {
-    pag === 2 ? <div className={styles2.solicitudes2}>
-    <img
-      className={styles2.solicitudes2Child}
-      alt=""
-      src="/rectangle-29.svg"
-      onClick={onRectangleClick}
-    />
-    <img className={styles2.solicitudes2Item} alt="" src="/rectangle-16.svg" />
-    <img
-      className={styles2.solicitudes2Inner}
-      alt=""
-      src="/rectangle-29.svg"
-      onClick={onRectangle2Click}
-    />
-    <img
-      className={styles2.rectangleIcon}
-      alt=""
-      src="/rectangle-29.svg"
-      onClick={onRectangle3Click}
-    />
-    <div className={styles2.rectangleDiv} />
-    <div className={styles2.solicitudes}>Solicitudes</div>
-    <div className={styles2.solicitudesEnviadas}>Solicitudes Enviadas</div>
-    <div className={styles2.cancelar}>Cancelar</div>
-    <div className={styles2.ocultar}>Ocultar</div>
-    <ul className={styles2.SoliciAH}>
-      {solicitudes.map((solicitud) => (
-        <li key={solicitud._id}>
-          <SolicitudItem solicitud={solicitud} onDeleteSolicitud={handleDeleteSolicitud} />
-        </li>
-        
-      ))}
-    </ul>
-
-
-
-    <div className={styles2.recibidas} onClick={onRecibidasTextClick}>
-      Recibidas
-    </div>
-    <div className={styles2.enviadas}>Enviadas</div>
-    <div className={styles2.ocultas} onClick={onOcultasTextClick}>
-      Ocultas
-    </div>
-    <div className={styles2.guardadas} onClick={onGuardadasTextClick}>
-      Guardadas
-    </div>
-
-    <img className={styles2.solicitudes2Child23} alt="" src="/group-146.svg" />
-  </div> : null
-  }
-  {
-    pag === 3 ? <div id="container">
-    <div className={styles3.solicitudes3}>
-      <img
-        className={styles3.solicitudes3Child}
-        alt=""
-        src="/rectangle-29.svg"
-        onClick={onRectangleClick}
-      />
-      <img
-        className={styles3.solicitudes3Item}
-        alt=""
-        src="/rectangle-29.svg"
-        onClick={onRectangle1Click}
-      />
-      <img
-        className={styles3.solicitudes3Inner}
-        alt=""
-        src="/rectangle-29.svg"
-        onClick={onRectangle2Click}
-      />
-      <img className={styles3.rectangleIcon} alt="" src="/rectangle-16.svg" />
-      <div className={styles3.rectangleDiv} />
-      <img className={styles3.vectorIcon} alt="" src="/vector2.svg" />
-      <img className={styles3.vectorIcon1} alt="" src="/vector2.svg" />
-      <img className={styles3.vectorIcon2} alt="" src="/vector2.svg" />
-      <div className={styles3.solicitudes}>Solicitudes</div>
-      <div className={styles3.solicitudesOcultas}>Solicitudes Ocultas</div>
-      <div className={styles3.enviar}>Enviar</div>
-      <div className={styles3.cancelar}>Cancelar</div>
-      <div className={styles3.solicitudes3Child1} />
-      <div className={styles3.solicitudes3Child2} />
-      <div className={styles3.solicitudes3Child3} />
-      <div className={styles3.solicitudes3Child4} />
-      <div className={styles3.ellipseDiv} />
-      <div className={styles3.solicitudes3Child5} />
-      <div className={styles3.solicitudes3Child6} />
-      <b className={styles3.nombreYApellido}>Nombre y Apellido / Apodo</b>
-      <b className={styles3.nombreYApellido1}>Nombre y Apellido / Apodo</b>
-      <b className={styles3.nombreYApellido2}>Nombre y Apellido / Apodo</b>
-      <img className={styles3.groupIcon} alt="" src="/group-147.svg" />
-      <img className={styles3.solicitudes3Child7} alt="" src="/group-147.svg" />
-      <img className={styles3.solicitudes3Child8} alt="" src="/group-147.svg" />
-      <div className={styles3.lineDiv} />
-      <div className={styles3.solicitudes3Child9} />
-      <div className={styles3.solicitudes3Child10} />
-      <div className={styles3.fechaOHora}>Fecha o hora</div>
-      <div className={styles3.fechaOHora1}>Fecha o hora</div>
-      <div className={styles3.fechaOHora2}>Fecha o hora</div>
-      <div className={styles3.solicitudes3Child11} />
-      <div className={styles3.solicitudes3Child12} />
-      <div className={styles3.solicitudes3Child13} />
-      <img className={styles3.solicitudes3Child14} alt="" src="/group-180.svg" />
-      <img className={styles3.solicitudes3Child15} alt="" src="/group-180.svg" />
-      <img className={styles3.solicitudes3Child16} alt="" src="/group-180.svg" />
-      <img className={styles3.vectorIcon3} alt="" src="/vector6.svg" />
-      <img className={styles3.vectorIcon4} alt="" src="/vector6.svg" />
-      <img className={styles3.vectorIcon5} alt="" src="/vector6.svg" />
-      <div className={styles3.recibidas} onClick={onRecibidasTextClick}>
-        Recibidas
-      </div>
-      <div className={styles3.enviadas} onClick={onEnviadasTextClick}>
-        Enviadas
-      </div>
-      <div className={styles3.guardadas} onClick={onGuardadasTextClick}>
-        Guardadas
-      </div>
-      <div className={styles3.ocultas}>Ocultas</div>
-      <div className={styles3.ocultarLaContainer}>
-        <p className={styles3.ocultarLa}>
-          ** Ocultar = La persona no verá que le enviaste la solicitud, pero si
-          esta
-        </p>
-        <p className={styles3.ocultarLa}>
-          te envía una solicitud oculta, ambos se harán amigos.
-        </p>
-      </div>
-      <img className={styles3.solicitudes3Child17} alt="" src="/group-146.svg" />
-
-      {/* Your existing UI elements are now integrated */}
-      {friendRequests.map((request) => (
-        <div key={request.id}>
-          <p>{request.name}</p>
-          <p>Status: {request.status}</p>
-          {request.status === 'hidden' && (
-            <button onClick={() => onEnviarClick(request.id)}>Enviar</button>
-          )}
+        <div className={styles.ocultas} onClick={onOcultasTextClick}>
+          Ocultas
         </div>
-      ))}
-    </div>
-  </div> : null
-  }
-  {
-    pag === 4 ? <div className={styles4.solicitudes4}>
-    <img
-      className={styles4.solicitudes4Child}
-      alt=""
-      src="/rectangle-29.svg"
-      onClick={onRectangleClick}
-    />
-    <img
-      className={styles4.solicitudes4Item}
-      alt=""
-      src="/rectangle-29.svg"
-      onClick={onRectangle1Click}
-    />
-    <img
-      className={styles4.solicitudes4Inner}
-      alt=""
-      src="/rectangle-29.svg"
-      onClick={onRectangle2Click}
-    />
-    <img className={styles4.rectangleIcon} alt="" src="/rectangle-16.svg" />
-    <div className={styles4.rectangleDiv} />
-    <img className={styles4.vectorIcon} alt="" src="/vector2.svg" />
-    <img className={styles4.vectorIcon1} alt="" src="/vector2.svg" />
-    <img className={styles4.vectorIcon2} alt="" src="/vector2.svg" />
-    <div className={styles4.ocultar}>Ocultar</div>
-    <img className={styles4.frameIcon} alt="" src="/frame.svg" />
-    <img className={styles4.vectorIcon3} alt="" src="/vector3.svg" />
-    <img className={styles4.vectorIcon4} alt="" src="/vector4.svg" />
-    <img className={styles4.vectorIcon5} alt="" src="/vector5.svg" />
-    <img className={styles4.frameIcon1} alt="" src="/frame.svg" />
-    <img className={styles4.vectorIcon6} alt="" src="/vector2.svg" />
-    <img className={styles4.vectorIcon7} alt="" src="/vector2.svg" />
-    <img className={styles4.vectorIcon8} alt="" src="/vector2.svg" />
-    <div className={styles4.solicitudes}>Solicitudes</div>
-    <div className={styles4.solicitudesGuardadas}>Solicitudes Guardadas</div>
-    <div className={styles4.enviar}>Enviar</div>
-    <div className={styles4.cancelar}>Cancelar</div>
-    <div className={styles4.solicitudes4Child1} />
-    <div className={styles4.solicitudes4Child2} />
-    <div className={styles4.solicitudes4Child3} />
-    <div className={styles4.solicitudes4Child4} />
-    <div className={styles4.ellipseDiv} />
-    <div className={styles4.solicitudes4Child5} />
-    <div className={styles4.solicitudes4Child6} />
-    <b className={styles4.nombreYApellido}>Nombre y Apellido / Apodo</b>
-    <b className={styles4.nombreYApellido1}>Nombre y Apellido / Apodo</b>
-    <b className={styles4.nombreYApellido2}>Nombre y Apellido / Apodo</b>
-    <img className={styles4.groupIcon} alt="" src="/group-147.svg" />
-    <img className={styles4.solicitudes4Child7} alt="" src="/group-147.svg" />
-    <img className={styles4.solicitudes4Child8} alt="" src="/group-147.svg" />
-    <div className={styles4.lineDiv} />
-    <div className={styles4.solicitudes4Child9} />
-    <div className={styles4.solicitudes4Child10} />
-    <div className={styles4.fechaOHora}>Fecha o hora</div>
-    <div className={styles4.fechaOHora1}>Fecha o hora</div>
-    <div className={styles4.fechaOHora2}>Fecha o hora</div>
-    <div className={styles4.solicitudes4Child11} />
-    <div className={styles4.solicitudes4Child12} />
-    <div className={styles4.solicitudes4Child13} />
-    <img className={styles4.solicitudes4Child14} alt="" src="/group-180.svg" />
-    <img className={styles4.solicitudes4Child15} alt="" src="/group-180.svg" />
-    <img className={styles4.solicitudes4Child16} alt="" src="/group-180.svg" />
-    <img className={styles4.vectorIcon9} alt="" src="/vector6.svg" />
-    <img className={styles4.vectorIcon10} alt="" src="/vector6.svg" />
-    <img className={styles4.vectorIcon11} alt="" src="/vector6.svg" />
-    <div className={styles4.guardadasSon}>
-      ** Guardadas = Son personas que dejaste pendiente enviarle una solicitud
-      de amistad.
-    </div>
-    <div className={styles4.recibidas} onClick={onRecibidasTextClick}>
-      Recibidas
-    </div>
-    <div className={styles4.enviadas} onClick={onEnviadasTextClick}>
-      Enviadas
-    </div>
-    <div className={styles4.ocultas} onClick={onOcultasTextClick}>
-      Ocultas
-    </div>
-    <div className={styles4.guardadas}>Guardadas</div>
-    <div className={styles4.frame} />
-    <img className={styles4.solicitudes4Child17} alt="" src="/group-146.svg" />
-  </div> : null
-  }
-  <Lateral pantalla="Solicitudes"/>
-</div>
+        <div className={styles.solicitudes1Child1} />
 
-
-    
-        
+        {/* Mensaje flotante */}
+        {showMessage && (
+          <div className={styles.floatingMessage}>
+            Hay {solicitudesSinViewer} solicitudes sin viewer en 1.
+          </div>
+        )}
+      </div>
+      <Lateral pantalla="Solicitudes"/>
+    </div> 
   );
 };
 
-export default Solicitudes1;
+export default Solicitudes;
