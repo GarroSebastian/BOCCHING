@@ -8,7 +8,7 @@ import styles4 from "./solicitudes4.module.css";
 import Lateral from "../components/lateral.js";
 import { useState } from "react";
 import { Zoom } from "../extra/zoom.js";
-import SolicitudApi from "../api/solicitud";
+import SolicitudApi from "../api/solicitud.js";
 import SolicitudItem from "../components/CardSolicitud.js";
 
 /*Recibidas:
@@ -257,13 +257,6 @@ const Solicitudes1 = () => {
           Hay {solicitudesSinViewer} solicitudes sin viewer en 1.
         </div>
       )}
-
-      {/* El menu de la izquierda */}
-      <img
-        className={styles.solicitudes1Child19}
-        alt=""
-        src="/group-1461.svg"
-      />
     </div>
   </div> : null
   }
@@ -494,7 +487,7 @@ const Solicitudes1 = () => {
     <img className={styles4.solicitudes4Child17} alt="" src="/group-146.svg" />
   </div> : null
   }
-  <Lateral></Lateral>
+  <Lateral pantalla="Solicitudes"/>
 </div>
 
 

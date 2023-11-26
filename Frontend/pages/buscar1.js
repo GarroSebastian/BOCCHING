@@ -18,6 +18,7 @@ Botones: Coordinar con Rodrigo para aspecto visual. Aparecen por cada <checkboxe
 - Switch de 2 opciones: Considerar solo amigos
 - Buscar: Realiza la búsqueda
 
+FALTAN LOS DATOS PARA BUSCAR SEGÚN HORARIO, LOS PONDRÉ PRÓXIMAMENTE
 - Cambiar nombre de pantalla a "buscar"
 */
 

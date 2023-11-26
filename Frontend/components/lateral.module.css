@@ -16,22 +16,22 @@
 }
 .miperfil1Child15 {
     position: absolute;
-    top: 27%;
+    top: 22%;
     left: 47px;
     width: 70px;
     height: 58.71px;
 }
-.miperfil1Child16,
-.vectorIcon5 {
+.mensajes,
+.amistades {
   position: absolute;
-  top: 44%;
+  top: 36%;
   left: 51.27px;
   width: 61.46px;
   height: 36.29px;
   cursor: pointer;
 }
-.miperfil1Child16 {
-    top: 57%;
+.mensajes {
+    top: 47%;
     left: 59.64px;
     width: 44.72px;
     height: 37.18px;
@@ -67,25 +67,25 @@
   bottom: 68.06%;
   left: 43.48%;
 }
-.vectorIcon6,
-.vectorIcon7,
-.xmlid273Icon {
+.buscar,
+.solicitudes,
+.configuracion {
   position: absolute;
-  top: 71%;
+  top: 58%;
   left: 60.38px;
   width: 43.24px;
   height: 35.43px;
   cursor: pointer;
 }
-.vectorIcon7,
-.xmlid273Icon {
-  top: 83%;
+.solicitudes,
+.configuracion {
+  top: 69%;
   left: 63.99px;
   width: 36.01px;
   height: 29.65px;
 }
-.xmlid273Icon {
-  top: 95%;
+.configuracion {
+  top: 79%;
   left: 62.89px;
   width: 38.23px;
   height: 34.71px;

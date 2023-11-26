@@ -24,7 +24,7 @@ const Lateral = (props) => {
     }, [router]);
 
     const onVectorIcon4Click = useCallback(() => {
-    router.push("/solicitudes1");
+    router.push("/solicitudes");
     }, [router]);
 
     const onXMLID273IconClick = useCallback(() => {
@@ -41,32 +41,20 @@ const Lateral = (props) => {
             onClick={onGroupClick}
             />
             <img className={styles.miperfil1Child15} alt="" src="/group-1951.svg" />
-            {
-                pantalla!="Amistades"?
-                    <img className={styles.vectorIcon5} alt="" src="/vector17.svg" onClick={onVector2Click}/>
-                :
-                    null
+            {pantalla!="Amistades" &&
+                <img className={styles.amistades} alt="" src="/vector17.svg" onClick={onVector2Click}/>
             }
-            {
-                pantalla!="Mensajes"?
-                    <img className={styles.miperfil1Child16} alt="" src="/group-197.svg" onClick={onGroupIconClick}/>
-                :
-                    null
+            {pantalla!="Mensajes" &&
+                <img className={styles.mensajes} alt="" src="/group-197.svg" onClick={onGroupIconClick}/>
             }
-            {
-                pantalla!="Buscar"?
-                <img className={styles.vectorIcon6} alt="" src="/vector30.svg" onClick={onVectorIcon3Click}/>
-                :
-                null
+            {pantalla!="Buscar" &&
+                <img className={styles.buscar} alt="" src="/vector30.svg" onClick={onVectorIcon3Click}/>
+            }
+            {pantalla!="Solicitudes" &&
+                <img className={styles.solicitudes} alt="" src="/vector31.svg" onClick={onVectorIcon4Click}/>
             }
             <img
-            className={styles.vectorIcon7}
-            alt=""
-            src="/vector31.svg"
-            onClick={onVectorIcon4Click}
-            />
-            <img
-            className={styles.xmlid273Icon}
+            className={styles.configuracion}
             alt=""
             src="/xmlid-2732.svg"
             onClick={onXMLID273IconClick}

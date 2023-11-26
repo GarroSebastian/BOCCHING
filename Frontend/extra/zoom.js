@@ -3,14 +3,11 @@ import { useEffect } from 'react';
 let w, h;
 
 const adjustZoom = () => {
-    // Espera a que se cargue el DOM antes de acceder al elemento "container"
-    window.addEventListener('DOMContentLoaded', () => {
-      const container = document.getElementById('container');
-      if (container) {
-        container.style.zoom = Math.min(window.innerWidth / w, window.innerHeight / h) * (window.location.pathname === '/eliminar-cuenta' ? 1.21 : 0.91);
-      }
-    });
-  }
+    const container = document.getElementById('container');
+    if (container) {
+        container.style.zoom = Math.min(window.innerWidth / w, window.innerHeight / h) * (window.location.pathname === '/eliminar-cuenta' ? 1.52 : 1.14);
+    }
+}
 
 const PantallasIniciales = () => {
     if(window.location.pathname==='/' || window.location.pathname==='/crear-cuenta' || window.location.pathname==='/iniciar-sesion'){
@@ -20,12 +17,17 @@ const PantallasIniciales = () => {
     }
 }
 
-const Inicio = () => {
+const Start = () => {
     if(PantallasIniciales() || (!PantallasIniciales() && window.localStorage.getItem("token")!==null)){
         w = window.innerWidth;
         h = window.innerHeight;
         adjustZoom();
-        window.onresize = adjustZoom;
+        
+        window.addEventListener('resize', adjustZoom);
+        return () => {
+        // Limpia el evento de redimensionamiento cuando el componente se desmonta
+        window.removeEventListener('resize', adjustZoom);
+        };
     }else{
         window.location.pathname = '/iniciar-sesion';
     }
@@ -33,13 +35,13 @@ const Inicio = () => {
 
 export const Zoom = () => {  
     useEffect(()=>{
-        Inicio();
+        Start();
         // Suscribirse al evento popstate cuando el componente se monta
-        window.addEventListener('popstate', Inicio);
+        //window.addEventListener('popstate', Inicio);
         
         // Limpiar el evento cuando el componente se desmonta
-        return () => {
-            window.removeEventListener('popstate', Inicio);
-        };
+        //return () => {
+            //window.removeEventListener('popstate', Inicio);
+        //};
     },[])
 }

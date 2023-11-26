@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useRouter } from "next/router";
 import styles from "./index.module.css";
-import { Zoom } from "../extra/zoom.js"
+import { Zoom } from "../extra/zoom.js";
 
 const Inicio = () => {
   Zoom();
