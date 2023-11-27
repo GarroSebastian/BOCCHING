@@ -5,6 +5,7 @@ import Lateral from "../components/lateral.js";
 import { useState } from "react";
 import { Zoom } from "../extra/zoom.js";
 import SolicitudApi from "../api/solicitud.js";
+import Global from "../extra/global.js";
 
 /*Recibidas:
 - Cargar del Backend todas las solicitudes donde el usuario es receptor, y que sean de tipo 0 (Solicitud enviada)
@@ -54,17 +55,40 @@ const Solicitudes = () => {
     confirmationCode: ""
   }
   const [usuario, setUsuario] = useState(defaultUsuario);
+  const [usuarios, setUsuarios] = useState([]);
 
   const defaultSolicitud = {
     _id: '', //el id de la solicitud
     idEmisor: '', //el id del usuario que creó la solicitud
     idReceptor: '', //el id del usuario al que se le envió la solicitud. Si existe una Solicitud con emisor X y receptor Y, no puede existir una con emisor Y y receptor X
     tipo: 0, //si es 0, es una solicitud normal; 1, solicitud oculta; 2, ya son amigos
-    viewed: false //si es false, el usuario todavía no ha visto la solicitud y debe ser notificado
+    viewed: false, //si es false, el usuario todavía no ha visto la solicitud y debe ser notificado
+    ano: 0, //el año
+    mes: 0, //el mes
+    dia: 0, //el día
+    diaSem: '', //el día de la semana
+    hora: 0, //la hora
+    minuto: 0 //el minuto cuando se envió el mensaje
   }
 
   useEffect(() => {
 
+    //UsuarioApi.findAll().then((users) => {
+    //const aux = user.data.usuarios;
+    //setUsuarios(aux)
+    setUsuarios([
+      {...defaultUsuario,_id:'0',nombre:'Yo',apodo:'YoApodo',mostrar_nombre:true},
+      {...defaultUsuario,_id:'1',nombre:'Adrián',apodo:'AdriánApodo',mostrar_nombre:true},
+      {...defaultUsuario,_id:'2',nombre:'RodrigoNombre',apodo:'Rodrigo',mostrar_nombre:false},
+      {...defaultUsuario,_id:'3',nombre:'Camayo',apodo:'CamayoApodo',mostrar_nombre:true},
+      {...defaultUsuario,_id:'4',nombre:'George',apodo:'GeorgeApodo',mostrar_nombre:true}
+    ])
+
+    //UsuarioApi.findCurrent().then((user) => {
+    //const aux = user.data.usuario;
+    //setUsuario(aux)
+    setUsuario({...defaultUsuario,_id:'0',nombre:'Yo',apodo:'YoApodo',mostrar_nombre:true})
+    
     // Utiliza la función SolicitudesRecibidasUsuario de tu API de solicitudes
     SolicitudApi.SolicitudesRecibidasUsuario(window.localStorage.token)
       .then((response) => {
@@ -72,19 +96,11 @@ const Solicitudes = () => {
           //const solicitudesData = response.data.solicitudesRecibidas;
           //setSolicitudes(solicitudesData);
           setSolicitudes([
-            {...defaultSolicitud,_id:'0',idEmisor:'0',idReceptor:'1',tipo:0},
-            {...defaultSolicitud,_id:'1',idEmisor:'0',idReceptor:'2',tipo:0},
-            {...defaultSolicitud,_id:'2',idEmisor:'0',idReceptor:'3',tipo:0},
-            {...defaultSolicitud,_id:'3',idEmisor:'0',idReceptor:'4',tipo:1},
-            {...defaultSolicitud,_id:'4',idEmisor:'0',idReceptor:'5',tipo:1},
-            {...defaultSolicitud,_id:'5',idEmisor:'0',idReceptor:'6',tipo:2},
-            {...defaultSolicitud,_id:'6',idEmisor:'0',idReceptor:'7',tipo:2},
+            {...defaultSolicitud,_id:'0',idEmisor:'1',idReceptor:'0',tipo:0, ano:2023,mes:11,dia:27,diaSem:"Lunes",hora:2,minuto:45},
+            {...defaultSolicitud,_id:'1',idEmisor:'2',idReceptor:'0',tipo:0, ano:2023,mes:11,dia:26,diaSem:"Lunes",hora:2,minuto:45},
+            {...defaultSolicitud,_id:'2',idEmisor:'0',idReceptor:'3',tipo:0, ano:2023,mes:11,dia:25,diaSem:"Lunes",hora:2,minuto:45},
+            {...defaultSolicitud,_id:'3',idEmisor:'0',idReceptor:'4',tipo:1, ano:2023,mes:11,dia:10,diaSem:"Lunes",hora:2,minuto:45},
           ]);
-          
-          //UsuarioApi.findCurrent().then((user) => {
-          //const aux = user.data.usuario;
-          //setUsuario(aux)
-          setUsuario({...defaultUsuario,_id:'0',nombre:'Yo',apodo:'YoApodo',mostrar_nombre:true})
 
           // Calcular la cantidad de solicitudes sin viewer en 1
           /*
@@ -144,97 +160,79 @@ const Solicitudes = () => {
       */
   };
 
-  const onRectangle2Click = useCallback(() => {
-    router.push("/solicitudes2");
-  }, [router]);
-
-  const onRectangle3Click = useCallback(() => {
-    router.push("/solicitudes3");
-  }, [router]);
-
-  const onEnviadasTextClick = useCallback(() => {
-    router.push("/solicitudes2");
-  }, [router]);
-
-  const onOcultasTextClick = useCallback(() => {
-    router.push("/solicitudes3");
-  }, [router]);
-
-  const AceptarSolicitud = (solicitud) => {};
-
-  const RechazarSolicitud = (solicitud) => {};
-
   return (
     <div id='container'>
       <div className={styles.solicitudes1}>
-        <img className={styles.solicitudes1Item} alt="" src="/rectangle-16.svg" />
-        <img
-          className={styles.solicitudes1Inner}
-          alt=""
-          src="/rectangle-29.svg"
-          onClick={onRectangle2Click}
-        />
-        <img
-          className={styles.rectangleIcon}
-          alt=""
-          src="/rectangle-29.svg"
-          onClick={onRectangle3Click}
-        />
-
+      {
+          pag===1?
+            <>
+              <img className={styles.solicitudes1Item} alt="" src="/rectangle-16.svg" />
+              <div className={styles.recibidas}>Recibidas</div>
+            </>
+          :
+            null
+        }
+        {
+          pag===2?
+            null
+          :
+            <>
+              <img className={styles.solicitudes1Inner} alt="" src="/rectangle-29.svg" onClick={e => setPag(2)}/>
+              <div className={styles.enviadas}>Enviadas</div>
+            </> 
+        }
+        {
+          pag===3?
+            null
+          :
+            <>
+              <img className={styles.rectangleIcon} alt="" src="/rectangle-29.svg" onClick={e => setPag(3)}/>
+              <div className={styles.ocultas}>Ocultas</div>
+            </>
+        }
         <div className={styles.rectangleDiv} />
         
-        {solicitudes.filter(solicitud => solicitud.tipo === 0).map((solicitud, index) => {
-              
-          // Convierte la fecha en un objeto Date
-          const dateObj = new Date(solicitud.date);
-          // Obtiene el día, mes, año, hora y minutos
-          const day = dateObj.getDate();
-          const month = dateObj.getMonth() + 1; // Los meses comienzan en 0, por lo que sumamos 1
-          const year = dateObj.getFullYear() % 100; // Obtiene los últimos dos dígitos del año
-          const hours = dateObj.getHours();
-          const minutes = dateObj.getMinutes();
-          // Formatea la fecha y la hora
-          const formattedDate = `${day.toString().padStart(2, '0')}/${month.toString().padStart(2, '0')}/${year.toString().padStart(2, '0')}`;
-          const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+        {solicitudes.filter(s => (pag===1&&(s.idReceptor===usuario._id&&s.tipo===0)) || (pag===2&&(s.idEmisor===usuario._id&&s.tipo===0)) || (pag===3&&(s.idEmisor===usuario._id&&s.tipo===1)) ).map((s, index) => {
 
+          const getFrUser = () => {
+            return usuarios.find(u => u._id === s[val]);
+          }
+              
+          const primero=470, salto=100, val=(pag===1?"idEmisor":"idReceptor");
           return(
             <>
-              <div className={styles.Caja} />
-              <div className={styles.Elipse} />
-              <div className={styles.contlax} />
-              <img className={styles.lax} alt="" src="/group-180.svg" onClick={e => onDeleteSolicitud(solicitud)} />
-              <img className={styles.img} alt="" src="/group-147.svg" />
-              <img className={styles.ojoMa} alt="" src="/vector2.svg" />
-              <img className={styles.ojo} alt="" src="/frame1.svg" />
-              <p className={styles.nombres}>
-                {solicitud.receptor ?
-                  <>{solicitud.receptor.nombre} / {solicitud.receptor.apodo || 'No disponible'}</>
+              <div className={styles.Caja} style={{top: `${primero+salto*index}px`}} onClick={e => location.pathname = `/perfil?id=${encodeURIComponent(s[val])}`}/>
+              <div className={styles.Elipse} style={{top: `${primero-7+salto*index}px`}} onClick={e => location.pathname = `/perfil?id=${encodeURIComponent(s[val])}`}/>
+              {
+                pag === 1 ?
+                  null
+                : pag===2 ?
+                  <>
+                    <div className={styles.contlax} style={{top: `${primero-1+salto*index}px`}} onClick={e => onDeleteSolicitud(s)}/>
+                    <img className={styles.lax} style={{top: `${primero+10+salto*index}px`}} alt="" src="/group-180.svg" />
+                    <img className={styles.ojoMa} style={{top: `${primero-1+salto*index}px`}} alt="" src="/vector2.svg" />
+                    <img className={styles.ojo} style={{top: `${primero+10+salto*index}px`}} alt="" src="/frame1.svg" />
+                  </>
                 :
-                  'No disponible'
+                  null
+              }
+              <img className={styles.img} style={{top: `${primero+10+salto*index}px`}} alt="" src="/group-147.svg" />
+              <p className={styles.nombres} style={{top: `${primero+21+salto*index}px`}}>
+                {
+                  getFrUser().mostrar_nombre === true ?
+                    `${getFrUser().nombre} ${getFrUser().apellidos}`
+                  :
+                    `${getFrUser().apodo}`
                 }
               </p>
-              <div className={styles.linediv} /> {/* Línea divisoria */}
-              <p className={styles.fechas}>{formattedDate} - {formattedTime}</p>
+              <div className={styles.linediv} style={{top: `${primero+16+salto*index}px`}}/> {/* Línea divisoria */}
+              <p className={styles.fechas} style={{top: `${primero+23+salto*index}px`}}>{Global.CompararFechas(s.ano, s.mes, s.dia, s.diaSem, s.hora, s.minuto)}</p>
             </>
           )
         })}
 
         <div className={styles.solicitudes}>Solicitudes</div>
-        <div className={styles.recibidas}>Recibidas</div>
-
-        <div className={styles.solicitudesRecibidas}>Solicitudes recibidas</div>
-        <button className={styles.aceptar} onClick={AceptarSolicitud}>
-          Aceptar
-        </button>
-        <button className={styles.rechazar} onClick={RechazarSolicitud}>
-          Rechazar
-        </button>
-        <div className={styles.enviadas} onClick={onEnviadasTextClick}>
-          Enviadas
-        </div>
-        <div className={styles.ocultas} onClick={onOcultasTextClick}>
-          Ocultas
-        </div>
+        <div className={styles.solicitudesRecibidas}>{pag===1?"Solicitudes recibidas":pag===2?"Solicitudes enviadas":"Solicitudes ocultas"}</div>
         <div className={styles.solicitudes1Child1} />
 
         {/* Mensaje flotante */}

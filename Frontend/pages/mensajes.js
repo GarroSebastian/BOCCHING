@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Zoom } from "../extra/zoom.js"
 import styles from "./mensajes.module.css";
 import Lateral from "../components/lateral.js"
+import Global from "../extra/global.js"
 import UsuarioApi from "../api/usuario";
 
 /*
@@ -100,7 +101,7 @@ const Mensajes = () => {
         {...defaultMensaje,idEmisor: "0", idReceptor: "3", mensaje: "AAA1", ano: 2023, mes: 10, dia: 31, diaSem: "Martes", hora: 3, minuto: 53},
         {...defaultMensaje,idEmisor: "3", idReceptor: "0", mensaje: "AAA2", ano: 2023, mes: 10, dia: 31, diaSem: "Martes", hora: 3, minuto: 55},
         {...defaultMensaje,idEmisor: "4", idReceptor: "0", mensaje: "Bocchingn't1", ano: 2023, mes: 9, dia: 1, diaSem: "Sábado", hora: 2, minuto: 55},
-        {...defaultMensaje,idEmisor: "0", idReceptor: "4", mensaje: "Bocchingn't2", ano: 2023, mes: 9, dia: 1, diaSem: "Sábado", hora: 3, minuto: 55},
+        {...defaultMensaje,idEmisor: "0", idReceptor: "4", mensaje: "Bocchingn't2", ano: 2023, mes: 11, dia: 27, diaSem: "Sábado", hora: 3, minuto: 55},
         {...defaultMensaje,idEmisor: "3", idReceptor: "1", mensaje: "si salgo mueres", ano: 2023, mes: 10, dia: 20, hora: 3, minuto: 53}
       ])
     }
@@ -123,30 +124,13 @@ const Mensajes = () => {
       })
     }
   }, [mensajes])
-
-  const CompararFechas = (ano, mes, dia, diaSem, hora, minuto) => {
-    const fecha = new Date(`${ano}-${mes}-${dia}`);
-    const hoy = new Date();
-    const dif = Math.floor((hoy-fecha) / (1000 * 60 * 60 * 24));
-    if(dif<0){
-      return "Error: Resta negativa";
-    }else if(dif===0){
-      return `${hora}:${minuto}`;
-    }else if(dif===1){
-      return "Ayer";
-    }else if(dif<7){
-      return diaSem;
-    }else{
-      return `${dia<10?"0":""}${dia}/${mes<10?"0":""}${mes}/${ano}`;
-    }
-  }
   
   const asignarChats = async() => {
     const aux = [];
     for(const m of mensajes){
       const idOtro = m.idEmisor===usuario._id? m.idReceptor : m.idEmisor;
       const i = aux.findIndex((item) => item.idOtro===idOtro);
-      const f = CompararFechas(m.ano, m.mes, m.dia, m.diaSem, m.hora, m.minuto)
+      const f = Global.CompararFechas(m.ano, m.mes, m.dia, m.diaSem, m.hora, m.minuto)
       if(i==-1){ //Ordenar chats
         aux.push({...defaultChat,idOtro: idOtro, nombre: usuarios.find((u) => u._id===idOtro).mostrar_nombre? usuarios.find((u) => u._id===idOtro).nombre : usuarios.find((u) => u._id===idOtro).apodo, ultimo: m.mensaje, fecha: f})
       }else if(true){ //Mensaje más reciente

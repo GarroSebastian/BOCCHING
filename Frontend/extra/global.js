@@ -11,4 +11,21 @@ const ValidarTexto = (texto, num=false) => {
     }
 }
 
-export default {ValidarTexto}
+const CompararFechas = (ano, mes, dia, diaSem, hora, minuto) => {
+    const fecha = new Date(`${ano}-${mes}-${dia}`);
+    const hoy = new Date();
+    const dif = Math.floor((hoy-fecha) / (1000 * 60 * 60 * 24));
+    if(dif<0){
+      return "Error: Resta negativa";
+    }else if(dif===0){
+      return `${hora}:${minuto}`;
+    }else if(dif===1){
+      return "Ayer";
+    }else if(dif<7){
+      return diaSem;
+    }else{
+      return `${dia<10?"0":""}${dia}/${mes<10?"0":""}${mes}/${ano}`;
+    }
+  }
+
+export default {ValidarTexto, CompararFechas}

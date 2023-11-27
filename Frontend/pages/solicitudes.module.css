@@ -161,6 +161,11 @@
 .ocultas {
   left: 910px;
 }
+.recibidas,
+.enviadas,
+.ocultas {
+  pointer-events: none;
+}
 .solicitudes1Child1 {
   position: absolute;
   top: 408px;
@@ -490,29 +495,28 @@ SE AGREGO ESTO - recomiendacion de chatGPT
   position: absolute;
   left: 425px;
   font-size: var(--font-size-xl);
-  top: 491px; /* Hereda el valor común */
   margin: 0%;
   font-weight: bold;
+  pointer-events: none;
 }
 .fechas {
   position: absolute;
   left: 775px;
   font-size: var(--textos-size);
-  top: 493px; /* Hereda el valor común */
   margin: 0%;
+  pointer-events: none;
 }
 .linediv{
   position: absolute;
-  top: 486px;
   left: 755px;
   border-right: 2px solid var(--black-icon);
   box-sizing: border-box;
   width: 4px;
   height: 40px;
+  pointer-events: none;
 }
 .Caja{
   position: absolute;
-  top: 470px;
   left: 322px;
   border-radius: var(--br-xl);
   background-color: var(--white-icon);
@@ -521,7 +525,6 @@ SE AGREGO ESTO - recomiendacion de chatGPT
 }
 .Elipse{
   position: absolute;
-  top: 463px;
   left: 306px;
   border-radius: 50%;
   background-color: var(--white-icon);
@@ -532,17 +535,15 @@ SE AGREGO ESTO - recomiendacion de chatGPT
 }
 .img{
   position: absolute;
-  top: 480px;
   left: 326px;
   width: 48.66px;
   height: 40.46px;
-
+  pointer-events: none;
 }
 .ojo{
   height: 4.3%;
   width: 3.06%;
   position: absolute;
-  top: 480px;
   left: 1080px;
   width: 100px;
   height: 45px;
@@ -550,7 +551,6 @@ SE AGREGO ESTO - recomiendacion de chatGPT
 }
 .ojoMa{
   position: absolute;
-  top: 469px;
   left: 1070px;
   width: 114px;
   height: 70px;
@@ -558,15 +558,14 @@ SE AGREGO ESTO - recomiendacion de chatGPT
 }
 .lax{
   position: absolute;
-  top: 480px;
   left: 1229px;
   width: 100px;
   height: 50px;
   cursor: pointer;
+  pointer-events: none;
 }
 .contlax{
   position: absolute;
-  top: 469px;
   left: 1224px;
   border-radius: var(--br-xl);
   background-color: var(--cta);
