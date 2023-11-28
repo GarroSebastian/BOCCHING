@@ -237,6 +237,14 @@
 .vectorIcon3,
 .vectorIcon4,
 .vectorIcon5 {
+  position: absolute;
+  height: 2.65%;
+  width: 1.88%;
+  right: 20.41%;
+  left: 77.71%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
   top: 68.95%;
   bottom: 28.41%;
 }
@@ -244,12 +252,24 @@
 .vectorIcon3,
 .vectorIcon4,
 .vectorIcon5 {
+  position: absolute;
+  height: 2.65%;
+  width: 1.88%;
+  right: 20.41%;
+  left: 77.71%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
   top: 79.3%;
   bottom: 18.06%;
 }
 .vectorIcon3,
 .vectorIcon4,
 .vectorIcon5 {
+  position: absolute;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
   height: 2.9%;
   width: 2.5%;
   top: 68.95%;
@@ -259,10 +279,26 @@
 }
 .vectorIcon4,
 .vectorIcon5 {
+  position: absolute;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  height: 2.9%;
+  width: 2.5%;
+  right: 9.51%;
+  left: 87.99%;
   top: 79.3%;
   bottom: 17.81%;
 }
 .vectorIcon5 {
+  position: absolute;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  height: 2.9%;
+  width: 2.5%;
+  right: 9.51%;
+  left: 87.99%;
   top: 58.5%;
   bottom: 38.61%;
 }

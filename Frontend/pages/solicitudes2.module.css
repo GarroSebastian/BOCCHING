@@ -4,6 +4,8 @@
   border-radius: var(--br-lgi);
 }
 .solicitudes2Child {
+  position: absolute;
+  border-radius: var(--br-lgi);
   top: 255px;
   left: 255px;
   width: 253px;
@@ -20,6 +22,8 @@
 
 }
 .solicitudes2Item {
+  position: absolute;
+  border-radius: var(--br-lgi);
   top: 229px;
   left: 544px;
   width: 261px;
@@ -97,6 +101,9 @@
 }
 .cancelar,
 .ocultar {
+  position: absolute;
+  font-family: var(--subttulos);
+  color: var(--color-white);
   top: 411px;
   left: 1229px;
   font-size: var(--subtitulos2-size);
@@ -343,9 +350,12 @@
   left: 77.15%;
 }
 .recibidas {
+  position: absolute;
+  font-family: var(--subttulos);
   top: 290px;
   left: 307px;
   cursor: pointer;
+  pointer-events: none;
 }
 .enviadas,
 .guardadas,
@@ -355,6 +365,8 @@
   font-family: var(--subttulos);
 }
 .enviadas {
+  position: absolute;
+  font-family: var(--subttulos);
   top: 279px;
   left: 604px;
   color: var(--white-icon);

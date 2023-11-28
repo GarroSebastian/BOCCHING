@@ -170,20 +170,29 @@ const Solicitudes = () => {
               <div className={styles.recibidas}>Recibidas</div>
             </>
           :
-            null
+            <>
+              <img className={styles.solicitudes2Child} alt="" src="/rectangle-29.svg" onClick={e => setPag(1)}/>
+              <div className={styles.recibidas2}>Recibidas</div>
+            </>
         }
         {
           pag===2?
-            null
+            <>
+              <img className={styles.solicitudes2Item} alt="" src="/rectangle-16.svg" />
+              <div className={styles.enviadas2}>Enviadas</div>
+            </>
           :
             <>
               <img className={styles.solicitudes1Inner} alt="" src="/rectangle-29.svg" onClick={e => setPag(2)}/>
               <div className={styles.enviadas}>Enviadas</div>
-            </> 
+            </>
         }
         {
           pag===3?
-            null
+            <>
+              <img className={styles.rectangleIcon2} alt="" src="/rectangle-16.svg" />
+              <div className={styles.ocultas2}>Ocultas</div>
+            </>
           :
             <>
               <img className={styles.rectangleIcon} alt="" src="/rectangle-29.svg" onClick={e => setPag(3)}/>
@@ -204,9 +213,7 @@ const Solicitudes = () => {
               <div className={styles.Caja} style={{top: `${primero+salto*index}px`}} onClick={e => location.pathname = `/perfil?id=${encodeURIComponent(s[val])}`}/>
               <div className={styles.Elipse} style={{top: `${primero-7+salto*index}px`}} onClick={e => location.pathname = `/perfil?id=${encodeURIComponent(s[val])}`}/>
               {
-                pag === 1 ?
-                  null
-                : pag===2 ?
+                pag===2 ?
                   <>
                     <div className={styles.contlax} style={{top: `${primero-1+salto*index}px`}} onClick={e => onDeleteSolicitud(s)}/>
                     <img className={styles.lax} style={{top: `${primero+10+salto*index}px`}} alt="" src="/group-180.svg" />
@@ -214,7 +221,17 @@ const Solicitudes = () => {
                     <img className={styles.ojo} style={{top: `${primero+10+salto*index}px`}} alt="" src="/frame1.svg" />
                   </>
                 :
-                  null
+                  <>
+                    <div className={styles.solicitudes3Child11} style={{top: `${primero-4+salto*index}px`}}/>
+                    <img className={styles.vectorIconz} style={{top: `${primero+3+salto*index}px`}} alt="" src="/vector2.svg" />
+                    <img className={styles.solicitudes3Child14} style={{top: `${primero+17+salto*index}px`}} alt="" src="/group-180.svg" />
+                    {
+                      pag===1 ?
+                        null
+                      :
+                        <img className={styles.vectorIcon5z} style={{top: `${primero+15+salto*index}px`}} alt="" src="/vector6.svg" />
+                    }
+                  </>
               }
               <img className={styles.img} style={{top: `${primero+10+salto*index}px`}} alt="" src="/group-147.svg" />
               <p className={styles.nombres} style={{top: `${primero+21+salto*index}px`}}>
@@ -232,7 +249,27 @@ const Solicitudes = () => {
         })}
 
         <div className={styles.solicitudes}>Solicitudes</div>
-        <div className={styles.solicitudesRecibidas}>{pag===1?"Solicitudes recibidas":pag===2?"Solicitudes enviadas":"Solicitudes ocultas"}</div>
+        {
+          pag===1 ?
+            <>
+              <div className={styles.solicitudesRecibidas}>Solicitudes recibidas</div>
+              <div className={styles.cancelar}>Aceptar</div>
+              <div className={styles.ocultar}>Rechazar</div>
+            </>
+          :pag===2?
+            <>
+              <div className={styles.solicitudesRecibidas}>Solicitudes enviadas</div>
+              <div className={styles.cancelar}>Cancelar</div>
+              <div className={styles.ocultar}>Ocultar</div>
+            </>
+          :
+            <>
+              <div className={styles.solicitudesRecibidas}>Solicitudes ocultas</div>
+              <div className={styles.cancelar}>Enviar</div>
+              <div className={styles.ocultar}>Cancelar</div>
+            </>
+        }
+        
         <div className={styles.solicitudes1Child1} />
 
         {/* Mensaje flotante */}

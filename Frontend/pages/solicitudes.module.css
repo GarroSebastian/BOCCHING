@@ -489,6 +489,106 @@ SE AGREGO ESTO - recomiendacion de chatGPT
   height: 80px; /* Alto personalizado */
   /* Agrega otros estilos personalizados para solicitud2 */
 }
+.solicitudes2Item {
+  position: absolute;
+  border-radius: var(--br-lgi);
+  top: 229px;
+  left: 544px;
+  width: 261px;
+  height: 164px;
+}
+.enviadas2 {
+  position: absolute;
+  font-family: var(--subttulos);
+  top: 279px;
+  left: 604px;
+  color: var(--white-icon);
+}
+.recibidas2 {
+  position: absolute;
+  font-family: var(--subttulos);
+  top: 290px;
+  left: 307px;
+  cursor: pointer;
+  pointer-events: none;
+}
+.solicitudes2Child {
+  position: absolute;
+  border-radius: var(--br-lgi);
+  top: 255px;
+  left: 255px;
+  width: 253px;
+  height: 156px;
+  cursor: pointer;
+}
+.cancelar,
+.ocultar {
+  position: absolute;
+  font-family: var(--subttulos);
+  color: var(--color-white);
+  top: 411px;
+  left: 1229px;
+  font-size: var(--subtitulos2-size);
+}
+.ocultar {
+  left: 1087px;
+}
+.rectangleIcon2 {
+  position: absolute;
+  top: 229px;
+  left: 837px;
+  border-radius: var(--br-lgi);
+  width: 261px;
+  height: 164px;
+}
+.ocultas2 {
+  position: absolute;
+  top: 274px;
+  left: 910px;
+  color: var(--white-icon);
+  font-family: var(--subttulos);
+}
+.vectorIconz {
+  position: absolute;
+  height: 5.66%;
+  width: 4.03%;
+  right: 19.31%;
+  bottom: 37.3%;
+  left: 76.67%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.solicitudes3Child14 {
+  position: absolute;
+  height: 2.65%;
+  width: 1.88%;
+  right: 20.41%;
+  bottom: 38.76%;
+  left: 77.71%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.solicitudes3Child11 {
+  position: absolute;
+  left: 1224px;
+  border-radius: var(--br-xl);
+  background-color: var(--cta);
+  width: 114px;
+  height: 70px;
+}
+.vectorIcon5z {
+  position: absolute;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  height: 2.9%;
+  width: 2.5%;
+  right: 9.51%;
+  left: 1264px;
+  bottom: 38.61%;
+}
 
 /* Estilos para SolicitudItem */
 .nombres {
@@ -544,7 +644,7 @@ SE AGREGO ESTO - recomiendacion de chatGPT
   height: 4.3%;
   width: 3.06%;
   position: absolute;
-  left: 1080px;
+  left: 1078px;
   width: 100px;
   height: 45px;
   cursor: pointer;
