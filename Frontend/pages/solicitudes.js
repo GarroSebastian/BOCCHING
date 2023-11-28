@@ -58,28 +58,35 @@ const Solicitudes = () => {
     setShowMessage(false);
   };
 
-  const botonAmarillo = (s) => {
-    if(page===1){
+  const botonAmarillo = (s,n) => {
+    if(pag===1){
       //SolicitudApi.actualizar
       console.log({...s,tipo:2})
-    }else if(page===2){
+      handleSolicitudes()
+      alert("¡Felicidades, ya eres amig@ de "+n+"!")
+    }else if(pag===2){
       //SolicitudApi.borrar(s._id)
+      handleSolicitudes()
+      alert("Se ha rechazado la solicitud")
     }else{
       //SolicitudApi.actualizar
       console.log({...s,tipo:0})
+      handleSolicitudes()
+      alert(n+" será notificad@ de tu solicitud")
     }
-    handleSolicitudes()
   }
   
   const botonOjo = (s) => {
     //SolicitudApi.actualizar
     console.log({...s,tipo:1})
     handleSolicitudes()
+    alert("Se ha ocultado la notificación")
   }
 
   const botonX = (s) => {
     //SolicitudApi.borrar(s._id)
     handleSolicitudes()
+    alert("Se ha rechazado la solicitud")
 
     /*
     const token = localStorage.getItem("token");
@@ -108,6 +115,13 @@ const Solicitudes = () => {
   
   const handleSolicitudes = () => {
     
+    setSolicitudes([
+      {...defaultSolicitud,_id:'0',idEmisor:'1',idReceptor:'0',tipo:0, ano:2023,mes:11,dia:27,diaSem:"Lunes",hora:2,minuto:45},
+      {...defaultSolicitud,_id:'1',idEmisor:'2',idReceptor:'0',tipo:0, ano:2023,mes:11,dia:26,diaSem:"Lunes",hora:2,minuto:45},
+      {...defaultSolicitud,_id:'2',idEmisor:'0',idReceptor:'3',tipo:0, ano:2023,mes:11,dia:25,diaSem:"Lunes",hora:2,minuto:45},
+      {...defaultSolicitud,_id:'3',idEmisor:'0',idReceptor:'4',tipo:1, ano:2023,mes:11,dia:10,diaSem:"Lunes",hora:2,minuto:45},
+    ]);
+    /*
     // Utiliza la función SolicitudesRecibidasUsuario de tu API de solicitudes
     SolicitudApi.SolicitudesRecibidasUsuario(window.localStorage.token)
     .then((response) => {
@@ -116,12 +130,7 @@ const Solicitudes = () => {
         
         //const solicitudesData = response.data.solicitudesRecibidas;
         //setSolicitudes(solicitudesData);
-        setSolicitudes([
-          {...defaultSolicitud,_id:'0',idEmisor:'1',idReceptor:'0',tipo:0, ano:2023,mes:11,dia:27,diaSem:"Lunes",hora:2,minuto:45},
-          {...defaultSolicitud,_id:'1',idEmisor:'2',idReceptor:'0',tipo:0, ano:2023,mes:11,dia:26,diaSem:"Lunes",hora:2,minuto:45},
-          {...defaultSolicitud,_id:'2',idEmisor:'0',idReceptor:'3',tipo:0, ano:2023,mes:11,dia:25,diaSem:"Lunes",hora:2,minuto:45},
-          {...defaultSolicitud,_id:'3',idEmisor:'0',idReceptor:'4',tipo:1, ano:2023,mes:11,dia:10,diaSem:"Lunes",hora:2,minuto:45},
-        ]);
+        
         
       }
     })
@@ -138,7 +147,7 @@ const Solicitudes = () => {
     })
     .catch((error) => {
       console.error("Error al actualizar el viewer:", error);
-    });
+    });*/
   }
   
   useEffect(() => {
@@ -215,7 +224,7 @@ const Solicitudes = () => {
             <>
               <div className={styles.Caja} style={{top: `${primero+salto*index}px`}} onClick={e => location.pathname = `/perfil?id=${encodeURIComponent(s[val])}`}/>
               <div className={styles.Elipse} style={{top: `${primero-7+salto*index}px`}} onClick={e => location.pathname = `/perfil?id=${encodeURIComponent(s[val])}`}/>
-              <div className={styles.contlax} style={{top: `${primero-4+salto*index}px`}} onClick={e => botonAmarillo()}/>
+              <div className={styles.contlax} style={{top: `${primero-4+salto*index}px`}} onClick={e => botonAmarillo(s, getFrUser().mostrar_nombre === true? getFrUser().nombre : getFrUser().apodo)}/>
               {
                 pag===2 ?
                   <>
@@ -225,7 +234,7 @@ const Solicitudes = () => {
                   </>
                 :
                   <>
-                    <img className={styles.vectorIconz} style={{top: `${primero+3+salto*index}px`}} onClick={e => botonX()} alt="" src="/vector2.svg" />
+                    <img className={styles.vectorIconz} style={{top: `${primero+3+salto*index}px`}} onClick={e => botonX(s)} alt="" src="/vector2.svg" />
                     <img className={styles.solicitudes3Child14} style={{top: `${primero+17+salto*index}px`}} alt="" src="/group-180.svg" />
                     {
                       pag===1 ?
