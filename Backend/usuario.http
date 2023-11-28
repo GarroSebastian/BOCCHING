@@ -2,8 +2,8 @@ POST http://localhost:3700/login
 Content-Type: application/json
 
 {
-    "correo": "20200713@aloe.ulima.edu.pe",
-    "contrasena": "holahola"
+    "correo": "29182713@aloe.ulima.edu.pe",
+    "contrasena": "12345678"
 }
 
 ###

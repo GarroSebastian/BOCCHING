@@ -70,6 +70,9 @@ const Solicitudes = () => {
     hora: 0, //la hora
     minuto: 0 //el minuto cuando se envió el mensaje
   }
+  const handleCloseMessage = () => {
+    setShowMessage(false);
+  };
 
   useEffect(() => {
 
@@ -88,11 +91,12 @@ const Solicitudes = () => {
     //const aux = user.data.usuario;
     //setUsuario(aux)
     setUsuario({...defaultUsuario,_id:'0',nombre:'Yo',apodo:'YoApodo',mostrar_nombre:true})
-    
     // Utiliza la función SolicitudesRecibidasUsuario de tu API de solicitudes
     SolicitudApi.SolicitudesRecibidasUsuario(window.localStorage.token)
       .then((response) => {
+        console.log("resp",response)
         if (response && response.data) {
+          
           //const solicitudesData = response.data.solicitudesRecibidas;
           //setSolicitudes(solicitudesData);
           setSolicitudes([
@@ -103,17 +107,8 @@ const Solicitudes = () => {
           ]);
 
           // Calcular la cantidad de solicitudes sin viewer en 1
-          /*
-          const solicitudesSinViewerCount = solicitudesData.filter(
-            (solicitud) => solicitud.viewer !== 1
-          ).length;
-          setSolicitudesSinViewer(solicitudesSinViewerCount);
+           
           
-          // Mostrar el mensaje si hay solicitudes sin viewer en 1
-          if (solicitudesSinViewerCount > 0) {
-            setShowMessage(true);
-          }
-          */
         }
       })
       .catch((error) => {
@@ -121,7 +116,6 @@ const Solicitudes = () => {
       });
 
     // Llama a la función para actualizar el campo viewer
-    
     SolicitudApi.actualizarViewerSolicitudes(window.localStorage.token)
       .then((response) => {
         if (response && response.data) {
@@ -274,10 +268,13 @@ const Solicitudes = () => {
 
         {/* Mensaje flotante */}
         {showMessage && (
+        <div className={styles.overlay}>
           <div className={styles.floatingMessage}>
-            Hay {solicitudesSinViewer} solicitudes sin viewer en 1.
+            Tienes {solicitudesSinViewer} solicitudes Nuevas.
+            <span className={styles.closeButton} onClick={handleCloseMessage}>X</span>
           </div>
-        )}
+        </div>
+      )}
       </div>
       <Lateral pantalla="Solicitudes"/>
     </div> 

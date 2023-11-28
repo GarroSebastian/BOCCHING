@@ -69,7 +69,8 @@
 }
 .buscar,
 .solicitudes,
-.configuracion {
+.configuracion, 
+.contBadge{
   position: absolute;
   top: 58%;
   left: 60.38px;
@@ -78,7 +79,8 @@
   cursor: pointer;
 }
 .solicitudes,
-.configuracion {
+.configuracion, 
+.contBadge{
   top: 69%;
   left: 63.99px;
   width: 36.01px;
@@ -97,4 +99,23 @@
   left: 0;
   height: 100vh;
   width: 12.5%;
+}
+
+
+.solicitudes {
+  /* Estilos para la imagen de solicitudes */
+}
+
+.contBadge {
+  top:67.5%;
+
+  background-color: red; /* Color de fondo del número */
+  color: white; /* Color del texto del número */
+  border-radius: 50%; /* Forma del contorno del número (circular) */
+  margin-left: 30px;/* Espaciado interior del contorno del número */
+  font-size: 16px; /* Tamaño de fuente del número */
+  padding-top: 3px;
+  padding-left: 7px;
+  width: 16px;
+  height: 18px;
 }

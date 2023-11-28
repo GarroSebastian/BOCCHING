@@ -1,9 +1,12 @@
 import { useCallback } from "react";
 import { useRouter } from "next/router";
 import styles from "./lateral.module.css";
+import SolicitudApi from "../api/solicitud";
+import React, { useState, useEffect } from 'react';
 
 const Lateral = (props) => {
     const {pantalla} = props;
+    const [cont, setCont] = useState(0);
     
     const router = useRouter();
     
@@ -31,6 +34,27 @@ const Lateral = (props) => {
     router.push("/configuracin11");
     }, [router]);
 
+    const solis = async () => {
+        try {
+          const solic = await SolicitudApi.SolicitudesRecibidasUsuario(window.localStorage.token);
+          let count = 0;
+          for (let i = 0; i < solic.data.solicitudesRecibidas.length; i++) {
+            if (solic.data.solicitudesRecibidas[i].viewed === false) {
+              count++;
+            }
+          }
+          setCont(count);
+        } catch (error) {
+          console.error('Error fetching solicitud data', error);
+        }
+      };
+
+      useEffect(() => {
+        solis();
+      }, []); // Se ejecuta una vez al montar el componente
+
+
+
     return(
         <div className={styles.menu}>
             <div className={styles.miperfil1Child14} />
@@ -50,9 +74,19 @@ const Lateral = (props) => {
             {pantalla!="Buscar" &&
                 <img className={styles.buscar} alt="" src="/vector30.svg" onClick={onVectorIcon3Click}/>
             }
-            {pantalla!="Solicitudes" &&
-                <img className={styles.solicitudes} alt="" src="/vector31.svg" onClick={onVectorIcon4Click}/>
-            }
+            {pantalla !== "Solicitudes" && (
+                <div className={styles.solicitudesContainer}>
+                    <img
+                        className={styles.solicitudes}
+                        alt=""
+                        src="/vector31.svg"
+                        onClick={onVectorIcon4Click}
+                    />
+                    {cont > 0 && (
+                        <span className={styles.contBadge}>{cont}</span>
+                    )}
+                </div>
+            )}
             <img
             className={styles.configuracion}
             alt=""

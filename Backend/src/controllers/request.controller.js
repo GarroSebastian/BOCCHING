@@ -78,7 +78,7 @@ const RequestController = {
     actualizarViewerSolicitudes : (req, res) => {
         const userId = req.token_usuarioId;
       
-        Request.updateMany({ receptor: userId }, { viewer: 1 })
+        Request.updateMany({ receptor: userId }, { viewed: true })
           .then(() => res.send({ message: 'Viewer actualizado para todas las solicitudes recibidas' }))
           .catch((error) => res.status(500).send({ error: 'Error al actualizar el viewer', details: error }));
       }
