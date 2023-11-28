@@ -385,13 +385,13 @@
   position: absolute;
   height: 2.83%;
   width: 2.69%;
-  top: 58.64%;
   right: 9.63%;
   bottom: 38.53%;
-  left: 87.69%;
+  left: 1262px;
   max-width: 100%;
   overflow: hidden;
   max-height: 100%;
+  pointer-events: none;
 }
 .checkIcon1,
 .checkIcon2 {
@@ -558,6 +558,7 @@ SE AGREGO ESTO - recomiendacion de chatGPT
   max-width: 100%;
   overflow: hidden;
   max-height: 100%;
+  cursor: pointer;
 }
 .solicitudes3Child14 {
   position: absolute;
@@ -569,6 +570,7 @@ SE AGREGO ESTO - recomiendacion de chatGPT
   max-width: 100%;
   overflow: hidden;
   max-height: 100%;
+  pointer-events: none;
 }
 .solicitudes3Child11 {
   position: absolute;
@@ -588,6 +590,7 @@ SE AGREGO ESTO - recomiendacion de chatGPT
   right: 9.51%;
   left: 1264px;
   bottom: 38.61%;
+  pointer-events: none;
 }
 
 /* Estilos para SolicitudItem */
@@ -622,6 +625,7 @@ SE AGREGO ESTO - recomiendacion de chatGPT
   background-color: var(--white-icon);
   width: 588px;
   height: 65px;
+  cursor: pointer;
 }
 .Elipse{
   position: absolute;
@@ -632,6 +636,7 @@ SE AGREGO ESTO - recomiendacion de chatGPT
   box-sizing: border-box;
   width: 88px;
   height: 79px;
+  cursor: pointer;
 }
 .img{
   position: absolute;
@@ -648,6 +653,7 @@ SE AGREGO ESTO - recomiendacion de chatGPT
   width: 100px;
   height: 45px;
   cursor: pointer;
+  pointer-events: none;
 }
 .ojoMa{
   position: absolute;
