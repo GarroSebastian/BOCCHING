@@ -84,15 +84,15 @@ const MiPerfil = () => {
   const arraySubTipo = [[''],arrayFranquicia,[''],[''],arrayPasatiempo,arrayAlimento,arrayMusica,arrayCreador,[''],['']];
   
   const primero=663, salto=50;
-  const [contador, setContador] = useState(false);
-  const onRectangle11Click = useCallback(() => {
+  const [contador, setContador] = useState(true);
+  const onRectangle11Click = useCallback(() => { //Boton editar
     // Cambiar el valor de contador cuando se presiona el botón 
     setContador(prevContador => !prevContador);
   }, []);
 
-  const onRectangle12Click = useCallback(() => {
+  const onRectangle12Click = useCallback(() => {  //Boton añadir
     // Cambiar el valor de contador cuando se presiona el botón 
-    setContador(prevContador => !prevContador);
+    console.log("Añadir presionado");
   }, []);
 
   const onRectangle2Click = useCallback(() => {
@@ -212,6 +212,16 @@ usuario._id
       setGustos(aux)
     });
   }
+
+const handleInputChange = (index, fieldName, event) => {
+  const updatedGustos = [...gustos];
+  updatedGustos[index] = {
+    ...updatedGustos[index],
+    [fieldName]: event.target.value
+  };
+  setGustos(updatedGustos);
+};
+
 
   useEffect(() => {
     handlePerfil();
@@ -378,36 +388,92 @@ usuario._id
               <div className={styles.afinidad}>Afinidad</div>
               <div className={styles.duracin}>Duración</div>
               {
-                gustos?.map((item, index) => {
-                  return(
-                    <>
-                      <div className={styles.hobby} style={{top: `${primero+salto*index}px`}}>
-                        {
-                          arrayTipo[item.tipo]
-                        }
-                      </div>
-                      <div className={styles.xd} style={{top: `${primero+salto*index}px`}}>
-                        {
-                          arraySubTipo[item.tipo][0]
-                        }
-                      </div>
-                      <div className={styles.xd4} style={{top: `${primero+salto*index}px`}}>
-                        {
-                          //condicion para ver si se editan los valores o no
-                          contador==1?
-                            item.nombre
-                          :
-                            <input type="text" value={item.nombre} readOnly={!contador} onChange={e => handleInputChange(index, e) }></input>
-                        }
-                        {item.nombre}
-                        </div>
-                      <div className={styles.xd8} style={{top: `${primero+salto*index}px`}}>{item.afinidad}</div>
-                      <div className={styles.xd12} style={{top: `${primero+salto*index}px`}}>{item.duracion}</div>
-                      <div className={styles.miperfil21Child3} style={{top: `${695+salto*index}px`}} />
-                    </>
-                  )
-                })
-              }
+  gustos?.map((item, index) => {
+    return (
+      <>
+        <div className={styles.hobby} style={{ top: `${primero + salto * index}px` }}>
+        {
+            // Condition to determine if values are editable or not
+            contador
+              ? item.tipo
+              : (
+                <select
+                  type="text"
+                  value={arrayTipo[item.tipo]}
+                  readOnly={contador}
+                  onChange={(e) => handleInputChange(index, 'tipo', e)}
+                />
+              )
+          }
+          
+        </div>
+        <div className={styles.xd} style={{ top: `${primero + salto * index}px` }}>
+        {
+            // Condition to determine if values are editable or not
+            contador
+              ? item.subtipo
+              : (
+                <select
+                  type="text"
+                  value={arraySubTipo[item.tipo][0]}
+                  readOnly={contador}
+                  onChange={(e) => handleInputChange(index, 'subtipo', e)}
+                />
+              )
+          }
+          
+        </div>
+        <div className={styles.xd4} style={{ top: `${primero + salto * index}px` }}>
+          {
+            // Condition to determine if values are editable or not
+            contador
+              ? item.nombre
+              : (
+                <input
+                  type="text"
+                  value={item.nombre}
+                  readOnly={contador}
+                  onChange={(e) => handleInputChange(index, 'nombre', e)}
+                />
+              )
+          }
+        </div>
+        <div className={styles.xd8} style={{ top: `${primero + salto * index}px` }}>
+        {
+            // Condition to determine if values are editable or not
+            contador
+              ? item.afinidad
+              : (
+                <select
+                  type="text"
+                  value={item.afinidad}
+                  readOnly={contador}
+                  onChange={(e) => handleInputChange(index, 'afinidad', e)}
+                />
+              )
+          }
+          </div>
+        <div className={styles.xd12} style={{ top: `${primero + salto * index}px` }}>
+        {
+            // Condition to determine if values are editable or not
+            contador
+              ? item.duracion
+              : (
+                <select
+                  type="text"
+                  value={item.duracion}
+                  readOnly={contador}
+                  onChange={(e) => handleInputChange(index, 'duracion', e)}
+                />
+              )
+          }
+          </div>
+        <div className={styles.miperfil21Child3} style={{ top: `${695 + salto * index}px` }} />
+      </>
+    );
+  })
+}
+
               <img className={styles.derechaIcon1} alt="" src="/derecha2.svg" />
               <div className={styles.miPerfil}>Mi Perfil</div>
               <div className={styles.informacin2} onClick={e => setPag(1)}>
@@ -423,8 +489,8 @@ usuario._id
               <div className={styles.miperfil21Child7} />
               <div className={styles.miperfil21Child8} onClick={onRectangle11Click} />
               <div className={styles.miperfil21Child9} onClick={onRectangle12Click} />
-              <div className={styles.editar}>Editar</div>
-              <div className={styles.aadir}>Añadir</div>
+              <div className={styles.editar} onClick={onRectangle11Click}>Editar</div>
+              <div className={styles.aadir} onClick={onRectangle12Click}>Añadir</div>
               
               <div className={styles.hobby} style={{marginLeft: '-3px', top: `${primero+salto*gustos.length}px`}}>
                 <select value={nuevoGusto.idTipo} onChange={e => {
