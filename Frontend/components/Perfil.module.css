@@ -856,3 +856,24 @@
   color: var(--color-white);
   font-family: var(--textos);
 }
+
+/*Otro Perfil*/
+.amistades2Child5 {
+  position: absolute;
+  top: 439.65px;
+  left: 612.92px;
+  border-radius: 50%;
+  background-color: var(--cta);
+  width: 44.91px;
+  height: 40.9px;
+  transform: rotate(-0.13deg);
+  transform-origin: 0 0;
+}
+.amistades2Child6 {
+  position: absolute;
+  top: 445px;
+  left: 621px;
+  width: 29.83px;
+  height: 25px;
+  pointer-events: none;
+}

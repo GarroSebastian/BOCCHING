@@ -6,7 +6,7 @@ const MiPerfil = () => {
   
   return (
     <div id='container'>
-      <Perfil miPerfil={false}/>
+      <Perfil id={null}/>
     </div>
   );
   

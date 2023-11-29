@@ -10,7 +10,6 @@ import Global from "../extra/global.js";
 /*
 Por cada solicitud:
 - Mostrar foto
-- Al darles clic, llevan a http://localhost:3000/perfil?id={} (reemplazar {} por el id del otro usuario)
 */
 
 const Solicitudes = () => {
@@ -112,6 +111,11 @@ const Solicitudes = () => {
       });
       */
   }
+
+  const verPerfil = (id) => {
+    const path = `/perfil?id=${encodeURIComponent(id)}`;
+    router.push(path);
+  };
   
   const handleSolicitudes = () => {
     
@@ -222,8 +226,8 @@ const Solicitudes = () => {
           const primero=470, salto=100, val=(pag===1?"idEmisor":"idReceptor");
           return(
             <>
-              <div className={styles.Caja} style={{top: `${primero+salto*index}px`}} onClick={e => location.pathname = `/perfil?id=${encodeURIComponent(s[val])}`}/>
-              <div className={styles.Elipse} style={{top: `${primero-7+salto*index}px`}} onClick={e => location.pathname = `/perfil?id=${encodeURIComponent(s[val])}`}/>
+              <div className={styles.Caja} style={{top: `${primero+salto*index}px`}} onClick={e => verPerfil(s[val])}/>
+              <div className={styles.Elipse} style={{top: `${primero-7+salto*index}px`}} onClick={e => verPerfil(s[val])}/>
               <div className={styles.contlax} style={{top: `${primero-4+salto*index}px`}} onClick={e => botonAmarillo(s, getFrUser().mostrar_nombre === true? getFrUser().nombre : getFrUser().apodo)}/>
               {
                 pag===2 ?

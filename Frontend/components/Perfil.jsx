@@ -33,7 +33,7 @@ Guardar en Backend:
 - Unifiquen todo mi-perfil aquí. Cuando verifiquen que ya está todo, borren las otras pantallas con sus module.css
 */
 
-const Perfil = ({miPerfil}) => { //si miPerfil es true, estás en mi-perfil (te deja editar los datos). si es false, estás viendo otro perfil (no te deja editar)
+const Perfil = ({id}) => { //si id es null, estás en mi-perfil (te deja editar los datos). si tiene valor, estás viendo otro perfil (no te deja editar)
   const [pag, setPag] = useState(1);
 
   const router = useRouter();
@@ -99,6 +99,10 @@ const Perfil = ({miPerfil}) => { //si miPerfil es true, estás en mi-perfil (te 
 
   const onPrivacidadTextClick = useCallback(() => {
     router.push("/mi-perfil241");
+  }, [router]);
+
+  const onClickChat = useCallback(() => {
+    router.push("//mensajes");
   }, [router]);
   
   const actualizarFacultad = (value) => {
@@ -181,6 +185,19 @@ usuario._id
 "65516fa8a20fc1ef72dccf79"
 */
   
+  const handleUser = (aux) => {
+    setUsuario(aux)
+    /*if(aux.foto!=''){
+      setUsuario({...aux, foto: pako.Deflate(aux.foto, {to: 'string'})})
+    }else{
+      setUsuario(aux)
+    }*/
+    const f = new Date(aux.nacimiento)
+    const today = new Date()
+    const dif = today.setDate(today.getDate()+1) - f;
+    setEdad(Math.floor(dif/(1000*60*60*24*365.25)))
+  }
+
   const handlePerfil = async() => {
     //var token = localStorage.getItem("token");
     /*UsuarioApi.findUser(token).then((user)=>{
@@ -188,19 +205,16 @@ usuario._id
       console.log(user.data);
     });*/
 
-    UsuarioApi.findCurrent().then((user)=>{
-      const aux = user.data.usuario;
-      setUsuario(aux)
-      /*if(aux.foto!=''){
-        setUsuario({...aux, foto: pako.Deflate(aux.foto, {to: 'string'})})
-      }else{
-        setUsuario(aux)
-      }*/
-      const f = new Date(aux.nacimiento)
-      const today = new Date()
-      const dif = today.setDate(today.getDate()+1) - f;
-      setEdad(Math.floor(dif/(1000*60*60*24*365.25)))
-    });
+    if(id===null){
+      UsuarioApi.findCurrent().then((user)=>{
+        handleUser(user.data.usuario)
+      });
+    }else{
+      /*UsuarioApi.findOne().then((user)=>{
+        handleUser(user.data.usuario)
+      });*/
+      alert("CAMAYOOOOOOOOO")
+    }
 
   }
 
@@ -242,7 +256,7 @@ usuario._id
           <div className={styles.miperfil1Child1} />
           <div className={styles.miperfil1Child2} />
           <div className={styles.miperfil1Child3} />
-          <div className={styles.miPerfil}>Mi Perfil</div>
+          <div className={styles.miPerfil}>{id===null?"Mi Perfil":"Estás mirando otro perfil"}</div>
           <div className={styles.informacin}>Información</div>
           <div className={styles.general}>General</div>
           <div className={styles.correoInstitucional}>Correo Institucional:</div>
@@ -333,12 +347,22 @@ usuario._id
             :
               null
           }
-          <div className={styles.miperfil1Child13}>
-            <button onClick={e => document.getElementById("fileInput").click()} style={{width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
-          </div>
-          <img className={styles.vectorIcon2} alt="" src="/vector27.svg" />
-          <img className={styles.vectorIcon3} alt="" src="/vector28.svg" />
-          <img className={styles.vectorIcon4} alt="" src="/vector29.svg" />
+          {
+            id===null?
+              <>
+                <div className={styles.miperfil1Child13}>
+                  <button onClick={e => document.getElementById("fileInput").click()} style={{width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
+                </div>
+                <img className={styles.vectorIcon2} alt="" src="/vector27.svg" />
+                <img className={styles.vectorIcon3} alt="" src="/vector28.svg" />
+                <img className={styles.vectorIcon4} alt="" src="/vector29.svg" />
+              </>
+            :
+              <>
+                <div className={styles.amistades2Child5} onClick={onClickChat}/>
+                <img className={styles.amistades2Child6} alt="" src="/group-1351.svg"/>
+              </>
+          }
           <div className={styles.miperfil1Child11} style={{top: "1395px", left: "910px"}}>
             <div className={styles.nombreapodo}>
               <p style={{marginTop: "13px"}}>Guardar</p>
