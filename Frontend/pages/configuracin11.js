@@ -1,37 +1,91 @@
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { useRouter } from "next/router";
 import styles from "./configuracin11.module.css";
 import styles2 from "./configuracin2.module.css";
 import { Zoom } from "../extra/zoom.js";
 import { useState } from "react";
+import usuariosApi from "../api/usuario.js";
+import requestApi from "../api/solicitud.js";
 
 const Configuracin11 = () => {
   const [pag, setPag] = useState(1);
-  Zoom()
-
-  //Guardar datos de forma "especial", lo ve como un objeto
-  const [password, setPassword] = useState("llama")
-  //Contra Antigua
   const [contraseaAntigua, setcontraseaAntigua] = useState("");
-  //Contra Nueva
   const [contraseaNueva, setcontraseaNueva] = useState("");
-  
+  const [dataLoaded, setDataLoaded] = useState(false);
+  const [mensajeVisible, setMensajeVisible] = useState(false);
+
+  const defaultUSER = {
+    nombres: '',
+    apellidos: '',
+    correo: '',
+    genero: '',
+    nacimiento: '',
+    edad: 0,
+    apodo: '',
+    contrasena: '',
+    foto: '',
+    facultad: '',
+    carrera: '',
+    especialidad: '',
+    descripcion: '',
+    mostrarNombre: true,
+    universidad: 'Universidad de Lima'
+  };
+
+  const [User, setUser] = useState(defaultUSER);
   const router = useRouter();
 
   const onGroupClick = useCallback(() => {
     router.push("/eliminar-cuenta");
   }, [router]);
 
-  const handleButtonClick = () => {
-    if(contraseaAntigua===password){
-      setPassword(contraseaNueva);
-      console.log(
-        "contraseña cambiada"
-      )
-      alert('Tu contraseña fue cambiada exitosamente.');
+  const cargardatos = async () => {
+    try {
+      const response = await usuariosApi.findUser(window.localStorage.token);
+      setUser(response.data.usuario);
+      console.log("Cargando datos", response.data.usuario);
+
+      
+    } catch (error) {
+      console.error("Error al cargar datos:", error);
     }
-    
   };
+
+  const handleButtonClick = () => {
+    try {
+      if (contraseaAntigua === contraseaNueva && contraseaNueva !== "" && contraseaAntigua !== "") {
+        setUser((prevUser) => ({
+          ...prevUser,
+          facultad: contraseaNueva, // Utiliza directamente contraseaNueva aquí
+        }));
+        setMensajeVisible(true);
+        setDataLoaded(true);
+
+        setTimeout(() => {
+          setMensajeVisible(false);
+        }, 3000); 
+      } else {
+        return console.log("Ingrese una contraseña válida");
+      }
+    } catch (error) {
+      console.error("Error al manejar el clic del botón:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (dataLoaded) {
+      usuariosApi.updateUser(User, window.localStorage.token);
+      console.log("Updated User", User);
+    }
+  }, [User, dataLoaded]);
+
+  useEffect(() => {
+    if (!User.nombres) {
+      cargardatos();
+    }
+  }, []);
+
+
 
   const onVectorClick = useCallback(() => {
     window.localStorage.removeItem("token");
@@ -68,6 +122,7 @@ const Configuracin11 = () => {
           eliminaría tu registro del aplicativo.
         </p>
       </div>
+
       <div className={styles.rectangleDiv} />
       <div className={styles.cambiarContrasea}>
       <button  onClick={handleButtonClick}
@@ -79,6 +134,14 @@ const Configuracin11 = () => {
       >Cambiar Contraseña</button>
       </div>
       <div className={styles.cambiarContrasea1}>Cambiar contraseña</div>
+      {mensajeVisible && (
+      <>
+        <div className={styles.fondoOscuro}></div>
+        <div className={styles.mensajeFlotante}>
+          Contraseña cambiada exitosamente
+        </div>
+      </>
+    )}
       <div className={styles.eliminarCuenta}>Eliminar cuenta</div>
       <div className={styles.configuracin11Child1} />
       <div className={styles.configuracin11Child2} />

@@ -141,6 +141,7 @@ const Solicitudes = () => {
     .catch((error) => {
       console.error("Error al obtener las solicitudes:", error);
     });
+    */
 
     // Llama a la función para actualizar el campo viewer
     SolicitudApi.actualizarViewerSolicitudes(window.localStorage.token)
@@ -151,7 +152,7 @@ const Solicitudes = () => {
     })
     .catch((error) => {
       console.error("Error al actualizar el viewer:", error);
-    });*/
+    });
   }
   
   useEffect(() => {

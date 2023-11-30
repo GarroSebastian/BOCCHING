@@ -34,7 +34,7 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3700/usuario/6552911e11f3fc937674dcff
+GET http://localhost:3700/usuario/65683bc7ccebeb2c835f75bd
 
 ###
 

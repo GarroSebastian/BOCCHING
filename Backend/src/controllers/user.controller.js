@@ -101,17 +101,18 @@ const UserController = {
 
     get_one_user: async(req, res)=>{
 
-        const user_id = req.params.id;
+        const user_id = req.token_usuarioId;
 
-        await User.findById(user_id).then((user)=>{
+        var user = await User.findById(user_id , {password:0}).then((user)=>{
 
-            if(!user) res.send("No se encontró al usuario");
-
-            if(user) res.send(user);
+            if(!user) res.send("No se puede ingresar al perfil");
+            return user;
 
         });
 
+        res.send({usuario: user});
     },
+    
 
     get_all_users: async(req, res) => {
 

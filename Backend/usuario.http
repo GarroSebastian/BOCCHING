@@ -44,22 +44,23 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmMyMjg3NTA4MWVi
 
 PUT http://localhost:3700/update-user
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzBhNWIyNjBjOGExYmNiNmQxNjVlYSIsImlhdCI6MTY5NzY4Njk2MywiZXhwIjoxNjk3NzczMzYzfQ.Jj3MdYHJgStYHsQOs4MNZhNYzcfzqhooYSVPg8gRRiQ
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjgzYmM3Y2NlYmViMmM4MzVmNzViZCIsImlhdCI6MTcwMTMzOTIyNCwiZXhwIjoxNzAxNDI1NjI0fQ.zpbQoK7UJHasWwaD2UpIcVRTsF-eV0a4ojPP2gvLKWM
 
 {
-    "nombre": "Hitori",
-    "apellidos": "Bocchi",
-    "correo": "90909090@aloe.ulima.edu.pe",
-    "contrasena": "$2b$08$0jojNeRN9nCX/0/LtAs4NuPly5lPn/TdspMMk0WKO9Ix9DzFPFY4K",
-    "apodo": "GuitarHero",
-    "id_genero": "1",
-    "nacimiento": "2004-02-10",
-    "foto": "",
-    "carrera": "Música",
-    "facultad": "0",
-    "especialidad": "Guitarra",
-    "descripcion": "Sumigod",
-    "mostrar_nombre": false
+    "nombre": "Sebas",
+    "apellidos": "Camayo",
+    "correo": "29182713@aloe.ulima.edu.pe",
+    "contrasena": "12345678",
+    "apodo": "apodo",
+    "id_genero": "0",
+    "nacimiento": "2002-12-27",
+    "foto": "foto",
+    "carrera": "carrera",
+    "facultad": "22",
+    "especialidad": "especialidad",
+    "descripcion": "descripcion",
+    "mostrar_nombre": true,
+    "confirmationCode":"12345678"
 }
 
 

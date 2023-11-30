@@ -1,4 +1,6 @@
 import Base from './base.js'
+import axios from 'axios';
+const URI = 'http://localhost:3700';
 
 const endpoint = '/usuario';
 
@@ -6,11 +8,45 @@ const register = async (request) => await Base.post('/register', request);
 
 const login = async (request) => await Base.post('/login', request);
 
-const findUser = async (token) => await Base.get('/usuario', token);
+const findUser = async(token) =>   {try {
+    const url = URI.concat('/usuario');
 
-const findAllUsers = async (token) => await Base.get('/find-all-users', token);
+    const authAxios = axios.create({
+        baseURL: URI,
+        headers: {
+            Authorization: token
+        }
+    });
 
-const updateUser = async (request, token) => await Base.put('/update-user', request, token);
+    return await authAxios.get(url);
+
+} catch(err) {
+    console.error(err);
+    return null;
+}}
+
+const findAllUsers = async (token) => await Base.get('/get-all-users', token);
+
+const updateUser = async (request, token) => {
+
+    try {
+        const url = URI.concat('/update-user');
+
+        const authAxios = axios.create({
+            baseURL: URI,
+            headers: {
+                Authorization: token
+            }
+        });
+
+        return await authAxios.put(url, request);
+
+    } catch(err) {
+        console.error(err);
+        return null;
+    }
+
+};
 
 const remove = async (token) => await Base.put('/delete-user', token);
 

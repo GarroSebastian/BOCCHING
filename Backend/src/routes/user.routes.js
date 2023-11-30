@@ -9,7 +9,7 @@ router.post("/register", UserController.save_User);
 
 router.post("/login", UserController.login_User);
 
-router.get("/usuario/:id", UserController.get_one_user);
+router.get("/usuario", verifyToken, UserController.get_one_user);
 
 router.get("/get-all-users", UserController.get_all_users);
 
