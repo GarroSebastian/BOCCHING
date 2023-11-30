@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from 'react';
 import Global from "../extra/global.js";
 import styles from "./Perfil.module.css";
-import Lateral from "../components/lateral.js"
 import UsuarioApi from "../api/usuario";
 
 
@@ -34,25 +33,6 @@ const InfoPerfil = ({id}) => { //si id es null, estás en mi-perfil (te deja edi
   }
   const [usuario, setUsuario] = useState(defaultUsuario);
   const [edad, setEdad] = useState(0);
-
-  const [contador, setContador] = useState(true);
-  const onRectangle11Click = useCallback(() => { //Boton editar
-    // Cambiar el valor de contador cuando se presiona el botón 
-    setContador(prevContador => !prevContador);
-  }, []);
-
-  const onRectangle12Click = useCallback(() => {  //Boton añadir
-    // Cambiar el valor de contador cuando se presiona el botón 
-    console.log("Añadir presionado");
-  }, []);
-
-  const onRectangle2Click = useCallback(() => {
-    router.push("/mi-perfil241");
-  }, [router]);
-
-  const onPrivacidadTextClick = useCallback(() => {
-    router.push("/mi-perfil241");
-  }, [router]);
 
   const onClickChat = useCallback(() => {
     router.push("//mensajes");
@@ -121,7 +101,7 @@ const InfoPerfil = ({id}) => { //si id es null, estás en mi-perfil (te deja edi
   
   const GuardarPerfil = async() => {
     if(ValidarCuenta()){
-      UsuarioApi.updateCurrent(usuario).then((user)=>{
+      UsuarioApi.updateCurrent(usuario).then(()=>{
         handlePerfil()
         alert("¡Cambios guardados!")
       })
@@ -131,12 +111,6 @@ const InfoPerfil = ({id}) => { //si id es null, estás en mi-perfil (te deja edi
       alert("¡Cambios guardados!")
     })*/
   }
-/*
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTE2ZmE4YTIwZmMxZWY3MmRjY2Y3OSIsImlhdCI6MTcwMDQwMzIxNSwiZXhwIjoxNzAwNDg5NjE1fQ.GOBiEEXwQPiaIwm3vzMkh7Ig_-V-PTmT3z6JBZ1anTU
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTE2ZmE4YTIwZmMxZWY3MmRjY2Y3OSIsImlhdCI6MTcwMDQwMzIxNSwiZXhwIjoxNzAwNDg5NjE1fQ.GOBiEEXwQPiaIwm3vzMkh7Ig_-V-PTmT3z6JBZ1anTU
-usuario._id
-"65516fa8a20fc1ef72dccf79"
-*/
   
   const handleUser = (aux) => {
     setUsuario(aux)
@@ -170,15 +144,6 @@ usuario._id
     }
 
   }
-
-    const handleInputChange = (index, fieldName, event) => {
-    const updatedGustos = [...gustos];
-    updatedGustos[index] = {
-        ...updatedGustos[index],
-        [fieldName]: event.target.value
-    };
-    setGustos(updatedGustos);
-    };
 
   useEffect(() => {
     handlePerfil();

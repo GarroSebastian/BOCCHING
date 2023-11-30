@@ -1,9 +1,7 @@
 import { useCallback } from "react";
 import { useRouter } from "next/router";
 import { useState, useEffect } from 'react';
-import Global from "../extra/global.js";
 import styles from "./Perfil.module.css";
-import UsuarioApi from "../api/usuario";
 import GustoApi from "../api/gusto.js";
 
 
@@ -29,25 +27,6 @@ Guardar en Backend:
 const Gustos = ({id}) => { //si id es null, estás en mi-perfil (te deja editar los datos). si tiene valor, estás viendo otro perfil (no te deja editar)
 
   const router = useRouter();
-
-  const defaultUsuario = {
-    _id: '',
-    nombre: '',
-    apellidos: '',
-    correo: '',
-    id_genero: 0,
-    nacimiento: '',
-    apodo: '',
-    contrasena: '',
-    foto: '',
-    facultad: -1,
-    carrera: '',
-    especialidad: '',
-    descripcion: '',
-    confirmationCode:'12345678',
-    mostrar_nombre: true
-  }
-  const [usuario, setUsuario] = useState(defaultUsuario);
 
   const defaultGusto = {
     _id: '', //el id del gusto
@@ -84,42 +63,6 @@ const Gustos = ({id}) => { //si id es null, estás en mi-perfil (te deja editar 
     console.log("Añadir presionado");
   }, []);
 
-  const onRectangle2Click = useCallback(() => {
-    router.push("/mi-perfil241");
-  }, [router]);
-
-  const onPrivacidadTextClick = useCallback(() => {
-    router.push("/mi-perfil241");
-  }, [router]);
-  
-  const handleUser = (aux) => {
-    setUsuario(aux)
-    /*if(aux.foto!=''){
-      setUsuario({...aux, foto: pako.Deflate(aux.foto, {to: 'string'})})
-    }else{
-      setUsuario(aux)
-    }*/
-  }
-
-  const handlePerfil = async() => {
-    //var token = localStorage.getItem("token");
-    /*UsuarioApi.findUser(token).then((user)=>{
-
-      console.log(user.data);
-    });*/
-
-    if(id===null){
-      UsuarioApi.findCurrent().then((user)=>{
-        handleUser(user.data.usuario)
-      });
-    }else{
-      /*UsuarioApi.findOne().then((user)=>{
-        handleUser(user.data.usuario)
-      });*/
-    }
-
-  }
-
   const handleGustos = async() => {
     if(id===null){
       GustoApi.getGustosCurrent().then((user)=>{
@@ -129,17 +72,16 @@ const Gustos = ({id}) => { //si id es null, estás en mi-perfil (te deja editar 
     }
   }
 
-    const handleInputChange = (index, fieldName, event) => {
+  const handleInputChange = (index, fieldName, event) => {
     const updatedGustos = [...gustos];
     updatedGustos[index] = {
         ...updatedGustos[index],
         [fieldName]: event.target.value
     };
     setGustos(updatedGustos);
-    };
+  };
 
   useEffect(() => {
-    handlePerfil();
     handleGustos();
   }, [])
   
