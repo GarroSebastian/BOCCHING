@@ -73,6 +73,22 @@ const RequestController = {
 
     },
 
+    getAllRequestsAdr: async(req, res)=>{
+        const userid = req.token_usuarioId;
+
+        var solicitudes = await Request.find({$or: [{emisor: userid}, {receptor: userid}]}).then(requests=>{
+
+            if(!requests) return res.send({message: "No se encontraron solicitudes"});
+
+            if(requests) return requests;
+        });
+
+        return res.send({
+            solicitudes: solicitudes
+        });
+
+    },
+
     getAllRequestsEmitidas: (req, res)=>{
         const userid = req.token_usuarioId;
         

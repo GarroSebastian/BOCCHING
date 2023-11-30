@@ -65,6 +65,27 @@ const SolicitudesUsuario = async(token) => {
 
 }
 
+const SolicitudesCurrent = async() => {
+
+    try {
+        const url = URI.concat('/getSolicitudesFromUser');
+
+        const authAxios = axios.create({
+            baseURL: URI,
+            headers: {
+                Authorization: window.localStorage.token
+            }
+        });
+
+        return await authAxios.get(url);
+
+    } catch(err) {
+        console.error(err);
+        return null;
+    }
+
+}
+
 const SolicitudesRecibidasUsuario = async (token) => {
     try {
         const url = URI.concat('/get-all-received-requests');
@@ -127,5 +148,6 @@ const actualizarViewerSolicitudes = async (token) => {
     ObtenerSolicitudUsuario,
     SolicitudesRecibidasUsuario,
     actualizarViewerSolicitudes, 
+    SolicitudesCurrent
   };
 export default SolicitudApi;

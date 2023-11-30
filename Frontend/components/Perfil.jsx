@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { useState } from 'react';
 import styles from "./Perfil.module.css";
 import Lateral from "../components/lateral.js"

@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Zoom } from "../extra/zoom.js";
 import Perfil from "../components/Perfil.jsx"
 
 const Profile = () => {
   Zoom()
 
-  let aux;
+  const [aux, setAux] = useState(null);
   useEffect(() => {
-    aux = window.location.href.substring(window.location.href.indexOf("=")+1);
+    setAux(window.location.href.substring(window.location.href.indexOf("=")+1));
   })
 
   return (

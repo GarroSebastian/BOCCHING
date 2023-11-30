@@ -34,7 +34,11 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3700/usuario/65683bc7ccebeb2c835f75bd
+GET http://localhost:3700/usuario
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGU5MjEyYzM0MzAxYzJjZTc4ZWFlZiIsImlhdCI6MTcwMTM0MDk3OSwiZXhwIjoxNzAxNDI3Mzc5fQ.mO0ViBuh-FrwDXtOXc_ITYDyU7LzBxXFRPRa4QOrdnc
+
+###
+GET http://localhost:3700/findUsuarioById/652ef6e1a7b2285d88c825e8
 
 ###
 
@@ -69,9 +73,9 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTI5MTFlMTFmM2Zj
 
 ### Solicitudes
 
-POST http://localhost:3700/save-solicitud/6552933d7d0b41aec55c8651
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTI5MTFlMTFmM2ZjOTM3Njc0ZGNmZiIsImlhdCI6MTcwMTMwNzQ4MywiZXhwIjoxNzAxMzkzODgzfQ.0ELnN6ulZRs0GOdPg6wxtrAHKyE97HW2jRMTtcFj4go
-Content-Type: application/json
+POST http://localhost:3700/save-solicitud/654e9212c34301c2ce78eaef
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGU5MjEyYzM0MzAxYzJjZTc4ZWFlZiIsImlhdCI6MTcwMTM0MDk3OSwiZXhwIjoxNzAxNDI3Mzc5fQ.mO0ViBuh-FrwDXtOXc_ITYDyU7LzBxXFRPRa4QOrdnc
+Content-Type: application/json<>
 
 {
     "tipo": 0
@@ -79,13 +83,18 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3700/delete-solicitud/6552933d7d0b41aec55c8651
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTFiNWM5MmZjODBlNmNlOTBmOTkzMyIsImlhdCI6MTY5OTg2OTg4MywiZXhwIjoxNjk5OTU2MjgzfQ.n3j5_v_FO8OQFAVU8MwjMzZX_ISOX4eIvTuIhnc8IZI
+DELETE http://localhost:3700/delete-solicitud/6568cf496affa629f45f2b20
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGU5MjEyYzM0MzAxYzJjZTc4ZWFlZiIsImlhdCI6MTcwMTM0MDk3OSwiZXhwIjoxNzAxNDI3Mzc5fQ.mO0ViBuh-FrwDXtOXc_ITYDyU7LzBxXFRPRa4QOrdnc
 
 ###
 
 GET http://localhost:3700/getAllSolicitudes
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTI5MTFlMTFmM2ZjOTM3Njc0ZGNmZiIsImlhdCI6MTcwMTMwNzQ4MywiZXhwIjoxNzAxMzkzODgzfQ.0ELnN6ulZRs0GOdPg6wxtrAHKyE97HW2jRMTtcFj4go
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGU5MjEyYzM0MzAxYzJjZTc4ZWFlZiIsImlhdCI6MTcwMTM0MDk3OSwiZXhwIjoxNzAxNDI3Mzc5fQ.mO0ViBuh-FrwDXtOXc_ITYDyU7LzBxXFRPRa4QOrdnc
+
+###
+
+GET http://localhost:3700/getSolicitudesFromUser
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGU5MjEyYzM0MzAxYzJjZTc4ZWFlZiIsImlhdCI6MTcwMTM0MDk3OSwiZXhwIjoxNzAxNDI3Mzc5fQ.mO0ViBuh-FrwDXtOXc_ITYDyU7LzBxXFRPRa4QOrdnc
 
 ###
 

@@ -11,6 +11,8 @@ router.delete("/delete-solicitud/:id", verifyToken, RequestController.deleteRequ
 
 router.get("/getAllSolicitudes", verifyToken, RequestController.getAllRequests);
 
+router.get("/getSolicitudesFromUser", verifyToken, RequestController.getAllRequestsAdr);
+
 router.get("/getAllSolicitudesEmitidas", verifyToken, RequestController.getAllRequestsEmitidas);
 
 router.get("/getAllSolicitudesRecibidas", verifyToken, RequestController.getAllRequestsRecibidas);

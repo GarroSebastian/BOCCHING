@@ -4,6 +4,7 @@ import styles from "./solicitudes.module.css";
 import Lateral from "../components/lateral.js";
 import { useState } from "react";
 import { Zoom } from "../extra/zoom.js";
+import UsuarioApi from "../api/usuario.js";
 import SolicitudApi from "../api/solicitud.js";
 import Global from "../extra/global.js";
 
@@ -42,8 +43,8 @@ const Solicitudes = () => {
 
   const defaultSolicitud = {
     _id: '', //el id de la solicitud
-    idEmisor: '', //el id del usuario que creó la solicitud
-    idReceptor: '', //el id del usuario al que se le envió la solicitud. Si existe una Solicitud con emisor X y receptor Y, no puede existir una con emisor Y y receptor X
+    emisor: '', //el id del usuario que creó la solicitud
+    receptor: '', //el id del usuario al que se le envió la solicitud. Si existe una Solicitud con emisor X y receptor Y, no puede existir una con emisor Y y receptor X
     tipo: 0, //si es 0, es una solicitud normal; 1, solicitud oculta; 2, ya son amigos
     viewed: false, //si es false, el usuario todavía no ha visto la solicitud y debe ser notificado
     ano: 0, //el año
@@ -117,13 +118,15 @@ const Solicitudes = () => {
     router.push(path);
   };
   
-  const handleSolicitudes = () => {
-    
-    setSolicitudes([
-      {...defaultSolicitud,_id:'0',idEmisor:'1',idReceptor:'0',tipo:0, ano:2023,mes:11,dia:27,diaSem:"Lunes",hora:2,minuto:45},
-      {...defaultSolicitud,_id:'1',idEmisor:'2',idReceptor:'0',tipo:0, ano:2023,mes:11,dia:26,diaSem:"Lunes",hora:2,minuto:45},
-      {...defaultSolicitud,_id:'2',idEmisor:'0',idReceptor:'3',tipo:0, ano:2023,mes:11,dia:25,diaSem:"Lunes",hora:2,minuto:45},
-      {...defaultSolicitud,_id:'3',idEmisor:'0',idReceptor:'4',tipo:1, ano:2023,mes:11,dia:10,diaSem:"Lunes",hora:2,minuto:45},
+  const handleSolicitudes = async() => {
+    SolicitudApi.SolicitudesCurrent().then((soli)=>{
+      setSolicitudes(soli.data.solicitudes)
+    })
+    /*setSolicitudes([
+      {...defaultSolicitud,_id:'0',emisor:'654e9212c34301c2ce78eaef',receptor:'0',tipo:0, ano:2023,mes:11,dia:27,diaSem:"Lunes",hora:2,minuto:45},
+      {...defaultSolicitud,_id:'654e9212c34301c2ce78eaef',emisor:'2',receptor:'0',tipo:0, ano:2023,mes:11,dia:26,diaSem:"Lunes",hora:2,minuto:45},
+      {...defaultSolicitud,_id:'2',emisor:'0',receptor:'3',tipo:0, ano:2023,mes:11,dia:25,diaSem:"Lunes",hora:2,minuto:45},
+      {...defaultSolicitud,_id:'3',emisor:'0',receptor:'4',tipo:1, ano:2023,mes:11,dia:10,diaSem:"Lunes",hora:2,minuto:45},
     ]);
     /*
     // Utiliza la función SolicitudesRecibidasUsuario de tu API de solicitudes
@@ -141,7 +144,6 @@ const Solicitudes = () => {
     .catch((error) => {
       console.error("Error al obtener las solicitudes:", error);
     });
-    */
 
     // Llama a la función para actualizar el campo viewer
     SolicitudApi.actualizarViewerSolicitudes(window.localStorage.token)
@@ -152,29 +154,35 @@ const Solicitudes = () => {
     })
     .catch((error) => {
       console.error("Error al actualizar el viewer:", error);
-    });
+    });*/
   }
-  
-  useEffect(() => {
 
-    //UsuarioApi.findAll().then((users) => {
-    //const aux = user.data.usuarios;
-    //setUsuarios(aux)
-    setUsuarios([
+  const handleUsers = async() => {
+    UsuarioApi.findAllUsers().then((users) => {
+      const aux = users.data;
+      setUsuarios(aux)
+    })
+    /*setUsuarios([
       {...defaultUsuario,_id:'0',nombre:'Yo',apodo:'YoApodo',mostrar_nombre:true},
-      {...defaultUsuario,_id:'1',nombre:'Adrián',apodo:'AdriánApodo',mostrar_nombre:true},
+      {...defaultUsuario,_id:'654e9212c34301c2ce78eaef',nombre:'Adrián',apodo:'AdriánApodo',mostrar_nombre:true},
       {...defaultUsuario,_id:'2',nombre:'RodrigoNombre',apodo:'Rodrigo',mostrar_nombre:false},
       {...defaultUsuario,_id:'3',nombre:'Camayo',apodo:'CamayoApodo',mostrar_nombre:true},
       {...defaultUsuario,_id:'4',nombre:'George',apodo:'GeorgeApodo',mostrar_nombre:true}
-    ])
+    ])*/
+  }
 
-    //UsuarioApi.findCurrent().then((user) => {
-    //const aux = user.data.usuario;
-    //setUsuario(aux)
-    setUsuario({...defaultUsuario,_id:'0',nombre:'Yo',apodo:'YoApodo',mostrar_nombre:true})
-
+  const handleUser = async() => {
+    UsuarioApi.findCurrent().then((user)=>{
+      const aux = user.data.usuario;
+      setUsuario(aux)
+    });
+    //setUsuario({...defaultUsuario,_id:'0',nombre:'Yo',apodo:'YoApodo',mostrar_nombre:true})
+  }
+  
+  useEffect(() => {
+    handleUsers()
+    handleUser()
     handleSolicitudes()
-    
   }, []);
 
   return (
@@ -218,13 +226,14 @@ const Solicitudes = () => {
         }
         <div className={styles.rectangleDiv} />
         
-        {solicitudes.filter(s => (pag===1&&(s.idReceptor===usuario._id&&s.tipo===0)) || (pag===2&&(s.idEmisor===usuario._id&&s.tipo===0)) || (pag===3&&(s.idEmisor===usuario._id&&s.tipo===1)) ).map((s, index) => {
+        {solicitudes.filter(s => (pag===1&&(s.receptor===usuario._id&&s.tipo===0)) || (pag===2&&(s.emisor===usuario._id&&s.tipo===0)) || (pag===3&&(s.emisor===usuario._id&&s.tipo===1)) ).map((s, index) => {
 
           const getFrUser = () => {
+            console.log(s._id)
             return usuarios.find(u => u._id === s[val]);
           }
               
-          const primero=470, salto=100, val=(pag===1?"idEmisor":"idReceptor");
+          const primero=470, salto=100, val=(pag===1?"emisor":"receptor");
           return(
             <>
               <div className={styles.Caja} style={{top: `${primero+salto*index}px`}} onClick={e => verPerfil(s[val])}/>
