@@ -79,10 +79,27 @@ const Gustos = ({id}) => { //si id es null, estás en mi-perfil (te deja editar 
     setContador(prevContador => !prevContador);
   }, []);
 
-  const onRectangle12Click = useCallback(() => {  //Boton añadir
+  const onRectangle12Click = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await GustoApi.guardarGusto(gustos, token);
+      console.log(token);
+  
+      if (response && response.status === 201) {
+        // La data fue guardada en la DB
+        console.log('Gustos guardados correctamente');
+      } else {
+        console.log(gustos);
+        console.log(response, response.status);
+        console.error('Error al guardar gustos');
+      }
+    } catch (error) {
+      console.error('Ocurrió un error', error);
+    }
+    //Boton añadir
     // Cambiar el valor de contador cuando se presiona el botón 
     console.log("Añadir presionado");
-  }, []);
+  };
 
   const onRectangle2Click = useCallback(() => {
     router.push("/mi-perfil241");
