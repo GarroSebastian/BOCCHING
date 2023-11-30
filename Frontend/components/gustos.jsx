@@ -99,10 +99,6 @@ const Gustos = ({id}) => { //si id es null, estás en mi-perfil (te deja editar 
     }else{
       setUsuario(aux)
     }*/
-    const f = new Date(aux.nacimiento)
-    const today = new Date()
-    const dif = today.setDate(today.getDate()+1) - f;
-    setEdad(Math.floor(dif/(1000*60*60*24*365.25)))
   }
 
   const handlePerfil = async() => {
@@ -148,10 +144,7 @@ const Gustos = ({id}) => { //si id es null, estás en mi-perfil (te deja editar 
   }, [])
   
   return (
-    <div className={styles.miperfil21}>
-        <img className={styles.miperfil21Child} alt="" src="/rectangle-161.svg" />
-        <div className={styles.colecciones2}>Gustos</div>
-        <div className={styles.rectangleDiv2} />
+    <>
         <div className={styles.miperfil21Child1} />
         <img className={styles.recDerIcon} alt="" src="/rec-der1.svg" />
         <img className={styles.derechaIcon} alt="" src="/derecha3.svg" />
@@ -248,10 +241,6 @@ const Gustos = ({id}) => { //si id es null, estás en mi-perfil (te deja editar 
         }
 
         <img className={styles.derechaIcon1} alt="" src="/derecha2.svg" />
-        <div className={styles.miPerfil}>Mi Perfil</div>
-        <div className={styles.privacidad} onClick={onPrivacidadTextClick}>
-        Privacidad
-        </div>
         <div className={styles.misColecciones}>Mis Gustos</div>
         <div className={styles.aquPodrsAgregar}>
         Aquí podrás agregar tus gustos personales, editarlos o eliminarlos
@@ -262,7 +251,7 @@ const Gustos = ({id}) => { //si id es null, estás en mi-perfil (te deja editar 
         <div className={styles.editar} onClick={onRectangle11Click}>Editar</div>
         <div className={styles.aadir} onClick={onRectangle12Click}>Añadir</div>
         
-        <div className={styles.hobby} style={{marginLeft: '-3px', top: `${primero+salto*gustos.length}px`}}>
+        <div className={styles.hobby} style={{marginLeft: '-3px', top: `${primero+salto*gustos?.length}px`}}>
         <select value={nuevoGusto.idTipo} onChange={e => {
             const selectedIndex = e.target.selectedIndex; // Obtiene el índice del elemento seleccionado
             setNuevoGusto({ ...nuevoGusto,idTipo: e.target.value});
@@ -274,7 +263,7 @@ const Gustos = ({id}) => { //si id es null, estás en mi-perfil (te deja editar 
         </select>
         </div>
 
-        <div className={styles.hobby} style={{left: '500px', marginLeft: '-3px', top: `${primero+salto*gustos.length}px`}}>
+        <div className={styles.hobby} style={{left: '500px', marginLeft: '-3px', top: `${primero+salto*gustos?.length}px`}}>
         <select value={nuevoGusto.subtipo} onChange={e => setNuevoGusto({ ...nuevoGusto,subtipo: e.target.value})} style={{width: "200%"}}>
             {
             arraySubTipo[ID_Tipo].map((item, index)=>{return(<option key={index} value={item}>{item}</option>)})
@@ -282,19 +271,19 @@ const Gustos = ({id}) => { //si id es null, estás en mi-perfil (te deja editar 
         </select>
         </div>
 
-        <div className={styles.hobby} style={{left: '700px', marginLeft: '-3px', top: `${primero+salto*gustos.length}px`}}>
+        <div className={styles.hobby} style={{left: '700px', marginLeft: '-3px', top: `${primero+salto*gustos?.length}px`}}>
             <input type="text" value={nuevoGusto.nombre} onChange={e => setNuevoGusto({ ...nuevoGusto,nombre: e.target.value})} style={{width: "100px"}} />
         </div>
 
-        <div className={styles.hobby} style={{left: '900px', marginLeft: '-3px', top: `${primero+salto*gustos.length}px`}}>
+        <div className={styles.hobby} style={{left: '900px', marginLeft: '-3px', top: `${primero+salto*gustos?.length}px`}}>
             <input type="text" value={nuevoGusto.idAfinidad} onChange={e => setNuevoGusto({ ...nuevoGusto,idAfinidad: e.target.value})} style={{width: "100px"}} />
         </div>
 
-        <div className={styles.hobby} style={{left: '1100px', marginLeft: '-3px', top: `${primero+salto*gustos.length}px`}}>
+        <div className={styles.hobby} style={{left: '1100px', marginLeft: '-3px', top: `${primero+salto*gustos?.length}px`}}>
             <input type="text" value={nuevoGusto.idDuracion} onChange={e => setNuevoGusto({ ...nuevoGusto,idDuracion: e.target.value})} style={{ width: "100px"}} />
         </div>
 
-    </div>
+    </>
   );
 };
 

@@ -185,15 +185,10 @@ usuario._id
   }, [])
   
   return (
-    <div className={styles.miperfil1}>
-        <div className={styles.colecciones}>Gustos</div>
-        <img className={styles.miperfil1Inner} alt="" src="/rectangle-161.svg" />
-        <div className={styles.rectangleDiv} />
+    <>
         <div className={styles.miperfil1Child1} />
         <div className={styles.miperfil1Child2} />
-        <div className={styles.miperfil1Child3} />
-        <div className={styles.miPerfil}>{id===null?"Mi Perfil":"Estás mirando otro perfil"}</div>
-        <div className={styles.informacin}>Información</div>
+        <div className={styles.miperfil1Child3} />      
         <div className={styles.general}>General</div>
         <div className={styles.correoInstitucional}>Correo Institucional:</div>
         <div className={styles.ejemplodecorreocorreoejemplo}>{usuario.correo}</div>
@@ -305,7 +300,7 @@ usuario._id
         </div>
         <button onClick={GuardarPerfil} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
         </div>
-    </div>
+    </>
   );
 };
 
