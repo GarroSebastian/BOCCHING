@@ -83,7 +83,7 @@ const Gustos = ({id}) => { //si id es null, estás en mi-perfil (te deja editar 
   const handleGustos = async() => {
     if(id===null){
       GustoApi.getGustosCurrent().then((user)=>{
-        const aux = user.data.gustos;
+        const aux = user.data;
         setGustos(aux)
       });
     }
