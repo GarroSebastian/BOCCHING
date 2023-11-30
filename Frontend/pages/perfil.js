@@ -5,9 +5,14 @@ import Perfil from "../components/Perfil.jsx"
 const Profile = () => {
   Zoom()
 
+  let aux;
+  useEffect(() => {
+    aux = window.location.href.substring(window.location.href.indexOf("=")+1);
+  })
+
   return (
     <div id='container'>
-      <Perfil id={window.location.href.substring(window.location.href.indexOf("=")+1)}/>
+      { aux!==null && <Perfil id={aux}/> }
     </div>
   );
   
