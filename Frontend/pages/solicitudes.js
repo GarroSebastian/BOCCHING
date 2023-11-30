@@ -229,7 +229,6 @@ const Solicitudes = () => {
         {solicitudes.filter(s => (pag===1&&(s.receptor===usuario._id&&s.tipo===0)) || (pag===2&&(s.emisor===usuario._id&&s.tipo===0)) || (pag===3&&(s.emisor===usuario._id&&s.tipo===1)) ).map((s, index) => {
 
           const getFrUser = () => {
-            console.log(s._id)
             return usuarios.find(u => u._id === s[val]);
           }
               
