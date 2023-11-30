@@ -25,8 +25,7 @@ const UserController = {
             newUser.mostrar_nombre = data.mostrar_nombre
             newUser.confirmationCode=data.confirmationCode
     
-            User.find({ $or: [{correo: newUser.correo.toLowerCase()}, {apodo: newUser.apodo.toLowerCase()}] })
-            
+            User.find({correo: newUser.correo.toLowerCase()})
             .then((users)=>{
                             
                     if(users && users.length >= 1){
@@ -87,7 +86,7 @@ const UserController = {
 
                     }
     
-                    if(err) return res.status(404).send("error 2");
+                    if(!check) return res.status(404).send("El correo o contraseña son incorrectos");
     
                 });
             }
@@ -100,26 +99,29 @@ const UserController = {
         
     },
 
-    get_user: async(req, res)=>{
+    get_one_user: async(req, res)=>{
 
-        const user_id = req.token_usuarioId;
+        const user_id = req.params.id;
 
-        var user = await User.findById(user_id , {password:0}).then((user)=>{
+        await User.findById(user_id).then((user)=>{
 
-            if(!user) res.send("No se puede ingresar al perfil");
-            return user;
+            if(!user) res.send("No se encontró al usuario");
+
+            if(user) res.send(user);
 
         });
 
-        res.send({usuario: user});
     },
-    find_all_users: (req, res) => {
-        User.find({}, { contrasena: 0 }, (err, users) => {
-            if (err) {
-                return res.status(500).send("Error while fetching users");
-            }
-            return res.status(200).json(users);
+
+    get_all_users: async(req, res) => {
+
+        await User.find().then((users)=>{
+
+            if(!users) res.send("No hay usuarios");
+
+            if(users) res.send(users);
         });
+
     },
 
     update_user: async(req, res)=>{
@@ -167,25 +169,25 @@ const UserController = {
     },
 
     verify_delete_code : async (req, res) => {
-    const user_id = req.token_usuarioId;
-    const confirmationCode = req.params.confirmationCode;
+        const user_id = req.token_usuarioId;
+        const confirmationCode = req.params.confirmationCode;
 
-    // Obtener el usuario de la base de datos
-    var user = await User.findById(user_id )
+        // Obtener el usuario de la base de datos
+        var user = await User.findById(user_id )
 
 
 
-    if (!user) {
-        return res.status(404).send(`Usuario no encontrado. user_id: ${user_id}`);
-    }
-    // Verificar si el código de confirmación coincide
-    if (confirmationCode === user.confirmationCode) {
-        // Eliminar la cuenta del usuario
-        await User.findByIdAndDelete(user_id);
-        return res.status(200).send("Cuenta eliminada exitosamente");
-     } else {
-        return res.status(400).send("Código de confirmación incorrecto");
-    }
+        if (!user) {
+            return res.status(404).send(`Usuario no encontrado. user_id: ${user_id}`);
+        }
+        // Verificar si el código de confirmación coincide
+        if (confirmationCode === user.confirmationCode) {
+            // Eliminar la cuenta del usuario
+            await User.findByIdAndDelete(user_id);
+            return res.status(200).send("Cuenta eliminada exitosamente");
+        } else {
+            return res.status(400).send("Código de confirmación incorrecto");
+        }
     
     }
     

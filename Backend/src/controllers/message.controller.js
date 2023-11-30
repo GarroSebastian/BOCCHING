@@ -8,18 +8,23 @@ const MessageController = {
         const data = req.body;
         const id_receptor = req.params.id;
 
-        if(!data.text || !id_receptor) return res.send("Rellena los campos necesarios");
+        if(!data.mensaje || !id_receptor) return res.send("Rellena los campos necesarios");
         
         const newMessage = new Message();
         newMessage.emisor = req.token_usuarioId;
         newMessage.receptor = id_receptor;
-        newMessage.text = data.text;
-        newMessage.created_at = moment().unix();
+        newMessage.mensaje = data.mensaje;
+        newMessage.ano = moment(newMessage.date).format('YYYY');
+        newMessage.mes = moment(newMessage.date).format('M');
+        newMessage.dia = moment(newMessage.date).format('D');
+        newMessage.diaSem = moment(newMessage.date).day();
+        newMessage.hora = moment(newMessage.date).format('HH');
+        newMessage.minuto = moment(newMessage.date).format('mm');
 
         newMessage.save().then((messageSaved)=>{
             if(!messageSaved) return res.send("Error al enviar el mensaje");
 
-            return res.send({mensaje: messageSaved});
+            return res.send(messageSaved);
         });
     },
 
@@ -30,7 +35,7 @@ const MessageController = {
 
             if(!messages) return res.send("No hay mensaje");
 
-            return res.send({mensajes: messages});
+            return res.send(messages);
         });
     },
 
@@ -41,7 +46,7 @@ const MessageController = {
 
             if(!messages) return res.send("No hay mensaje");
 
-            return res.send({mensajes: messages});
+            return res.send(messages);
         });
     },
 

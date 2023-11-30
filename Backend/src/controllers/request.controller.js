@@ -1,4 +1,5 @@
 const Request = require("../models/request");
+const moment = require("moment");
 
 const RequestController = {
 
@@ -10,6 +11,13 @@ const RequestController = {
         newRequest.emisor = req.token_usuarioId;
         newRequest.receptor = req.params.id;
         newRequest.tipo = data.tipo;
+        newRequest.viewed = false;
+        newRequest.ano = moment(newRequest.date).format('YYYY');
+        newRequest.mes = moment(newRequest.date).format('M');
+        newRequest.dia = moment(newRequest.date).format('D');
+        newRequest.diaSem = moment(newRequest.date).day();
+        newRequest.hora = moment(newRequest.date).format('HH');
+        newRequest.minuto = moment(newRequest.date).format('mm');
         
         Request.find({emisor: req.token_usuarioId, receptor: req.params.id}).then((requests)=>{
 
@@ -21,7 +29,7 @@ const RequestController = {
                 newRequest.save().then((RequestSaved)=>{
                     if(!RequestSaved) res.send("La solicitud no se ha guardado");
         
-                    if(RequestSaved) return res.send({request: RequestSaved});
+                    if(RequestSaved) return res.send(RequestSaved);
                     
                 });
             }
@@ -41,13 +49,48 @@ const RequestController = {
         });
     },
 
-    getAllRequests: (req, res)=>{
+    getAllRequests: async(req, res)=>{
+        const userid = req.token_usuarioId;
+        
+        var emitidos = await Request.find({emisor: userid}).clone().populate({path: 'emisor receptor'}).then(requests=>{
+
+            if(!requests) return res.send({message: "No se encontraron solicitudes"});
+
+            if(requests) return requests;
+        });
+
+        var recibidos = await Request.find({receptor: userid}).clone().populate({path: 'emisor receptor'}).then(requests=>{
+
+            if(!requests) return res.send({message: "No se encontraron solicitudes"});
+
+            if(requests) return requests;
+        });
+
+        return res.send({
+            recibidos: recibidos,
+            emitidos: emitidos
+        });
+
+    },
+
+    getAllRequestsEmitidas: (req, res)=>{
         const userid = req.token_usuarioId;
         
         Request.find({emisor: userid}).populate({path: 'emisor receptor'}).then(requests=>{
             if(!requests) return res.send({message: "No se encontraron solicitudes"});
 
-            if(requests) return res.send({solicitudes: requests});
+            if(requests) return res.send(requests);
+        });
+
+    },
+
+    getAllRequestsRecibidas: (req, res)=>{
+        const userid = req.token_usuarioId;
+        
+        Request.find({receptor: userid}).populate({path: 'emisor receptor'}).then(requests=>{
+            if(!requests) return res.send({message: "No se encontraron solicitudes"});
+
+            if(requests) return res.send(requests);
         });
 
     },
@@ -59,7 +102,7 @@ const RequestController = {
         Request.find({emisor: userid, receptor: ReceptorId}).populate({path: 'emisor receptor'}).then(request=>{
             if(!request) return res.send({message: "No se encontró solicitud"});
 
-            if(request) return res.send({solicitud: request});
+            if(request) return res.send(request);
         });
 
     },
@@ -71,7 +114,7 @@ const RequestController = {
             .then(requests => {
                 if (!requests) return res.send({ message: "No se encontraron solicitudes recibidas" });
 
-                if (requests) return res.send({ solicitudesRecibidas: requests });
+                if (requests) return res.send(requests);
             });
     },
 

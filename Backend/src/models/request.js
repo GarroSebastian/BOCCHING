@@ -4,8 +4,14 @@ const RequestSchema = new Schema({
     emisor: { type: Schema.ObjectId, ref: "User" },
     receptor: { type: Schema.ObjectId, ref: "User" },
     tipo: Number,
-    viewed: { type: Boolean, default: false }, 
-    date: { type: Date, default: Date.now }
+    viewed: { type: Boolean, default: false },
+    date: { type: Date, default: Date.now },
+    ano: { type: Number },
+    mes: { type: Number },
+    dia: { type: Number },
+    diaSem: { type: Number },
+    hora: { type: Number },
+    minuto: { type: Number }
 });
 
 module.exports = model("Request", RequestSchema);

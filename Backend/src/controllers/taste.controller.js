@@ -11,11 +11,7 @@ const TasteController = {
             nombre,
             subtipo,
             afinidad,
-            posesion,
             duracion,
-            conversacion,
-            musica,
-            frecuencia,
             compania } = req.body;
 
         if(userid){
@@ -25,21 +21,13 @@ const TasteController = {
             newTaste.nombre = nombre;
             newTaste.subtipo = subtipo;
             newTaste.afinidad = afinidad;
-            newTaste.posesion = posesion;
             newTaste.duracion = duracion;
-            newTaste.conversacion = conversacion;
-            newTaste.musica = musica;
-            newTaste.frecuencia = frecuencia;
             newTaste.compania = compania;
 
             if(subtipo == null) newTaste.subtipo = "";
-            if(afinidad == null) newTaste.afinidad = "";
-            if(posesion == null) newTaste.posesion = "";
-            if(duracion == null)  newTaste.duracion = "";
-            if(conversacion == null)  newTaste.conversacion = "";
-            if(musica == null) newTaste.musica = "";
-            if(frecuencia == null) newTaste.frecuencia = "";
-            if(compania == null)  newTaste.compania = "";
+            if(afinidad == null) newTaste.afinidad = 0;
+            if(duracion == null)  newTaste.duracion = 0;
+            if(compania == null)  newTaste.compania = 0;
     
             Taste.find({usuario: userid, nombre: nombre}).then((tastes)=>{
     
@@ -52,7 +40,7 @@ const TasteController = {
                         
                         if(!TasteSaved) res.send("Tu gusto no se ha guardado");
             
-                        if(TasteSaved) return res.send({gusto: TasteSaved});
+                        if(TasteSaved) return res.send(TasteSaved);
                         
                     });
                 }
@@ -82,7 +70,7 @@ const TasteController = {
         Taste.find({usuario: userid}).then(tastes=>{
             if(!tastes) return res.send({message: "No se encontraron gustos"});
 
-            if(tastes) return res.send({gustos: tastes});
+            if(tastes) return res.send(tastes);
         });
 
     },
@@ -94,7 +82,7 @@ const TasteController = {
         Taste.findOne({_id: tasteId, usuario: userid}).then(taste=>{
             if(!taste) return res.send({message: "No se encuentra el gusto"});
 
-            if(taste) return res.send({gusto: taste});
+            if(taste) return res.send(taste);
         });
 
     },

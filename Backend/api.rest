@@ -1,3 +1,5 @@
+### Para usar eset api tienen que descargarse la extension 'Rest Client Api' de VScode
+
 ## Usuarios
 
 POST http://localhost:3700/login
@@ -14,9 +16,9 @@ POST http://localhost:3700/register
 Content-Type: application/json
 
 {
-    "nombre": "hola",
-    "apellidos": "apellidos",
-    "correo": "correo",
+    "nombre": "sebas",
+    "apellidos": "camayo",
+    "correo": "correo5",
     "contrasena": "contrasena",
     "apodo": "apodo01",
     "id_genero": "id_genero",
@@ -32,26 +34,26 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3700/usuario
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NWU3YmFkN2Q1ZmVkNmNkYWY0NzI4OCIsImlhdCI6MTcwMDY5MTAxOSwiZXhwIjoxNzAwNzc3NDE5fQ.NbmbcwqKZspwm0UGIO-849hPtXMnUGoWD4BHh7Z_Rd0
-#####
-GET http://localhost:3700/find-all-users
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NWU3YmFkN2Q1ZmVkNmNkYWY0NzI4OCIsImlhdCI6MTcwMDY5MjU5NSwiZXhwIjoxNzAwNzc4OTk1fQ._9edQMaCgavvGgUT64ooRFWIjhAtWpvoeVrEkrEkzB4
+GET http://localhost:3700/usuario/6552911e11f3fc937674dcff
+
+###
+
+GET http://localhost:3700/get-all-users
 
 ###
 
 DELETE http://localhost:3700/delete-user
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmMyMjg3NTA4MWViZThiOTA0OGZiYiIsImlhdCI6MTY5NzM5NzUxNSwiZXhwIjoxNjk3NDgzOTE1fQ.wMeY3FCthVD72YMGo1TtdB3evDIXzQgfvlBbHgALmF8
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTI5MTFlMTFmM2ZjOTM3Njc0ZGNmZiIsImlhdCI6MTcwMTMxMTI4MywiZXhwIjoxNzAxMzk3NjgzfQ.7ukJ_h3-hUVzJhpNF--0ujVw-BThu0EhEqeXxG9epyg
 
 ###
 
 PUT http://localhost:3700/update-user
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmM0MjQ2YTcwMDdiOGNhOGQ4ZDU4MyIsImlhdCI6MTY5NzM5OTM3MCwiZXhwIjoxNjk3NDg1NzcwfQ.jHz8RSHCFjKCvp41jY2AlgdSFRSHAwCZpcVSGjIStwg
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTI5MTFlMTFmM2ZjOTM3Njc0ZGNmZiIsImlhdCI6MTcwMTMxMTI4MywiZXhwIjoxNzAxMzk3NjgzfQ.7ukJ_h3-hUVzJhpNF--0ujVw-BThu0EhEqeXxG9epyg
 
 {
-    "nombre": "nombre",
-    "apellidos": "apellidos",
+    "nombre": "sebastian",
+    "apellidos": "camayo",
     "correo": "correo",
     "contrasena": "contrasena",
     "apodo": "apodo",
@@ -67,8 +69,8 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmM0MjQ2YTcwMDdi
 
 ### Solicitudes
 
-POST http://localhost:3700/save-solicitud/656538868a1e1b3875242f66
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjUzODg2OGExZTFiMzg3NTI0MmY2NiIsImlhdCI6MTcwMTEzNjc4OSwiZXhwIjoxNzAxMjIzMTg5fQ.xMMA_lfrcn1qnKlZXgH8QWzdkDL-aZxPMdc4QQTpQM8
+POST http://localhost:3700/save-solicitud/6552933d7d0b41aec55c8651
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTI5MTFlMTFmM2ZjOTM3Njc0ZGNmZiIsImlhdCI6MTcwMTMwNzQ4MywiZXhwIjoxNzAxMzkzODgzfQ.0ELnN6ulZRs0GOdPg6wxtrAHKyE97HW2jRMTtcFj4go
 Content-Type: application/json
 
 {
@@ -77,56 +79,62 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3700/delete-solicitud/6551bfde2fc80e6ce90f9938
+DELETE http://localhost:3700/delete-solicitud/6552933d7d0b41aec55c8651
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTFiNWM5MmZjODBlNmNlOTBmOTkzMyIsImlhdCI6MTY5OTg2OTg4MywiZXhwIjoxNjk5OTU2MjgzfQ.n3j5_v_FO8OQFAVU8MwjMzZX_ISOX4eIvTuIhnc8IZI
 
 ###
 
 GET http://localhost:3700/getAllSolicitudes
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NWU3YmFkN2Q1ZmVkNmNkYWY0NzI4OCIsImlhdCI6MTcwMDY5ODA1OSwiZXhwIjoxNzAwNzg0NDU5fQ.IW9oD-kSnl8tHxR_Eh5ebGn59c873yXt3R1oF8oDzVc
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTI5MTFlMTFmM2ZjOTM3Njc0ZGNmZiIsImlhdCI6MTcwMTMwNzQ4MywiZXhwIjoxNzAxMzkzODgzfQ.0ELnN6ulZRs0GOdPg6wxtrAHKyE97HW2jRMTtcFj4go
+
+###
+
+GET http://localhost:3700/getAllSolicitudesEmitidas
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTI5MTFlMTFmM2ZjOTM3Njc0ZGNmZiIsImlhdCI6MTcwMTMwNzQ4MywiZXhwIjoxNzAxMzkzODgzfQ.0ELnN6ulZRs0GOdPg6wxtrAHKyE97HW2jRMTtcFj4go
+
+###
+
+GET http://localhost:3700/getAllSolicitudesRecibidas
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTI5MTFlMTFmM2ZjOTM3Njc0ZGNmZiIsImlhdCI6MTcwMTMwNzQ4MywiZXhwIjoxNzAxMzkzODgzfQ.0ELnN6ulZRs0GOdPg6wxtrAHKyE97HW2jRMTtcFj4go
 
 ###
 GET http://localhost:3700/get-all-received-requests
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NWU3YmFkN2Q1ZmVkNmNkYWY0NzI4OCIsImlhdCI6MTcwMDY5ODA1OSwiZXhwIjoxNzAwNzg0NDU5fQ.IW9oD-kSnl8tHxR_Eh5ebGn59c873yXt3R1oF8oDzVc
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTI5MTFlMTFmM2ZjOTM3Njc0ZGNmZiIsImlhdCI6MTcwMTMwNzQ4MywiZXhwIjoxNzAxMzkzODgzfQ.0ELnN6ulZRs0GOdPg6wxtrAHKyE97HW2jRMTtcFj4go
 
 ###
 
-GET http://localhost:3700/getSolicitud/6551b5c92fc80e6ce90f9933
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTE2ZmE4YTIwZmMxZWY3MmRjY2Y3OSIsImlhdCI6MTcwMDQwMzIxNSwiZXhwIjoxNzAwNDg5NjE1fQ.GOBiEEXwQPiaIwm3vzMkh7Ig_-V-PTmT3z6JBZ1anTU
+GET http://localhost:3700/getSolicitud/6567e8d2fac4cd7a014c0ff3
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTI5MTFlMTFmM2ZjOTM3Njc0ZGNmZiIsImlhdCI6MTcwMTMwNzQ4MywiZXhwIjoxNzAxMzkzODgzfQ.0ELnN6ulZRs0GOdPg6wxtrAHKyE97HW2jRMTtcFj4go
 
 ### GUSTOS
 
 POST http://localhost:3700/save-gusto
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGU5MjEyYzM0MzAxYzJjZTc4ZWFlZiIsImlhdCI6MTcwMDU4NDU0NCwiZXhwIjoxNzAwNjcwOTQ0fQ.J69YGw6G-iiPm3FNq9FV1uWv3oSzcxhJ_jcGU910mXo
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTI5MTFlMTFmM2ZjOTM3Njc0ZGNmZiIsImlhdCI6MTcwMTMwNzQ4MywiZXhwIjoxNzAxMzkzODgzfQ.0ELnN6ulZRs0GOdPg6wxtrAHKyE97HW2jRMTtcFj4go
 Content-Type: application/json
 
 {
     "tipo" : 0,
-    "nombre" : "waos",
-    "subtipo": "aaa",
-    "afinidad": "aaa",
-    "posesion": "aaaaa",
-    "duracion": "aaaaa",
-    "conversacion": "aaaa",
-    "musica": "aaaa",
-    "frecuencia": "aaaa",
-    "compania": "aaaa"
+    "nombre" : "ayudaaaaaaaaaa",
+    "subtipo": "ayudaaaaaaaa x2",
+    "afinidad": 0,
+    "duracion": 0,
+    "compania": 0
 }
 
 ###
 
 GET http://localhost:3700/gustos
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTE2ZmE4YTIwZmMxZWY3MmRjY2Y3OSIsImlhdCI6MTcwMDQwMzIxNSwiZXhwIjoxNzAwNDg5NjE1fQ.GOBiEEXwQPiaIwm3vzMkh7Ig_-V-PTmT3z6JBZ1anTU
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTI5MTFlMTFmM2ZjOTM3Njc0ZGNmZiIsImlhdCI6MTcwMTMwNzQ4MywiZXhwIjoxNzAxMzkzODgzfQ.0ELnN6ulZRs0GOdPg6wxtrAHKyE97HW2jRMTtcFj4go
 
 ###
 
-GET http://localhost:3700/gusto/654026e2399b9416d1d0be53
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTE2ZmE4YTIwZmMxZWY3MmRjY2Y3OSIsImlhdCI6MTcwMDQwMzIxNSwiZXhwIjoxNzAwNDg5NjE1fQ.GOBiEEXwQPiaIwm3vzMkh7Ig_-V-PTmT3z6JBZ1anTU
+GET http://localhost:3700/gusto/6567ec5ed8c92a6cc5ad5c92
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTI5MTFlMTFmM2ZjOTM3Njc0ZGNmZiIsImlhdCI6MTcwMTMwNzQ4MywiZXhwIjoxNzAxMzkzODgzfQ.0ELnN6ulZRs0GOdPg6wxtrAHKyE97HW2jRMTtcFj4go
 
 ###
 
-DELETE http://localhost:3700/delete-gusto/654026d4399b9416d1d0be4e
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzA1Y2EwZGZiYzFmMjcwN2MwMTBjMSIsImlhdCI6MTY5ODcwMTQxNiwiZXhwIjoxNjk4Nzg3ODE2fQ.GhsJIfMS6E7PFHHfs-K3dttQADax8ECfV_H76oYkGyU
+DELETE http://localhost:3700/delete-gusto/6567ec5ed8c92a6cc5ad5c92
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTI5MTFlMTFmM2ZjOTM3Njc0ZGNmZiIsImlhdCI6MTcwMTMwNzQ4MywiZXhwIjoxNzAxMzkzODgzfQ.0ELnN6ulZRs0GOdPg6wxtrAHKyE97HW2jRMTtcFj4go
 
 ###
 
@@ -136,41 +144,38 @@ Content-Type: application/json
 
 {
     "tipo" : 0,
-    "nombre" : "Hola3",
-    "subtipo": "aaa",
-    "afinidad": "aaa",
-    "posesion": "aaaaa",
-    "duracion": "aaaaa",
-    "conversacion": "aaaa",
-    "musica": "aaaa",
-    "frecuencia": "aaaa",
-    "compania": "aaaa"
+    "nombre" : "ayudaaaaaaaaaa",
+    "subtipo": "ayudaaaaaaaa x4",
+    "afinidad": 0,
+    "duracion": 0,
+    "compania": 0
 }
 
 ### MENSAJES
 
-POST http://localhost:3700/mensaje/65305c0adfbc1f2707c010bb
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzAzOTkxZWY1YTNjNmVmMjdkNTFiZiIsImlhdCI6MTY5OTc1NjM2MCwiZXhwIjoxNjk5ODQyNzYwfQ.b9DpJWPt1jplBiREd-SRIjPCc0asLMOaxlLhB3n7p7U
+### Aqui el id del receptor se pone el el param id; es decir, en el url
+POST http://localhost:3700/mensaje/6552933d7d0b41aec55c8651
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTI5MTFlMTFmM2ZjOTM3Njc0ZGNmZiIsImlhdCI6MTcwMTMwNzQ4MywiZXhwIjoxNzAxMzkzODgzfQ.0ELnN6ulZRs0GOdPg6wxtrAHKyE97HW2jRMTtcFj4go
 Content-Type: application/json
 
 {
-    "text": "holaaaaaaa4"
+    "mensaje": "holaaaaaaa4"
 }
 
 ###
 
 GET http://localhost:3700/mensajes-recibidos
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzAzOTkxZWY1YTNjNmVmMjdkNTFiZiIsImlhdCI6MTY5OTc1NjQ1OCwiZXhwIjoxNjk5ODQyODU4fQ.RoD6e_8iN6_XRFV4gymiRZQHCa1KRVwexZ1oql0uY3o
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTI5MTFlMTFmM2ZjOTM3Njc0ZGNmZiIsImlhdCI6MTcwMTMwNzQ4MywiZXhwIjoxNzAxMzkzODgzfQ.0ELnN6ulZRs0GOdPg6wxtrAHKyE97HW2jRMTtcFj4go
 
 ###
 
 GET http://localhost:3700/mensajes-emitidos
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzAzOTkxZWY1YTNjNmVmMjdkNTFiZiIsImlhdCI6MTY5OTc1NjQ1OCwiZXhwIjoxNjk5ODQyODU4fQ.RoD6e_8iN6_XRFV4gymiRZQHCa1KRVwexZ1oql0uY3o
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTI5MTFlMTFmM2ZjOTM3Njc0ZGNmZiIsImlhdCI6MTcwMTMwNzQ4MywiZXhwIjoxNzAxMzkzODgzfQ.0ELnN6ulZRs0GOdPg6wxtrAHKyE97HW2jRMTtcFj4go
 
 ###
 
 GET http://localhost:3700/mensajes
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzAzOTkxZWY1YTNjNmVmMjdkNTFiZiIsImlhdCI6MTY5OTc1NjQ1OCwiZXhwIjoxNjk5ODQyODU4fQ.RoD6e_8iN6_XRFV4gymiRZQHCa1KRVwexZ1oql0uY3o
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTI5MTFlMTFmM2ZjOTM3Njc0ZGNmZiIsImlhdCI6MTcwMTMwNzQ4MywiZXhwIjoxNzAxMzkzODgzfQ.0ELnN6ulZRs0GOdPg6wxtrAHKyE97HW2jRMTtcFj4go
 
 ### GRUPOS
 
@@ -187,20 +192,20 @@ Content-Type: application/json
 - Quitar Apodo como dato irrepetible, o sino ponerle su propio mensaje de error
 - Citando a George: Error en solicitudes1 , problemas con leer las solicitudes recibidas, que el encargado lo revise y solucione lo antes posible
 - Verificar si existe findAllUsuarios, findOneUsuario(idUsuario), updateUsuario(idUsuario/token, como sueles hacerlo)
-- Modificar Usuario para soportar foto de perfil (foto vacía por default)
 - Si es que existen, eliminar los atributos de Privacidad de Usuario
-- Alguna forma de vaciar todas las bases de datos
 - Si es necesario, agrega la variable _id
+- Modificar Usuario para soportar foto de perfil (foto vacía por default)
+- Alguna forma de vaciar todas las bases de datos
 
 const defaultGusto = {
     _id: '', //el id del gusto
-    idUsuario: '', //el id del usuario al que pertenece el gusto
-    idTipo: 0, //el id del tipo de gusto
+    usuario: '', //el id del usuario al que pertenece el gusto
+    tipo: 0, //el id del tipo de gusto
     subtipo: '', //cada caracter es un valor booleano de
     nombre: '', //el nombre del gusto. Un mismo usuario no puede tener 2 gustos con el mismo nombre
-    idAfinidad: 0, //el id de la afinidad del gusto
-    idDuracion: 0, //el id de la duracion del gusto
-    idCompania: 0 //el id de la compañía del gusto
+    afinidad: 0, //el id de la afinidad del gusto
+    duracion: 0, //el id de la duracion del gusto
+    compania: 0 //el id de la compañía del gusto
 }
 - Pide IdUsuario/Token (como sueles hacerlo) -> Retorna todos los gustos pertenecientes a dicho usuario
 - Pide defaultGusto -> Agrega un gusto nuevo
@@ -209,8 +214,8 @@ const defaultGusto = {
 
 const defaultSolicitud = {
     _id: '', //el id de la solicitud
-    idEmisor: '', //el id del usuario que creó la solicitud
-    idReceptor: '', //el id del usuario al que se le envió la solicitud. Si existe una Solicitud con emisor X y receptor Y, no puede existir una con emisor Y y receptor X
+    emisor: '', //el id del usuario que creó la solicitud
+    receptor: '', //el id del usuario al que se le envió la solicitud. Si existe una Solicitud con emisor X y receptor Y, no puede existir una con emisor Y y receptor X
     tipo: 0, //si es 0, es una solicitud normal; 1, solicitud oculta; 2, ya son amigos
     viewed: false, //si es false, el usuario todavía no ha visto la solicitud
     ano: 0, //el año
@@ -227,8 +232,8 @@ const defaultSolicitud = {
 
 const defaultMensaje = {
     _id: '', //el id del mensaje
-    idEmisor: "", //el usuario que manda el mensaje
-    idReceptor: "", //el usuario que recibe el mensaje
+    emisor: "", //el usuario que manda el mensaje
+    receptor: "", //el usuario que recibe el mensaje
     mensaje: "", //el contenido del mensaje
     ano: 0, //el año
     mes: 0, //mes

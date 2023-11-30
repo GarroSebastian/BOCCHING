@@ -11,6 +11,10 @@ router.delete("/delete-solicitud/:id", verifyToken, RequestController.deleteRequ
 
 router.get("/getAllSolicitudes", verifyToken, RequestController.getAllRequests);
 
+router.get("/getAllSolicitudesEmitidas", verifyToken, RequestController.getAllRequestsEmitidas);
+
+router.get("/getAllSolicitudesRecibidas", verifyToken, RequestController.getAllRequestsRecibidas);
+
 router.get("/getSolicitud/:id", verifyToken, RequestController.getOneRequest);
 router.get("/get-all-received-requests", verifyToken, RequestController.getAllReceivedRequests);
 router.put('/actualizar-viewer-solicitudes', verifyToken, RequestController.actualizarViewerSolicitudes);
