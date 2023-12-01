@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from 'react';
 import Global from "../extra/global.js";
 import styles from "./Perfil.module.css";
-import Lateral from "../components/lateral.js"
-import UsuarioApi from "../api/usuario";
+import UsuarioApi from "../api/usuario.js";
+import SolicitudesApi from "../api/solicitud.js";
 
 
 /*Validar Perfil:
@@ -35,25 +35,6 @@ const InfoPerfil = ({id}) => { //si id es null, estás en mi-perfil (te deja edi
   const [usuario, setUsuario] = useState(defaultUsuario);
   const [edad, setEdad] = useState(0);
 
-  const [contador, setContador] = useState(true);
-  const onRectangle11Click = useCallback(() => { //Boton editar
-    // Cambiar el valor de contador cuando se presiona el botón 
-    setContador(prevContador => !prevContador);
-  }, []);
-
-  const onRectangle12Click = useCallback(() => {  //Boton añadir
-    // Cambiar el valor de contador cuando se presiona el botón 
-    console.log("Añadir presionado");
-  }, []);
-
-  const onRectangle2Click = useCallback(() => {
-    router.push("/mi-perfil241");
-  }, [router]);
-
-  const onPrivacidadTextClick = useCallback(() => {
-    router.push("/mi-perfil241");
-  }, [router]);
-
   const onClickChat = useCallback(() => {
     router.push("//mensajes");
   }, [router]);
@@ -74,7 +55,7 @@ const InfoPerfil = ({id}) => { //si id es null, estás en mi-perfil (te deja edi
 
           reader.onload = function (e) {  
               setUsuario({...usuario,foto: e.target.result})
-              imagenSeleccionada.style.display = "block";
+              //imagenSeleccionada.style.display = "block";
           };
 
           reader.readAsDataURL(file);
@@ -120,23 +101,36 @@ const InfoPerfil = ({id}) => { //si id es null, estás en mi-perfil (te deja edi
   }
   
   const GuardarPerfil = async() => {
-    if(ValidarCuenta()){
-      UsuarioApi.updateCurrent(usuario).then((user)=>{
-        handlePerfil()
+    if(id===null){
+      if(ValidarCuenta()){
+        UsuarioApi.updateCurrent(usuario).then(()=>{
+          handlePerfil()
+          alert("¡Cambios guardados!")
+        })
+      }
+      /*UsuarioApi.updateCurrent({...usuario, foto: pako.Deflate(usuario.foto, {to: 'string'})}).then((user)=>{
+        handleOnLoad()
         alert("¡Cambios guardados!")
-      })
+      })*/
+    }else{
+      let aux;
+      do{
+        aux = prompt(`Ingrese 0 para solicitud normal (${usuario.mostrar_nombre?usuario.nombre:usuario.apodo} podrá verla y responderla);\nIngrese 1 para solicitud oculta (${usuario.mostrar_nombre?usuario.nombre:usuario.apodo} no podrá verla, deberás esperar a que también te mande solicitudá)`);
+        if(aux===null){
+          break;
+        }else{
+          aux = parseInt(aux);
+        }
+      }while(!(aux===0||aux===1));
+      if(aux===0){
+        //normal
+        alert("normal")
+      }else if(aux===1){
+        //oculta
+        alert("oculta")
+      }
     }
-    /*UsuarioApi.updateCurrent({...usuario, foto: pako.Deflate(usuario.foto, {to: 'string'})}).then((user)=>{
-      handleOnLoad()
-      alert("¡Cambios guardados!")
-    })*/
   }
-/*
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTE2ZmE4YTIwZmMxZWY3MmRjY2Y3OSIsImlhdCI6MTcwMDQwMzIxNSwiZXhwIjoxNzAwNDg5NjE1fQ.GOBiEEXwQPiaIwm3vzMkh7Ig_-V-PTmT3z6JBZ1anTU
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTE2ZmE4YTIwZmMxZWY3MmRjY2Y3OSIsImlhdCI6MTcwMDQwMzIxNSwiZXhwIjoxNzAwNDg5NjE1fQ.GOBiEEXwQPiaIwm3vzMkh7Ig_-V-PTmT3z6JBZ1anTU
-usuario._id
-"65516fa8a20fc1ef72dccf79"
-*/
   
   const handleUser = (aux) => {
     setUsuario(aux)
@@ -163,37 +157,22 @@ usuario._id
         handleUser(user.data.usuario)
       });
     }else{
-      /*UsuarioApi.findOne().then((user)=>{
+      UsuarioApi.findUserById(id).then((user)=>{
         handleUser(user.data.usuario)
-      });*/
-      console.log("CAMAYOOOOOO")
+      });
     }
 
   }
-
-    const handleInputChange = (index, fieldName, event) => {
-    const updatedGustos = [...gustos];
-    updatedGustos[index] = {
-        ...updatedGustos[index],
-        [fieldName]: event.target.value
-    };
-    setGustos(updatedGustos);
-    };
 
   useEffect(() => {
     handlePerfil();
   }, [])
   
   return (
-    <div className={styles.miperfil1}>
-        <div className={styles.colecciones}>Gustos</div>
-        <img className={styles.miperfil1Inner} alt="" src="/rectangle-161.svg" />
-        <div className={styles.rectangleDiv} />
+    <>
         <div className={styles.miperfil1Child1} />
         <div className={styles.miperfil1Child2} />
-        <div className={styles.miperfil1Child3} />
-        <div className={styles.miPerfil}>{id===null?"Mi Perfil":"Estás mirando otro perfil"}</div>
-        <div className={styles.informacin}>Información</div>
+        <div className={styles.miperfil1Child3} />      
         <div className={styles.general}>General</div>
         <div className={styles.correoInstitucional}>Correo Institucional:</div>
         <div className={styles.ejemplodecorreocorreoejemplo}>{usuario.correo}</div>
@@ -271,7 +250,7 @@ usuario._id
         <button onClick={e => setUsuario({...usuario,mostrar_nombre: !usuario.mostrar_nombre})} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
         </div>
         <div className={styles.ellipseDiv}>
-        <img id="imagenSeleccionada" src={usuario.foto} alt="Imagen seleccionada" style={{display: "none", maxWidth: "90%", maxHeight: "90%", borderRadius: "20%"}} />
+        <img id="imagenSeleccionada" src={usuario.foto} alt="Imagen seleccionada" style={{display: usuario.foto===null?"none":"block", maxWidth: "90%", maxHeight: "90%", borderRadius: "20%"}} />
         <input type="file" accept="image/*" id="fileInput" style={{display: 'none'}} onChange={mostrarImagen}></input>
         </div>
         {
@@ -301,11 +280,11 @@ usuario._id
         }
         <div className={styles.miperfil1Child11} style={{top: "1395px", left: "910px"}}>
         <div className={styles.nombreapodo}>
-            <p style={{marginTop: "13px"}}>Guardar</p>
+            <p style={{marginTop: "13px"}}>{id===null?"Guardar":"Mandar solicitud"}</p>
         </div>
         <button onClick={GuardarPerfil} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
         </div>
-    </div>
+    </>
   );
 };
 

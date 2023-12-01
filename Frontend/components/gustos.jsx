@@ -1,9 +1,7 @@
 import { useCallback } from "react";
 import { useRouter } from "next/router";
 import { useState, useEffect } from 'react';
-import Global from "../extra/global.js";
 import styles from "./Perfil.module.css";
-import UsuarioApi from "../api/usuario";
 import GustoApi from "../api/gusto.js";
 
 
@@ -30,24 +28,45 @@ const Gustos = ({id}) => { //si id es null, estás en mi-perfil (te deja editar 
 
   const router = useRouter();
 
-  const defaultUsuario = {
-    _id: '',
-    nombre: '',
-    apellidos: '',
-    correo: '',
-    id_genero: 0,
-    nacimiento: '',
-    apodo: '',
-    contrasena: '',
-    foto: '',
-    facultad: -1,
-    carrera: '',
-    especialidad: '',
-    descripcion: '',
-    confirmationCode:'12345678',
-    mostrar_nombre: true
-  }
-  const [usuario, setUsuario] = useState(defaultUsuario);
+  // Mapping each text option to a numerical value
+const afinidadOptions = {
+  "Sin especificar": 0,
+  "Me encanta": 1,
+  "Me fascina": 2,
+  "Me gusta": 3,
+  "Me es indiferente": 4,
+  "Me aburre": 5,
+  "Me disgusta": 6
+};
+
+// Reverse mapping to retrieve text from numerical value
+const reverseAfinidadOptions = {
+  0: "Sin especificar",
+  1: "Me encanta",
+  2: "Me fascina",
+  3: "Me gusta",
+  4: "Me es indiferente",
+  5: "Me aburre",
+  6: "Me disgusta"
+};
+
+const duracionOptions = {
+   "Sin especificar": 0,
+   "Duración ilimitada": 1,
+   "Ya lo consumí": 2,
+   "Lo estoy consumiendo": 3,
+   "Lo consumiré pronto": 4,
+   "Espero consumirlo próximamente": 5
+};
+
+const reverseDuracionOptions = {
+  0: "Sin especificar",
+  1: "Duración ilimitada",
+  2: "Ya lo consumí",
+  3: "Lo estoy consumiendo",
+  4: "Lo consumiré pronto",
+  5: "Espero consumirlo próximamente"
+};
 
   const defaultGusto = {
     _id: '', //el id del gusto
@@ -79,79 +98,71 @@ const Gustos = ({id}) => { //si id es null, estás en mi-perfil (te deja editar 
     setContador(prevContador => !prevContador);
   }, []);
 
-  const onRectangle12Click = useCallback(() => {  //Boton añadir
-    // Cambiar el valor de contador cuando se presiona el botón 
-    console.log("Añadir presionado");
-  }, []);
+  const onRectangle12Click = async () => {
+  try {
+    const token = localStorage.getItem('token');
 
-  const onRectangle2Click = useCallback(() => {
-    router.push("/mi-perfil241");
-  }, [router]);
+    // Fetch existing data from the backend
+    const existingGustosResponse = await GustoApi.getGustos(token);
+    const existingGustos = existingGustosResponse ? existingGustosResponse.data : [];
 
-  const onPrivacidadTextClick = useCallback(() => {
-    router.push("/mi-perfil241");
-  }, [router]);
-  
-  const handleUser = (aux) => {
-    setUsuario(aux)
-    /*if(aux.foto!=''){
-      setUsuario({...aux, foto: pako.Deflate(aux.foto, {to: 'string'})})
-    }else{
-      setUsuario(aux)
-    }*/
-    const f = new Date(aux.nacimiento)
-    const today = new Date()
-    const dif = today.setDate(today.getDate()+1) - f;
-    setEdad(Math.floor(dif/(1000*60*60*24*365.25)))
-  }
+    console.log('Existing Gustos:', existingGustos); // Log existing gustos fetched from the backend
 
-  const handlePerfil = async() => {
-    //var token = localStorage.getItem("token");
-    /*UsuarioApi.findUser(token).then((user)=>{
+    // Check if the 'nombre' already exists in existingGustos
+    const nombreAlreadyExists = gustos.some((nuevoGusto) =>
+      existingGustos.some((existingGusto) => existingGusto.nombre === nuevoGusto.nombre)
+    );
 
-      console.log(user.data);
-    });*/
+    console.log('New Gustos to be added:', nuevoGusto); // Log the gustos to be added for comparison
 
-    if(id===null){
-      UsuarioApi.findCurrent().then((user)=>{
-        handleUser(user.data.usuario)
-      });
-    }else{
-      /*UsuarioApi.findOne().then((user)=>{
-        handleUser(user.data.usuario)
-      });*/
+    if (nombreAlreadyExists) {
+      console.log('Gusto con nombre duplicado, no se agregará a la base de datos.');
+      return; // Stop further execution
     }
 
+    // If 'nombre' is unique, proceed to save the data
+    const response = await GustoApi.guardarGusto(gustos, token);
+
+    if (response && response.status === 201) {
+      // Data was saved in the DB
+      console.log('Gustos guardados correctamente');
+      handleGustos();
+    } else {
+      console.error('Error al guardar gustos');
+    }
+  } catch (error) {
+    console.error('Ocurrió un error', error);
   }
+  console.log("Añadir presionado");
+  handleGustos();
+};
 
   const handleGustos = async() => {
     if(id===null){
       GustoApi.getGustosCurrent().then((user)=>{
-        const aux = user.data.gustos;
+        const aux = user.data;
         setGustos(aux)
       });
     }
   }
 
-    const handleInputChange = (index, fieldName, event) => {
+  const handleInputChange = (index, fieldName, newValue) => {
     const updatedGustos = [...gustos];
-    updatedGustos[index] = {
+    if (updatedGustos[index]) {
+      updatedGustos[index] = {
         ...updatedGustos[index],
-        [fieldName]: event.target.value
-    };
-    setGustos(updatedGustos);
-    };
+        [fieldName]: newValue
+      };
+      setGustos(updatedGustos);
+    }
+  };
 
   useEffect(() => {
-    handlePerfil();
     handleGustos();
   }, [])
   
   return (
-    <div className={styles.miperfil21}>
-        <img className={styles.miperfil21Child} alt="" src="/rectangle-161.svg" />
-        <div className={styles.colecciones2}>Gustos</div>
-        <div className={styles.rectangleDiv2} />
+    <>
         <div className={styles.miperfil21Child1} />
         <img className={styles.recDerIcon} alt="" src="/rec-der1.svg" />
         <img className={styles.derechaIcon} alt="" src="/derecha3.svg" />
@@ -217,29 +228,41 @@ const Gustos = ({id}) => { //si id es null, estás en mi-perfil (te deja editar 
                 <div className={styles.xd8} style={{ top: `${primero + salto * index}px` }}>
                     {
                         // Condition to determine if values are editable or not
-                        contador ?
-                            item.afinidad
-                        :
+                        contador 
+                        ? reverseAfinidadOptions[item.afinidad]  
+                        : (
                             <select
-                            type="text"
-                            value={item.afinidad}
-                            readOnly={contador}
-                            onChange={(e) => handleInputChange(index, 'afinidad', e)}
-                            />
+                            value={afinidadOptions[item.afinidad]}
+                            disabled={contador}
+                            onChange={(e) => handleInputChange(index, 'afinidad', reverseAfinidadOptions[e.target.value])}
+                            >
+                              {Object.keys(afinidadOptions).map((option, optionIndex) =>(
+                                <option key={optionIndex} value={afinidadOptions[option]}>
+                              {option}
+                              </option>
+                              ))}
+                              </select>
+                              )
                     }
                 </div>
                 <div className={styles.xd12} style={{ top: `${primero + salto * index}px` }}>
-                    {
+                {
                         // Condition to determine if values are editable or not
-                        contador ?
-                            item.duracion
-                        :
+                        contador 
+                        ? reverseDuracionOptions[item.duracion]  
+                        : (
                             <select
-                            type="text"
-                            value={item.duracion}
-                            readOnly={contador}
-                            onChange={(e) => handleInputChange(index, 'duracion', e)}
-                            />
+                            value={afinidadOptions[item.duracion]}
+                            disabled={contador}
+                            onChange={(e) => handleInputChange(index, 'duracion', reverseDuracionOptions[e.target.value])}
+                            >
+                              {Object.keys(duracionOptions).map((option, optionIndex) =>(
+                                <option key={optionIndex} value={duracionOptions[option]}>
+                              {option}
+                              </option>
+                              ))}
+                              </select>
+                              )
                     }
                 </div>
                 <div className={styles.miperfil21Child3} style={{ top: `${695 + salto * index}px` }} />
@@ -248,10 +271,6 @@ const Gustos = ({id}) => { //si id es null, estás en mi-perfil (te deja editar 
         }
 
         <img className={styles.derechaIcon1} alt="" src="/derecha2.svg" />
-        <div className={styles.miPerfil}>Mi Perfil</div>
-        <div className={styles.privacidad} onClick={onPrivacidadTextClick}>
-        Privacidad
-        </div>
         <div className={styles.misColecciones}>Mis Gustos</div>
         <div className={styles.aquPodrsAgregar}>
         Aquí podrás agregar tus gustos personales, editarlos o eliminarlos
@@ -262,39 +281,76 @@ const Gustos = ({id}) => { //si id es null, estás en mi-perfil (te deja editar 
         <div className={styles.editar} onClick={onRectangle11Click}>Editar</div>
         <div className={styles.aadir} onClick={onRectangle12Click}>Añadir</div>
         
-        <div className={styles.hobby} style={{marginLeft: '-3px', top: `${primero+salto*gustos.length}px`}}>
-        <select value={nuevoGusto.idTipo} onChange={e => {
-            const selectedIndex = e.target.selectedIndex; // Obtiene el índice del elemento seleccionado
-            setNuevoGusto({ ...nuevoGusto,idTipo: e.target.value});
-            setID_Tipo(selectedIndex)
-        }} >
+        <div className={styles.hobby} style={{marginLeft: '-3px', top: `${primero+salto*gustos?.length}px`}}>
+        <select
+  value={nuevoGusto.idTipo}
+  onChange={(e) => {
+    const selectedIndex = e.target.selectedIndex;
+    setNuevoGusto({ ...nuevoGusto, idTipo: e.target.value });
+    setID_Tipo(selectedIndex);
+  }}
+>
             {
             arrayTipo.map((item, index) => {return (<option key={index}>{item}</option>)})
             }
         </select>
         </div>
 
-        <div className={styles.hobby} style={{left: '500px', marginLeft: '-3px', top: `${primero+salto*gustos.length}px`}}>
-        <select value={nuevoGusto.subtipo} onChange={e => setNuevoGusto({ ...nuevoGusto,subtipo: e.target.value})} style={{width: "200%"}}>
-            {
-            arraySubTipo[ID_Tipo].map((item, index)=>{return(<option key={index} value={item}>{item}</option>)})
-            }
-        </select>
+        <div className={styles.hobby} style={{ left: '500px', marginLeft: '-3px', top: `${primero + salto * gustos?.length}px` }}>
+        <select
+  value={nuevoGusto.subtipo}
+  onChange={(e) => setNuevoGusto({ ...nuevoGusto, subtipo: e.target.value })}
+  style={{ width: "200%" }}
+  disabled={!nuevoGusto.idTipo || nuevoGusto.idTipo === "Sin especificar" || nuevoGusto.idTipo === ""}
+>
+    {arraySubTipo[ID_Tipo].map((item, index) => (
+      <option key={index} value={item}>
+        {item}
+      </option>
+    ))}
+  </select>
+</div>
+
+        <div className={styles.hobby} style={{left: '700px', marginLeft: '-3px', top: `${primero+salto*gustos?.length}px`}}>
+        <input
+  type="text"
+  value={nuevoGusto.nombre}
+  onChange={(e) => setNuevoGusto({ ...nuevoGusto, nombre: e.target.value })}
+  style={{ width: "100px" }}
+/>
         </div>
 
-        <div className={styles.hobby} style={{left: '700px', marginLeft: '-3px', top: `${primero+salto*gustos.length}px`}}>
-            <input type="text" value={nuevoGusto.nombre} onChange={e => setNuevoGusto({ ...nuevoGusto,nombre: e.target.value})} style={{width: "100px"}} />
-        </div>
+        <div className={styles.hobby} style={{ left: '900px', marginLeft: '-3px', top: `${primero + salto * gustos?.length}px` }}>
+        <select
+  value={nuevoGusto.idAfinidad}
+  onChange={(e) => setNuevoGusto({ ...nuevoGusto, idAfinidad: e.target.value })}
+  style={{ width: "100px" }}
+  disabled={!nuevoGusto.idTipo || nuevoGusto.idTipo === "Sin especificar" || nuevoGusto.idTipo === ""}
+>
+           {Object.entries(afinidadOptions).map(([optionText, optionValue]) => (
+      <option key={optionValue} value={optionValue}>
+        {optionText}
+      </option>
+    ))}
+  </select>
+</div>
 
-        <div className={styles.hobby} style={{left: '900px', marginLeft: '-3px', top: `${primero+salto*gustos.length}px`}}>
-            <input type="text" value={nuevoGusto.idAfinidad} onChange={e => setNuevoGusto({ ...nuevoGusto,idAfinidad: e.target.value})} style={{width: "100px"}} />
-        </div>
+<div className={styles.hobby} style={{ left: '1100px', marginLeft: '-3px', top: `${primero + salto * gustos?.length}px` }}>
+  <select
+  value={nuevoGusto.idDuracion}
+  onChange={(e) => setNuevoGusto({ ...nuevoGusto, idDuracion: e.target.value })}
+  style={{ width: "100px" }}
+  disabled={!nuevoGusto.idTipo || nuevoGusto.idTipo === "Sin especificar" || nuevoGusto.idTipo === ""}
+>
+    {Object.entries(duracionOptions).map(([optionText, optionValue]) => (
+      <option key={optionValue} value={optionValue}>
+        {optionText}
+      </option>
+    ))}
+  </select>
+</div>
 
-        <div className={styles.hobby} style={{left: '1100px', marginLeft: '-3px', top: `${primero+salto*gustos.length}px`}}>
-            <input type="text" value={nuevoGusto.idDuracion} onChange={e => setNuevoGusto({ ...nuevoGusto,idDuracion: e.target.value})} style={{ width: "100px"}} />
-        </div>
-
-    </div>
+    </>
   );
 };
 
