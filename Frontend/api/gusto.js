@@ -84,7 +84,7 @@ const getGusto = async(idReceptor, token) => {
     }
 
 }
-
+//oh no hermano
 const borrarGusto = async(idReceptor, token) => {
 
     try {

@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from 'react';
 import styles from "./Perfil.module.css";
 import GustoApi from "../api/gusto.js";
-
+import UsuarioApi from "../api/usuario.js";
 
 /*Editar Gustos:
 - Intenta coordinar con Rodrigo para que te haga componentes nuevos que puedas usar más fácilmente
@@ -25,9 +25,41 @@ Guardar en Backend:
 */
 
 const Gustos = ({id}) => { //si id es null, estás en mi-perfil (te deja editar los datos). si tiene valor, estás viendo otro perfil (no te deja editar)
-
+  const defaultUsuario = {
+    _id: '',
+    nombre: '',
+    apellidos: '',
+    correo: '',
+    id_genero: 0,
+    nacimiento: '',
+    apodo: '',
+    contrasena: '',
+    foto: '',
+    facultad: -1,
+    carrera: '',
+    especialidad: '',
+    descripcion: '',
+    confirmationCode:'12345678',
+    mostrar_nombre: true
+  }
   const router = useRouter();
+  const [usuario, setUsuario] = useState(defaultUsuario);
 
+  useEffect(() => {
+    UsuarioApi.findCurrent().then((user) => {
+      if (user && user.data && user.data.usuario && user.data.usuario._id) {
+        setUsuario(user.data.usuario);
+      } else {
+        console.error('Invalid user data structure:', user);
+        // Handle invalid user data structure here (e.g., show an error message)
+      }
+    });
+  }, []);
+
+  const userId = usuario._id || '';
+
+
+        
   // Mapping each text option to a numerical value
 const afinidadOptions = {
   "Sin especificar": 0,
@@ -70,7 +102,7 @@ const reverseDuracionOptions = {
 
   const defaultGusto = {
     _id: '', //el id del gusto
-    idUsuario: '', //el id del usuario al que pertenece el gusto. No se muestra en pantalla
+    idUsuario: userId, //el id del usuario al que pertenece el gusto. No se muestra en pantalla
     idTipo: 0, //el id del tipo de gusto. Se guarda como número pero en pantalla se muestra como texto. Aaron ya hizo un <select> borrador
     subtipo: '', //cada caracter es un valor booleano de si el checkbox se marcó o no. Aaron ya hizo un <select> borrador
     nombre: '', //el nombre del gusto. Se muestra en pantalla. Un mismo usuario no puede tener 2 gustos con el mismo nombre
@@ -93,55 +125,57 @@ const reverseDuracionOptions = {
   
   const primero=663, salto=50;
   const [contador, setContador] = useState(true);
+  const [existingTasteNames, setExistingTasteNames] = useState([]); // Maintain a state for existing taste names
   const onRectangle11Click = useCallback(() => { //Boton editar
     // Cambiar el valor de contador cuando se presiona el botón 
     setContador(prevContador => !prevContador);
   }, []);
 
   const onRectangle12Click = async () => {
-  try {
-    const token = localStorage.getItem('token');
-
-    // Fetch existing data from the backend
-    const existingGustosResponse = await GustoApi.getGustos(token);
-    const existingGustos = existingGustosResponse ? existingGustosResponse.data : [];
-
-    console.log('Existing Gustos:', existingGustos); // Log existing gustos fetched from the backend
-
-    // Check if the 'nombre' already exists in existingGustos
-    const nombreAlreadyExists = gustos.some((nuevoGusto) =>
-      existingGustos.some((existingGusto) => existingGusto.nombre === nuevoGusto.nombre)
-    );
-
-    console.log('New Gustos to be added:', nuevoGusto); // Log the gustos to be added for comparison
-
-    if (nombreAlreadyExists) {
-      console.log('Gusto con nombre duplicado, no se agregará a la base de datos.');
-      return; // Stop further execution
+    try {
+      const token = localStorage.getItem('token');
+  
+      // Fetch existing data from the backend
+      const existingGustosResponse = await GustoApi.getGustos(token);
+      const existingGustos = existingGustosResponse ? existingGustosResponse.data : [];
+  
+      console.log('Existing Gustos:', existingGustos); // Log existing gustos fetched from the backend
+  
+      // Extract existing taste names from fetched data
+      const existingTasteNames = existingGustos.map((existingGusto) => existingGusto.nombre);
+  
+      // Validate if nuevoGusto.nombre already exists in the existing taste names
+      if (existingTasteNames.includes(nuevoGusto.nombre)) {
+        console.log('Gusto con nombre duplicado, no se agregará a la base de datos.');
+        return; // Stop further execution
+      }
+      console.log('Gustos nuevos a añadir:', nuevoGusto);
+      // If the nuevoGusto.nombre is unique, proceed to save the data
+      const response = await GustoApi.guardarGusto(gustos, token);
+  
+      if (response && response.status === 201) {
+        // Data was saved in the DB
+        console.log('Gustos guardados correctamente');
+        handleGustos();
+      } else {
+        console.error('Error al guardar gustos');
+      }
+    } catch (error) {
+      console.error('Ocurrió un error', error);
     }
-
-    // If 'nombre' is unique, proceed to save the data
-    const response = await GustoApi.guardarGusto(gustos, token);
-
-    if (response && response.status === 201) {
-      // Data was saved in the DB
-      console.log('Gustos guardados correctamente');
-      handleGustos();
-    } else {
-      console.error('Error al guardar gustos');
-    }
-  } catch (error) {
-    console.error('Ocurrió un error', error);
-  }
-  console.log("Añadir presionado");
-  handleGustos();
-};
+    console.log("Añadir presionado");
+    handleGustos();
+  };
 
   const handleGustos = async() => {
-    if(id===null){
-      GustoApi.getGustosCurrent().then((user)=>{
-        const aux = user.data;
-        setGustos(aux)
+    if (id === null) {
+      GustoApi.getGustosCurrent().then((user) => {
+        const aux = user?.data; // Use optional chaining to access data property
+        if (aux) {
+          setGustos(aux);
+        } else {
+          console.error('No data found in user object');
+        }
       });
     }
   }
