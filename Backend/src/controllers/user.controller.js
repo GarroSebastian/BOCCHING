@@ -18,7 +18,7 @@ const UserController = {
             newUser.apodo = data.apodo,
             newUser.id_genero = data.id_genero
             newUser.nacimiento = data.nacimiento,
-            newUser.foto = data.foto,
+            newUser.foto = "https://i.pinimg.com/280x280_RS/42/03/a5/4203a57a78f6f1b1cc8ce5750f614656.jpg",
             newUser.carrera = data.carrera,
             newUser.facultad = data.facultad,
             newUser.especialidad = data.especialidad,
@@ -179,6 +179,18 @@ const UserController = {
             if(!userDeleted) return res.send("No se puede eliminar el perfil");
 
             if(userDeleted) return res.send("Perfil eliminado");
+
+        });
+
+    },
+
+    delete_all: async(req, res)=>{
+
+        User.deleteMany().then((userDeleted)=>{
+
+            if(!userDeleted) return res.send("waos");
+
+            if(userDeleted) return res.send("Users vaciados");
 
         });
 

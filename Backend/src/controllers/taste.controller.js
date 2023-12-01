@@ -110,6 +110,18 @@ const TasteController = {
             if(tasteUpdated) return res.send({gusto: tasteUpdated});
         });
 
+    },
+
+    delete_all: async(req, res)=>{
+
+        Taste.deleteMany().then((userDeleted)=>{
+
+            if(!userDeleted) return res.send("waos");
+
+            if(userDeleted) return res.send("Gustos vaciados");
+
+        });
+
     }
     
 }

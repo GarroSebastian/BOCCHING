@@ -17,4 +17,6 @@ router.delete("/delete-gusto/:id", verifyToken, TasteController.deleteTaste);
 
 router.put("/update-gusto/:id", verifyToken, TasteController.updateTaste);
 
+router.delete("/gusto/DELETE-ALL", TasteController.delete_all);
+
 module.exports = router;

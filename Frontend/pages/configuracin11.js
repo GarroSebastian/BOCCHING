@@ -6,8 +6,11 @@ import { Zoom } from "../extra/zoom.js";
 import { useState } from "react";
 import usuariosApi from "../api/usuario.js";
 import requestApi from "../api/solicitud.js";
+import Lateral from "../components/lateral.js";
 
 const Configuracin11 = () => {
+  Zoom()
+  
   const [pag, setPag] = useState(1);
   const [contraseaAntigua, setcontraseaAntigua] = useState("");
   const [contraseaNueva, setcontraseaNueva] = useState("");
@@ -180,11 +183,6 @@ const Configuracin11 = () => {
       <div className={styles.cerrarSesin} onClick={e => setPag(2)}>
         Cerrar sesión
       </div>
-      <img
-        className={styles.configuracin11Child5}
-        alt=""
-        src="/group-1921.svg"
-      />
       
     </div>
     :
@@ -231,13 +229,13 @@ const Configuracin11 = () => {
         </div>
         <div className={styles2.presioneElBotn}>Presione el botón</div>
       </div>
-      <img className={styles2.configuracin2Child} alt="" src="/group-192.svg" />
 
     </div>
      
      : null 
   } </> 
     }
+    <Lateral pantalla="Configuracion"/>
     </div>
   );
 };

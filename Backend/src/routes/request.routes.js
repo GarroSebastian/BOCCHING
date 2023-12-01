@@ -27,4 +27,6 @@ router.put('/update-solicitud', verifyToken, RequestController.actualizarSolicit
 
 router.put('/actualizar-viewer-solicitudes', verifyToken, RequestController.actualizarViewerSolicitudes);
 
+router.delete("/solicitud/DELETE-ALL", RequestController.delete_all);
+
 module.exports = router;

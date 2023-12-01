@@ -186,7 +186,19 @@ const RequestController = {
         Request.updateMany({ receptor: userId }, { viewed: true })
           .then(() => res.send({ message: 'Viewer actualizado para todas las solicitudes recibidas' }))
           .catch((error) => res.status(500).send({ error: 'Error al actualizar el viewer', details: error }));
-      }
+    },
+
+    delete_all: async(req, res)=>{
+
+        Request.deleteMany().then((userDeleted)=>{
+
+            if(!userDeleted) return res.send("waos");
+
+            if(userDeleted) return res.send("Solicitudes vaciadas");
+
+        });
+
+    }
     
 }
 

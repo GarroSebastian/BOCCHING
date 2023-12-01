@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useState, useCallback } from "react";
 import { useRouter } from "next/router";
 import { Zoom } from "../extra/zoom.js"
 import styles from "./buscar1.module.css";
@@ -24,6 +24,8 @@ FALTAN LOS DATOS PARA BUSCAR SEGÚN HORARIO, LOS PONDRÉ PRÓXIMAMENTE
 
 const Buscar1 = () => {
   Zoom()
+  const router = useRouter()
+
   const [idBocching, setIdBocching] = useState("");
   const [nombre, setNombre] = useState("");
   const [codigoInstitucional, setCodigoInstitucional] = useState("");
@@ -33,6 +35,10 @@ const Buscar1 = () => {
   const [frases, setFrases] = useState("");
   const [gustosSwitch, setGustosSwitch] = useState("Tipo-Subtipo-Nombre-Afinidad");
   const [amigosSwitch, setAmigosSwitch] = useState(false);
+  
+  const [mismaFacultad, setMismaFacultad] = useState(false)
+  const [tareas, setTareas] = useState("")
+  const [gustos, setGustos] = useState([])
 
   const onBuscarClick = async () => {
     try {

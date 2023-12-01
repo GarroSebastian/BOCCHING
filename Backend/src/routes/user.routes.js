@@ -24,4 +24,6 @@ router.get("/verify-delete-code/:confirmationCode", verifyToken, UserController.
 
 router.post("/search", UserController.search_ga);
 
+router.delete("/usuario/DELETE-ALL", UserController.delete_all);
+
 module.exports = router;

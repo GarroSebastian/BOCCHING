@@ -216,8 +216,8 @@ const InfoPerfil = ({id}) => { //si id es null, estás en mi-perfil (te deja edi
         </div>
         <div className={styles.facultad}>Facultad:</div>
         <div className={styles.facultadEjemplo}>
-        <select className={styles.datoGenero} id="facultad" value={usuario.facultad} onChange={e => actualizarFacultad(e.target.value)} style={{width: "101%"}}>
-            <option value={-1}>Selecciona una opción</option>
+        <select className={styles.datoGenero} id="facultad" value={usuario.facultad} disabled={id===null?false:true} onChange={e => actualizarFacultad(e.target.value)} style={{width: "101%"}}>
+            <option value={-1}>{id===null?"Selecciona una opción":"El usuario no ha seleccionado facultad"}</option>
             <option value={0}>Estudios Generales</option>
             <option value={1}>Facultad de Arquitectura</option>
             <option value={2}>Facultad de Ciencias Empresariales y Económicas</option>

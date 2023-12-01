@@ -295,3 +295,14 @@ const defaultMensaje = {
 
 HORARIO TODAVÍA NO LO HE HECHO; TE LO PASO PRÓXIMAMENTE
 -->
+###
+
+DELETE http://localhost:3700/usuario/DELETE-ALL
+
+###
+
+DELETE http://localhost:3700/gusto/DELETE-ALL
+###
+DELETE http://localhost:3700/solicitud/DELETE-ALL
+###
+DELETE http://localhost:3700/mensaje/DELETE-ALL

@@ -87,12 +87,13 @@ const Lateral = (props) => {
                     )}
                 </div>
             )}
-            <img
+            {pantalla !== "Configuracion" && (<img
             className={styles.configuracion}
             alt=""
             src="/xmlid-2732.svg"
             onClick={onXMLID273IconClick}
-            />
+            />)}
+            
         </div>
     )
 }
