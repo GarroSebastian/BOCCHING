@@ -112,6 +112,20 @@ const UserController = {
 
         res.send({usuario: user});
     },
+
+    get_one_user_Adr: async(req, res)=>{
+
+        const user_id = req.params.id;
+
+        var user = await User.findById(user_id , {password:0}).then((user)=>{
+
+            if(!user) res.send("No se puede ingresar al perfil");
+            return user;
+
+        });
+
+        res.send({usuario: user});
+    },
     
 
     get_all_users: async(req, res) => {

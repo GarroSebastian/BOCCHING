@@ -3,7 +3,8 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from 'react';
 import Global from "../extra/global.js";
 import styles from "./Perfil.module.css";
-import UsuarioApi from "../api/usuario";
+import UsuarioApi from "../api/usuario.js";
+import SolicitudesApi from "../api/solicitud.js";
 
 
 /*Validar Perfil:
@@ -54,7 +55,7 @@ const InfoPerfil = ({id}) => { //si id es null, estás en mi-perfil (te deja edi
 
           reader.onload = function (e) {  
               setUsuario({...usuario,foto: e.target.result})
-              imagenSeleccionada.style.display = "block";
+              //imagenSeleccionada.style.display = "block";
           };
 
           reader.readAsDataURL(file);
@@ -100,16 +101,35 @@ const InfoPerfil = ({id}) => { //si id es null, estás en mi-perfil (te deja edi
   }
   
   const GuardarPerfil = async() => {
-    if(ValidarCuenta()){
-      UsuarioApi.updateCurrent(usuario).then(()=>{
-        handlePerfil()
+    if(id===null){
+      if(ValidarCuenta()){
+        UsuarioApi.updateCurrent(usuario).then(()=>{
+          handlePerfil()
+          alert("¡Cambios guardados!")
+        })
+      }
+      /*UsuarioApi.updateCurrent({...usuario, foto: pako.Deflate(usuario.foto, {to: 'string'})}).then((user)=>{
+        handleOnLoad()
         alert("¡Cambios guardados!")
-      })
+      })*/
+    }else{
+      let aux;
+      do{
+        aux = prompt(`Ingrese 0 para solicitud normal (${usuario.mostrar_nombre?usuario.nombre:usuario.apodo} podrá verla y responderla);\nIngrese 1 para solicitud oculta (${usuario.mostrar_nombre?usuario.nombre:usuario.apodo} no podrá verla, deberás esperar a que también te mande solicitudá)`);
+        if(aux===null){
+          break;
+        }else{
+          aux = parseInt(aux);
+        }
+      }while(!(aux===0||aux===1));
+      if(aux===0){
+        //normal
+        alert("normal")
+      }else if(aux===1){
+        //oculta
+        alert("oculta")
+      }
     }
-    /*UsuarioApi.updateCurrent({...usuario, foto: pako.Deflate(usuario.foto, {to: 'string'})}).then((user)=>{
-      handleOnLoad()
-      alert("¡Cambios guardados!")
-    })*/
   }
   
   const handleUser = (aux) => {
@@ -137,10 +157,9 @@ const InfoPerfil = ({id}) => { //si id es null, estás en mi-perfil (te deja edi
         handleUser(user.data.usuario)
       });
     }else{
-      /*UsuarioApi.findOne().then((user)=>{
+      UsuarioApi.findUserById(id).then((user)=>{
         handleUser(user.data.usuario)
-      });*/
-      console.log("CAMAYOOOOOO")
+      });
     }
 
   }
@@ -231,7 +250,7 @@ const InfoPerfil = ({id}) => { //si id es null, estás en mi-perfil (te deja edi
         <button onClick={e => setUsuario({...usuario,mostrar_nombre: !usuario.mostrar_nombre})} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
         </div>
         <div className={styles.ellipseDiv}>
-        <img id="imagenSeleccionada" src={usuario.foto} alt="Imagen seleccionada" style={{display: "none", maxWidth: "90%", maxHeight: "90%", borderRadius: "20%"}} />
+        <img id="imagenSeleccionada" src={usuario.foto} alt="Imagen seleccionada" style={{display: usuario.foto===null?"none":"block", maxWidth: "90%", maxHeight: "90%", borderRadius: "20%"}} />
         <input type="file" accept="image/*" id="fileInput" style={{display: 'none'}} onChange={mostrarImagen}></input>
         </div>
         {
@@ -261,7 +280,7 @@ const InfoPerfil = ({id}) => { //si id es null, estás en mi-perfil (te deja edi
         }
         <div className={styles.miperfil1Child11} style={{top: "1395px", left: "910px"}}>
         <div className={styles.nombreapodo}>
-            <p style={{marginTop: "13px"}}>Guardar</p>
+            <p style={{marginTop: "13px"}}>{id===null?"Guardar":"Mandar solicitud"}</p>
         </div>
         <button onClick={GuardarPerfil} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
         </div>
