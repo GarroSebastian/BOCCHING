@@ -1,5 +1,6 @@
 const Request = require("../models/request");
 const moment = require("moment");
+require('moment/locale/es');
 
 const RequestController = {
 
@@ -15,7 +16,7 @@ const RequestController = {
         newRequest.ano = moment(newRequest.date).format('YYYY');
         newRequest.mes = moment(newRequest.date).format('M');
         newRequest.dia = moment(newRequest.date).format('D');
-        newRequest.diaSem = moment(newRequest.date).day();
+        newRequest.diaSem = moment(newRequest.date).format('dddd')[0].toUpperCase()+moment(newRequest.date).format('dddd').slice(1)
         newRequest.hora = moment(newRequest.date).format('HH');
         newRequest.minuto = moment(newRequest.date).format('mm');
         
@@ -81,6 +82,22 @@ const RequestController = {
         return res.send({
             recibidos: recibidos,
             emitidos: emitidos
+        });
+
+    },
+
+    getAllRequestsAdr: async(req, res)=>{
+        const userid = req.token_usuarioId;
+
+        var solicitudes = await Request.find({$or: [{emisor: userid}, {receptor: userid}]}).then(requests=>{
+
+            if(!requests) return res.send({message: "No se encontraron solicitudes"});
+
+            if(requests) return requests;
+        });
+
+        return res.send({
+            solicitudes: solicitudes
         });
 
     },
