@@ -69,8 +69,8 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTI5MTFlMTFmM2Zj
 
 ### Solicitudes
 
-POST http://localhost:3700/save-solicitud/6552933d7d0b41aec55c8651
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTI5MTFlMTFmM2ZjOTM3Njc0ZGNmZiIsImlhdCI6MTcwMTMwNzQ4MywiZXhwIjoxNzAxMzkzODgzfQ.0ELnN6ulZRs0GOdPg6wxtrAHKyE97HW2jRMTtcFj4go
+POST http://localhost:3700/save-solicitud/6551bfde2fc80e6ce90f9938
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Njg2OTUzY2ExOGJiMGY1YjE2MTNlZCIsImlhdCI6MTcwMTM5ODc0MiwiZXhwIjoxNzAxNDg1MTQyfQ.o6t_J53pAli94ngLiTqoXoUjNHLWMkb5dkrsdOllRoE
 Content-Type: application/json
 
 {

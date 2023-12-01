@@ -38,8 +38,8 @@ const Lateral = (props) => {
         try {
           const solic = await SolicitudApi.SolicitudesRecibidasUsuario(window.localStorage.token);
           let count = 0;
-          for (let i = 0; i < solic.data.solicitudesRecibidas.length; i++) {
-            if (solic.data.solicitudesRecibidas[i].viewed === false) {
+          for (let i = 0; i < solic.data.length; i++) {
+            if (solic.data[i].viewed === false) {
               count++;
             }
           }
