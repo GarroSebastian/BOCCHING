@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const buildSearchQuery = require("../controllers/Busquedaparaadrian");
 
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -183,29 +184,18 @@ const UserController = {
 
     },
 
-    verify_delete_code : async (req, res) => {
-        const user_id = req.token_usuarioId;
-        const confirmationCode = req.params.confirmationCode;
-
-        // Obtener el usuario de la base de datos
-        var user = await User.findById(user_id )
-
-
-
-        if (!user) {
-            return res.status(404).send(`Usuario no encontrado. user_id: ${user_id}`);
-        }
-        // Verificar si el código de confirmación coincide
-        if (confirmationCode === user.confirmationCode) {
-            // Eliminar la cuenta del usuario
-            await User.findByIdAndDelete(user_id);
-            return res.status(200).send("Cuenta eliminada exitosamente");
-        } else {
-            return res.status(400).send("Código de confirmación incorrecto");
-        }
     
-    }
-    
+    search_ga: async (req, res) => {
+        try {
+            const criteria = req.body;
+            const users = await User.find(buildSearchQuery(criteria));
+            res.json(users);
+        } catch (error) {
+            console.error('Error en la búsqueda:', error);
+            res.status(500).json({ error: 'Error en la búsqueda' });
+        }
+      },
+        
     
 }
 

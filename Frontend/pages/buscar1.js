@@ -24,7 +24,37 @@ FALTAN LOS DATOS PARA BUSCAR SEGÚN HORARIO, LOS PONDRÉ PRÓXIMAMENTE
 
 const Buscar1 = () => {
   Zoom()
-  const router = useRouter();
+  const [idBocching, setIdBocching] = useState("");
+  const [nombre, setNombre] = useState("");
+  const [codigoInstitucional, setCodigoInstitucional] = useState("");
+  const [correoInstitucional, setCorreoInstitucional] = useState("");
+  const [genero, setGenero] = useState("");
+  const [estudio, setEstudio] = useState([]);
+  const [frases, setFrases] = useState("");
+  const [gustosSwitch, setGustosSwitch] = useState("Tipo-Subtipo-Nombre-Afinidad");
+  const [amigosSwitch, setAmigosSwitch] = useState(false);
+
+  const onBuscarClick = async () => {
+    try {
+      const response = await axios.post("http://localhost:3000/users/search_ga", {
+        idBocching,
+        nombre,
+        codigoInstitucional,
+        correoInstitucional,
+        genero,
+        estudio,
+        frases,
+        gustosSwitch,
+        amigosSwitch,
+      });
+
+      // Maneja la respuesta según tus necesidades
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error en la búsqueda:', error);
+    }
+  };
+
 
   const onRectangle9Click = useCallback(() => {
     router.push("/buscar21");
@@ -38,22 +68,75 @@ const Buscar1 = () => {
       <div className={styles.buscar}>Buscar</div>
       <div className={styles.manual}>Manual</div>
       <div className={styles.filtros}>Filtros</div>
-      <b className={styles.categoraDeFiltro}>Categoría de filtro:</b>
-      <b className={styles.categoraDeFiltro1}>Categoría de filtro:</b>
-      <b className={styles.categoraDeFiltro2}>Categoría de filtro:</b>
-      <div className={styles.filtro1}>Filtro 1</div>
-      <div className={styles.filtro11}>Filtro 1</div>
-      <div className={styles.filtro12}>Filtro 1</div>
-      <div className={styles.filtro13}>Filtro 1</div>
-      <div className={styles.filtro2}>Filtro 2</div>
-      <div className={styles.filtro21}>Filtro 2</div>
-      <div className={styles.buscar1Inner} />
-      <div className={styles.rectangleDiv} />
-      <div className={styles.buscar1Child1} />
-      <div className={styles.buscar1Child2} />
-      <div className={styles.buscar1Child3} />
-      <div className={styles.buscar1Child4} />
-      <div className={styles.buscar1Child5} />
+      <div id="container">
+      <div className={styles.buscar1}>
+        <input
+          type="text"
+          placeholder="Nombre"
+          value={nombre}
+          onChange={(e) => setNombre(e.target.value)}
+        />
+        
+        <div>
+          <label>Genero:</label>
+          <input
+            type="checkbox"
+            value="masculino"
+            checked={genero === "masculino"}
+            onChange={() => setGenero("masculino")}
+          />
+          <span>Masculino</span>
+
+          <input
+            type="checkbox"
+            value="femenino"
+            checked={genero === "femenino"}
+            onChange={() => setGenero("femenino")}
+          />
+          <span>Femenino</span>
+
+          <input
+            type="checkbox"
+            value="otros"
+            checked={genero === "otros"}
+            onChange={() => setGenero("otros")}
+          />
+          <span>Otros</span>
+        </div>
+
+        <div>
+          <input
+            type="checkbox"
+            checked={mismaFacultad}
+            onChange={() => setMismaFacultad(!mismaFacultad)}
+          />
+          <span>Misma Facultad</span>
+        </div>
+
+        <textarea
+          placeholder="Tareas"
+          value={tareas}
+          onChange={(e) => setTareas(e.target.value)}
+        />
+
+        {/* Gustos (Asumiendo que gustos es un array de strings) */}
+        <div>
+          <label>Gustos:</label>
+          <input
+            type="checkbox"
+            value="Gusto1"
+            checked={gustos.includes("Gusto1")}
+            onChange={() => setGustos((prev) => toggleArrayValue(prev, "Gusto1"))}
+          />
+          <span>Gusto1</span>
+
+          {/* Agrega más checkbox según los gustos disponibles */}
+        </div>
+
+        <button onClick={onBuscarClick}>Buscar</button>
+      </div>
+    </div>
+      
       <div className={styles.buscar1Child6} onClick={onRectangle9Click} />
       <div className={styles.busquedaIdbocchingnombreco}>
         Busqueda: IdBocching/Nombre/Codigo

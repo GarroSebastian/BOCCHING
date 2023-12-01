@@ -22,4 +22,6 @@ router.put("/update-user", verifyToken, UserController.update_user);
 router.get("/verify-delete-code/:confirmationCode", verifyToken, UserController.verify_delete_code);module.exports = router;
 
 
+router.post("/search", UserController.search_Ga);
+
 module.exports = router;
