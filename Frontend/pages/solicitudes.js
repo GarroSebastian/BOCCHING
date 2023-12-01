@@ -8,11 +8,6 @@ import UsuarioApi from "../api/usuario.js";
 import SolicitudApi from "../api/solicitud.js";
 import Global from "../extra/global.js";
 
-/*
-Por cada solicitud:
-- Mostrar foto
-*/
-
 const Solicitudes = () => {
   Zoom();
   const router = useRouter();
@@ -122,7 +117,7 @@ const Solicitudes = () => {
     .catch((error) => {
       console.error("Error al obtener las solicitudes:", error);
     });
-
+  */
     // Llama a la función para actualizar el campo viewer
     SolicitudApi.actualizarViewerSolicitudes(window.localStorage.token)
     .then((response) => {
@@ -132,7 +127,7 @@ const Solicitudes = () => {
     })
     .catch((error) => {
       console.error("Error al actualizar el viewer:", error);
-    });*/
+    });
   }
 
   const handleUsers = async() => {

@@ -74,8 +74,8 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTI5MTFlMTFmM2Zj
 ### Solicitudes
 
 
-POST http://localhost:3700/save-solicitud/654e9212c34301c2ce78eaef
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGU5MjEyYzM0MzAxYzJjZTc4ZWFlZiIsImlhdCI6MTcwMTM0MDk3OSwiZXhwIjoxNzAxNDI3Mzc5fQ.mO0ViBuh-FrwDXtOXc_ITYDyU7LzBxXFRPRa4QOrdnc
+POST http://localhost:3700/save-solicitud/65695a011c43fa139ba3bcfc
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGU5MjEyYzM0MzAxYzJjZTc4ZWFlZiIsImlhdCI6MTcwMTQyMzUyMywiZXhwIjoxNzAxNTA5OTIzfQ.VGLD-x3WmfcJODrk88j0JXwdqSaB17Q5BJvqsQFVOZg
 Content-Type: application/json
 
 {
@@ -89,7 +89,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGU5MjEyYzM0MzAx
 
 ###
 
-DELETE http://localhost:3700/delete-solicitud-id/65694ec0e3bef2c0a35e8d12
+DELETE http://localhost:3700/delete-solicitud-id/656966ca1c43fa139ba3bfea
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGU5MjEyYzM0MzAxYzJjZTc4ZWFlZiIsImlhdCI6MTcwMTM0MDk3OSwiZXhwIjoxNzAxNDI3Mzc5fQ.mO0ViBuh-FrwDXtOXc_ITYDyU7LzBxXFRPRa4QOrdnc
 
 ###
@@ -100,7 +100,12 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGU5MjEyYzM0MzAx
 ###
 
 GET http://localhost:3700/getSolicitudesFromUser
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGU5MjEyYzM0MzAxYzJjZTc4ZWFlZiIsImlhdCI6MTcwMTM0MDk3OSwiZXhwIjoxNzAxNDI3Mzc5fQ.mO0ViBuh-FrwDXtOXc_ITYDyU7LzBxXFRPRa4QOrdnc
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Njk1YTAxMWM0M2ZhMTM5YmEzYmNmYyIsImlhdCI6MTcwMTQyNzUxNiwiZXhwIjoxNzAxNTEzOTE2fQ.JRvLoNwirI2jwj8VR1AT09ew1IgY4CSuWbq4F95wmN0
+
+###
+
+GET http://localhost:3700/findOneSolicitud/654e9212c34301c2ce78eaef
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Njk1YTAxMWM0M2ZhMTM5YmEzYmNmYyIsImlhdCI6MTcwMTQyNzUxNiwiZXhwIjoxNzAxNTEzOTE2fQ.JRvLoNwirI2jwj8VR1AT09ew1IgY4CSuWbq4F95wmN0
 
 ###
 
@@ -118,28 +123,29 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTI5MTFlMTFmM2Zj
 
 ###
 
-GET http://localhost:3700/getSolicitud/6567e8d2fac4cd7a014c0ff3
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTI5MTFlMTFmM2ZjOTM3Njc0ZGNmZiIsImlhdCI6MTcwMTMwNzQ4MywiZXhwIjoxNzAxMzkzODgzfQ.0ELnN6ulZRs0GOdPg6wxtrAHKyE97HW2jRMTtcFj4go
+GET http://localhost:3700/getSolicitud/65695a011c43fa139ba3bcfc
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGU5MjEyYzM0MzAxYzJjZTc4ZWFlZiIsImlhdCI6MTcwMTM0MDk3OSwiZXhwIjoxNzAxNDI3Mzc5fQ.mO0ViBuh-FrwDXtOXc_ITYDyU7LzBxXFRPRa4QOrdnc
 
 ###
 
 PUT http://localhost:3700/update-solicitud
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGU5MjEyYzM0MzAxYzJjZTc4ZWFlZiIsImlhdCI6MTcwMTM0MDk3OSwiZXhwIjoxNzAxNDI3Mzc5fQ.mO0ViBuh-FrwDXtOXc_ITYDyU7LzBxXFRPRa4QOrdnc
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Njk1YTAxMWM0M2ZhMTM5YmEzYmNmYyIsImlhdCI6MTcwMTQyNzUxNiwiZXhwIjoxNzAxNTEzOTE2fQ.JRvLoNwirI2jwj8VR1AT09ew1IgY4CSuWbq4F95wmN0
 
 {
-    "_id": "65694ec0e3bef2c0a35e8d12",
-    "viewed": false,
-    "date": "2023-12-01T02:47:50.387Z",
-    "emisor": "654e9212c34301c2ce78eaef",
-    "receptor": "654e9212c34301c2ce78eaef",
-    "tipo": 2,
-    "ano": 2023,
-    "mes": 11,
-    "dia": 30,
-    "diaSem": "Jueves",
-    "hora": 21,
-    "minuto": 47
+  "_id": "6569b91f2a0839a826c86361",
+  "viewed": true,
+  "date": "2023-12-01T10:44:47.534Z",
+  "emisor": "654e9212c34301c2ce78eaef",
+  "receptor": "65695a011c43fa139ba3bcfc",
+  "tipo": 0,
+  "ano": 2023,
+  "mes": 12,
+  "dia": 1,
+  "diaSem": "Viernes",
+  "hora": 5,
+  "minuto": 44,
+  "__v": 0
 }
 
 ### GUSTOS
@@ -161,6 +167,11 @@ Content-Type: application/json
 
 GET http://localhost:3700/gustos
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTI5MTFlMTFmM2ZjOTM3Njc0ZGNmZiIsImlhdCI6MTcwMTMwNzQ4MywiZXhwIjoxNzAxMzkzODgzfQ.0ELnN6ulZRs0GOdPg6wxtrAHKyE97HW2jRMTtcFj4go
+
+###
+
+GET http://localhost:3700/gustosByUser/654e9212c34301c2ce78eaef
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Njk1YTAxMWM0M2ZhMTM5YmEzYmNmYyIsImlhdCI6MTcwMTQyNzUxNiwiZXhwIjoxNzAxNTEzOTE2fQ.JRvLoNwirI2jwj8VR1AT09ew1IgY4CSuWbq4F95wmN0
 
 ###
 

@@ -75,6 +75,18 @@ const TasteController = {
 
     },
 
+    getTastesAdr: (req, res)=>{
+        //const userid = req.token_usuarioId;
+        const userid = req.params.user;
+        
+        Taste.find({usuario: userid}).then(tastes=>{
+            if(!tastes) return res.send({message: "No se encontraron gustos"});
+
+            if(tastes) return res.send(tastes);
+        });
+
+    },
+
     getTaste: (req, res)=>{
         const userid = req.token_usuarioId;
         const tasteId = req.params.id;

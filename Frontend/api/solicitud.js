@@ -126,9 +126,9 @@ const SolicitudesRecibidasUsuario = async (token) => {
     }
 }
 
-const ObtenerSolicitudUsuario = async (idReceptor, token) => {
+const findOneSolicitud = async (idReceptor, token) => {
     try {
-        const url = URI.concat('/getSolicitud/' + idReceptor);
+        const url = URI.concat('/findOneSolicitud/' + idReceptor);
 
         const authAxios = axios.create({
             baseURL: URI,
@@ -186,7 +186,7 @@ const actualizarViewerSolicitudes = async (token) => {
     borrarSolicitud,
     borrarSolicitudById,
     SolicitudesUsuario,
-    ObtenerSolicitudUsuario,
+    findOneSolicitud,
     SolicitudesRecibidasUsuario,
     actualizarViewerSolicitudes, 
     SolicitudesCurrent,

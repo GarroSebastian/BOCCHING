@@ -102,6 +102,18 @@ const RequestController = {
 
     },
 
+    findOneAdr: (req, res)=>{
+        
+        const userid = req.token_usuarioId;
+        const ReceptorId = req.params.receptorid;
+        
+        Request.findOne({$or: [{emisor: userid, receptor: ReceptorId}, {emisor: ReceptorId, receptor: userid}]}).then(user=>{
+            if(!user) return res.send("No existe la solicitud");
+
+            if(user) return res.send(user);
+        });
+    },
+
     getAllRequestsEmitidas: (req, res)=>{
         const userid = req.token_usuarioId;
         

@@ -101,35 +101,43 @@ const InfoPerfil = ({id}) => { //si id es null, estás en mi-perfil (te deja edi
   }
   
   const GuardarPerfil = async() => {
-    if(id===null){
-      if(ValidarCuenta()){
-        UsuarioApi.updateCurrent(usuario).then(()=>{
-          handlePerfil()
-          alert("¡Cambios guardados!")
+    if(ValidarCuenta()){
+      UsuarioApi.updateCurrent(usuario).then(()=>{
+        handlePerfil()
+        alert("¡Cambios guardados!")
+      })
+    }
+    /*UsuarioApi.updateCurrent({...usuario, foto: pako.Deflate(usuario.foto, {to: 'string'})}).then((user)=>{
+      handleOnLoad()
+      alert("¡Cambios guardados!")
+    })*/
+  }
+
+  const enviarSolicitud = async() => {
+    let aux;
+    do{
+      aux = prompt(`Ingrese 0 para solicitud normal (${usuario.mostrar_nombre?usuario.nombre:usuario.apodo} podrá verla y responderla);\nIngrese 1 para solicitud oculta (${usuario.mostrar_nombre?usuario.nombre:usuario.apodo} no podrá verla, deberás esperar a que también te mande solicitudá)`);
+      if(aux===null){
+        break;
+      }else{
+        aux = parseInt(aux);
+      }
+    }while(!(aux===0||aux===1));
+    SolicitudesApi.findOneSolicitud(id,window.localStorage.token).then((s) => {
+      if(aux!==null && s.data!=="No existe la solicitud"){
+        SolicitudesApi.actualizarSolicitud({...s.data,tipo:2}).then(() => {
+          alert(`¡${usuario.mostrar_nombre?usuario.nombre:usuario.apodo} ya te había mandado solicitud! Ahora son amig@s`)
+        })
+      }else if(aux===0){
+        SolicitudesApi.guardarSolicitud({tipo: 0}, id, window.localStorage.token).then((s) => {
+          alert("Solicitud normal enviada")
+        })
+      }else if(aux===1){
+        SolicitudesApi.guardarSolicitud({tipo: 1}, id, window.localStorage.token).then((s) => {
+          alert("Solicitud oculta enviada")
         })
       }
-      /*UsuarioApi.updateCurrent({...usuario, foto: pako.Deflate(usuario.foto, {to: 'string'})}).then((user)=>{
-        handleOnLoad()
-        alert("¡Cambios guardados!")
-      })*/
-    }else{
-      let aux;
-      do{
-        aux = prompt(`Ingrese 0 para solicitud normal (${usuario.mostrar_nombre?usuario.nombre:usuario.apodo} podrá verla y responderla);\nIngrese 1 para solicitud oculta (${usuario.mostrar_nombre?usuario.nombre:usuario.apodo} no podrá verla, deberás esperar a que también te mande solicitudá)`);
-        if(aux===null){
-          break;
-        }else{
-          aux = parseInt(aux);
-        }
-      }while(!(aux===0||aux===1));
-      if(aux===0){
-        //normal
-        alert("normal")
-      }else if(aux===1){
-        //oculta
-        alert("oculta")
-      }
-    }
+    })
   }
   
   const handleUser = (aux) => {
@@ -187,19 +195,19 @@ const InfoPerfil = ({id}) => { //si id es null, estás en mi-perfil (te deja edi
         </div>
         <div className={styles.nombres}>Nombres:</div>
         <div className={styles.miperfil1Child4}>
-        <input className={styles.dato} type="text" id="nombre" maxLength={30} value={usuario.nombre} onChange={e => cambiarUsuario("nombre", e.target.value)}></input>
+        <input className={styles.dato} type="text" id="nombre" maxLength={30} value={usuario.nombre} disabled={id===null?false:true} onChange={e => cambiarUsuario("nombre", e.target.value)}></input>
         </div>
         <div className={styles.apellidos}>Apellidos:</div>
         <div className={styles.miperfil1Child5}>
-        <input className={styles.dato} type="text" id="apellidos" maxLength={30} value={usuario.apellidos} onChange={e => cambiarUsuario("apellidos", e.target.value)}></input>
+        <input className={styles.dato} type="text" id="apellidos" maxLength={30} value={usuario.apellidos} disabled={id===null?false:true} onChange={e => cambiarUsuario("apellidos", e.target.value)}></input>
         </div>
         <div className={styles.apodo}>Apodo:</div>
         <div className={styles.miperfil1Child6}>
-        <input className={styles.dato} type="text" id="apodo" maxLength={20} value={usuario.apodo} onChange={e => setUsuario({...usuario,apodo: e.target.value})}></input>
+        <input className={styles.dato} type="text" id="apodo" maxLength={20} value={usuario.apodo} disabled={id===null?false:true} onChange={e => setUsuario({...usuario,apodo: e.target.value})}></input>
         </div>
         <div className={styles.gnero}>Género:</div>
         <div className={styles.gneroEjemploParent}>
-        <select className={styles.datoGenero} id="genero" value={usuario.id_genero} onChange={e => setUsuario({...usuario,id_genero: e.target.value})} style={{width: "100%"}}>
+        <select className={styles.datoGenero} id="genero" value={usuario.id_genero} disabled={id===null?false:true}  onChange={e => setUsuario({...usuario,id_genero: e.target.value})} style={{width: "100%"}}>
             <option value={0}>Masculino</option>
             <option value={1}>Femenino</option>
             <option value={2}>Otro</option>
@@ -221,33 +229,44 @@ const InfoPerfil = ({id}) => { //si id es null, estás en mi-perfil (te deja edi
         </div>
         <div className={styles.carrera}>Carrera:</div>
         <div className={styles.miperfil1Child9}>
-        <input className={styles.dato} type="text" id="carrera" value={usuario.carrera} onChange={e => setUsuario({...usuario,carrera: e.target.value})}></input>
+        <input className={styles.dato} type="text" id="carrera" value={usuario.carrera} disabled={id===null?false:true} onChange={e => setUsuario({...usuario,carrera: e.target.value})}></input>
         </div>
         <div className={styles.especialidad}>Especialidad</div>
         <div className={styles.especialidadEjemploParent}>
-        <input className={styles.datoEspecialidad} type="text" id="especialidad" value={usuario.especialidad} onChange={e => setUsuario({...usuario,especialidad: e.target.value})}></input>
+        <input className={styles.datoEspecialidad} type="text" id="especialidad" value={usuario.especialidad} disabled={id===null?false:true} onChange={e => setUsuario({...usuario,especialidad: e.target.value})}></input>
         </div>
         <div className={styles.descripccin}>Descripcción</div>
         <div className={styles.miperfil1Child10}>
-        <textarea className={styles.datoDescripcion} id="descripcion" value={usuario.descripcion} onChange={e => setUsuario({...usuario,descripcion: e.target.value})}></textarea>
+        <textarea className={styles.datoDescripcion} id="descripcion" value={usuario.descripcion} disabled={id===null?false:true} onChange={e => setUsuario({...usuario,descripcion: e.target.value})}></textarea>
         </div>
         <div className={styles.miperfil1Child11}>
         <div className={styles.nombreapodo}>
-            <p>Mostrar mi</p>
             {
-            usuario.mostrar_nombre?
-                usuario.nombre.length<=15?
-                <p>Nombre: {usuario.nombre}</p>
-                :
-                <p>Nombre: {usuario.nombre.substring(0,13)}...</p>
-            :
-                usuario.apodo.length<=15?
-                <p>Apodo: {usuario.apodo}</p>
-                :
-                <p>Apodo: {usuario.apodo.substring(0,13)}...</p>
+              id===null?
+                <>
+                  <p>Mostrar mi</p>
+                  {usuario.mostrar_nombre?
+                        usuario.nombre.length<=15?
+                        <p>Nombre: {usuario.nombre}</p>
+                        :
+                        <p>Nombre: {usuario.nombre.substring(0,13)}...</p>
+                    :
+                        usuario.apodo.length<=15?
+                        <p>Apodo: {usuario.apodo}</p>
+                        :
+                        <p>Apodo: {usuario.apodo.substring(0,13)}...</p>
+                  }
+                </>
+              :
+                "Mandar solicitud\nde amistad"
             }
         </div>
-        <button onClick={e => setUsuario({...usuario,mostrar_nombre: !usuario.mostrar_nombre})} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
+        <button onClick={e => {
+          if(id===null){
+            setUsuario({...usuario,mostrar_nombre: !usuario.mostrar_nombre})
+          }else{
+            enviarSolicitud()
+          }}} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
         </div>
         <div className={styles.ellipseDiv}>
         <img id="imagenSeleccionada" src={usuario.foto} alt="Imagen seleccionada" style={{display: usuario.foto===null?"none":"block", maxWidth: "90%", maxHeight: "90%", borderRadius: "20%"}} />
@@ -278,12 +297,14 @@ const InfoPerfil = ({id}) => { //si id es null, estás en mi-perfil (te deja edi
             <img className={styles.amistades2Child6} alt="" src="/group-1351.svg"/>
             </>
         }
-        <div className={styles.miperfil1Child11} style={{top: "1395px", left: "910px"}}>
-        <div className={styles.nombreapodo}>
-            <p style={{marginTop: "13px"}}>{id===null?"Guardar":"Mandar solicitud"}</p>
-        </div>
-        <button onClick={GuardarPerfil} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
-        </div>
+        {id===null &&
+          <div className={styles.miperfil1Child11} style={{top: "1395px", left: "910px"}}>
+            <div className={styles.nombreapodo}>
+                <p style={{marginTop: "13px"}}>Guardar</p>
+            </div>
+            <button onClick={GuardarPerfil} style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", background: "transparent", border: "none"}}></button>
+          </div>
+        }
     </>
   );
 };

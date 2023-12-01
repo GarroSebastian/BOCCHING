@@ -9,6 +9,8 @@ router.post("/save-gusto", verifyToken, TasteController.saveTaste);
 
 router.get("/gustos", verifyToken, TasteController.getTastes);
 
+router.get("/gustosByUser/:user", verifyToken, TasteController.getTastesAdr);
+
 router.get("/gusto/:id", verifyToken, TasteController.getTaste);
 
 router.delete("/delete-gusto/:id", verifyToken, TasteController.deleteTaste);

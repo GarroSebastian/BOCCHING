@@ -177,6 +177,15 @@ const reverseDuracionOptions = {
           console.error('No data found in user object');
         }
       });
+    }else{
+      GustoApi.getGustosByUser(id).then((user) => {
+        const aux = user?.data; // Use optional chaining to access data property
+        if (aux) {
+          setGustos(aux);
+        } else {
+          console.error('No data found in user object');
+        }
+      });
     }
   }
 
