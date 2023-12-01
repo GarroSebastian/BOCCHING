@@ -116,7 +116,7 @@ const InfoPerfil = ({id}) => { //si id es null, estás en mi-perfil (te deja edi
   const enviarSolicitud = async() => {
     let aux;
     do{
-      aux = prompt(`Ingrese 0 para solicitud normal (${usuario.mostrar_nombre?usuario.nombre:usuario.apodo} podrá verla y responderla);\nIngrese 1 para solicitud oculta (${usuario.mostrar_nombre?usuario.nombre:usuario.apodo} no podrá verla, deberás esperar a que también te mande solicitudá)`);
+      aux = prompt(`Ingrese 0 para solicitud normal (${usuario.mostrar_nombre?usuario.nombre:usuario.apodo} podrá verla y responderla);\nIngrese 1 para solicitud oculta (${usuario.mostrar_nombre?usuario.nombre:usuario.apodo} no podrá verla, deberás esperar a que también te mande solicitud)`);
       if(aux===null){
         break;
       }else{

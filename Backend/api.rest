@@ -75,7 +75,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTI5MTFlMTFmM2Zj
 
 
 POST http://localhost:3700/save-solicitud/65695a011c43fa139ba3bcfc
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGU5MjEyYzM0MzAxYzJjZTc4ZWFlZiIsImlhdCI6MTcwMTQyMzUyMywiZXhwIjoxNzAxNTA5OTIzfQ.VGLD-x3WmfcJODrk88j0JXwdqSaB17Q5BJvqsQFVOZg
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGU5MjEyYzM0MzAxYzJjZTc4ZWFlZiIsImlhdCI6MTcwMTQzNDQzOCwiZXhwIjoxNzAxNTIwODM4fQ.MDPt3KMIKE3nkxYErXZAbnu-dd1uVbkNmb0c-0pXmxE
 Content-Type: application/json
 
 {
@@ -89,8 +89,8 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGU5MjEyYzM0MzAx
 
 ###
 
-DELETE http://localhost:3700/delete-solicitud-id/656966ca1c43fa139ba3bfea
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGU5MjEyYzM0MzAxYzJjZTc4ZWFlZiIsImlhdCI6MTcwMTM0MDk3OSwiZXhwIjoxNzAxNDI3Mzc5fQ.mO0ViBuh-FrwDXtOXc_ITYDyU7LzBxXFRPRa4QOrdnc
+DELETE http://localhost:3700/delete-solicitud-id/6569b91f2a0839a826c86361
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGU5MjEyYzM0MzAxYzJjZTc4ZWFlZiIsImlhdCI6MTcwMTQzNDQzOCwiZXhwIjoxNzAxNTIwODM4fQ.MDPt3KMIKE3nkxYErXZAbnu-dd1uVbkNmb0c-0pXmxE
 
 ###
 
@@ -100,7 +100,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGU5MjEyYzM0MzAx
 ###
 
 GET http://localhost:3700/getSolicitudesFromUser
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Njk1YTAxMWM0M2ZhMTM5YmEzYmNmYyIsImlhdCI6MTcwMTQyNzUxNiwiZXhwIjoxNzAxNTEzOTE2fQ.JRvLoNwirI2jwj8VR1AT09ew1IgY4CSuWbq4F95wmN0
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGU5MjEyYzM0MzAxYzJjZTc4ZWFlZiIsImlhdCI6MTcwMTQzNDQzOCwiZXhwIjoxNzAxNTIwODM4fQ.MDPt3KMIKE3nkxYErXZAbnu-dd1uVbkNmb0c-0pXmxE
 
 ###
 

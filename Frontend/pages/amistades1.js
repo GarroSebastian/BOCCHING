@@ -1,10 +1,12 @@
-import { useCallback } from "react";
 import { useRouter } from "next/router";
 import { Zoom } from "../extra/zoom.js"
 import styles from "./amistades1.module.css";
 import Lateral from "../components/lateral.js";
 import Card from "../components/CardN.js";
 import { useState, useEffect } from 'react';
+import UsuarioApi from "../api/usuario.js";
+import SolicitudApi from "../api/solicitud.js";
+import Global from "../extra/global.js";
 
 /*
 - Cargar del Backend todas las solicitudes donde el usuario es emisor o receptor, y que sean de tipo 2 (Amigos)
@@ -27,98 +29,77 @@ const Amistades1 = () => {
   Zoom()
   const router = useRouter();
 
-  
+  const [usuario, setUsuario] = useState()
+  const [usuarios, setUsuarios] = useState([])
+  const [solicitudes, setSolicitudes] = useState([])
 
- 
-
-
-  const cardsData = [
-    {
-      id: 1,
-      imgSrc: 'url_de_imagen_1.jpg',
-      name: 'Nombre 1',
-      text: 'Texto de la tarjeta 1',
-    },
-    {
-      id: 2,
-      imgSrc: 'url_de_imagen_2.jpg',
-      name: 'Nombre 2',
-      text: 'Texto de la tarjeta 2',
-    },
-    {
-      id: 3,
-      imgSrc: 'url_de_imagen_1.jpg',
-      name: 'Nombre 1',
-      text: 'Texto de la tarjeta 1',
-    },
-    {
-      id: 4,
-      imgSrc: 'url_de_imagen_2.jpg',
-      name: 'Nombre 2',
-      text: 'Texto de la tarjeta 2',
-    },
-    {
-      id: 5,
-      imgSrc: 'url_de_imagen_1.jpg',
-      name: 'Nombre 1',
-      text: 'Texto de la tarjeta 1',
-    },
-    {
-      id: 6,
-      imgSrc: 'url_de_imagen_2.jpg',
-      name: 'Nombre 2',
-      text: 'Texto de la tarjeta 2',
-    },
-    {
-      id: 7,
-      imgSrc: 'url_de_imagen_1.jpg',
-      name: 'Nombre 1',
-      text: 'Texto de la tarjeta 1',
-    },
-    {
-      id: 8,
-      imgSrc: 'url_de_imagen_2.jpg',
-      name: 'Nombre 2',
-      text: 'Texto de la tarjeta 2',
-    },
-    // ... Repite para las otras 7 tarjetas
-  ];
-
-
-  const handleCardClick = () => {
-    router.push("/amistades2");
+  const verPerfil = (id) => {
+    const path = `/perfil?id=${encodeURIComponent(id)}`;
+    router.push(path);
   };
 
   const [searchText, setSearchText] = useState("");
-  const [filteredCards, setFilteredCards] = useState(cardsData);
 
-  const handleSearch = (e) => {
-    const searchText = e.target.value.toLowerCase();
+  const handleSolicitudes = async() => {
+    SolicitudApi.SolicitudesCurrent().then((soli)=>{
+      setSolicitudes(soli.data.solicitudes)
+    })
+  }
 
-    // Filtra las tarjetas cuyo nombre contiene el texto buscado
-    const filtered = cardsData.filter((card) => {
-      const name = card.name.toLowerCase();
-      return name.includes(searchText);
+  const getFrUser = (s) => {
+    const aux = usuarios?.find(u => u._id === (usuario?._id===s.emisor?s.receptor:s.emisor))
+    if(aux===undefined){
+      return null;
+    }else{
+      return aux;
+    }
+  }
+
+  const handleUsers = async() => {
+    UsuarioApi.findAllUsers().then((users) => {
+      const aux = users.data;
+      setUsuarios(aux)
+    })
+    /*setUsuarios([
+      {...defaultUsuario,_id:'0',nombre:'Yo',apodo:'YoApodo',mostrar_nombre:true},
+      {...defaultUsuario,_id:'654e9212c34301c2ce78eaef',nombre:'Adrián',apodo:'AdriánApodo',mostrar_nombre:true},
+      {...defaultUsuario,_id:'2',nombre:'RodrigoNombre',apodo:'Rodrigo',mostrar_nombre:false},
+      {...defaultUsuario,_id:'3',nombre:'Camayo',apodo:'CamayoApodo',mostrar_nombre:true},
+      {...defaultUsuario,_id:'4',nombre:'George',apodo:'GeorgeApodo',mostrar_nombre:true}
+    ])*/
+  }
+
+  const handleUser = async() => {
+    UsuarioApi.findCurrent().then((user)=>{
+      const aux = user.data.usuario;
+      setUsuario(aux)
     });
-
-    setFilteredCards(filtered);
-    setSearchText(e.target.value); // Actualiza el estado del texto de búsqueda
-  };
+    //setUsuario({...defaultUsuario,_id:'0',nombre:'Yo',apodo:'YoApodo',mostrar_nombre:true})
+  }
+  
+  useEffect(() => {
+    handleUsers()
+    handleUser()
+    handleSolicitudes()
+  }, []);
 
   return (
     <div id="container">
       <div className={styles.amistades1}>
         <img className={styles.amistades1Child} alt="" src="/rectangle-16.svg" />
         <div className={styles.amistades1Item}>
-          {filteredCards.map((card) => (
-            <div key={card.id} className="card-cell">
+          {solicitudes?.filter(s => s.tipo===2 && (getFrUser(s)?.mostrar_nombre===true?getFrUser(s)?.nombre:getFrUser(s)?.apodo)?.toLowerCase().includes(searchText.toLowerCase())).map((s) => {
+            return(
+            <div key={s.id} className="card-cell">
               <Card
-                name={card.name}
-                text={card.text}
-                onClick={handleCardClick}
+                name={getFrUser(s).mostrar_nombre===true?getFrUser(s).nombre:getFrUser(s).apodo}
+                text={Global.CompararFechas(s.ano, s.mes, s.dia, s.diaSem, s.hora, s.minuto)}
+                onClick={e => verPerfil(getFrUser(s)._id)}
+                img={getFrUser(s).foto}
               />
             </div>
-          ))}
+            )
+          })}
         </div>
         <div className={styles.amistades}>Amistades</div>
         <div className={styles.amigos}>Amigos</div>
@@ -128,7 +109,7 @@ const Amistades1 = () => {
             type="text"
             placeholder="Escribe aquí..."
             value={searchText}
-            onChange={handleSearch}
+            onChange={e => setSearchText(e.target.value)}
           />
         </div>
       </div>
