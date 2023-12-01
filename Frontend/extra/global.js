@@ -18,7 +18,7 @@ const CompararFechas = (ano, mes, dia, diaSem, hora, minuto) => {
     if(dif<0){
       return "Error: Resta negativa";
     }else if(dif===0){
-      return `${hora}:${minuto}`;
+      return `${hora<10?"0"+hora:hora}:${minuto<10?"0"+minuto:minuto}`;
     }else if(dif===1){
       return "Ayer";
     }else if(dif<7){

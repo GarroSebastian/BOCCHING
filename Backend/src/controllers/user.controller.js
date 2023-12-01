@@ -87,7 +87,7 @@ const UserController = {
 
                     }
     
-                    if(!check) return res.status(404).send("El correo o contraseña son incorrectos");
+                    if(!check) return res.json({message: "Correo o contraseña incorrectos"});
     
                 });
             }
@@ -146,7 +146,7 @@ const UserController = {
         const dataUpdate = req.body;
         delete dataUpdate.contrasena;
 
-        User.find({ $or: [{apodo: dataUpdate.apodo.toLowerCase()}, {correo: dataUpdate.correo.toLowerCase()}] }).then((users)=>{
+        User.find({correo: dataUpdate.correo.toLowerCase()}).then((users)=>{
 
             var sameData = false;
 
@@ -159,7 +159,7 @@ const UserController = {
             User.findByIdAndUpdate(id, dataUpdate, {new: true}).then((userUpdated)=>{
 
                 if(!userUpdated) return res.status(404).send({
-                     message: 'no sea podido actualizar el usuario'
+                     message: 'No se ha podido actualizar el usuario'
                 });
 
                 if(userUpdated) return res.status(200).send(userUpdated);

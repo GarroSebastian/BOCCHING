@@ -60,57 +60,35 @@ const Solicitudes = () => {
 
   const botonAmarillo = (s,n) => {
     if(pag===1){
-      //SolicitudApi.actualizar
-      console.log({...s,tipo:2})
-      handleSolicitudes()
-      alert("¡Felicidades, ya eres amig@ de "+n+"!")
+      SolicitudApi.actualizarSolicitud({...s,tipo:2}).then(() => {
+        handleSolicitudes()
+        alert("¡Felicidades, ya eres amig@ de "+n+"!")
+      })
     }else if(pag===2){
-      //SolicitudApi.borrar(s._id)
-      handleSolicitudes()
-      alert("Se ha rechazado la solicitud")
+      SolicitudApi.borrarSolicitudById(s._id).then(() => {
+        handleSolicitudes()
+        alert("Se ha cancelado la solicitud")
+      })
     }else{
-      //SolicitudApi.actualizar
-      console.log({...s,tipo:0})
-      handleSolicitudes()
-      alert(n+" será notificad@ de tu solicitud")
+      SolicitudApi.actualizarSolicitud({...s,tipo:0}).then(() => {
+        handleSolicitudes()
+        alert(n+" será notificad@ de tu solicitud")
+      })     
     }
   }
   
   const botonOjo = (s) => {
-    //SolicitudApi.actualizar
-    console.log({...s,tipo:1})
-    handleSolicitudes()
-    alert("Se ha ocultado la notificación")
+    SolicitudApi.actualizarSolicitud({...s,tipo:1}).then(() => {
+      handleSolicitudes()
+      alert("Se ha ocultado la solicitud")
+    })
   }
 
-  const botonX = (s) => {
-    //SolicitudApi.borrar(s._id)
-    handleSolicitudes()
-    alert("Se ha rechazado la solicitud")
-
-    /*
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      console.log("No se encontró el token en el Local Storage");
-      return;
-    }
-
-    // Utiliza la función borrarSolicitud de tu API de solicitudes
-    SolicitudApi.borrarSolicitud(solicitudToDelete.receptor._id, token)
-      .then((response) => {
-        if (response && response.status === 200) {
-          setSolicitudes((prevSolicitudes) =>
-            prevSolicitudes.filter(
-              (solicitud) => solicitud._id !== solicitudToDelete._id
-            )
-          );
-        }
-      })
-      .catch((error) => {
-        console.error("Error al eliminar la solicitud:", error);
-      });
-      */
+  const botonX = async(s) => {
+    SolicitudApi.borrarSolicitudById(s._id).then(() => {
+      handleSolicitudes()
+      alert("Se ha rechazado la solicitud")
+    })
   }
 
   const verPerfil = (id) => {
@@ -236,7 +214,9 @@ const Solicitudes = () => {
           return(
             <>
               <div className={styles.Caja} style={{top: `${primero+salto*index}px`}} onClick={e => verPerfil(s[val])}/>
-              <div className={styles.Elipse} style={{top: `${primero-7+salto*index}px`}} onClick={e => verPerfil(s[val])}/>
+              <div className={styles.Elipse} style={{top: `${primero-7+salto*index}px`}} onClick={e => verPerfil(s[val])}>
+                {getFrUser()!==null && <img id="imagenSeleccionada" src={getFrUser().foto} alt="Imagen seleccionada" style={{display: "block", maxWidth: "90%", maxHeight: "90%", borderRadius: "20%"}}/>}
+              </div>
               <div className={styles.contlax} style={{top: `${primero-4+salto*index}px`}} onClick={e => botonAmarillo(s, getFrUser().mostrar_nombre === true? getFrUser().nombre : getFrUser().apodo)}/>
               {
                 pag===2 ?
@@ -257,7 +237,9 @@ const Solicitudes = () => {
                     }
                   </>
               }
-              <img className={styles.img} style={{top: `${primero+10+salto*index}px`}} alt="" src="/group-147.svg" />
+              {
+                getFrUser().foto===null && <img className={styles.img} style={{top: `${primero+10+salto*index}px`}} alt="" src="/group-147.svg"/>
+              }
               <p className={styles.nombres} style={{top: `${primero+21+salto*index}px`}}>
                 {
                   getFrUser().mostrar_nombre === true ?

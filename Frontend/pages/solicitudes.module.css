@@ -637,6 +637,9 @@ SE AGREGO ESTO - recomiendacion de chatGPT
   width: 88px;
   height: 79px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .img{
   position: absolute;

@@ -6,8 +6,8 @@ POST http://localhost:3700/login
 Content-Type: application/json
 
 {
-    "correo": "correo",
-    "contrasena": "contrasena"
+    "correo": "20200713@aloe.ulima.edu.pe",
+    "contrasena": "holahol"
 }
 
 ###
@@ -89,6 +89,11 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGU5MjEyYzM0MzAx
 
 ###
 
+DELETE http://localhost:3700/delete-solicitud-id/65694ec0e3bef2c0a35e8d12
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGU5MjEyYzM0MzAxYzJjZTc4ZWFlZiIsImlhdCI6MTcwMTM0MDk3OSwiZXhwIjoxNzAxNDI3Mzc5fQ.mO0ViBuh-FrwDXtOXc_ITYDyU7LzBxXFRPRa4QOrdnc
+
+###
+
 GET http://localhost:3700/getAllSolicitudes
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGU5MjEyYzM0MzAxYzJjZTc4ZWFlZiIsImlhdCI6MTcwMTM0MDk3OSwiZXhwIjoxNzAxNDI3Mzc5fQ.mO0ViBuh-FrwDXtOXc_ITYDyU7LzBxXFRPRa4QOrdnc
 
@@ -115,6 +120,27 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTI5MTFlMTFmM2Zj
 
 GET http://localhost:3700/getSolicitud/6567e8d2fac4cd7a014c0ff3
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTI5MTFlMTFmM2ZjOTM3Njc0ZGNmZiIsImlhdCI6MTcwMTMwNzQ4MywiZXhwIjoxNzAxMzkzODgzfQ.0ELnN6ulZRs0GOdPg6wxtrAHKyE97HW2jRMTtcFj4go
+
+###
+
+PUT http://localhost:3700/update-solicitud
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGU5MjEyYzM0MzAxYzJjZTc4ZWFlZiIsImlhdCI6MTcwMTM0MDk3OSwiZXhwIjoxNzAxNDI3Mzc5fQ.mO0ViBuh-FrwDXtOXc_ITYDyU7LzBxXFRPRa4QOrdnc
+
+{
+    "_id": "65694ec0e3bef2c0a35e8d12",
+    "viewed": false,
+    "date": "2023-12-01T02:47:50.387Z",
+    "emisor": "654e9212c34301c2ce78eaef",
+    "receptor": "654e9212c34301c2ce78eaef",
+    "tipo": 2,
+    "ano": 2023,
+    "mes": 11,
+    "dia": 30,
+    "diaSem": "Jueves",
+    "hora": 21,
+    "minuto": 47
+}
 
 ### GUSTOS
 

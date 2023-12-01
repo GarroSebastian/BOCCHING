@@ -31,11 +31,11 @@ const IniciarSesion = () => {
       setCargando(true)
       try{
         const res = await UsuarioApi.login(Credenciales)
-        if (res.data.hasOwnProperty("token")){
+        if(res.data.hasOwnProperty("message")){
+          alert(res.data.message)
+        }else{
           window.localStorage.setItem("token", res.data.token);
           onFrameContainer5Click();
-        }else{
-          alert("Correo o contraseña incorrectos")
         }
       }catch(e){
         alert("Error. Backend no encendido")

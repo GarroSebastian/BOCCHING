@@ -41,9 +41,21 @@ const RequestController = {
     deleteRequest: (req, res)=>{
         
         const userid = req.token_usuarioId;
-        const ReceptorId = req.params.id;
+        const ReceptorId = req.params.receptorid;
 
         Request.findOneAndDelete({emisor: userid, receptor: ReceptorId}).then(user=>{
+            if(!user) return res.send("No se encontró la solicitud");
+
+            if(user) return res.send({message: "La solicitud fue eliminada"});
+        });
+    },
+
+    deleteRequestAdr: (req, res)=>{
+        
+        const userid = req.token_usuarioId;
+        const Id = req.params.id;
+
+        Request.findOneAndDelete({_id: Id}).then(user=>{
             if(!user) return res.send("No se encontró la solicitud");
 
             if(user) return res.send({message: "La solicitud fue eliminada"});
@@ -133,6 +145,27 @@ const RequestController = {
 
                 if (requests) return res.send(requests);
             });
+    },
+
+    actualizarSolicitud: async(req, res)=>{
+
+        const id = req.token_usuarioId;
+        const dataUpdate = req.body;
+
+        Request.find({ _id: dataUpdate._id }).then((requests)=>{
+
+            Request.findByIdAndUpdate(dataUpdate._id, dataUpdate, {new: true}).then((requestUpdated)=>{
+
+                if(!requestUpdated) return res.status(404).send({
+                     message: 'No se ha podido actualizar la solicitud'
+                });
+
+                if(requestUpdated) return res.status(200).send(requestUpdated);
+
+            });
+            
+        });
+
     },
 
     actualizarViewerSolicitudes : (req, res) => {

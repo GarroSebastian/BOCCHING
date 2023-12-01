@@ -44,6 +44,27 @@ const borrarSolicitud = async(idReceptor, token) => {
 
 }
 
+const borrarSolicitudById = async(id) => {
+
+    try {
+        const url = URI.concat('/delete-solicitud-id/'+id);
+
+        const authAxios = axios.create({
+            baseURL: URI,
+            headers: {
+                Authorization: window.localStorage.token
+            }
+        });
+
+        return await authAxios.delete(url);
+
+    } catch(err) {
+        console.error(err);
+        return null;
+    }
+
+}
+
 const SolicitudesUsuario = async(token) => {
 
     try {
@@ -123,6 +144,25 @@ const ObtenerSolicitudUsuario = async (idReceptor, token) => {
         return null;
     }
 }
+
+const actualizarSolicitud = async (request) => {
+    try {
+      const url = URI.concat('/update-solicitud');
+  
+      const authAxios = axios.create({
+        baseURL: URI,
+        headers: {
+          Authorization: window.localStorage.token,
+        },
+      });
+  
+      return await authAxios.put(url, request);
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
+  };
+
 const actualizarViewerSolicitudes = async (token) => {
     try {
       const url = URI.concat('/actualizar-viewer-solicitudes');
@@ -144,10 +184,12 @@ const actualizarViewerSolicitudes = async (token) => {
   const SolicitudApi = {
     guardarSolicitud,
     borrarSolicitud,
+    borrarSolicitudById,
     SolicitudesUsuario,
     ObtenerSolicitudUsuario,
     SolicitudesRecibidasUsuario,
     actualizarViewerSolicitudes, 
-    SolicitudesCurrent
+    SolicitudesCurrent,
+    actualizarSolicitud
   };
 export default SolicitudApi;
