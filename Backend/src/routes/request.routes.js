@@ -13,8 +13,6 @@ router.delete("/delete-solicitud-id/:id", verifyToken, RequestController.deleteR
 
 router.get("/getAllSolicitudes", verifyToken, RequestController.getAllRequests);
 
-router.get("/getSolicitudesFromUser", verifyToken, RequestController.getAllRequestsAdr);
-
 router.get("/getAllSolicitudesEmitidas", verifyToken, RequestController.getAllRequestsEmitidas);
 
 router.get("/getAllSolicitudesRecibidas", verifyToken, RequestController.getAllRequestsRecibidas);

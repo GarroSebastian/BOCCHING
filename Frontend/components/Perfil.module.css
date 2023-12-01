@@ -17,8 +17,6 @@
   left: 622px;
   font-size: var(--subttulos-size);
   pointer-events: none;
-  color: var(--black-icon);
-  
 }
 .miperfil1Inner,
 .rectangleDiv {
@@ -736,7 +734,7 @@
   cursor: pointer;
 }
 .privacidad {
-  left: 909px;
+  left: 882px;
 }
 .aquPodrsAgregar,
 .misColecciones {
@@ -870,29 +868,4 @@
   width: 29.83px;
   height: 25px;
   pointer-events: none;
-}
-.miperfil241Child {
-  position: absolute;
-  top: 233px;
-  left: 841px;
-  border-radius: var(--br-lgi);
-  width: 253px;
-  height: 156px;
-}
-.miperfil241 {
-  position: relative;
-  background: linear-gradient(180deg, #fff, #f8f69b);
-  width: 100%;
-  height: 1155px;
-  overflow: hidden;
-  text-align: left;
-  font-size: var(--subttulos-size);
-  color: var(--white-icon);
-  font-family: var(--subttulos);
-}
-.privacidadz {
-  position: absolute;
-  top: 279px;
-  left: 909px;
-  color: var(--white-icon);
 }

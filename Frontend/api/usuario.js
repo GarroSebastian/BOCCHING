@@ -25,8 +25,6 @@ const findUser = async(token) =>   {try {
     return null;
 }}
 
-const findUserById = async(id) => await Base.get('/findUsuarioById/'+id);
-
 const findAllUsers = async (token) => await Base.get('/get-all-users', token);
 
 const updateUser = async (request, token) => {
@@ -56,6 +54,6 @@ const findCurrent = async () => await Base.get(endpoint, window.localStorage.tok
 
 const updateCurrent = async (request) => await Base.put('/update-user', request, window.localStorage.token);
 
-const UsuarioApi = { register, login, findUser, findUserById, findAllUsers, findCurrent, updateUser, updateCurrent, remove };
+const UsuarioApi = { register, login, findUser, findAllUsers, findCurrent, updateUser, updateCurrent, remove };
 
 export default UsuarioApi;
