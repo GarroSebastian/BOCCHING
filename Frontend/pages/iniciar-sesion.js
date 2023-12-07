@@ -14,15 +14,34 @@ const IniciarSesion = () => {
   }
   const [Credenciales, setCredenciales] = useState(defaultCredenciales);
   const router = useRouter();
+  const [cargando, setCargando] = useState(false);
 
   const HandleLogin = async () => {
-    const res = await UsuarioApi.login(Credenciales)
-    if (res != null){
-      window.localStorage.setItem("token", res.data.token);
-      onFrameContainer5Click();
-    }else{
-      alert("Correo o contraseña incorrectos")
-    }   
+    if(Credenciales.correo==='' || Credenciales.contrasena===''){
+      alert("Complete todos los campos")
+    }
+    //Correo institucional
+    else if(!Credenciales.correo.includes('@aloe.ulima.edu.pe')){
+      alert("Solo se permiten correos institucionales de la Ulima (@aloe.ulima.edu.pe)")
+    }else if(Credenciales.correo.length<26){
+      alert("El correo institucional está incompleto")
+    }else if(parseInt(Credenciales.correo.substring(0,8))<=9999999 || isNaN(Credenciales.correo.substring(0,8)) || !Credenciales.correo.endsWith('@aloe.ulima.edu.pe')){
+      alert("Formato del correo institucional incorrecto")
+    }else if(cargando===false){
+      setCargando(true)
+      try{
+        const res = await UsuarioApi.login(Credenciales)
+        if(res.data.hasOwnProperty("message")){
+          alert(res.data.message)
+        }else{
+          window.localStorage.setItem("token", res.data.token);
+          onFrameContainer5Click();
+        }
+      }catch(e){
+        alert("Error. Backend no encendido")
+      }
+      setCargando(false)
+    }
   }
 
   const onFrameContainer5Click = useCallback (() => {
@@ -47,7 +66,7 @@ const IniciarSesion = () => {
           <div className={styles.userParent}>
             <img className={styles.userIcon} alt="" src="/user1.svg" />
             <div className={styles.correoInstitucional}>
-            <input className={styles.barratexto} type="text" id="correo" value={Credenciales.correo} onChange={e => setCredenciales({...Credenciales,correo: e.target.value})}></input>
+            <input className={styles.barratexto} type="text" id="correo" maxLength={26} placeholder="Ingrese su correo institucional" value={Credenciales.correo} onChange={e => setCredenciales({...Credenciales,correo: e.target.value})}></input>
             </div>
           </div>
         </div>
@@ -55,9 +74,8 @@ const IniciarSesion = () => {
           <div className={styles.passwordParent}>
             <img className={styles.passwordIcon} alt="" src="/password.svg" />
             <div className={styles.contrasea}>
-            <input className={styles.barratexto2} type="password" id="contrasea" value={Credenciales.contrasena} onChange={e => setCredenciales({...Credenciales,contrasena: e.target.value})}></input></div>
+            <input className={styles.barratexto2} type="password" id="contrasea" maxLength={40} placeholder="Ingrese su contraseña" value={Credenciales.contrasena} onChange={e => setCredenciales({...Credenciales,contrasena: e.target.value})}></input></div>
           </div>
-          <div className={styles.frame} />
         </div>
       </div>
       <div className={styles.ingresarWrapper} onClick={HandleLogin}>

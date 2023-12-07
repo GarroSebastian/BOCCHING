@@ -1,0 +1,19 @@
+GET http://localhost:3700/gustos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGU5MjEyYzM0MzAxYzJjZTc4ZWFlZiIsImlhdCI6MTcwMDU4NDU0NCwiZXhwIjoxNzAwNjcwOTQ0fQ.J69YGw6G-iiPm3FNq9FV1uWv3oSzcxhJ_jcGU910mXo
+
+###
+POST http://localhost:3700/save-gusto
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGU5MjEyYzM0MzAxYzJjZTc4ZWFlZiIsImlhdCI6MTcwMDU4NDU0NCwiZXhwIjoxNzAwNjcwOTQ0fQ.J69YGw6G-iiPm3FNq9FV1uWv3oSzcxhJ_jcGU910mXo
+
+{
+    "tipo": 2,
+    "nombre":"valor 2",
+    "subtipo":"valor 3",
+    "afinidad":"adsaf",
+    "posesion":"asdf",
+    "duracion":"asdf",
+    "conversacion":"asdf",
+    "musica":"asdf",
+    "frecuencia":"asdf",
+    "compania": "a"
+}

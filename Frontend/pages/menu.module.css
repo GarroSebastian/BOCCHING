@@ -305,3 +305,19 @@
 #container{
   zoom: normal;
 }
+
+.rectangleParent1 {
+  position: relative;
+  /* Ajusta la posición según necesites */
+}
+
+.contBadge {
+  position: absolute;
+  top: 5px; /* Ajusta la posición vertical según necesites */
+  right: 5px; /* Ajusta la posición horizontal según necesites */
+  background-color: red; /* Color de fondo del número */
+  color: white; /* Color del texto del número */
+  border-radius: 50%; /* Forma del contorno del número (circular) */
+  padding: 4px 8px; /* Espaciado interior del contorno del número */
+  font-size: 12px; /* Tamaño de fuente del número */
+}

@@ -2,10 +2,12 @@ import { useCallback } from "react";
 import { useRouter } from "next/router";
 import styles from "./menu.module.css";
 import { Zoom } from "../extra/zoom.js"
-
+import React, { useState, useEffect } from 'react';
+import SolicitudApi from "../api/solicitud.js";
 const Menu = () => {
   Zoom()
   const router = useRouter();
+  const [cont, setCont] = useState(0);
 
   const onFrameContainerClick = useCallback(() => {
     router.push("/mi-perfil");
@@ -24,13 +26,32 @@ const Menu = () => {
   }, [router]);
 
   const onFrameContainer4Click = useCallback(() => {
-    router.push("/solicitudes1");
+    router.push("/solicitudes");
   }, [router]);
 
   const onFrameContainer5Click = useCallback(() => {
     router.push("/configuracin11");
   }, [router]);
+  const solis = async () => {
+    try {
+      const solic = await SolicitudApi.SolicitudesRecibidasUsuario(window.localStorage.token);
+      let count = 0;
+      console.log(solic)
+      for (let i = 0; i < solic.data.length; i++) {
+        if (solic.data[i].viewed === false) {
+          count++;
+        }
+      }
+      setCont(count);
+      console.log
+    } catch (error) {
+      console.error('Error fetching solicitud data', error);
+    }
+  };
 
+  useEffect(() => {
+    solis();
+  }, []); // Se ejecuta una vez al montar el componente
   return (
     <div id='container'>
       <div className={styles.menu}>
@@ -70,6 +91,9 @@ const Menu = () => {
           <div className={styles.miPerfil}>Solicitudes</div>
           <div className={styles.frameChild5} />
           <img className={styles.vectorIcon1} alt="" src="/vector33.svg" />
+          {cont > 0 && (
+            <span className={styles.contBadge}>{cont}</span>
+          )}
         </div>
         <div className={styles.rectangleParent2} onClick={onFrameContainer5Click}>
           <div className={styles.frameChild} />

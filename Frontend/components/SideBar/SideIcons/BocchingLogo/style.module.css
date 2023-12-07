@@ -1,0 +1,47 @@
+.bocching-logo {
+align-items: flex-start;
+display: inline-flex;
+flex-direction: column;
+gap: 10px;
+position: relative;
+}
+
+.bocching-logo .boch-logo {
+background-color: #e5d63b;
+border-radius: 52px/46px;
+height: 92px;
+position: relative;
+width: 104px;
+}
+
+.bocching-logo .img {
+height: 10px;
+left: 30px;
+position: absolute;
+top: 19px;
+width: 42px;
+}
+
+.bocching-logo .boch-logo-2 {
+height: 10px;
+left: 30px;
+position: absolute;
+top: 64px;
+width: 42px;
+}
+
+.bocching-logo .boch-logo-3 {
+height: 13px;
+left: 36px;
+position: absolute;
+top: 34px;
+width: 31px;
+}
+
+.bocching-logo .boch-logo-4 {
+height: 13px;
+left: 36px;
+position: absolute;
+top: 46px;
+width: 31px;
+}  

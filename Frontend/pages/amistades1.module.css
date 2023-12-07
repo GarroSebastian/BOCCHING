@@ -1,3 +1,46 @@
+.amistades1Item {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas iguales */
+  gap: 20px; /* Espacio entre las tarjetas */
+  padding-top: 145px;
+  padding-left: 15px;
+}
+.inputContainer{
+  position: absolute;
+  left: 326px;
+  top: 407px;
+  border-radius: var(--br-3xs);
+  background-color: var(--white-icon);
+  width: 667px;
+  height: 51px;
+  font-size: 25px;
+}
+.inputContainer1{
+  position: absolute;
+  left: 1000px;
+  top: 406px;
+  border-radius: var(--br-3xs);
+  background-color: var(--white-icon);
+  width: 67px;
+  height: 58px;
+  cursor: pointer;
+}
+.card-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.card-cell {
+  width: 100%; /* Asegura que las celdas ocupen todo el ancho disponible */
+}
+.lupa1{
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+
 .amistades1Child,
 .amistades1Item {
   position: absolute;

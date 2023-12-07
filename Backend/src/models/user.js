@@ -13,7 +13,8 @@ const UserSchema = new Schema({
     facultad: String,
     especialidad: String,
     descripcion: String,
-    mostrar_nombre: Boolean
+    mostrar_nombre: Boolean,
+    confirmationCode: String 
 });
 
 module.exports = model("User", UserSchema);

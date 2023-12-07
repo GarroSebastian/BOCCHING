@@ -1,8 +1,12 @@
 import { useCallback } from "react";
 import { useRouter } from "next/router";
 import styles from "./mi-perfil23.module.css";
+import { useState, useEffect } from 'react';
+import GustoApi from "../api/gusto";
+import { Zoom } from "../extra/zoom.js"
 
 const MiPerfil23 = () => {
+  Zoom();
   const router = useRouter();
 
   const onRectangle1Click = useCallback(() => {
@@ -48,8 +52,87 @@ const MiPerfil23 = () => {
   const onXMLID273IconClick = useCallback(() => {
     router.push("/configuracin11");
   }, [router]);
+  /*
+  //variables importantes 1
+  const defaultgusto = {
+    gustos: ''
+  }
+  const [gusto, setgusto] = useState(defaultgusto);
+  
+  //Llamado al Get
+  const handleGetGustos = () => {
+    GustoApi.getGusto(window.localStorage.token).then((gusto)=>{
+      console.log("GUSTO GOD",gusto)
+      const aux = gusto.data;
+      setgusto(aux)
+    })
+  }
+  //Use effect
+  useEffect(() => {
+    handleGetGustos();
+  }, [])
+  */
+  
+  
+  const arrayTipo = ['Sin especificar','Franquicia','Juego de mesa','Hobby','Pasatiempo + Juego',
+  'Alimento','Música','Creador(a) de contenido','Deporte','Otro'];
+  const [ID_Tipo, setID_Tipo] = useState(0);
+  const arrayFranquicia = ['Sin especificar','Videojuego','Serie','Libro','Otro']
+  const arrayPasatiempo = ['Sin especificar','Aire libre','Espacio cerrado','Mixto']
+  const arrayAlimento = ['Sin especificar','Comida','Bebida']
+  const arrayMusica = ['Sin especificar','Solista','Grupo','Mixto']
+  const arrayCreador = ['Sin especificar','Gameplays','Tops','Crítico','Cómico','Informativo',
+    'Historia','Día a día','Otro']
+  const arraySubTipo = [[],arrayFranquicia,[],[],arrayPasatiempo,arrayAlimento,arrayMusica,arrayCreador,[],[]];
+  const defaultGustos2 = {
+    id: '1',
+    nombre: 'pintar',
+    afinidad: 'me gusta mucho',
+    duracion: '1 hora',
+    verTipo: [],
+    subTipo: 'Sin especificar'
+  }
 
+  const [gustos2, setgustos2] = useState(defaultGustos2);
+  console.log("Datos acutalizados 1, ",gustos2)
+  //Quiero cambiar nombre
+  //setgustos2({...gustos2, nombre:value})
+  //Posiblemente la rpta seria crear otras variables
+  
+  
+  console.log("Datos acutalizados 2, ",gustos2)
+  /*
+  const defaultGustos4 = {
+    nombre: '',
+    afinidad: '',
+    duracion: '',
+    subTipo: ''
+  }
+  const [cosas, setcosas] = useState(defaultGustos4);
+  
+  const onClick = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await GustoApi.getGusto(token, cosas);
+      console.log(token);
+  
+      if (response && response.status === 201) {
+        // La data fue guardada en la DB
+        console.log('Gustos guardados correctamente');
+      } else {
+        console.log(cosas);
+        console.log(response, response.status);
+        console.error('Error al guardar gustos');
+      }
+    } catch (error) {
+      console.error('Ocurrió un error', error);
+    }
+  };
+  console.log("Datos acutalizados 2, ",cosas)
+  */
+ console.log("OJITO",ID_Tipo)
   return (
+    <div id="container">
     <div className={styles.miperfil23}>
       <img className={styles.miperfil23Child} alt="" src="/rectangle-161.svg" />
       <img
@@ -78,10 +161,7 @@ const MiPerfil23 = () => {
         <div className={styles.xd}>xd</div>
         <img className={styles.frameChild} alt="" src="/polygon-35.svg" />
       </div>
-      <div className={styles.frameDiv}>
-        <div className={styles.xd}>xd</div>
-        <img className={styles.frameChild} alt="" src="/polygon-35.svg" />
-      </div>
+      
       <div className={styles.xdParent1}>
         <div className={styles.xd}>xd</div>
         <img className={styles.frameChild} alt="" src="/polygon-35.svg" />
@@ -94,10 +174,7 @@ const MiPerfil23 = () => {
         <div className={styles.xd}>xd</div>
         <img className={styles.frameChild} alt="" src="/polygon-35.svg" />
       </div>
-      <div className={styles.xdParent4}>
-        <div className={styles.xd}>xd</div>
-        <img className={styles.frameChild} alt="" src="/polygon-35.svg" />
-      </div>
+      
       <div className={styles.xdParent5}>
         <div className={styles.xd}>xd</div>
         <img className={styles.frameChild} alt="" src="/polygon-35.svg" />
@@ -110,10 +187,7 @@ const MiPerfil23 = () => {
         <div className={styles.xd}>xd</div>
         <img className={styles.frameChild} alt="" src="/polygon-35.svg" />
       </div>
-      <div className={styles.xdParent8}>
-        <div className={styles.xd}>xd</div>
-        <img className={styles.frameChild} alt="" src="/polygon-35.svg" />
-      </div>
+      
       <div className={styles.xdParent9}>
         <div className={styles.xd}>xd</div>
         <img className={styles.frameChild} alt="" src="/polygon-35.svg" />
@@ -126,10 +200,7 @@ const MiPerfil23 = () => {
         <div className={styles.xd}>xd</div>
         <img className={styles.frameChild} alt="" src="/polygon-35.svg" />
       </div>
-      <div className={styles.xdParent12}>
-        <div className={styles.xd}>xd</div>
-        <img className={styles.frameChild} alt="" src="/polygon-35.svg" />
-      </div>
+      
       <img className={styles.derechaIcon} alt="" src="/derecha2.svg" />
       <div className={styles.miPerfil}>Mi Perfil</div>
       <div className={styles.informacin} onClick={onInformacinTextClick}>
@@ -162,7 +233,7 @@ const MiPerfil23 = () => {
         <div className={styles.xd}>Afinidad</div>
         <div className={styles.xd}>Duración</div>
       </div>
-      <div className={styles.hobby}>Hobby</div>
+      
       <div className={styles.hobby1}>Hobby</div>
       <div className={styles.hobby2}>Hobby</div>
       <div className={styles.hobby3}>Hobby</div>
@@ -170,7 +241,19 @@ const MiPerfil23 = () => {
       <div className={styles.miperfil23Child8} />
       <div className={styles.miperfil23Child9} onClick={onRectangle12Click} />
       <div className={styles.editar}>Editar</div>
-      <div className={styles.confirmar}>Confirmar</div>
+      <div className={styles.confirmar}>
+
+
+
+
+        Confirmar
+
+
+
+
+
+
+      </div>
       <img className={styles.groupIcon} alt="" src="/group-70.svg" />
       <img className={styles.miperfil23Child10} alt="" src="/group-70.svg" />
       <img className={styles.miperfil23Child11} alt="" src="/group-70.svg" />
@@ -213,6 +296,8 @@ const MiPerfil23 = () => {
         src="/xmlid-2731.svg"
         onClick={onXMLID273IconClick}
       />
+      
+    </div>
     </div>
   );
 };

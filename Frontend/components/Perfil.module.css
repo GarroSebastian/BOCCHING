@@ -1,0 +1,899 @@
+.miperfil1Child,
+.miperfil1Item {
+  position: absolute;
+  top: 263px;
+  left: 841px;
+  border-radius: var(--br-lgi);
+  width: 253px;
+  height: 156px;
+  cursor: pointer;
+}
+.miperfil1Item {
+  left: 548px;
+}
+.colecciones {
+  position: absolute;
+  top: 292px;
+  left: 622px;
+  font-size: var(--subttulos-size);
+  pointer-events: none;
+  color: var(--black-icon);
+  
+}
+.miperfil1Inner,
+.rectangleDiv {
+  position: absolute;
+  top: 233px;
+  left: 255px;
+  border-radius: var(--br-lgi);
+  width: 253px;
+  height: 156px;
+}
+.rectangleDiv {
+  top: 344px;
+  left: 251px;
+  background-color: var(--black-icon);
+  border: 4px solid var(--white-icon);
+  box-sizing: border-box;
+  width: 1159px;
+  height: 1043px;
+}
+.miperfil1Child1,
+.miperfil1Child2,
+.miperfil1Child3 {
+  position: absolute;
+  top: 726px;
+  left: 320px;
+  border-radius: var(--br-xl);
+  background-color: var(--color-white);
+  width: 463px;
+  height: 323px;
+}
+.miperfil1Child2,
+.miperfil1Child3 {
+  top: 505px;
+  left: 876px;
+  height: 825px;
+}
+.miperfil1Child3 {
+  top: 431px;
+  left: 825px;
+  border-radius: var(--br-6xs);
+  background-color: var(--white-icon);
+  width: 9px;
+  height: 899px;
+}
+.miPerfil {
+  position: absolute;
+  top: 86px;
+  left: 255px;
+  font-size: var(--principal-2-size);
+  font-family: var(--principal-2);
+  color: var(--ttulos-textos);
+}
+.general,
+.informacin,
+.privacidad {
+  position: absolute;
+  font-size: var(--subttulos-size);
+}
+.privacidad {
+  pointer-events: none;
+}
+.informacin {
+  top: 269px;
+  left: 286px;
+  color: var(--color-white);
+}
+.general,
+.privacidad {
+  top: 285px;
+  left: 882px;
+}
+.general {
+  top: 431px;
+  left: 1048px;
+  color: var(--white-icon);
+}
+.correoInstitucional {
+  position: absolute;
+  top: 752px;
+  left: 352px;
+  font-size: var(--subtitulos2-size);
+}
+.ejemplodecorreocorreoejemplo {
+  position: absolute;
+  top: 786px;
+  left: 353px;
+  font-family: var(--textos);
+}
+.cdigoUniversitario {
+  position: absolute;
+  top: 826px;
+  left: 352px;
+  font-size: var(--subtitulos2-size);
+}
+.bchadri888,
+.codigouniversitarioejemplo {
+  position: absolute;
+  top: 860px;
+  left: 352px;
+  font-family: var(--textos);
+}
+.bchadri888 {
+  top: 936px;
+}
+.idbocching {
+  position: absolute;
+  top: 900px;
+  left: 353px;
+  font-size: var(--subtitulos2-size);
+}
+.edadejemploEnAos {
+  position: absolute;
+  top: 1009px;
+  left: 352px;
+  font-family: var(--textos);
+}
+.edad {
+  position: absolute;
+  top: 976px;
+  left: 353px;
+  font-size: var(--subtitulos2-size);
+}
+.estaInformacinNo {
+  position: absolute;
+  top: 1091px;
+  left: 370px;
+  font-family: var(--textos);
+  color: var(--white-icon);
+  display: inline-block;
+  width: 364px;
+  height: 14px;
+}
+.nombres {
+  position: absolute;
+  top: 530px;
+  left: 907px;
+  font-size: var(--subtitulos2-size);
+}
+.nombre1Nombre {
+  position: absolute;
+  top: 573px;
+  left: 912px;
+  font-family: var(--textos);
+}
+.miperfil1Child4 {
+  position: absolute;
+  top: 569px;
+  left: 906px;
+  border-radius: var(--br-6xs);
+  border: 1px solid var(--black-icon);
+  box-sizing: border-box;
+  width: 369px;
+  height: 29px;
+}
+.apellidos {
+  position: absolute;
+  top: 623px;
+  left: 907px;
+  font-size: var(--subtitulos2-size);
+}
+.apellido1Apellido {
+  position: absolute;
+  top: 667px;
+  left: 912px;
+  font-family: var(--textos);
+}
+.miperfil1Child5 {
+  position: absolute;
+  top: 662px;
+  left: 906px;
+  border-radius: var(--br-6xs);
+  border: 1px solid var(--black-icon);
+  box-sizing: border-box;
+  width: 369px;
+  height: 28px;
+}
+.apodo {
+  position: absolute;
+  top: 715px;
+  left: 907px;
+  font-size: var(--subtitulos2-size);
+}
+.apodoEjemplo {
+  position: absolute;
+  top: 760px;
+  left: 912px;
+  font-family: var(--textos);
+  display: inline-block;
+  width: 124px;
+  height: 13px;
+}
+.miperfil1Child6 {
+  position: absolute;
+  top: 754px;
+  left: 906px;
+  border-radius: var(--br-6xs);
+  border: 1px solid var(--black-icon);
+  box-sizing: border-box;
+  width: 369px;
+  height: 30px;
+}
+.gnero {
+  position: absolute;
+  top: 809px;
+  left: 907px;
+  font-size: var(--subtitulos2-size);
+  display: inline-block;
+  width: 93px;
+  height: 15px;
+}
+.frameChild,
+.gneroEjemplo {
+  position: relative;
+}
+.frameChild {
+  border-radius: var(--br-12xs);
+  width: 14.15px;
+  height: 9.2px;
+}
+.gneroEjemploParent {
+  position: absolute;
+  top: 848px;
+  left: 906px;
+  border-radius: var(--br-6xs);
+  border: 0px solid var(--black-icon);
+  box-sizing: border-box;
+  width: 369px;
+  height: 27px;
+  padding: var(--padding-11xs) var(--padding-11xs) 0 7px;
+  gap: 187px;
+  font-family: var(--textos);
+}
+.facultad {
+  position: absolute;
+  top: 900px;
+  left: 907px;
+  font-size: var(--subtitulos2-size);
+  display: inline-block;
+  width: 103px;
+  height: 15px;
+}
+.polygonIcon {
+  position: absolute;
+  top: 939.75px;
+  left: 1236.68px;
+  border-radius: var(--br-12xs);
+  width: 13.64px;
+  height: 7.83px;
+}
+.facultadEjemplo {
+  position: absolute;
+  top: 934px;
+  left: 912px;
+  font-family: var(--textos);
+}
+.miperfil1Child7 {
+  position: absolute;
+  top: 929px;
+  left: 906px;
+  border-radius: var(--br-6xs);
+  border: 1px solid var(--black-icon);
+  box-sizing: border-box;
+  width: 369px;
+  height: 29px;
+}
+.carrera {
+  position: absolute;
+  top: 983px;
+  left: 907px;
+  font-size: var(--subtitulos2-size);
+}
+.miperfil1Child8 {
+  position: absolute;
+  top: 1034px;
+  left: 1236.54px;
+  border-radius: var(--br-12xs);
+  width: 13.92px;
+  height: 8.52px;
+}
+.miperfil1Child9 {
+  position: absolute;
+  top: 1023px;
+  left: 907px;
+  border-radius: var(--br-6xs);
+  border: 1px solid var(--black-icon);
+  box-sizing: border-box;
+  width: 367px;
+  height: 27px;
+}
+.especialidad {
+  position: absolute;
+  top: 1076px;
+  left: 907px;
+  font-size: var(--subtitulos2-size);
+  display: inline-block;
+  width: 155px;
+  height: 17px;
+}
+.frameItem {
+  position: relative;
+  border-radius: var(--br-12xs);
+  width: 13.64px;
+  height: 7.83px;
+}
+.especialidadEjemploParent {
+  position: absolute;
+  top: 1107px;
+  left: 906px;
+  border-radius: var(--br-6xs);
+  border: 1px solid var(--black-icon);
+  box-sizing: border-box;
+  width: 369px;
+  height: 30px;
+  padding: var(--padding-8xs) var(--padding-11xs) var(--padding-12xs)
+    var(--padding-8xs);
+  gap: 154px;
+  font-family: var(--textos);
+}
+.descripccin {
+  position: absolute;
+  top: 1162px;
+  left: 907px;
+  font-size: var(--subtitulos2-size);
+}
+.descripcinAModo {
+  margin: 0;
+}
+.descripcinAModoContainer {
+  position: absolute;
+  top: 1216.61px;
+  left: 912px;
+  font-family: var(--textos);
+  display: inline-block;
+  width: 354px;
+  height: 52.93px;
+}
+.miperfil1Child10 {
+  position: absolute;
+  top: 1212px;
+  left: 906px;
+  border-radius: var(--br-6xs);
+  border: 1px solid var(--black-icon);
+  box-sizing: border-box;
+  width: 369px;
+  height: 85px;
+}
+.miperfil1Child11 {
+  position: absolute;
+  top: 629px;
+  left: 353px;
+  border-radius: var(--br-xl);
+  background-color: var(--cta);
+  width: 399px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+.ellipseDiv {
+  position: absolute;
+  top: 429px;
+  left: 422px;
+  border-radius: 50%;
+  background-color: var(--white-icon);
+  width: 250px;
+  height: 211px;
+  overflow: "hidden";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.vectorIcon,
+.vectorIcon1 {
+  position: absolute;
+  top: 553.59px;
+  left: 480px;
+  width: 134px;
+  height: 37.41px;
+}
+.vectorIcon1 {
+  top: 485px;
+  left: 512.91px;
+  width: 68.18px;
+  height: 64.43px;
+}
+.vectorIcon2,
+.vectorIcon3,
+.vectorIcon4 {
+  position: absolute;
+  top: 459px;
+  left: 624px;
+  overflow: hidden;
+  pointer-events: none;
+  width: 8px;
+}
+.vectorIcon3,
+.vectorIcon4 {
+  top: 448px;
+  left: 642px;
+  width: 6px;
+}
+.vectorIcon4 {
+  top: 450px;
+  left: 627px;
+  width: 18px;
+}
+.nombreapodo {
+  font-size: 24px;
+  position: absolute;
+  top: -20px;
+  pointer-events: none;
+  height: 60%;
+  text-align: center;
+  margin: 20px;
+}
+.nombreapodo p{
+  margin: 0px;
+}
+.miperfil1Child12 {
+  position: absolute;
+  top: 651.75px;
+  left: 712.31px;
+  border-radius: var(--br-11xs);
+  width: 23.38px;
+  height: 16.06px;
+  pointer-events: none;
+}
+.miperfil1Child13 {
+  position: absolute;
+  top: 439.65px;
+  left: 612.92px;
+  border-radius: 50%;
+  background-color: var(--cta);
+  width: 42.94px;
+  height: 38.8px;
+  transform: rotate(-0.13deg);
+  transform-origin: 0 0;
+}
+.miperfil1 {
+  position: relative;
+  background: linear-gradient(180deg, #fff, #f8f69b);
+  width: 100%;
+  height: 1463px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--textos-size);
+  color: var(--black-icon);
+  font-family: var(--subttulos);
+}
+
+.dato{
+  border: none; /* Oculta todos los bordes */
+  background-color: transparent; /* Para ocultar el fondo si es necesario */
+  margin-top: 1%;
+  margin-left: 1.3%;
+  font-size: 15px;
+  width: 95%;
+}
+.datoGenero{
+  border: none; /* Oculta todos los bordes */
+  background-color: transparent; /* Para ocultar el fondo si es necesario */
+  margin-top: 0.5%;
+  margin-left: -0.5%;
+  font-size: 15px;
+  width: 98%;
+  opacity: 1;
+}
+.datoEspecialidad{
+  border: none; /* Oculta todos los bordes */
+  background-color: transparent; /* Para ocultar el fondo si es necesario */
+  margin-top: -10%;
+  margin-left: -0.5%;
+  font-size: 15px;
+  width: 95%;
+}
+.datoDescripcion{
+  border: none; /* Oculta todos los bordes */
+  background-color: transparent; /* Para ocultar el fondo si es necesario */
+  margin-top: 1%;
+  margin-left: 1.3%;
+  font-size: 15px;
+  width: 95%;
+  height: 85%;
+  resize: none;
+}
+
+/*Importado*/
+.miperfil21Child,
+.miperfil21Inner,
+.miperfil21Item {
+  position: absolute;
+  top: 233px;
+  left: 548px;
+  border-radius: var(--br-lgi);
+  width: 253px;
+  height: 156px;
+}
+.miperfil21Inner,
+.miperfil21Item {
+  top: 263px;
+  left: 255px;
+  cursor: pointer;
+}
+.miperfil21Inner {
+  left: 841px;
+}
+.colecciones2 {
+  position: absolute;
+  top: 279px;
+  left: 622px;
+  font-size: var(--subttulos-size);
+  font-family: var(--subttulos);
+  color: var(--white-icon);
+  text-align: left;
+}
+.rectangleDiv2 {
+  position: absolute;
+  top: 344px;
+  left: 251px;
+  border-radius: var(--br-lgi);
+  background-color: var(--black-icon);
+  border: 4px solid var(--white-icon);
+  box-sizing: border-box;
+  width: 1159px;
+  height: 658px;
+}
+.miperfil21Child1 {
+  position: absolute;
+  top: 645px;
+  left: 1305px;
+  border-radius: var(--br-mini);
+  background-color: var(--white-icon);
+  width: 4px;
+  height: 225px;
+}
+.recDerIcon {
+  position: absolute;
+  top: 557px;
+  left: 310px;
+  border-radius: var(--br-lgi);
+  width: 35px;
+  height: 55px;
+}
+.derechaIcon,
+.recDerIcon1 {
+  position: absolute;
+  top: 569px;
+  left: 320px;
+  width: 12px;
+  height: 9px;
+}
+.recDerIcon1 {
+  top: 557px;
+  left: 1167px;
+  border-radius: var(--br-lgi);
+  width: 35px;
+  height: 55px;
+}
+.miperfil21Child2 {
+  position: absolute;
+  top: 588px;
+  left: 303px;
+  background-color: var(--color-white);
+  border-bottom: 4px solid var(--white-icon);
+  box-sizing: border-box;
+  width: 906px;
+  height: 61px;
+}
+.groupIcon {
+  position: absolute;
+  height: 0.54%;
+  width: 1.72%;
+  top: 56.62%;
+  right: 20.43%;
+  bottom: 42.85%;
+  left: 77.86%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.miperfil21Child3,
+.miperfil21Child4,
+.miperfil21Child5,
+.miperfil21Child6 {
+  position: absolute;
+  left: 303px;
+  background-color: var(--white-icon);
+  width: 906px;
+  height: 3px;
+}
+.miperfil21Child4,
+.miperfil21Child5,
+.miperfil21Child6 {
+  top: 748px;
+}
+.miperfil21Child5,
+.miperfil21Child6 {
+  top: 809px;
+  width: 900px;
+}
+.miperfil21Child6 {
+  top: 869px;
+  left: 306px;
+}
+.afinidad,
+.duracin,
+.nombre,
+.subtipo,
+.tipo {
+  position: absolute;
+  top: 604px;
+  left: 327px;
+  font-size: var(--textos-size);
+  color: var(--ttulos-textos);
+}
+.afinidad,
+.duracin,
+.nombre,
+.subtipo {
+  left: 463px;
+}
+.afinidad,
+.duracin,
+.nombre {
+  left: 626px;
+}
+.afinidad,
+.duracin {
+  left: 792px;
+}
+.duracin {
+  left: 959px;
+}
+.hobby,
+.hobby1,
+.hobby2,
+.hobby3 {
+  position: absolute;
+  left: 333px;
+}
+.xd,
+.xd1,
+.xd2,
+.xd3,
+.xd4 {
+  position: absolute;
+  left: 600px;
+}
+.xd3,
+.xd4 {
+  left: 467px;
+}
+.xd4 {
+  left: 627px;
+}
+.xd10,
+.xd5,
+.xd6,
+.xd7,
+.xd8,
+.xd9 {
+  position: absolute;
+  left: 627px;
+}
+.xd10,
+.xd8,
+.xd9 {
+  left: 793px;
+}
+.xd11,
+.xd12,
+.xd13 {
+  position: absolute;
+  left: 792px;
+}
+.xd12,
+.xd13 {
+  left: 960px;
+}
+.derechaIcon1,
+.xd14,
+.xd15 {
+  position: absolute;
+  top: 772px;
+  left: 959px;
+}
+.derechaIcon1,
+.xd15 {
+  top: 831px;
+}
+.derechaIcon1 {
+  top: 569px;
+  left: 1180px;
+  width: 12px;
+  height: 9px;
+}
+.informacin2,
+.miPerfil,
+.privacidad {
+  position: absolute;
+  top: 86px;
+  left: 255px;
+  font-size: var(--principal-2-size);
+  font-family: var(--principal-2);
+  color: var(--ttulos-textos);
+  text-align: left;
+}
+.informacin2,
+.privacidad {
+  top: 295px;
+  left: 286px;
+  font-size: var(--subttulos-size);
+  font-family: var(--subttulos);
+  color: var(--black-icon);
+  cursor: pointer;
+}
+.privacidad {
+  left: 909px;
+}
+.aquPodrsAgregar,
+.misColecciones {
+  position: absolute;
+  left: 307px;
+  text-align: left;
+}
+.misColecciones {
+  top: 419px;
+  font-size: var(--subttulos-size);
+  font-family: var(--subttulos);
+  color: var(--white-icon);
+}
+.aquPodrsAgregar {
+  top: 481px;
+  font-size: var(--textos-size);
+}
+.miperfil21Child7 {
+  position: absolute;
+  top: 526px;
+  left: 303px;
+  border-radius: var(--br-xl);
+  background-color: var(--color-gainsboro);
+  width: 1070px;
+  height: 2px;
+}
+.miperfil21Child8,
+.miperfil21Child9 {
+  position: absolute;
+  border-radius: var(--br-3xs);
+  cursor: pointer;
+}
+.miperfil21Child8 {
+  top: 907px;
+  left: 308px;
+  background-color: var(--white-icon);
+  border: 1px solid var(--white-icon);
+  box-sizing: border-box;
+  width: 122px;
+  height: 43px;
+}
+.miperfil21Child9 {
+  top: 908px;
+  left: 1053px;
+  background-color: var(--cta);
+  width: 156px;
+  height: 41px;
+}
+.aadir,
+.editar {
+  position: absolute;
+  top: 917px;
+  left: 331px;
+  font-size: var(--subtitulos2-size);
+  font-family: var(--subttulos);
+  color: var(--ttulos-textos);
+}
+.aadir {
+  top: 916px;
+  left: 1087px;
+}
+.miperfil21Child10 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(180deg, rgba(69, 57, 56, 0.77), #453938);
+  width: 164px;
+  height: 815px;
+}
+.miperfil21Child11 {
+  position: absolute;
+  top: 27px;
+  left: 30px;
+  width: 104px;
+  height: 92px;
+  cursor: pointer;
+}
+.miperfil21Child12 {
+  position: absolute;
+  top: 237px;
+  left: 47px;
+  width: 70px;
+  height: 58.71px;
+}
+.miperfil21Child13 {
+  top: 432px;
+  left: 59.64px;
+  width: 44.72px;
+  height: 37.18px;
+}
+.xmlid273Icon {
+  top: 604.62px;
+  left: 63.99px;
+  width: 36.01px;
+  height: 29.65px;
+}
+.xmlid273Icon {
+  top: 684.27px;
+  left: 62.89px;
+  width: 38.23px;
+  height: 34.71px;
+}
+.miperfil21 {
+  position: relative;
+  background: linear-gradient(180deg, #fff, #f8f69b);
+  width: 100%;
+  height: 1082px;
+  overflow: hidden;
+  text-align: center;
+  font-size: var(--font-size-mini);
+  color: var(--color-white);
+  font-family: var(--textos);
+}
+
+/*Otro Perfil*/
+.amistades2Child5 {
+  position: absolute;
+  top: 439.65px;
+  left: 612.92px;
+  border-radius: 50%;
+  background-color: var(--cta);
+  width: 44.91px;
+  height: 40.9px;
+  transform: rotate(-0.13deg);
+  transform-origin: 0 0;
+}
+.amistades2Child6 {
+  position: absolute;
+  top: 445px;
+  left: 621px;
+  width: 29.83px;
+  height: 25px;
+  pointer-events: none;
+}
+.miperfil241Child {
+  position: absolute;
+  top: 233px;
+  left: 841px;
+  border-radius: var(--br-lgi);
+  width: 253px;
+  height: 156px;
+}
+.miperfil241 {
+  position: relative;
+  background: linear-gradient(180deg, #fff, #f8f69b);
+  width: 100%;
+  height: 1155px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--subttulos-size);
+  color: var(--white-icon);
+  font-family: var(--subttulos);
+}
+.privacidadz {
+  position: absolute;
+  top: 279px;
+  left: 909px;
+  color: var(--white-icon);
+}

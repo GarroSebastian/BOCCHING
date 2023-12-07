@@ -4,7 +4,7 @@ import styles from "./configuracin2.module.css";
 import { Zoom } from "../extra/zoom.js";
 
 const Configuracin2 = () => {
-  //Zoom()
+  Zoom()
   const router = useRouter();
 
   const onRectangle1Click = useCallback(() => {
@@ -16,10 +16,7 @@ const Configuracin2 = () => {
   }, [router]);
 
   const onVectorClick = useCallback(() => {
-    router.push("/");
-  }, [router]);
-
-  const onVector1Click = useCallback(() => {
+    window.localStorage.removeItem("token");
     router.push("/");
   }, [router]);
 
@@ -54,7 +51,7 @@ const Configuracin2 = () => {
           className={styles.vectorIcon1}
           alt=""
           src="/vector1.svg"
-          onClick={onVector1Click}
+          onClick={onVectorClick}
         />
         <div className={styles.deseasCerrarSesinContainer}>
           <p className={styles.deseasCerrar}>¿DESEAS CERRAR</p>

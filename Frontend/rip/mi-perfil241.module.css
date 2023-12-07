@@ -1,0 +1,206 @@
+.miperfil241Child,
+.miperfil241Inner,
+.miperfil241Item {
+  position: absolute;
+  top: 233px;
+  left: 841px;
+  border-radius: var(--br-lgi);
+  width: 253px;
+  height: 156px;
+}
+.miperfil241Inner,
+.miperfil241Item {
+  top: 263px;
+  left: 255px;
+  cursor: pointer;
+}
+.miperfil241Inner {
+  left: 548px;
+}
+.colecciones {
+  position: absolute;
+  top: 295px;
+  left: 586px;
+  color: var(--black-icon);
+  cursor:pointer;
+}
+.rectangleDiv {
+  position: absolute;
+  top: 344px;
+  left: 251px;
+  border-radius: var(--br-lgi);
+  background-color: var(--black-icon);
+  border: 4px solid var(--white-icon);
+  box-sizing: border-box;
+  width: 1159px;
+  height: 734px;
+}
+.transhumansReflectingIcon {
+  position: absolute;
+  top: 702px;
+  left: 945px;
+  width: 487px;
+  height: 324px;
+  object-fit: cover;
+}
+.miPerfil {
+  position: absolute;
+  top: 86px;
+  left: 255px;
+  font-size: var(--principal-2-size);
+  font-family: var(--principal-2);
+  color: var(--ttulos-textos);
+}
+.informacin {
+  position: absolute;
+  top: 295px;
+  left: 286px;
+  color: var(--black-icon);
+  cursor: pointer;
+}
+.privacidad {
+  position: absolute;
+  top: 279px;
+  left: 882px;
+}
+.avanzando,
+.general {
+  position: absolute;
+  top: 424px;
+  left: 338px;
+  font-size: var(--principal-size);
+  font-family: var(--principal-2);
+}
+.avanzando {
+  top: 694px;
+}
+.miperfil241Child1,
+.miperfil241Child2 {
+  position: absolute;
+  top: 513px;
+  left: 341px;
+  border-radius: var(--br-xl);
+  background-color: var(--white-icon);
+  width: 649px;
+  height: 7px;
+}
+.miperfil241Child2 {
+  top: 771px;
+  left: 338px;
+}
+.igualdadDeDato,
+.soloAmigos {
+  position: absolute;
+  top: 550px;
+  left: 338px;
+  font-size: var(--subtitulos2-size);
+  color: var(--color-white);
+}
+.igualdadDeDato {
+  top: 892px;
+}
+.igualdadDeDato1,
+.seleccionaLosApartados,
+.seleccionaLosApartados1 {
+  position: absolute;
+  top: 808px;
+  left: 337px;
+  font-size: var(--textos-size);
+  font-family: var(--textos);
+  display: inline-block;
+  width: 652px;
+}
+.seleccionaLosApartados,
+.seleccionaLosApartados1 {
+  top: 612px;
+  left: 341px;
+  width: 642px;
+}
+.seleccionaLosApartados1 {
+  top: 947px;
+  left: 338px;
+}
+.icon,
+.icon1 {
+  position: absolute;
+  top: 566px;
+  left: 911px;
+  width: 57px;
+  height: 63px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.icon1 {
+  top: 895px;
+}
+.miperfil241Child3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(180deg, rgba(69, 57, 56, 0.77), #453938);
+  width: 164px;
+  height: 815px;
+}
+.groupIcon {
+  position: absolute;
+  top: 27px;
+  left: 30px;
+  width: 104px;
+  height: 92px;
+}
+.miperfil241Child4 {
+  position: absolute;
+  top: 237px;
+  left: 47px;
+  width: 70px;
+  height: 58.71px;
+}
+.miperfil241Child5,
+.vectorIcon {
+  position: absolute;
+  top: 345.71px;
+  left: 51.27px;
+  width: 61.46px;
+  height: 36.29px;
+  cursor: pointer;
+}
+.miperfil241Child5 {
+  top: 432px;
+  left: 59.64px;
+  width: 44.72px;
+  height: 37.18px;
+}
+.vectorIcon1,
+.vectorIcon2,
+.xmlid273Icon {
+  position: absolute;
+  top: 519.18px;
+  left: 60.38px;
+  width: 43.24px;
+  height: 35.43px;
+  cursor: pointer;
+}
+.vectorIcon2,
+.xmlid273Icon {
+  top: 604.62px;
+  left: 63.99px;
+  width: 36.01px;
+  height: 29.65px;
+}
+.xmlid273Icon {
+  top: 684.27px;
+  left: 62.89px;
+  width: 38.23px;
+  height: 34.71px;
+}
+.miperfil241 {
+  position: relative;
+  background: linear-gradient(180deg, #fff, #f8f69b);
+  width: 100%;
+  height: 1155px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--subttulos-size);
+  color: var(--white-icon);
+  font-family: var(--subttulos);
+}

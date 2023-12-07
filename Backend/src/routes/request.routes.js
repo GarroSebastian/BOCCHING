@@ -7,10 +7,26 @@ const verifyToken = require("../middlewares/verifyToken");
 //rutas
 router.post("/save-solicitud/:id", verifyToken, RequestController.saveRequest);
 
-router.delete("/delete-solicitud/:id", verifyToken, RequestController.deleteRequest);
+router.delete("/delete-solicitud/:receptorid", verifyToken, RequestController.deleteRequest);
+
+router.delete("/delete-solicitud-id/:id", verifyToken, RequestController.deleteRequestAdr);
 
 router.get("/getAllSolicitudes", verifyToken, RequestController.getAllRequests);
 
+router.get("/getSolicitudesFromUser", verifyToken, RequestController.getAllRequestsAdr);
+router.get("/findOneSolicitud/:receptorid", verifyToken, RequestController.findOneAdr);
+
+router.get("/getAllSolicitudesEmitidas", verifyToken, RequestController.getAllRequestsEmitidas);
+
+router.get("/getAllSolicitudesRecibidas", verifyToken, RequestController.getAllRequestsRecibidas);
+
 router.get("/getSolicitud/:id", verifyToken, RequestController.getOneRequest);
+router.get("/get-all-received-requests", verifyToken, RequestController.getAllReceivedRequests);
+
+router.put('/update-solicitud', verifyToken, RequestController.actualizarSolicitud);
+
+router.put('/actualizar-viewer-solicitudes', verifyToken, RequestController.actualizarViewerSolicitudes);
+
+router.delete("/solicitud/DELETE-ALL", RequestController.delete_all);
 
 module.exports = router;

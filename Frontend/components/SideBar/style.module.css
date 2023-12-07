@@ -1,0 +1,46 @@
+.side-bar {
+align-items: flex-start;
+display: inline-flex;
+gap: 10px;
+position: relative;
+}
+
+.side-bar .bar {
+align-items: flex-start;
+display: inline-flex;
+flex: 0 0 auto;
+gap: 10px;
+position: relative;
+}
+
+.side-bar .rectangle {
+background: linear-gradient(180deg, rgba(69, 57, 56, 0.77) 0%, rgb(69, 57, 56) 100%);
+height: 1050px;
+position: relative;
+width: 164px;
+}
+
+.side-bar .barside-icons {
+align-items: center;
+display: inline-flex;
+flex-direction: column;
+gap: 82px;
+left: 30px;
+position: absolute;
+top: 27px;
+}
+
+.side-bar .icon-instance-node {
+flex: 0 0 auto !important;
+position: relative !important;
+}
+
+.side-bar .icons {
+align-items: center;
+display: inline-flex;
+flex: 0 0 auto;
+flex-direction: column;
+gap: 4.3em;
+justify-content: center;
+position: relative;
+}

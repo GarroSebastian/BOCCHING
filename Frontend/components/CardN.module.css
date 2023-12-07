@@ -1,0 +1,39 @@
+.card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 10px;
+    width: 200px;
+    cursor: pointer;
+  }
+  
+  .cardImgContainer {
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100px;
+    margin: 0 auto 10px auto;
+  }
+  
+  .cardImg {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 50%;
+  }
+  
+  .cardBody {
+    text-align: center;
+  }
+  
+  .cardTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .cardText {
+    font-size: 1rem;
+  }

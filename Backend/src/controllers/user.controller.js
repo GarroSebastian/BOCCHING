@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const buildSearchQuery = require("../controllers/Busquedaparaadrian");
 
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -17,15 +18,15 @@ const UserController = {
             newUser.apodo = data.apodo,
             newUser.id_genero = data.id_genero
             newUser.nacimiento = data.nacimiento,
-            newUser.foto = data.foto,
+            newUser.foto = "https://i.pinimg.com/280x280_RS/42/03/a5/4203a57a78f6f1b1cc8ce5750f614656.jpg",
             newUser.carrera = data.carrera,
             newUser.facultad = data.facultad,
             newUser.especialidad = data.especialidad,
             newUser.descripcion = data.descripcion,
             newUser.mostrar_nombre = data.mostrar_nombre
+            newUser.confirmationCode=data.confirmationCode
     
-            User.find({ $or: [{correo: newUser.correo.toLowerCase()}, {apodo: newUser.apodo.toLowerCase()}] })
-            
+            User.find({correo: newUser.correo.toLowerCase()})
             .then((users)=>{
                             
                     if(users && users.length >= 1){
@@ -74,7 +75,7 @@ const UserController = {
             
             if(user){
 
-                bcrypt.compare(dataContrasena, user.contrasena).then(async(check)=>{
+                bcrypt.compare(dataContrasena, user.contrasena, async(err, check)=>{
     
                     if(check){
 
@@ -86,20 +87,20 @@ const UserController = {
 
                     }
     
-                    if(!check) return res.status(404).send("error");
+                    if(!check) return res.json({message: "Correo o contraseña incorrectos"});
     
                 });
             }
             else
             {
-                return res.status(404).send("error");
+                return res.status(404).send("error 1");
             }
     
         });
         
     },
 
-    get_user: async(req, res)=>{
+    get_one_user: async(req, res)=>{
 
         const user_id = req.token_usuarioId;
 
@@ -113,13 +114,39 @@ const UserController = {
         res.send({usuario: user});
     },
 
+    get_one_user_Adr: async(req, res)=>{
+
+        const user_id = req.params.id;
+
+        var user = await User.findById(user_id , {password:0}).then((user)=>{
+
+            if(!user) res.send("No se puede ingresar al perfil");
+            return user;
+
+        });
+
+        res.send({usuario: user});
+    },
+    
+
+    get_all_users: async(req, res) => {
+
+        await User.find().then((users)=>{
+
+            if(!users) res.send("No hay usuarios");
+
+            if(users) res.send(users);
+        });
+
+    },
+
     update_user: async(req, res)=>{
 
         const id = req.token_usuarioId;
         const dataUpdate = req.body;
         delete dataUpdate.contrasena;
 
-        User.find({ $or: [{apodo: dataUpdate.apodo.toLowerCase()}, {correo: dataUpdate.correo.toLowerCase()}] }).then((users)=>{
+        User.find({correo: dataUpdate.correo.toLowerCase()}).then((users)=>{
 
             var sameData = false;
 
@@ -132,7 +159,7 @@ const UserController = {
             User.findByIdAndUpdate(id, dataUpdate, {new: true}).then((userUpdated)=>{
 
                 if(!userUpdated) return res.status(404).send({
-                     message: 'no sea podido actualizar el usuario'
+                     message: 'No se ha podido actualizar el usuario'
                 });
 
                 if(userUpdated) return res.status(200).send(userUpdated);
@@ -155,7 +182,51 @@ const UserController = {
 
         });
 
-    }
+    },
+
+    delete_all: async(req, res)=>{
+
+        User.deleteMany().then((userDeleted)=>{
+
+            if(!userDeleted) return res.send("waos");
+
+            if(userDeleted) return res.send("Users vaciados");
+
+        });
+
+    },
+
+    
+    verify_delete_code : async (req, res) => {
+        const user_id = req.token_usuarioId;
+        const confirmationCode = req.params.confirmationCode;
+        // Obtener el usuario de la base de datos
+        var user = await User.findById(user_id )
+        if (!user) {
+            return res.status(404).send(`Usuario no encontrado. user_id: ${user_id}`);
+        }
+        // Verificar si el código de confirmación coincide
+        if (confirmationCode === user.confirmationCode) {
+            // Eliminar la cuenta del usuario
+            await User.findByIdAndDelete(user_id);
+            return res.status(200).send("Cuenta eliminada exitosamente");
+        } else {
+            return res.status(400).send("Código de confirmación incorrecto");
+        }
+    
+    },
+    
+    search_ga: async (req, res) => {
+        try {
+            const criteria = req.body;
+            const users = await User.find(buildSearchQuery(criteria));
+            res.json(users);
+        } catch (error) {
+            console.error('Error en la búsqueda:', error);
+            res.status(500).json({ error: 'Error en la búsqueda' });
+        }
+      },
+        
     
 }
 
